@@ -6,6 +6,7 @@ import indexStyles from '../styles/Index.module.css';
 
 
 export default function Home({articles, title, handleArticle}) {
+    let globalState = useAppContext().catagories;
    let shallow = [];
   //  let [artic, setArticles] = useState([])
    let styleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
@@ -14,7 +15,7 @@ export default function Home({articles, title, handleArticle}) {
   
     }
     useEffect(() => {
-        for (let i = 0; i < articles.length; i++) {
+      for (let i = 0; i < articles.length; i++) {
 
           // if (shallow.length < 5) {
             let item = articles[i];
@@ -24,7 +25,7 @@ export default function Home({articles, title, handleArticle}) {
           // } else {
 
           // }
-          console.log(articles[i]);
+          // console.log(articles[i]);
         }
     }, []);
   return (
@@ -42,11 +43,16 @@ export default function Home({articles, title, handleArticle}) {
        
         <div className={indexStyles.storiesContainer}>
       
-          {articles.map((x)=> {
+          {articles.map((x, ind)=> {
+            // console.log(x)
+             let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
             return(
               <Link key={x.id} href="/article">
             <div value="xxx" onClick={handleClick.bind(this, x)} className={x.style}>
-              <h1>{x.title}</h1>
+               <img src={x.photos} style={visible} /> 
+              <h6>{globalState[x.categorization_id]}</h6>
+              
+              <h2>{x.title}</h2>
             </div>
             </Link>)
           })}
@@ -59,26 +65,15 @@ export default function Home({articles, title, handleArticle}) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3001/articles')
+    // console.log("hellllllo");
+    // console.log("!!!!!!", process.env);
+  const res = await fetch(`${process.env.ROOT_URL}articles`)
   let styleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
   const articles =  await res.json()
   let output = await articles.forEach((x, i) =>{
         x.style = styleArray[i];
   })
 
-
-  // for (let i = 0; i < articles.length; i++) {
-
-  //   // if (shallow.length < 5) {
-  //   let item = articles[i];
-  //   item.style = styleArray[i];
-  //   //   // console.log(styleArray[i])
-  //   shallow.push(item);
-  //   // } else {
-
-  //   // }
-  //   console.log(articles[i]);
-  // }
   return {
     props: {
       articles

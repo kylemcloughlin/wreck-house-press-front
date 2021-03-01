@@ -6,12 +6,12 @@ import { useAppContext } from '../context/AppContext';
 import {securedAxiosInstance, plainAxiosInstance } from '../assets/backend/axios.js';
 
 const Nav = ({category}) => {
-  let globalState = useAppContext()
+  let globalState = useAppContext().catagories;
   let [subcategorization, setSubcategorization] = useState([])
   let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
   const handleClick = async (e) => {
     let output = Number(e.target.value);
-    category(globalState.catagories[output]);
+    category(globalState[output]);
       await plainAxiosInstance.get(`/subcategorizations?categorization_id=${output + 1}`)
     .then(res => {
       
@@ -28,7 +28,7 @@ const Nav = ({category}) => {
    <div>
 
    <div className={navStyles.nav}>
-        <Link href="/"><img src='/images/WH-Press-2021.png'/></Link>
+        <Link href="/"><img src='/images/Masthead-2021.png'/></Link>
      {/* <Image
      src='/images/WH-Press-2021.png'
      alt="logo"
@@ -38,7 +38,7 @@ const Nav = ({category}) => {
 
         </div>
       <ul className={navStyles.navbar}>
-      { globalState.catagories.map((x, ind)=> {
+      { globalState.map((x, ind)=> {
         return (<li key={x}>
         <Link href="/category"><button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button></Link>   
         </li>)

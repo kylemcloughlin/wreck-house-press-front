@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3001/'
+const API_URL = process.env.ROOT_URL
 // const API_URL = 'https://wreck-house-press-back.herokuapp.com/'
 const securedAxiosInstance = axios.create({
   baseURL: API_URL,

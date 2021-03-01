@@ -9,7 +9,7 @@
   margin: 1em;
   padding: 1em;
   height: 60em;
-  background-color: #f9f9f9;
+  background: #fffefe;
   border: #B9B7B7 solid 2px;
   border-radius: .2em;
 
@@ -26,24 +26,31 @@
 }
 
 .itemA {
-  grid-area: header;
-  background-color: blanchedalmond;
-  border-bottom: black solid 1px;
+  grid-area: main;
+  /* background-color: blanchedalmond; */
+  border-right: #B9B7B7 solid 1px;
   width: 95%;
   margin-left: 1em;
 }
 
+.itemA img {
+  width: 95%;
+}
+
 .itemB {
-  grid-area: main;
+  grid-area: header;
+  border-bottom: #B9B7B7 solid 1px;
   /* background-color: green; */
-  border-right: black solid 1px;
+}
 
-
+.indexContainer h2 {
+  /* position: relative;
+  top: 4em; */
 }
 
 .itemC {
   grid-area: sidebar;
-    border-bottom: black solid 1px;
+    border-bottom: #B9B7B7 solid 1px;
     width: 95%;
     margin-left: 1em;
 
@@ -51,7 +58,7 @@
 
 .itemD {
   grid-area: footer;
-  border-top: black solid 1px;
+  border-top: #B9B7B7 solid 1px;
   margin-top: 1em;
   /* background-color: pink; */
 

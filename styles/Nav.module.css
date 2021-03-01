@@ -1,7 +1,7 @@
 .nav {
   height:  75px;
   padding: 10px;
-  background: #fff;
+  background: #fffefe;
   color: #666;
   display: flex;
   align-items: center;
@@ -13,7 +13,8 @@
  height: 47px;
  padding: 10px;
  padding-left: 4em;
- background: #59BCC0;
+ background: #fffefe;
+border-top: 1px solid #b9b7b7;
  display: flex;
  /* justify-content: center; */
  align-items: center;
@@ -23,7 +24,7 @@
 .navButton {
       background: none;
       border: none;
-      color: white;
+      color: #b9b7b7;
       padding-left: 1em;
       padding-right: 3.5em;
       transition: 20ms;
@@ -31,7 +32,7 @@
 }
 
 .navButton:hover {
-  color: #B9B7B7;
+  color: #59BCC0;
   transition: 20ms;
 
 }
@@ -53,6 +54,9 @@
   /* visibility: hidden; */
 }
 
+.lowerNavBar button {
+  color: #fffefe;
+}
 .nav ul li a {
   margin: 5px 15px;
 }

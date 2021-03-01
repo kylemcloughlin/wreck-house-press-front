@@ -6,7 +6,7 @@ import {securedAxiosInstance, plainAxiosInstance } from '../assets/backend/axios
 import categoryStyles from '../styles/Category.module.css';
 
 export default function Category({title, handleArticle}) {
-  let globalState = useAppContext();
+  let globalState = useAppContext().catagories;
   let [articles, setArticles] = useState([])
   let shallow = [];
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
@@ -19,7 +19,7 @@ export default function Category({title, handleArticle}) {
 const fetchData = async () => {
   let x ;
 
- globalState.catagories.forEach((el, ind) => {
+ globalState.forEach((el, ind) => {
 
   if (el === title) {
      x = ind + 1;
@@ -28,7 +28,7 @@ const fetchData = async () => {
 
   await plainAxiosInstance.get(`/categorizations/${x}`)
     .then(res => {
-     console.log(res.data)
+    //  console.log(res.data)
       for (let i = 0; i < res.data.length; i++) {
         
         if (shallow.length < 5) {
@@ -39,7 +39,7 @@ const fetchData = async () => {
         } else {
           
         }
-        console.log(i);
+        // console.log(i);
       }
       
       setArticles(shallow);
@@ -52,6 +52,8 @@ const fetchData = async () => {
 };
 
 useEffect(() => {
+  console.log("hellllllo");
+  // console.log("!!!!!!", process.env.ROOT_URL);
   fetchData();
 }, [title]);
   // console.log(articles)
@@ -83,8 +85,10 @@ useEffect(() => {
             <Link key={x.id} href="/article"> 
                 <div value="xxx" onClick={handleClick.bind(this, x)} className={x.style}>
               <img src={x.photos} style={visible} className={categoryStyles.img}/> 
+                <h6>{globalState[x.categorization_id]}</h6>
               <h1>{x.title}</h1>
             <h4 style={visible}>{x.subtitles}</h4>
+                <h6>20 hrs ago</h6>
              </div>
             </Link>
             )
