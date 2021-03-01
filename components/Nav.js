@@ -35,12 +35,19 @@ const Nav = ({category}) => {
      width={500}
      height={250}/>   */}
  
+        <button disabled='true ' className={navStyles.subscribe}>
+          Subscribe
+        </button>
+        <button disabled='true' className={navStyles.signIn}>
+          Sign In
+        </button >
 
         </div>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {
-        return (<li key={x}>
-        <Link href="/category"><button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button></Link>   
+        let link = ind === 0 ? ("/") : ("/category")
+       return (<li key={x}>
+        <Link href={link}><button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button></Link>   
         </li>)
       })}
         </ul>
@@ -52,7 +59,6 @@ const Nav = ({category}) => {
         </li>)
       })}
       </ul>
-
       </div>
   )
 }
