@@ -9,9 +9,9 @@ const Layout = ({children, category}) => {
     <>
     <Nav category={category}/>
     <div className={styles.container}>
-      <main className={styles.main}>
+      {/* <main className={styles.main}> */}
         {children}
-      </main>
+      {/* </main> */}
     </div>
     </>
   )

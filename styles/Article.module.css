@@ -1,0 +1,38 @@
+.category {
+      position: relative;
+      top: -2em;
+      padding-left: .7em;
+}
+.img {
+  /* visibility: hidden; */
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.imgHolder {
+  width: 100%;
+}
+
+.title {
+ padding-left: .7em;
+}
+
+.subtitle {
+ padding-left: .7em;
+}
+
+.author {
+ padding-left: .7em;
+}
+
+
+
+.articleBody {
+  width: 90%; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

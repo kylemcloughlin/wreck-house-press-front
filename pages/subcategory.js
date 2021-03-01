@@ -3,25 +3,46 @@ import Link from 'next/link';
 import { useAppContext } from '../context/AppContext';
 import {useEffect, useState } from 'react';
 import {securedAxiosInstance, plainAxiosInstance } from '../assets/backend/axios.js'
+import categoryStyles from '../styles/Category.module.css';
 
 export default function Subcategory({title, handleArticle}) {
   let globalState = useAppContext();
   let [articles, setArticles] = useState([])
+  let shallow = [];
+  let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
   const handleClick = (e) => {
     handleArticle(e) 
   }
+
+
 const fetchData = async () => {
   let x ;
  globalState.subCatagories.forEach((el, ind) => {
-  if (el === title) {
+   if (el === title) {
      x = ind + 1;
-   }
- });
+     console.log(el, title);
+    }
+  });
+  
+  
+ console.log("HELLLLO", x);
   await plainAxiosInstance.get(`/subcategorizations/${x}`)
     .then(res => {
-      // console.log(res)
-      // console.log(res.data)
-      setArticles(res.data)
+      console.log(res.data)
+      for (let i = 0; i < res.data.length; i++) {
+
+        if (shallow.length < 5) {
+          let item = res.data[i];
+          item.style = styleArray[i];
+          // console.log(styleArray[i])
+          shallow.push(res.data[i]);
+        } else {
+
+        }
+        console.log(i);
+      }
+
+      setArticles(shallow);
     })
     .catch(() => {
       console.log('err')
@@ -42,18 +63,29 @@ useEffect(() => {
       </Head>
 
       <main >
-        <h1>
+      <div className={categoryStyles.indexContainer}>
+
+        <h1 className={categoryStyles.title}>
         {title}
         </h1>
-          {articles.map((x)=> {
+        <div className={categoryStyles.underline}/>
+      
+      <div className={categoryStyles.storiesContainer}>
+        {articles.map((x, ind)=> {
+           let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
+           console.log(visible)
             return(
-            <Link key={x.id} href="/article">
-            <div value="xxx" onClick={handleClick.bind(this, x)} >
+            <Link key={x.id} href="/article"> 
+                <div value="xxx" onClick={handleClick.bind(this, x)} className={x.style}>
+              <img src={x.photos} style={visible} className={categoryStyles.img}/> 
               <h1>{x.title}</h1>
-            </div>
+            <h4 style={visible}>{x.subtitles}</h4>
+             </div>
             </Link>
             )
           })}
+      </div>
+      </div>
       </main>
     </div>
   )
