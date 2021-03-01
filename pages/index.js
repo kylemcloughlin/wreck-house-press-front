@@ -65,7 +65,7 @@ export default function Home({articles, title, handleArticle}) {
 }
 
 export const getStaticProps = async () => {
-    // console.log("hellllllo");
+    console.log("hellllllo propss ", process.env.ROOT_URL);
     // console.log("!!!!!!", process.env);
   const res = await fetch(`${process.env.ROOT_URL}articles`)
   let styleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
