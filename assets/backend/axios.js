@@ -1,7 +1,11 @@
 import axios from 'axios'
+//  import dotenv from 'dotenv'
+//  import 'fs'
+//  dotenv.config()
+console.log('hitting axios????', process.env.BACKEND_URL)
 
-const API_URL = process.env.ROOT_URL
-// const API_URL = 'https://wreck-house-press-back.herokuapp.com/'
+const API_URL = process.env.BACKEND_URL
+
 const securedAxiosInstance = axios.create({
   baseURL: API_URL,
   withCredentials: false,
