@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 const API_URL = process.env.BACKEND_URL
-
+  console.log("axios", API_URL);
 const securedAxiosInstance = axios.create({
   baseURL: API_URL,
   withCredentials: false,
