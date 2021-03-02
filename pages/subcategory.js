@@ -28,7 +28,7 @@ const fetchData = async () => {
  console.log("HELLLLO", x);
   await plainAxiosInstance.get(`/subcategorizations/${x}`)
     .then(res => {
-      console.log(res.data)
+    
       for (let i = 0; i < res.data.length; i++) {
 
         if (shallow.length < 5) {
@@ -39,7 +39,7 @@ const fetchData = async () => {
         } else {
 
         }
-        console.log(i);
+        // console.log(i);
       }
 
       setArticles(shallow);
@@ -73,7 +73,7 @@ useEffect(() => {
       <div className={categoryStyles.storiesContainer}>
         {articles.map((x, ind)=> {
            let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
-           console.log(visible)
+          //  console.log(visible)
             return(
             <Link key={x.id} href="/article"> 
                 <div value="xxx" onClick={handleClick.bind(this, x)} className={x.style}>

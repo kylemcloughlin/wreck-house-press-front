@@ -38,9 +38,11 @@ const Nav = ({category}) => {
         <button disabled='true ' className={navStyles.subscribe}>
           Subscribe
         </button>
-        <button disabled='true' className={navStyles.signIn}>
+     < Link href="/login">
+        <button className={navStyles.signIn}>
           Sign In
         </button >
+     </Link>
 
         </div>
       <ul className={navStyles.navbar}>

@@ -2,7 +2,7 @@ import axios from 'axios'
 //  import dotenv from 'dotenv'
 //  import 'fs'
 //  dotenv.config()
-console.log('hitting axios????', process.env.BACKEND_URL)
+
 
 const API_URL = process.env.BACKEND_URL
 

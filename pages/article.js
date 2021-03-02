@@ -4,9 +4,7 @@ import articleStyles from '../styles/Article.module.css';
 
 export default function Article({title, data}) {
 //  let state = useAppContext();
-//  console.log(test)
-  // console.log(state);
-  console.log(data)
+
   return (
     <div>
       <Head>

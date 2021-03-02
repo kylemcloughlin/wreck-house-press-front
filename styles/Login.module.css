@@ -1,0 +1,30 @@
+.loginDiv {
+  border: 2px solid black;
+  /* width: 20%; */
+
+}
+
+.email {
+  position: relative;
+  left: 2em;;
+}
+
+.password {
+  position: relative;
+  left: 2em;
+  ;
+}
+
+.signInDiv {
+  border: 2px solid pink;
+  float: left;
+  width: 50%;
+
+}
+
+.registerDiv {
+  border: 2px solid pink;
+  float: right;
+  width: 50%;
+
+}
