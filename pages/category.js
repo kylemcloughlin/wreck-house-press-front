@@ -84,11 +84,13 @@ useEffect(() => {
             return(
             <Link key={x.id} href="/article"> 
                 <div value="xxx" onClick={handleClick.bind(this, x)} className={x.style}>
+           <div>
               <img src={x.photos} style={visible} className={categoryStyles.img}/> 
-                <h6>{globalState[x.categorization_id]}</h6>
-              <h1>{x.title}</h1>
-            <h4 style={visible}>{x.subtitles}</h4>
-                <h6>20 hrs ago</h6>
+                <h5 className={categoryStyles.catTitle}>{globalState[x.categorization_id]}</h5>
+           </div>
+              <h2 className={categoryStyles.artTitle}>{x.title}</h2>
+            {/* <h4 style={visible}>{x.subtitles}</h4> */}
+                <h6 className={categoryStyles.date}>20 hrs ago</h6>
              </div>
             </Link>
             )

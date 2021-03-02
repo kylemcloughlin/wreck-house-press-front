@@ -50,9 +50,10 @@ export default function Home({articles, title, handleArticle}) {
               <Link key={x.id} href="/article">
             <div value="xxx" onClick={handleClick.bind(this, x)} className={x.style}>
                <img src={x.photos} style={visible} /> 
-              <h6>{globalState[x.categorization_id]}</h6>
+              <h5 className={indexStyles.catTitle}>{globalState[x.categorization_id]}</h5>
               
               <h2>{x.title}</h2>
+              <h6>6 hour Ago</h6>
             </div>
             </Link>)
           })}
