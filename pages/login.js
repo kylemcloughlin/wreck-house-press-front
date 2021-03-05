@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import loginStyles from '../styles/login.module.css';
+import loginStyles from '../styles/Login.module.css';
 
 export default function Login() {
   
