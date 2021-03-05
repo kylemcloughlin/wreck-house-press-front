@@ -1,17 +1,19 @@
 .mainContainer {
 
   width: 100%;
+
 }
 
 .indexContainer {
   display: block;
   width: 50em;
-  /* margin: 1em; */
+  margin-top: 1em;
   padding: 1em;
   height: 86em;
-  background-color: #f9f9f9;
+  background: #fffefe;
   border: #B9B7B7 solid 2px;
   border-radius: .2em;
+  /* margin-bottom: 10em; */
 
 }
 

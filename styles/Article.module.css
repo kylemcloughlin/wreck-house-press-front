@@ -10,19 +10,22 @@
   margin-left: auto;
   margin-right: auto;
   width: 70%;
+  margin-bottom: 1.5em;
 }
 
 .imgHolder {
   width: 100%;
 }
 
+.subtitle {
+ padding-left: .7em;
+ opacity: .7;
+ /* margin-top: 1em; */
+}
 .title {
  padding-left: .7em;
 }
 
-.subtitle {
- padding-left: .7em;
-}
 
 .author {
  padding-left: .7em;
@@ -31,8 +34,15 @@
 
 
 .articleBody {
+  margin-top: 3em;
   width: 90%; 
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.paragraph{
+  margin: 1em;
+ padding-left: .7em;
+
 }

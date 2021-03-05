@@ -28,6 +28,7 @@ function MyApp({ Component, pageProps, categorizes }) {
       <Layout category={handleCategorizes}>
         <Component {...pageProps} title={category} handleArticle={handleArticle} data={article}/>
       </Layout>
+    {/* <div className='footer'></div> */}
     </AppWrapper>
 
 )

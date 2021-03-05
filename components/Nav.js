@@ -12,7 +12,7 @@ const Nav = ({category}) => {
   const handleClick = async (e) => {
     let output = Number(e.target.value);
     category(globalState[output]);
-      await plainAxiosInstance.get(`/subcategorizations?categorization_id=${output + 1}`)
+      await plainAxiosInstance.get(`/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
     .then(res => {
       
       setSubcategorization(res.data)
@@ -47,9 +47,10 @@ const Nav = ({category}) => {
         </div>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {
-        let link = ind === 0 ? ("/") : ("/category")
+       let url = ind + 1
+       let link = ind === 0 ? ("/") : ("/[category]")
        return (<li key={x}>
-        <Link href={link}><button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button></Link>   
+        <Link href={link} as={`/${url.toString()}`}><button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button></Link>   
         </li>)
       })}
         </ul>
@@ -57,7 +58,7 @@ const Nav = ({category}) => {
 
             { subcategorization.map((x, ind)=> {
               return (<li key={x.id}>
-                <Link href="/subcategory"><button onClick={handleSubClick} className={navStyles.navButton} value={x.name}>{x.name}</button></Link>   
+                <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.id}`}><button onClick={handleSubClick} className={navStyles.navButton} value={x.name}>{x.name}</button></Link>   
         </li>)
       })}
       </ul>

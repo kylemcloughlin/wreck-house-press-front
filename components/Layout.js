@@ -8,11 +8,12 @@ const Layout = ({children, category}) => {
   return (
     <>
     <Nav category={category}/>
-    <div className={styles.container}>
-      {/* <main className={styles.main}> */}
+    
+      <main className={styles.main}>
         {children}
-      {/* </main> */}
-    </div>
+      </main>
+    
+      {/* <div className={styles.footer}></div> */}
     </>
   )
 }
