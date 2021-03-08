@@ -130,10 +130,20 @@ export default function Home({articles, topStory, title, handleArticle}) {
 
 export const getStaticProps = async () => {
 
-  const res = await fetch(`${process.env.BACKEND_URL}articles`)
+  const res = await fetch(`${process.env.BACKEND_URL}articles`, {
+    method: 'GET',
+    headers: {
+      'User-Agent': '*',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+  })
   let topStoryStyleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
  
   const articles =  await res.json()
+  console.log(articles)
+
   let topStory = []
 
   let output = await articles.forEach((x, i) =>{

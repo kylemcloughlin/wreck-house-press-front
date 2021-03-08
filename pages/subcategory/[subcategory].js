@@ -54,7 +54,16 @@ export default function Subcategory({ subcategory }) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations`)
+  const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations`, 
+  {
+  method: 'GET',
+    headers: {
+      'User-Agent': '*',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+  })
   const cats = await res.json();
   const paths = cats.map((x) => ({
     params: {

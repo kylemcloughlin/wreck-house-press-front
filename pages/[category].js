@@ -46,7 +46,15 @@ export default function Category({ category}) {
    </div>)
 }
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BACKEND_URL}/categorizations`)
+  const res = await fetch(`${process.env.BACKEND_URL}/categorizations`, {
+    method: 'GET',
+    headers: {
+      'User-Agent': '*',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+  })
   const cats = await res.json();
   const paths = cats.map((x) => ({
     params: {  category: x.id.toString() },

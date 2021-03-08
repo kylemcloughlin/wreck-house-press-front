@@ -39,7 +39,15 @@ export default function Article({article}) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BACKEND_URL}/articles`)
+  const res = await fetch(`${process.env.BACKEND_URL}articles`, {
+    method: 'GET',
+    headers: {
+      'User-Agent': '*',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+  })
   const articles = await res.json();
   const paths = articles.map((x) => ({
     params: {
