@@ -56,7 +56,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params
 }) {
-  const res = await fetch(`${process.env.BACKEND_URL}/articles/${params.article}`)
+  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles/${params.article}`)
   const article = await res.json()
 
   return {
