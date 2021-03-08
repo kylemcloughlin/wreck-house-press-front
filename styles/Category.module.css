@@ -1,8 +1,12 @@
 .mainContainer {
+  position: relative;
 
-  width: 100%;
-
+  width: 80%;
+  height: 100%;
+  /* margin-bottom: 150em; */
+  /* margin-bottom: 1em; */
 }
+
 
 .indexContainer {
   display: block;

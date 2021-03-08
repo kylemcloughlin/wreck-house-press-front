@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import Nav from './Nav'
+import Footer from './Footer'
 import styles from '../styles/Layout.module.css'
 const Layout = ({children, category}) => {
   let [test, setTest] = useState({test: true});
@@ -13,7 +14,7 @@ const Layout = ({children, category}) => {
         {children}
       </main>
     
-      {/* <div className={styles.footer}></div> */}
+      <Footer/>
     </>
   )
 }

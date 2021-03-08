@@ -2,6 +2,7 @@
   position: relative;
   top: .5em;
   display: grid;
+  margin-bottom: 0em; 
   /* grid-template-columns: 50px 50px 50px 50px; */
   grid-template-rows: auto;
   grid-template-areas: "one one two two"

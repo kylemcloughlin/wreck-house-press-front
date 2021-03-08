@@ -8,12 +8,11 @@ import categoryStyles from '../styles/Category.module.css';
 
 export default function Category({ category}) {
   let header = category.header
-  console.log("CATEGORY", category);
   let articles  = category.articles
   let shallow = [];
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
   return (
-    <div>
+    <div className={categoryStyles.mainContainer}>
       <Head>
         <title>{header}</title>
         <link rel="icon" href="/favicon.ico" />
