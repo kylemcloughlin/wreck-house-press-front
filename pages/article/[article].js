@@ -23,9 +23,9 @@ export default function Article({article}) {
   </div>
   <div>
     <div className={articleStyles.articleBody}> 
-    {article.body.map(par =>{
+    {article.body.map((par, id) =>{
       return(
-        <p className={articleStyles.paragraph}>{par}</p>
+        <p  key={id} className={articleStyles.paragraph}>{par}</p>
       )
     })}
   </div>
@@ -39,7 +39,9 @@ export default function Article({article}) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles`)
+  // const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles`)
+  const res = await fetch(`${process.env.BACKEND_URL}/articles`)
+
   const articles = await res.json();
   const paths = articles.map((x) => ({
     params: {
@@ -56,7 +58,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params
 }) {
-  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles/${params.article}`)
+  // const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles/${params.article}`)
+  const res = await fetch(`${process.env.BACKEND_URL}/articles/${params.article}`)
+
   const article = await res.json()
 
   return {

@@ -1,0 +1,72 @@
+.subStoryCont {
+  position: relative;
+  top: .5em;
+  display: grid;
+  /* grid-template-columns: 50px 50px 50px 50px; */
+  grid-template-rows: auto;
+  grid-template-areas: "one one two two thr thr"
+                       "one one two two thr thr"
+                       "foh foh fiv fiv six six"
+                       "foh foh fiv fiv six six";
+  height: 44;
+}
+
+.subItemA {
+  grid-area: one;
+  /* border-right: #B9B7B7 solid 1px; */
+}
+
+.subItemB {
+  grid-area: two;
+
+}
+
+.subItemC {
+  /* border-left: #B9B7B7 solid 1px; */
+  grid-area: thr;
+}
+
+.subItemD {
+  /* border-left: #B9B7B7 solid 1px; */
+  grid-area: foh;
+}
+.subItemE {
+  grid-area: fiv;
+}
+.subItemF {
+  grid-area: six;
+}
+
+.imgHolder {
+  max-width: 100%;
+  overflow: hidden;
+  height: 6em;
+  position: relative;
+  top: -2em;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+.sixImg {
+
+ border-radius: 1em;
+ padding: 0px;
+ width: 46%;
+ margin-top: 1em;
+
+}
+
+.threeHeader {
+  position: relative;
+  left: .5em;
+  /* top: -1.5em; */
+}
+
+.threeTimeFooter {
+  position: relative;
+  /* top: -2em; */
+  left: 1em;
+  color: #B9B7B7;
+}

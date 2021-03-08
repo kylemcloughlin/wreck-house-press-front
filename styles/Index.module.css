@@ -143,7 +143,7 @@
   margin-top: 1em;
   margin-bottom: 1em;
   padding: 1em;
-    max-width: 50em;
+    max-width: 60em;
     background: #fffefe;
     border: #B9B7B7 solid 2px;
     border-radius: .2em;
@@ -170,7 +170,7 @@
  /* grid-template-columns: 50px 50px 50px 50px; */
  grid-template-rows: auto;
  grid-template-areas: "one two thr";
-  height: 11em;
+  height: 22em;
  }
 
  .subItemA {
@@ -184,4 +184,36 @@
   .subItemC {
     border-left: #B9B7B7 solid 1px;
   grid-area: thr;
+ }
+.imgHolder {
+    max-width: 100%;
+     overflow: hidden;
+     height: 12em;
+     position: relative;
+     top: -2em;
+      display: block;
+      margin: 0 auto;
+     }
+
+
+
+ .threeImg {
+    
+    border-radius: 1em;
+    padding: 5px;
+    width: 100%;
+  
+ }
+
+ .threeHeader {
+   position: relative;
+   left: .5em;
+   /* top: -1.5em; */
+ }
+
+ .threeTimeFooter {
+  position: relative;
+  /* top: -2em; */
+  left: 1em;
+  color: #B9B7B7;
  }
