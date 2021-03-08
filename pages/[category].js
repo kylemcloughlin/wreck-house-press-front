@@ -46,15 +46,7 @@ export default function Category({ category}) {
    </div>)
 }
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BACKEND_URL}/categorizations`, {
-    method: 'GET',
-    headers: {
-      'User-Agent': '*',
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    }
-
-  })
+  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/categorizations`)
   const cats = await res.json();
   const paths = cats.map((x) => ({
     params: {  category: x.id.toString() },
@@ -64,7 +56,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.category}`)
+  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/categorizations/${params.category}`)
   const category = await res.json()
 
   return { props: { category } }
