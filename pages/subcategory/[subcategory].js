@@ -27,15 +27,19 @@ export default function Subcategory({ subcategory }) {
         <div className={categoryStyles.underline}/>
         <div className={categoryStyles.storiesContainer}>
     {articles.map((x, ind)=> {
-       let visible = ind === 0 ? ({ visibility: 'visible', width: '40%'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
+       let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
         return(
         <Link key={x.id} href="/article/[article]" as={`/article/${x.id}`}>
             <div value="xxx" className={styleArray[ind]}>
-          <img src={x.photos} style={visible} className={categoryStyles.img}/> 
-          <h6>{header}</h6>
-          <h1>{x.title}</h1>
+          <h6 className={categoryStyles.catTitle}>{header}</h6>
+           <div className={categoryStyles.imgHolder}>
+                  <img src={x.photos} style={visible} className={categoryStyles.img}/> 
+                </div>
+              
+         
+          <h2 className={categoryStyles.artTitle}>{x.title}</h2>
         {/* <h4 style={visible}>{x.subtitles}</h4> */}
-              <h6>20 hrs ago</h6>
+              <h6  className={categoryStyles.date}>20 hrs ago</h6>
          </div>
         </Link>
         )
@@ -74,7 +78,7 @@ export async function getStaticProps({
   params
 }) {
   // const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations/${params.subcategory}`)
-  const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.subcategory}`)
+  const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations/${params.subcategory}`)
 
   const subcategory = await res.json()
 

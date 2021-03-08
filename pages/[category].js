@@ -28,10 +28,13 @@ export default function Category({ category}) {
               return(
                  <Link key={x.id} href="article/[article]" as={`/article/${x.id}`}> 
                 <div className={styleArray[ind]}>
-                <div>
-                  <img src={x.photos} style={visible} className={x.img}/> 
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
+              
+              
+                <div className={categoryStyles.imgHolder}>
+                  <img src={x.photos} style={visible} className={categoryStyles.img}/> 
                 </div>
+              
                 <h2 className={categoryStyles.artTitle}>{x.title}</h2>
                 <h6 className={categoryStyles.date}>20 hrs ago</h6>
                 </div>
