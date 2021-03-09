@@ -67,7 +67,9 @@ export default function Home({articles, topStory, title}) {
 
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/articles`)
+    const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles`)
+
+  // const res = await fetch(`${process.env.BACKEND_URL}/articles`)
   let topStoryStyleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
   const articles =  await res.json()
   let topStory = []
