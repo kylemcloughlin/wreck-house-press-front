@@ -29,8 +29,8 @@ export default function Login() {
     const result = await res.json()
 
     // result.user => 'Ada Lovelace'
-    console.log(result)
-    console.log(document.cookie)
+    // console.log(result)
+    // console.log(document.cookie)
   }
 
   return (

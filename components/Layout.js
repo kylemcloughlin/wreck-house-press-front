@@ -1,11 +1,9 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import Nav from './Nav'
 import Footer from './Footer'
 import styles from '../styles/Layout.module.css'
 const Layout = ({children, category}) => {
-  let [test, setTest] = useState({test: true});
 
-  
   return (
     <>
     <Nav category={category}/>

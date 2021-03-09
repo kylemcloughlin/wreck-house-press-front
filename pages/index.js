@@ -48,7 +48,7 @@ export default function Home({articles, topStory, title}) {
         setSortedArticles([two, three, four, five, six]);
     }, []);
 
-    console.log(sortedArticles);
+    // console.log(sortedArticles);
   return (
     
     <div>

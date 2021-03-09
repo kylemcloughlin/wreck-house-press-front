@@ -27,7 +27,7 @@ const SecondaryStories = ({sortedArticles}) => {
                     el = <Three x={x}/>
                     
                   }
-                  console.log(x.name)
+                  
             return(
               <div key={ind} className={indexStyles.subStoryDiv}>
                 <h1>{x.name}</h1>

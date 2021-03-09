@@ -10,7 +10,7 @@ import categoryStyles from '../../styles/Category.module.css';
 
 export default function Subcategory({ subcategory }) {
     let header = subcategory.header
-    console.log("SUBCATEGORY", subcategory);
+    // console.log("SUBCATEGORY", subcategory);
     let articles = subcategory.articles;
     let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
   

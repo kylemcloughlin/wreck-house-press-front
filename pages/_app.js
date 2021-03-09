@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps, categorizes }) {
       <Layout category={handleCategorizes}>
         <Component {...pageProps} title={category}/>
       </Layout>
-    {/* <div className='footer'></div> */}
     </AppWrapper>
 
 )

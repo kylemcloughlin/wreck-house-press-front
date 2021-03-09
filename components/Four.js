@@ -5,9 +5,9 @@ const Four = ({x}) => {
   let four = [x.articles[0], x.articles[1], x.articles[2], x.articles[3]];
   return (<div className={fourStyles.subStoryCont}>
  {four.map((art, ind) =>{
-           console.log(art.photos)
+           
            return(  
-             <Link key={x.id} href="article/[article]" as={`/article/${art.id}`}> 
+             <Link key={art.id} href="article/[article]" as={`/article/${art.id}`}> 
               <div className={lowerDiv[ind]}>
                 <h5 className={fourStyles.catTitle}>{x.name}</h5>
              <div className={fourStyles.imgHolder}>

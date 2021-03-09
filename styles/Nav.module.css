@@ -57,6 +57,16 @@ border-bottom: 1px solid #b9b7b7;
   width: 95%;
   margin: auto;
 }
+
+.buttonHolder {
+display: flex;
+flex-flow: row nowrap;
+align-items: center;
+/* margin: 0 0 45px; */
+}
+
+
+
 .navButton {
       background: none;
       border: none;
@@ -64,34 +74,62 @@ border-bottom: 1px solid #b9b7b7;
       padding-left: 1em;
       padding-right: 3.5em;
       transition: 20ms;
+   /* font-size: 36px; */
+   text-align: center;
+   /* margin: 1 auto; */
+   margin-left: 1.5em;
+   padding: 0;
+   transition: all 0.2s ease-in-out;
+   position: relative;
+  }
+  
+  .navButton::before {
+       content: "";
+       position: absolute;
+       bottom: -17px;
+       width: 0px;
+       height: 3px;
+       margin: 5px 0 0;
+       transition: all 0.2s ease-in-out;
+       transition-duration: 0.25s;
+       opacity: 1;
+       background-color: #59BCC0;
+        left: 50%;
+  }
+ .navButton::after {
+     content: "";
+     position: absolute;
+     bottom: -17px;
+     width: 0px;
+     height: 3px;
+     transition: all 0.2s ease-in-out;
+     transition-duration: 0.25s;
+     opacity: 1;
+     background-color: #59BCC0;
+    right: 50%;
+   }
 
-}
-/* 
-.navButton:after {
-  background: none repeat scroll 0 0 transparent;
-  top: 8em;
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: firebrick;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
-}
+   .navButton:hover {
+     /* color: #59BCC0; */
+     transition: 20ms;
+   
+   }
+  .navButton:hover:before,  .navButton:hover:after {
+    width: 50%;
 
-.navButton:hover:after {
-  width: 100%;
-  max-width: 3em;
+  }
+/* .navButton {
+      background: none;
+      border: none;
+      color: #b9b7b7;
+      padding-left: 1em;
+      padding-right: 3.5em;
+      transition: 20ms;
+
 } */
 
 
 
-.navButton:hover {
-  color: #59BCC0;
-  transition: 20ms;
-
-}
 .navButton:focus {
  border: none;
     outline:none;
@@ -118,13 +156,35 @@ border-bottom: 1px solid #b9b7b7;
 }
 
 
+.scrollNav {
+      background:#fffefe;
+      height: 50px;
+      position: fixed;
+      transition: top 0.2s ease-in-out;
+      width: 100%;
+      z-index: 1;
+      box-shadow: #666 0px 1px 5px;
+
+}
+.scrollNavImg {
+ position: relative;
+ left: 20px;
+ z-index: 1;
+}
+.scrollNavBar {
+ padding-left: 4em;
+ background: #fffefe;
+ display: flex;
+ position: relative;
+ bottom: 3em;
+ align-items: center;
+ list-style: none;
+}
 
 .footer {
   width: 100%;
   height: 125px;
   border-top: 3px solid#59BCC0;
-  ;
-  ;
   background-color: #B9B7B7;
   display: flex;
   justify-content: center;

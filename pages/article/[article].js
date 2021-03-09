@@ -4,9 +4,9 @@ import articleStyles from '../../styles/Article.module.css';
 import { useAppContext } from '../../context/AppContext';
 export default function Article({article}) {
 
-  console.log(article)
+  // console.log(article)
  let category = useAppContext().catagories;
- console.log(article)
+//  console.log(article)
   return (
     <div>
       <Head>
