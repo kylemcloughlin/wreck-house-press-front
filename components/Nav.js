@@ -45,12 +45,15 @@ const Nav = ({category}) => {
      </Link>
 
         </div>
+      <div className={navStyles.underline}/>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {
        let url = ind + 1
        let link = ind === 0 ? ("/") : ("/[category]")
        return (<li key={x}>
-        <Link href={link} as={`/${url.toString()}`}><button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button></Link>   
+        <Link href={link} as={`/${url.toString()}`}>
+        <button className={navStyles.navButton} onClick={handleClick} value={ind}>{x}</button>
+        </Link>   
         </li>)
       })}
         </ul>
@@ -58,7 +61,9 @@ const Nav = ({category}) => {
 
             { subcategorization.map((x, ind)=> {
               return (<li key={x.id}>
-                <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.id}`}><button onClick={handleSubClick} className={navStyles.navButton} value={x.name}>{x.name}</button></Link>   
+                <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.id}`}>
+                  <button onClick={handleSubClick} className={navStyles.navButton} value={x.name}>{x.name}</button>
+                </Link>   
         </li>)
       })}
       </ul>

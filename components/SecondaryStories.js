@@ -2,8 +2,8 @@ import { useAppContext } from '../context/AppContext';
 import Link from 'next/link';
 import indexStyles from '../styles/Index.module.css';
 import Three from './Three';
-import Four from './four'
-import Six from './six'
+import Four from './Four';
+import Six from './Six';
 
 const SecondaryStories = ({sortedArticles}) => {
   let globalState = useAppContext().catagories;
