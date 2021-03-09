@@ -101,7 +101,7 @@ const Nav = ({category}) => {
       })}
       </ul>
       <div className={navStyles.scrollNav} style={scrollNavStyle}>
-        <Link href="/"><img src='/images/scrollicon.png' className={navStyles.scrollNavImg}/></Link>
+        <Link href="/"><img src='/images/scrollIcon.png' className={navStyles.scrollNavImg}/></Link>
         <ul className={navStyles.scrollNavBar}>
           { globalState.map((x, ind)=> { 
               let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })
