@@ -39,7 +39,7 @@ const Nav = ({category}) => {
       let output = Number(e.target.value);
       setClicked(output)
       category(globalState[output]);
-       const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
+       const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
       //  const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
        const data = await res.json();
              setSubcategorization(data);
@@ -70,8 +70,8 @@ const Nav = ({category}) => {
      </Link>
 
         </div>
-      <div className={navStyles.underline}/>
 
+      <div className={navStyles.underline}/>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {
         

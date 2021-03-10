@@ -68,6 +68,7 @@ align-items: center;
 
 
 .navButton {
+   text-transform: uppercase;
       background: none;
       border: none;
       color: #b9b7b7;
@@ -77,7 +78,7 @@ align-items: center;
    /* font-size: 36px; */
    text-align: center;
    /* margin: 1 auto; */
-   margin-left: 1.5em;
+   margin-left: 3em;
    padding: 0;
    transition: all 0.2s ease-in-out;
    position: relative;
@@ -139,7 +140,7 @@ align-items: center;
 .lowerNavBar {
   height: 47px;
   padding: 10px;
-  background: #B9B7B7;
+  background: #A9A9A9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,22 +182,45 @@ align-items: center;
  list-style: none;
 }
 
-.footer {
-  width: 100%;
-  height: 125px;
-  border-top: 3px solid#59BCC0;
-  background-color: #B9B7B7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 6em;
+.footerList{
+    width: 100%;
+    height: 125px;
+    border-top: 3px solid#59BCC0;
+    border-bottom: 4em solid #333333;
+    background-color: #B9B7B7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6em;
+  position: relative;
+  top: .5em;
+  display: grid;
+  /* grid-template-columns: 50px 50px 50px 50px; */
+  grid-template-rows: auto;
+  grid-template-areas: "one two thr";
+  height: 22em;
+
 }
 
-.footerList{
-  width: 100%;
-  float: left;
-  padding-left: 4em; 
+.footerList ul {
+width: 100%;
+min-width: 15em;
+list-style: none;
 }
+.itemA {
+   grid-area: one;
+   
+}
+.itemB {
+  grid-area: two;
+
+  
+}
+.itemC{
+grid-area: thr;
+
+}
+
 
 .footer img {
   margin-left: 0.5rem;

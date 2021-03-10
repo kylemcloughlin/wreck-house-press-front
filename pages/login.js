@@ -34,15 +34,54 @@ export default function Login() {
   }
 
   return (
-    <div className={loginStyles.loginDiv}>
+  <div className={loginStyles.mainContainer}>
+  <div className={loginStyles.loginDiv}>
+  
+    <img src='/images/Masthead-2021.png' className={loginStyles.loginImg}/>
+  
+    <div className={loginStyles.underline}/>
     <form onSubmit={registerUser}>
-      <label htmlFor="name">Name</label>
-      <input name="email" type="email"  required />
-      <input  name="password" type="password"  required />
-      <input  name="password_confirmation" type="password"  required />
-      <button type="submit">Register</button>
+      <ul className={loginStyles.formList}>
+        <li>
+          <label htmlFor="name">Name</label>
+          <br/>
+          <input name="email" type="email"   placeholder="Email" required />
+        </li>
+        <li>
+          <label htmlFor="password">Password</label>     
+          <br/>
+          <input  name="password" type="password" placeholder="Password" required />
+        </li>
+        <li>
+          <label htmlFor="password_confirmation">Password Confirmation</label>        
+          <br/>
+          <input  name="password_confirmation" type="password" placeholder="Confirm Password" required />
+        </li>        
+      </ul>
+      <div className={loginStyles.wrapper}>
+        <button type="submit" className={loginStyles.regButton}>Register</button>
+      </div>
+    </form>
+    <div className={loginStyles.verticalLine}/>
+    <form onSubmit={registerUser} className={loginStyles.signIn}>
+      <ul className={loginStyles.formList}>
+        <li>
+          <label htmlFor="name">Name</label>
+          <br/>
+          <input name="email" type="email" placeholder="Email" required />
+        </li>
+        <li>
+          <label htmlFor="password">Password</label>     
+          <br/>
+          <input  name="password" type="password"  placeholder="Password" required />
+        </li>      
+      </ul>
+      <div className={loginStyles.wrapper}>
+        <button type="submit" className={loginStyles.signInButton}>Sign In</button>
+      </div>
     </form>
     </div>
+  </div>
   )
 
 
