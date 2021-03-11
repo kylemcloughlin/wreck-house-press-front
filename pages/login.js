@@ -1,40 +1,73 @@
 import Head from 'next/head';
 import loginStyles from '../styles/Login.module.css';
-
-export default function Login() {
-  
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import md5 from 'md5';
+export default function Login({handleLogin}) {
+  const router = useRouter()
 
   
 
 
   const registerUser = async event => {
     event.preventDefault()
-  
-    const res = await fetch('http://localhost:3001/users', {
+    const res = await fetch(`${process.env.BACKEND_URL}/users`, {
       body: JSON.stringify({
       user:  {
           
           email: event.target.email.value,
-          password: event.target.password.value,
-          password_comfirmation: event.target.password_confirmation.value,
+          password: md5(event.target.password.value),
+          password_comfirmation: md5(event.target.password_confirmation.value),
         }
 
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        
       },
-      method: 'POST'
+      method: 'POST',
+      withCredentials: true
     })
 
     const result = await res.json()
+      if (result.logged_in) {
+        router.push("/subscribe")
+        handleLogin()
 
-    // result.user => 'Ada Lovelace'
-    // console.log(result)
+      }
+    console.log(result)
     // console.log(document.cookie)
   }
+    
+  const signIn = async (event) => {
+    event.preventDefault();
 
+    axios.post(`${process.env.BACKEND_URL}/sessions`, {
+          email: event.target.email.value,
+          password: md5(event.target.password.value)
+  }, {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    if (response.data.logged_in) {
+      router.push("/")
+      handleLogin()
+      
+    } 
+  }).catch((error) => {
+    console.log(error);
+  });
+
+
+  }
+  
+  
+  
   return (
-  <div className={loginStyles.mainContainer}>
+    <div className={loginStyles.mainContainer}>
   <div className={loginStyles.loginDiv}>
   
     <img src='/images/Masthead-2021.png' className={loginStyles.loginImg}/>
@@ -63,7 +96,7 @@ export default function Login() {
       </div>
     </form>
     <div className={loginStyles.verticalLine}/>
-    <form onSubmit={registerUser} className={loginStyles.signIn}>
+    <form onSubmit={signIn} className={loginStyles.signIn}>
       <ul className={loginStyles.formList}>
         <li>
           <label htmlFor="name">Name</label>
@@ -83,13 +116,21 @@ export default function Login() {
     </div>
   </div>
   )
-
-
-
-
-
-
-
+}
+  
+  
+  
+  
+  
+  
+  
+  // const res = await fetch('http://localhost:3001/sessions',{  body: JSON.stringify({ user: { email: event.target.email.value,  password: event.target.password.value, } }),  
+  // headers: {  'Content-Type': 'application/json' }, method: 'POST',
+  // withCredentials: true})
+    
+    // const result = await res.json()
+    
+    // console.log(result.logged_in)
 
 
 
@@ -98,34 +139,4 @@ export default function Login() {
   //     console.log('hit')
   // }
 
-  // return(<div className={loginStyles.loginDiv}>
-  //   <img src='/images/Masthead-2021.png'/>
-  //   <div/>
-  // <div className={loginStyles.signInDiv}>
-  //   <label>Email:</label>
-  //   <br/>
-  //   <input type='email' className={loginStyles.email}/>
-  //   <br/>
-  //   <label> Password: </label>
-  //   <br/>
-  //   <input type="password"className={loginStyles.password}/>
-  //   <br/>  
-  //      <label> Confirm Password: </label>
-  //   <br/>
-  //   <input type="password"className={loginStyles.password}/>
-  //   <br/>  
-  //   <button onClick={handleSignUp}>register</button>
-  // </div>
-    {/* <div className={loginStyles.registerDiv}>
-      <h6>Dont Have An Account?</h6>
-       <button>Sign In With Google</button>
-        <br/>
-       <button>Sign In With Facebook</button>
-        <br/>
-       <button>Sign In</button>
-  // </div> */}
-
-  // </div>)
-}
-
-// export default Login
+  

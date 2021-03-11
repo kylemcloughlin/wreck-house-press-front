@@ -5,19 +5,23 @@
   height: 100%;
   /* margin-bottom: 150em; */
   /* margin-bottom: 1em; */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
+
 .indexContainer {
-  display: block;
-  width: 50em;
-  margin-top: 1em;
-  padding: 1em;
-  height: 73em;
-  background: #fffefe;
-  border: #B9B7B7 solid 2px;
-  border-radius: .2em;
-  /* margin-bottom: 10em; */
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 1em;
+    max-width: 50em;
+    min-width: 25em;
+    background: #fffefe;
+    border: #B9B7B7 solid 2px;
+    border-radius: .2em;
+    margin-top: 1em;
+    box-shadow: #666 0px 3px 6px -1px;
 
 }
 
@@ -37,20 +41,25 @@
 /* visibility: hidden; */
   border-radius: 1em;
   padding: 0px;
-  width: 100%;
-  margin-top: 1em;
+    width: 55%;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    /* overflow: hidden; */
+  /* margin-top:*/
 
 }
 
 
 .title {
-  position: relative;
-  top: 0em;
+ position: relative;
+ top: 0em;
 }
 .catTitle {
-  position: absolute;
-  top: 1.5em;
-  left: 1em;
+    position: absolute;
+    top: -1em;
+    left: 1em;
+    color: #777676;
 }
 .artTitle {
   position: absolute;
@@ -74,52 +83,85 @@
 
 .itemA {
   grid-area: header;
-  border-bottom: #B9B7B7 solid 1px;
+  border-bottom: black solid 2px;
   position: relative;
-  height: 37em;
+    height: 26em;
+    width: 100%;
+    min-width: 20em;
+  /* height: 37em; */
   /* width: 95%; */
   /* margin-left: 1em; */
 }
 .itemA h2 {
-  top: 18.5em;
+  top: 12em;
+  
 }
 .itemB {
   grid-area: one;
   position: relative;
- height: 15em;
+ /* height: 15em; */
+  /* border: #B9B7B7 solid 1px; */
+  height: 15em;
+  min-width: 10em;
+    width: 100%;
+
 
   /* border: black solid 1px; */
 
 
 }
 
+     .itemB div {
+       width: 2px;
+       height: 95%;
+       background-color: black;
+       position: absolute;
+       right: 0%;
+       top: 2.5%;
+     }
+
 .itemC {
   grid-area: two;
   position: relative;
+  /* border: #B9B7B7 solid 1px; */
+    height: 15em;
+    min-width: 10em;
+    width: 100%;
+
     /* border-left: #B9B7B7 solid 1px; */
     /* width: 95%; */
     /* margin-left: 1em; */
- height: 15em;
+ /* height: 15em; */
 
 
 }
-
 /* .itemC h6 {
   position: absolute;
-
+  
   left: 1em;
-
+  
 } */
 
 .itemD {
   grid-area: thr;
-    border-top: #B9B7B7 solid 1px;
+  border-top: black solid 2px;
     position: relative;
     /* border-right: #B9B7B7 solid 1px; */
+ /* height: 15em; */
  height: 15em;
-
-  /* margin-top: 1em; */
+ min-width: 10em;
+ width: 100%;
+ 
+ /* margin-top: 1em; */
 }
+     .itemD div {
+       width: 2px;
+       height: 95%;
+       background-color: black;
+       position: absolute;
+      right: 0%;
+      top: 2.5%;
+     }
 
 /* .itemD h6 {
   position: absolute;
@@ -128,10 +170,12 @@
 } */
 .itemE {
   grid-area: fou;
-    border-top: #B9B7B7 solid 1px;
+  border-top: black solid 2px;
   position: relative;
-
- height: 15em;
+    height: 15em;
+    min-width: 10em;
+    width: 100%;
+ /* height: 15em; */
  
 
 }

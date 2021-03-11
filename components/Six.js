@@ -10,11 +10,10 @@ let lowerDiv = [sixStyles.subItemA, sixStyles.subItemB, sixStyles.subItemC, sixS
              <Link key={art.id} href="article/[article]" as={`/article/${art.id}`}> 
               <div className={lowerDiv[ind]}>
                 <h5 className={sixStyles.catTitle}>{x.name}</h5>
-             <div className={sixStyles.imgHolder}>
                 <img className={sixStyles.sixImg} src={art.photos[0]}/>
-             </div>
                 <h3 className={sixStyles.threeHeader}>{art.title}</h3>
-                <h6 className={sixStyles.threeTimeFooter}>6 hour Ago</h6>         
+                <h6 className={sixStyles.threeTimeFooter}>6 hour Ago</h6> 
+                <div/>        
               </div>
              </Link>) })} 
     </div>)

@@ -19,7 +19,7 @@ const TopStories = ({ topStory, title}) => {
                <img src={x.photos} style={visible} /> 
                <h5 className={indexStyles.catTitle}>{globalState[x.categorization_id - 1]}</h5>
                <h2 className={indexStyles.header}>{x.title}</h2>
-               <h6 className={indexStyles.timeFooter}>6 hour Ago</h6>
+               <h6 className={indexStyles.timeFooter}>{x.originalPost}</h6>
                <div/>
             </div>
             </Link>)

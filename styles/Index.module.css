@@ -162,7 +162,7 @@ top: .5em
 
   top: 5.5em;
 
-
+ 
 }
 /* .itemE h2 {
   position: relative;
@@ -234,50 +234,77 @@ top: .5em
  /* grid-template-columns: 50px 50px 50px 50px; */
  grid-template-rows: auto;
  grid-template-areas: "one two thr";
-  height: 22em;
+ 
  }
 
  .subItemA {
-  grid-area: one;
-  border-right: #B9B7B7 solid 1px;
+   position: relative;
+
+   /* border: #B9B7B7 solid 1px; */
+   height: 20em;
+   grid-area: one;
+   width: 100%;
+
+   /* border-right: #B9B7B7 solid 1px; */
+ }
+ .subItemA div {
+   width: 2px;
+   height: 100%;
+   background-color: black;
+   position: absolute;
+   left: 100%;
+   bottom: 1%;
  }
  .subItemB {
-  grid-area: two;
-    
-  }
-  .subItemC {
-    border-left: #B9B7B7 solid 1px;
-  grid-area: thr;
+   position: relative;
+
+   /* border: #B9B7B7 solid 1px; */
+   height: 20em;
+   grid-area: two;
+   width: 100%;
+
  }
-.imgHolder {
-    max-width: 100%;
-     overflow: hidden;
-     height: 12em;
-     position: relative;
-     top: -2em;
-      display: block;
-      margin: 0 auto;
-     }
 
+ .subItemB div {
+   width: 2px;
+   height: 100%;
+   background-color: black;
+   position: absolute;
+   left: 100%;
+   bottom: 1%;
+ }
+  .subItemC {
+    position: relative;
 
+    /* border: #B9B7B7 solid 1px; */
+    grid-area: thr;
+    height: 20em;
+    width: 100%;
+
+  }
 
  .threeImg {
-    
-    border-radius: 1em;
-    padding: 5px;
-    width: 100%;
-  
+   position: absolute;
+   right: .5em;
+   top: .5em;
+   border-radius: 1em;
+   /* padding: 0px; */
+   width: 46%;
+   /* margin-top: 1em; */
+
  }
 
  .threeHeader {
-   position: relative;
+   position: absolute;
    left: .5em;
-   /* top: -1.5em; */
+   top: 11.5em;
  }
 
  .threeTimeFooter {
-  position: relative;
-  /* top: -2em; */
-  left: 1em;
-  color: #B9B7B7;
+   position: absolute;
+   bottom: -1.5em;
+   left: 1em;
+   color: #B9B7B7;
  }
+
+ 

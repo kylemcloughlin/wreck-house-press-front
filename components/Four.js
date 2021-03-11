@@ -10,12 +10,10 @@ const Four = ({x}) => {
              <Link key={art.id} href="article/[article]" as={`/article/${art.id}`}> 
               <div className={lowerDiv[ind]}>
                 <h5 className={fourStyles.catTitle}>{x.name}</h5>
-             <div className={fourStyles.imgHolder}>
                 <img className={fourStyles.threeImg} src={art.photos[0]}/>
-
-             </div>
                 <h3 className={fourStyles.threeHeader}>{art.title}</h3>
-                <h6 className={fourStyles.threeTimeFooter}>6 hour Ago</h6>         
+                <h6 className={fourStyles.threeTimeFooter}>6 hour Ago</h6>    
+                <div/>     
               </div>
              </Link>) })} 
     </div>)

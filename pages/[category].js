@@ -29,13 +29,14 @@ export default function Category({ category}) {
                 <div className={styleArray[ind]}>
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
               
-              
-                <div className={categoryStyles.imgHolder}>
-                  <img src={x.photos} style={visible} className={categoryStyles.img}/> 
-                </div>
+                    <img src={x.photos} style={visible}  className={categoryStyles.img}/> 
+                {/* <div className={categoryStyles.imgHolder}> */}
+                  {/* <img src={x.photos} style={visible} className={categoryStyles.img}/>  */}
+                {/* </div> */}
               
                 <h2 className={categoryStyles.artTitle}>{x.title}</h2>
-                <h6 className={categoryStyles.date}>20 hrs ago</h6>
+                <h6 className={categoryStyles.date}>{x.originalPost}</h6>
+                <div/>
                 </div>
                 </Link>
       )
@@ -48,8 +49,7 @@ export default function Category({ category}) {
    </div>)
 }
 export async function getStaticPaths() {
-  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/categorizations`)
-  // const res = await fetch(`${process.env.BACKEND_URL}/categorizations`)
+  const res = await fetch(`${process.env.BACKEND_URL}/categorizations`)
 
   const cats = await res.json();
   const paths = cats.map((x) => ({
@@ -60,8 +60,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/categorizations/${params.category}`)
-  // const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.category}`)
+  const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.category}`)
   const category = await res.json()
 
   return { props: { category } }

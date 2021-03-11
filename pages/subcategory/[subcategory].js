@@ -6,7 +6,7 @@ import Link from 'next/link';
 import categoryStyles from '../../styles/Category.module.css';
 
 
-
+ 
 
 export default function Subcategory({ subcategory }) {
     let header = subcategory.header
@@ -32,9 +32,7 @@ export default function Subcategory({ subcategory }) {
         <Link key={x.id} href="/article/[article]" as={`/article/${x.id}`}>
             <div value="xxx" className={styleArray[ind]}>
           <h6 className={categoryStyles.catTitle}>{header}</h6>
-           <div className={categoryStyles.imgHolder}>
-                  <img src={x.photos} style={visible} className={categoryStyles.img}/> 
-                </div>
+         <img src={x.photos} style={visible}  className={categoryStyles.img}/> 
               
          
           <h2 className={categoryStyles.artTitle}>{x.title}</h2>

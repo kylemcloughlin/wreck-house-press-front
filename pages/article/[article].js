@@ -1,10 +1,35 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import articleStyles from '../../styles/Article.module.css';
+import {useState, useEffect } from 'react';
+import axios from 'axios'
 import { useAppContext } from '../../context/AppContext';
 export default function Article({article}) {
+    let [loggedIn, setLoggedIn] = useState(true)
 
-  // console.log(article)
+ const handleLogin = async () => {
+    axios.get(`${process.env.BACKEND_URL}/logged_in`, {
+  
+
+       withCredentials: true,
+       headers: {
+         'Content-Type': 'none'
+       }
+     })
+     .then(res => {
+       console.log("hitting", res.data.logged_in)
+       setLoggedIn(res.data.logged_in);
+     }).catch((error) => {
+       console.log(error);
+     });
+
+ }
+ useEffect(() => {
+
+
+   handleLogin()
+ }, []);
+
  let category = useAppContext().catagories;
 //  console.log(article)
   return (
@@ -22,13 +47,25 @@ export default function Article({article}) {
    <span className={articleStyles.subtitle}>{article.subtitles}</span>
   </div>
   <div>
-    <div className={articleStyles.articleBody}> 
+     {loggedIn ? ( <div className={articleStyles.articleBody}> 
     {article.body.map((par, id) =>{
       return(
         <p  key={id} className={articleStyles.paragraph}>{par}</p>
       )
     })}
-  </div>
+  </div>) : (<div className={articleStyles.articleBody}>
+             <p>{article.body[0]} </p> 
+             <div>  SIGN IN WALL </div>
+             </div>) }
+    
+    {/* <div className={articleStyles.articleBody}> 
+    {article.body.map((par, id) =>{
+      return(
+        <p  key={id} className={articleStyles.paragraph}>{par}</p>
+      )
+    })}
+  </div> */}
+
   </div>
 </main>
     </div>
@@ -39,8 +76,9 @@ export default function Article({article}) {
 
 
 export async function getStaticPaths() {
-  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles`)
-  // const res = await fetch(`${process.env.BACKEND_URL}/articles`)
+
+  
+  const res = await fetch(`${process.env.BACKEND_URL}/articles`)
 
   const articles = await res.json();
   const paths = articles.map((x) => ({
@@ -55,17 +93,17 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({
-  params
-}) {
-  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles/${params.article}`)
-  // const res = await fetch(`${process.env.BACKEND_URL}/articles/${params.article}`)
+export async function getStaticProps({ params }) {
+
+  
+  const res = await fetch(`${process.env.BACKEND_URL}/articles/${params.article}`)
 
   const article = await res.json()
 
   return {
     props: {
       article
+    
     }
   }
 }

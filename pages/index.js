@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import {useEffect, useState } from 'react';;
+import {useEffect, useState } from 'react';
 import indexStyles from '../styles/Index.module.css';
 import TopStories from '../components/TopStories.js';
-import SecondaryStories from '../components/SecondaryStories.js'
+import SecondaryStories from '../components/SecondaryStories.js';
 
 export default function Home({articles, topStory, title}) {
    let [sortedArticles, setSortedArticles] = useState([]);
@@ -67,9 +67,9 @@ export default function Home({articles, topStory, title}) {
 
 
 export const getStaticProps = async () => {
-    const res = await fetch(`https://wreck-house-press-back.herokuapp.com/articles`)
+    
 
-  // const res = await fetch(`${process.env.BACKEND_URL}/articles`)
+  const res = await fetch(`${process.env.BACKEND_URL}/articles`)
   let topStoryStyleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
   const articles =  await res.json()
   let topStory = []

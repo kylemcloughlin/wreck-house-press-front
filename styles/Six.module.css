@@ -1,5 +1,6 @@
 .subStoryCont {
   position: relative;
+  width: 100%;
   top: .5em;
   display: grid;
   /* grid-template-columns: 50px 50px 50px 50px; */
@@ -12,29 +13,94 @@
 }
 
 .subItemA {
+  position: relative;
+
+  /* border: #B9B7B7 solid 1px; */
+  height: 15em;
   grid-area: one;
+    width: 100%;
+
   /* border-right: #B9B7B7 solid 1px; */
 }
-
+.subItemA div {
+   width: 2px;
+   height: 100%;
+   background-color: black;
+   position: absolute;
+   left: 100%;
+   bottom: 1%;
+}
 .subItemB {
+  position: relative;
+
+  /* border: #B9B7B7 solid 1px; */
+  height: 15em;
   grid-area: two;
+    width: 100%;
 
 }
-
+.subItemB div {
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  left: 100%;
+  bottom: 1%;
+}
 .subItemC {
-  /* border-left: #B9B7B7 solid 1px; */
+  position: relative;
+
+  /* border: #B9B7B7 solid 1px; */
   grid-area: thr;
+    height: 15em;
+    width: 100%;
+
 }
 
 .subItemD {
-  /* border-left: #B9B7B7 solid 1px; */
+  position: relative;
+
+  border-top: black solid 2px;
   grid-area: foh;
-}
+  height: 15em;
+    width: 100%;
+
+  }
+  .subItemD div {
+    width: 2px;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    left: 100%;
+    top: 1%;
+  }
 .subItemE {
+  position: relative;
+
+  border-top: black solid 2px;
+  height: 15em;
+    width: 100%;
+
   grid-area: fiv;
 }
+
+.subItemE div {
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  left: 100%;
+  top: 1%;
+}
 .subItemF {
+  position: relative;
+
   grid-area: six;
+  border-top: #B9B7B7 solid 1px;
+    height: 15em;
+    width: 100%;
+
+
 }
 
 .imgHolder {
@@ -50,30 +116,32 @@
 
 
 .sixImg {
-
+position: absolute;
+right: .5em;
+top: .5em;
  border-radius: 1em;
- padding: 0px;
+ /* padding: 0px; */
  width: 46%;
- margin-top: 1em;
+ /* margin-top: 1em; */
 
 }
 
 .threeHeader {
-  position: relative;
-  left: .5em;
-  /* top: -1.5em; */
+     position: absolute;
+     left: .5em;
+     top: 6.5em;
 }
 
 .threeTimeFooter {
-  position: relative;
-  /* top: -2em; */
+  position: absolute;
+  bottom: -1.5em;
   left: 1em;
   color: #B9B7B7;
 }
 
 .catTitle {
-  position: relative;
-  bottom: 2em;
-  left: 1em;
-  color: #777676;
+position: absolute;
+top: 0em;
+left: 1em;
+color: #777676;
 }
