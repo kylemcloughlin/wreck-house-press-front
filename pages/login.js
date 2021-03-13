@@ -3,10 +3,12 @@ import loginStyles from '../styles/Login.module.css';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import md5 from 'md5';
-export default function Login({handleLogin}) {
-  const router = useRouter()
+import { useCookies } from "react-cookie";
 
-  
+export default function Login({loggedIn}) {
+  const router = useRouter()
+   const [cookie, setCookie] = useCookies(["bearer"])
+
 
 
   const registerUser = async event => {
@@ -31,8 +33,16 @@ export default function Login({handleLogin}) {
 
     const result = await res.json()
       if (result.logged_in) {
+          setCookie("Bearer", result.token, {
+            path: "/",
+            maxAge: 3600, // Expires after 1hr
+            sameSite: true,
+          })
+
+            console.log(cookie)
+            loggedIn(result.logged_in)
         router.push("/subscribe")
-        handleLogin()
+
 
       }
     console.log(result)
@@ -53,10 +63,17 @@ export default function Login({handleLogin}) {
   })
   .then((response) => {
     if (response.data.logged_in) {
+            setCookie("Bearer", response.data.token, {
+              path: "/",
+              maxAge: 3600, // Expires after 1hr
+              sameSite: true,
+            })
       router.push("/")
-      handleLogin()
+      loggedIn(result.logged_in)
       
-    } 
+    } else {
+      console.log('somthing went wrong?', response.data)
+    }
   }).catch((error) => {
     console.log(error);
   });

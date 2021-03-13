@@ -4,7 +4,7 @@ import { useAppContext  } from '../context/AppContext';
 import axios from 'axios';
 import {useState, useEffect } from 'react';
 import '../styles/globals.css';
-
+import { CookiesProvider } from "react-cookie"
 function MyApp({ Component, pageProps, categorizes, props }) {
   let [category, setCategory] = useState("Top Story");
     let [loggedIn, setLoggedIn] = useState("")
@@ -14,10 +14,14 @@ function MyApp({ Component, pageProps, categorizes, props }) {
       setCategory(x);
   }
    const handleLogin = async () => {
+let hold = document.cookie
+hold = hold.split("=")
+console.log(hold, "??????")
     axios.get(`${process.env.BACKEND_URL}/logged_in`, {
          withCredentials: true,
          headers: {
-           'Content-Type': 'none'
+           'Content-Type': 'none',
+           "Authorization": hold[1]
          }
        })
        .then(res => {

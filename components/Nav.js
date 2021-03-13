@@ -5,7 +5,7 @@ import navStyles from '../styles/Nav.module.css';
 import { useAppContext } from '../context/AppContext'; 
 import {securedAxiosInstance, plainAxiosInstance } from '../assets/backend/axios.js';
 import { useRouter } from 'next/router';
-
+import { useCookies } from "react-cookie";
 import axios from 'axios';
 
 const Nav = ({category, loggedIn, updateLogin}) => {
@@ -19,41 +19,18 @@ const router = useRouter()
   let [didScroll, setDidScroll] = useState(false);
   let scrollNavStyle = didScroll ? ({ top: '0px', transition: 'top 0.4s ease-in-out' }) : ({ top: '-60px', transition: 'top 0.2s ease-in-out' })
   let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
-  //  let clickedNavButtonStyle =  >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
-     const handleLogOut = async () => {
-    axios.delete(`${process.env.BACKEND_URL}/logout`, {
-             
-      
-           withCredentials: true,
-           headers: {
-             'Content-Type': 'none'
-           }
-         })
-         .then(res => {
-
-           setIsLoggedIn(res.data.logged_in);
+   const [cookie, setCookie] = useCookies(["bearer"])
+     const handleLogOut = () => {
+    
+    setCookie("Bearer", "", {
+      path: "/",
+      maxAge: 3600, // Expires after 1hr
+      sameSite: true,
+    })
         router.push("/")
-           updateLogin();
-         }).catch((error) => {
-           console.log(error);
-         });
+        setIsLoggedIn(false);
         
      }
-   
-   const handleLogin = async () => {
-     axios.get('http://localhost:3001/logged_in', {
-         withCredentials: true,
-         headers: {
-           'Content-Type': 'none'
-         }
-       })
-       .then(res => {
-         setIsLoggedIn(res.data.logged_in);
-       }).catch((error) => {
-         console.log(error);
-       });
-
-   }
   
   const handleScroll = (e) => {
       if (window.scrollY < 83) {
