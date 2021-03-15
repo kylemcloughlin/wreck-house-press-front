@@ -88,12 +88,16 @@
     height: 26em;
     width: 100%;
     min-width: 20em;
+      overflow: hidden;
   /* height: 37em; */
   /* width: 95%; */
   /* margin-left: 1em; */
 }
 .itemA h2 {
   top: 12em;
+  background: #fffefe;
+  padding: .5em;
+  border-radius: .5em;
   
 }
 .itemB {

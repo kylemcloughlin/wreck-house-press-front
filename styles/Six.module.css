@@ -10,6 +10,7 @@
                        "foh foh fiv fiv six six"
                        "foh foh fiv fiv six six";
   height: 44;
+  
 }
 
 .subItemA {
@@ -32,8 +33,6 @@
 }
 .subItemB {
   position: relative;
-
-  /* border: #B9B7B7 solid 1px; */
   height: 15em;
   grid-area: two;
     width: 100%;
@@ -49,8 +48,6 @@
 }
 .subItemC {
   position: relative;
-
-  /* border: #B9B7B7 solid 1px; */
   grid-area: thr;
     height: 15em;
     width: 100%;
@@ -96,7 +93,7 @@
   position: relative;
 
   grid-area: six;
-  border-top: #B9B7B7 solid 1px;
+  border-top: black solid 2px;
     height: 15em;
     width: 100%;
 
@@ -130,7 +127,10 @@ top: .5em;
      position: absolute;
      left: .5em;
      top: 6.5em;
-}
+  border-top-right-radius: 1em;
+  padding: .5em;
+  background-color: #fffefe;
+    }
 
 .threeTimeFooter {
   position: absolute;
