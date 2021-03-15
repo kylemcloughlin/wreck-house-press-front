@@ -5,6 +5,7 @@ import {useState, useEffect } from 'react';
 import axios from 'axios'
 import { useAppContext } from '../../context/AppContext';
 export default function Article({article}) {
+  console.log(article)
     let [loggedIn, setLoggedIn] = useState(true)
 
  const handleLogin = async () => {
@@ -38,13 +39,22 @@ export default function Article({article}) {
         <title>{article.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-<main >
-  <h4>{category[article.categorization_id - 1]}</h4> 
+<main className={articleStyles.container}>
+  <h4 className={articleStyles.category}>{category[article.categorization_id - 1]}</h4> 
   <h1 className={articleStyles.title}>{article.title}</h1>
-  <h5 className={articleStyles.author}>by {article.author}</h5>
+  <div className={articleStyles.headingHolder}>
+    <h5 className={articleStyles.author}>by {article.author}</h5>
+    <div className={articleStyles.underline}/>
+  <div className={articleStyles.dateHolder}>
+    <h5 className={articleStyles.date}>{article.originalPost}</h5>
+    <div className={articleStyles.line}/>
+    <h5 className={articleStyles.readTime}>6 min. read</h5>
+  </div>
+  </div>
+  
   <div  className={articleStyles.imgHolder}>
   <img className={articleStyles.img} src={article.photos} alt="Picture of the author"/>
-   <span className={articleStyles.subtitle}>{article.subtitles}</span>
+   <p className={articleStyles.subtitle}>{article.subtitles}</p>
   </div>
   <div>
      {loggedIn ? ( <div className={articleStyles.articleBody}> 
@@ -55,7 +65,10 @@ export default function Article({article}) {
     })}
   </div>) : (<div className={articleStyles.articleBody}>
              <p>{article.body[0]} </p> 
-             <div>  SIGN IN WALL </div>
+                 <p className={articleStyles.para}>{article.body[2]}</p> 
+             <div className={articleStyles.subscriptionWall}>  
+               
+             </div >
              </div>) }
     
     {/* <div className={articleStyles.articleBody}> 

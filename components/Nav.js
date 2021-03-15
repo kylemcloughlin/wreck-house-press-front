@@ -6,12 +6,13 @@ import { useAppContext } from '../context/AppContext';
 import {securedAxiosInstance, plainAxiosInstance } from '../assets/backend/axios.js';
 import { useRouter } from 'next/router';
 import { useCookies } from "react-cookie";
+import {destroyCookie} from 'nookies';
 import axios from 'axios';
 
-const Nav = ({category, loggedIn, updateLogin}) => {
+const Nav = ({category, loggedIn}) => {
 const router = useRouter()
-
-    let [isLoggedIn, setIsLoggedIn] = useState();
+  
+    let [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
   let globalState = useAppContext().catagories;
   let [subcategorization, setSubcategorization] = useState([])
   let [clicked, setClicked] = useState("")
@@ -19,16 +20,11 @@ const router = useRouter()
   let [didScroll, setDidScroll] = useState(false);
   let scrollNavStyle = didScroll ? ({ top: '0px', transition: 'top 0.4s ease-in-out' }) : ({ top: '-60px', transition: 'top 0.2s ease-in-out' })
   let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
-   const [cookie, setCookie] = useCookies(["bearer"])
      const handleLogOut = () => {
-    
-    setCookie("Bearer", "", {
-      path: "/",
-      maxAge: 3600, // Expires after 1hr
-      sameSite: true,
-    })
+                destroyCookie(null, "Bearer");
+
+     setIsLoggedIn(false)
         router.push("/")
-        setIsLoggedIn(false);
         
      }
   
@@ -58,12 +54,22 @@ const router = useRouter()
       category(e.target.value);
       setSubClicked(e.target.value)
     }
-    
-    useEffect(() => {
+
+    useEffect((ctx) => {
       window.addEventListener('scroll', handleScroll);
-       setIsLoggedIn(loggedIn)
+        
+      if (loggedIn === true ) {
+        setIsLoggedIn(loggedIn)
+          // handleTrue();
+
+
+
+       }
+      
+      
+      setIsLoggedIn(loggedIn)
+       console.log(loggedIn)
       },[loggedIn]);
-      let btn = isLoggedIn ? (<button className={navStyles.signIn} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><button className={navStyles.signIn}>Sign In</button></Link>)
   return (
    <div>
 
@@ -74,10 +80,12 @@ const router = useRouter()
      alt="logo"
      width={500}
      height={250}/>   */}
- 
-        <button disabled='true ' className={navStyles.subscribe}>
+        <Link href="/subscribe" as='subscribe'> 
+        <button className={navStyles.subscribe}>
           Subscribe
         </button>
+        </Link>
+         
           {isLoggedIn ? (<button className={navStyles.signIn} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><button className={navStyles.signIn}>Sign In</button></Link>)}
           
         </div>

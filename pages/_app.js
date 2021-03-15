@@ -5,27 +5,30 @@ import axios from 'axios';
 import {useState, useEffect } from 'react';
 import '../styles/globals.css';
 import { CookiesProvider } from "react-cookie"
-function MyApp({ Component, pageProps, categorizes, props }) {
-  let [category, setCategory] = useState("Top Story");
-    let [loggedIn, setLoggedIn] = useState("")
+import { parseCookies} from 'nookies';
 
-  
+function MyApp({ Component, pageProps, categorizes, props }) {
+  let [category, setCategory] = useState();
+  let [loggedIn, setLoggedIn] = useState();
+  let [token, setToken] = useState(false);
+  const  handleSignIn = () => {
+    setLoggedIn(false)
+    
+
+  }
   const handleCategorizes = (x) => {
       setCategory(x);
   }
-   const handleLogin = async () => {
-let hold = document.cookie
-hold = hold.split("=")
-console.log(hold, "??????")
+   const handleLogin = async (ctx) => {
+const {Bearer} = await parseCookies(ctx);
     axios.get(`${process.env.BACKEND_URL}/logged_in`, {
          withCredentials: true,
          headers: {
            'Content-Type': 'none',
-           "Authorization": hold[1]
+           "Authorization": Bearer
          }
        })
        .then(res => {
-         console.log(res)
          setLoggedIn(res.data.logged_in);
        }).catch((error) => {
          console.log(error);
@@ -36,12 +39,12 @@ console.log(hold, "??????")
     
 
      handleLogin()
-   },[]);
+   }, [loggedIn]);
   
   return (
     <AppWrapper>
-      <Layout category={handleCategorizes} updateLogin={handleLogin} loggedIn={loggedIn}>
-        <Component {...pageProps} title={category} handleLogin={handleLogin} loggedIn={loggedIn}/>
+      <Layout category={handleCategorizes}  loggedIn={loggedIn} handleSignIn={handleSignIn}>
+        <Component {...pageProps} title={category} setLoggedIn={setLoggedIn} handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>
     </AppWrapper>
 

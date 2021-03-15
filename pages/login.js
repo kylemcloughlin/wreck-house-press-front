@@ -4,9 +4,10 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import md5 from 'md5';
 import { useCookies } from "react-cookie";
-
-export default function Login({loggedIn}) {
-  const router = useRouter()
+import { parseCookies } from 'nookies';
+import {React, useEffect } from 'react';
+export default function Login({handleSignIn, setLoggedIn}) {
+  const router = useRouter();
    const [cookie, setCookie] = useCookies(["bearer"])
 
 
@@ -40,8 +41,10 @@ export default function Login({loggedIn}) {
           })
 
             console.log(cookie)
-            loggedIn(result.logged_in)
-        router.push("/subscribe")
+   
+            // setLoggedIn(result.logged_in)
+            //  router.replace("/subscribe");
+             router.reload();
 
 
       }
@@ -51,7 +54,6 @@ export default function Login({loggedIn}) {
     
   const signIn = async (event) => {
     event.preventDefault();
-
     axios.post(`${process.env.BACKEND_URL}/sessions`, {
           email: event.target.email.value,
           password: md5(event.target.password.value)
@@ -68,12 +70,15 @@ export default function Login({loggedIn}) {
               maxAge: 3600, // Expires after 1hr
               sameSite: true,
             })
-      router.push("/")
-      loggedIn(result.logged_in)
-      
-    } else {
-      console.log('somthing went wrong?', response.data)
-    }
+ 
+          handleSignIn(response.data.token)
+                // router.replace("/");
+                router.reload();
+
+    
+          } else {
+            console.log('somthing went wrong?', response.data)
+          }
   }).catch((error) => {
     console.log(error);
   });
@@ -81,7 +86,20 @@ export default function Login({loggedIn}) {
 
   }
   
-  
+      useEffect((ctx) => {
+ 
+        const {Bearer} = parseCookies(ctx);
+
+        if (Bearer) {
+         router.replace("/");
+        console.log('hit')
+
+        }
+      
+        // console.log(Bearer, split)
+
+      
+      },[]);
   
   return (
     <div className={loginStyles.mainContainer}>
@@ -109,7 +127,7 @@ export default function Login({loggedIn}) {
         </li>        
       </ul>
       <div className={loginStyles.wrapper}>
-        <button type="submit" className={loginStyles.regButton}>Register</button>
+        <button type="submit" className={loginStyles.btn}>Register</button>
       </div>
     </form>
     <div className={loginStyles.verticalLine}/>
@@ -127,7 +145,7 @@ export default function Login({loggedIn}) {
         </li>      
       </ul>
       <div className={loginStyles.wrapper}>
-        <button type="submit" className={loginStyles.signInButton}>Sign In</button>
+        <button type="submit" className={loginStyles.btn}>Sign In</button>
       </div>
     </form>
     </div>
