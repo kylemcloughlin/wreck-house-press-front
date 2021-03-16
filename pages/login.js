@@ -8,7 +8,7 @@ import { parseCookies } from 'nookies';
 import {React, useEffect } from 'react';
 export default function Login({handleSignIn, setLoggedIn}) {
   const router = useRouter();
-   const [cookie, setCookie] = useCookies(["bearer"])
+   const [cookie, setCookie] = useCookies(["bearer"]);
 
 
 

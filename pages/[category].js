@@ -2,15 +2,23 @@ import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter } from 'next/router'
 import categoryStyles from '../styles/Category.module.css';
+import {useState } from 'react';
+import AddStory from '../components/AddStory.js';
 
 
 
-
-export default function Category({ category}) {
-  let header = category.header
-  let articles  = category.articles
-  let shallow = [];
+export default function Category({ topStory, header, category}) {
+  console.log(category.length)
+  let [moreStories, setMoreStories] = useState([]);
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
+  const handleClick = (e) => {
+   let holder =  category.splice(0, 3)
+   console.log(holder)
+  let holderTwo = {
+    Stories: holder
+  }
+  setMoreStories([...moreStories, holder])
+  }
   return (
     <div className={categoryStyles.mainContainer}>
       <Head>
@@ -22,7 +30,7 @@ export default function Category({ category}) {
           <h1 className={categoryStyles.title}> {header}</h1>
           <div className={categoryStyles.underline}/>
           <div className={categoryStyles.storiesContainer}>
-            {articles.map((x, ind)=> {
+            {topStory.map((x, ind)=> {
               let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
               return(
                  <Link key={x.id} href="article/[article]" as={`/article/${x.id}`}> 
@@ -42,6 +50,10 @@ export default function Category({ category}) {
       )
     })}
         </div>
+      {moreStories.map((x, ind)=> {
+        return(<AddStory key={ind} newStories={x}/>)
+      })}
+      <button onClick={handleClick}> MORE </button>
        </div> 
        
 
@@ -61,7 +73,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.category}`)
-  const category = await res.json()
+  const output = await res.json()
+  let header = await output.header
+  let category = [];
+  let topStory = []
+  let holder = await output.articles.forEach((x, i) => {
+    if (topStory.length < 5) {
+      topStory.push(x)
 
-  return { props: { category } }
+    } else {
+      category.push(x)
+    }
+  })
+  return { props: { topStory, header, category } }
 }

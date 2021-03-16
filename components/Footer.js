@@ -3,47 +3,33 @@ import Link from 'next/link';
 import Image from 'next/image';
 import navStyles from '../styles/Nav.module.css';
 const Footer = () => {
+const links = [{
+  name: "about",
+  subLinks: ["About", "FAQ", "Contact Us"]
+}, {
+  name: "advertising",
+  subLinks: ["Advertising", "Services", "Place An Ad"]
+}, {
+  name: "publishing",
+  subLinks: ["Services", "Contact for Authors"]
+}]
+const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC]
   return(
     <footer className={navStyles.footer}>
 <div className={navStyles.footerListHolder}>
    <div className={navStyles.footerList}>
-   <ul className={navStyles.itemA}>
-    <h3>Wreck House Weekly</h3>
- <Link href="/about">
-  <li>About</li>
- </Link>
- <Link href="/about">
-  <li>FAQ</li>
- </Link>  
- <Link href="/about">
-  <li>Contact Us</li>
- </Link>
-  {/* <li><a href="https://www.amazon.com/Rosalyn-Roy/e/B016V5TB34">Amazon</a>
-<a href="https://www.facebook.com/WreckhousePress">Facebook</a>
-<a href="https://twitter.com/tygerlylly">Twitter</a>
-</li> */}
-</ul >
- <ul className={navStyles.itemB}>
-    <h3>Advertising</h3>
- <Link href="/advertising">
-  <li>Services</li>
- </Link>
- <Link href="/advertising">
-  <li> Place an Ad</li>
- </Link>
- <Link href="/advertising">
-  <li>Advertising</li>
- </Link>
-</ul>
- <ul className={navStyles.itemC}>
-    <h3>Publishing</h3>
- <Link href="/advertising">
-  <li>Services</li>
- </Link>
- <Link href="/advertising">
-  <li>Contact for Authors</li>
- </Link>
-</ul>
+   {links.map((link, ind) =>{
+      return(
+        <ul className={styles[ind]} key={ind}>
+        
+        <h3>{link.name}</h3>
+        {link.subLinks.map(subLink =>{
+          return( <Link href={`/${link.name}/[${link.name}]`} key={subLink}  as={`/${link.name}/${subLink}`}>
+                    <li>{subLink}</li>
+                   </Link>  ) })}
+        </ul>)
+   })}
+   
   </div>
   </div>
     </footer>
@@ -53,3 +39,11 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+  
+    /* <li><a href="https://www.amazon.com/Rosalyn-Roy/e/B016V5TB34">Amazon</a>
+    <a href="https://www.facebook.com/WreckhousePress">Facebook</a>
+    <a href="https://twitter.com/tygerlylly">Twitter</a>
+    </li> */
+  

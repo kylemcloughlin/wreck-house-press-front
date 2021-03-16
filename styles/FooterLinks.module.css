@@ -1,0 +1,36 @@
+.contact {
+/* border: 1px solid black; */
+height: 79%;
+position: relative;
+width: 100%;
+}
+
+.contactBtn {
+  position: absolute;
+  bottom: 1em;
+  right: 2em;
+}
+
+.textArea {
+        position: absolute;
+        left: 0;
+        height: 30%;
+        top: 50%;
+        width: 100%;
+}
+
+.subject {
+    position: absolute;
+    left: 0;
+    top: 0%;
+        width: 100%;
+
+}
+
+.email {
+    position: absolute;
+    left: 0;
+    top: 10%;
+        width: 100%;
+
+}

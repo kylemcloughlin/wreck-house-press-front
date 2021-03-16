@@ -125,7 +125,7 @@ bottom: 35%;
 
 } */
 
-.signInButton:hover {
+.btn:hover {
   background: #59BCC0;
   color: #fffefe;
   transition: .25s;

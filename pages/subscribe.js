@@ -13,10 +13,15 @@ export default function Subscribe({options}) {
             {options.map((opt) =>{
               return (<div key={opt.name} key={opt.id} className={styles.option} > 
                 <h1>{opt.name}</h1>
+                <p>{opt.dis}</p>
+                <h5>{opt.validUntil}</h5>
                 <Link  href="/checkout/[checkout]" as={`/checkout/${opt.id}`}>
                   {/* <Link href="checkout/[checkout]" as={`/checkout/${opt.id}`}>  */}
-                <button onClick={handleClick.bind(this, opt)} value={opt.cost}> {opt.name} </button>
+                <button onClick={handleClick.bind(this, opt)} value={opt.cost} className={styles.btn}> {opt.cost} </button>
                   </Link> 
+                  <h6>{opt.includes}</h6>
+                  <h6>{opt.foot}</h6>
+
               </div>)
             })}
 

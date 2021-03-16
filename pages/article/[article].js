@@ -5,13 +5,10 @@ import {useState, useEffect } from 'react';
 import axios from 'axios'
 import { useAppContext } from '../../context/AppContext';
 export default function Article({article}) {
-  console.log(article)
-    let [loggedIn, setLoggedIn] = useState(true)
-
+    let [loggedIn, setLoggedIn] = useState(true);
  const handleLogin = async () => {
     axios.get(`${process.env.BACKEND_URL}/logged_in`, {
   
-
        withCredentials: true,
        headers: {
          'Content-Type': 'none'

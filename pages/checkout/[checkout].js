@@ -8,13 +8,12 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Checkout.module.css';
 import {React, useEffect, useState } from 'react';
 import getConfig from 'next/config'
-// let router = useRouter();
+import CheckOutSignIn from '../../components/CheckOutSignIn';
 const { serverRuntimeConfig} = getConfig()
 
 
 export const getServerSideProps = async (ctx) => {
   let data = ctx
-// console.log(serverRuntimeConfig.mySecret)
   data = data.params.checkout;
   const stripe = new Stripe(serverRuntimeConfig.mySecret)
   const {paymentIntentId} = await parseCookies(ctx);
@@ -77,7 +76,7 @@ const CheckoutPage = ({paymentIntent, option}) => {
   <div className={styles.holder}>
   <Elements stripe={stripePromise}>
    <div className={styles.panel}>
-   { signedIn ? ( <div><h1>name : {option.name}</h1> <h1>cost : {option.cost}</h1></div> ) : ( <div>pls sign in </div>) }
+   { signedIn ? ( <div><h1>name : {option.name}</h1> <h1>cost : {option.cost}</h1></div> ) : (<CheckOutSignIn/>) }
    </div>
   <div className={styles.panel}>
     <CheckoutForm paymentIntent={paymentIntent}/>
