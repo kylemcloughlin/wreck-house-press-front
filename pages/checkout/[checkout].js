@@ -55,9 +55,8 @@ const CheckoutPage = ({paymentIntent, option}) => {
   useEffect((ctx) => {
  
         const {Bearer} = parseCookies(ctx);
-        const split = Bearer.split("")
       
-        if (split.length > 4) {
+        if (Bearer) {
     
           setSignedIn(true)
 
