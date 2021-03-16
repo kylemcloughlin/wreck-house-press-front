@@ -7,16 +7,16 @@ const stripePromise = loadStripe("pk_test_51IUb2THPabCG8MNSBZ0jho7NuNfMretnRMbz8
 import { useRouter } from 'next/router';
 import styles from '../../styles/Checkout.module.css';
 import {React, useEffect, useState } from 'react';
+import getConfig from 'next/config'
 // let router = useRouter();
-
+const { serverRuntimeConfig} = getConfig()
 
 
 export const getServerSideProps = async (ctx) => {
   let data = ctx
-
-
+// console.log(serverRuntimeConfig.mySecret)
   data = data.params.checkout;
-  const stripe = new Stripe(process.env.SKEY)
+  const stripe = new Stripe(serverRuntimeConfig.mySecret)
   const {paymentIntentId} = await parseCookies(ctx);
   const res = await fetch(`${process.env.BACKEND_URL}/subscriptions/${data}`)
   const option = await res.json()
