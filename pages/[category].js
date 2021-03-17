@@ -19,13 +19,13 @@ export default function Category({ topStory, header, category}) {
   }
   setMoreStories([...moreStories, holder])
   }
-  return (
-    <div className={categoryStyles.mainContainer}>
+  return (<div className={categoryStyles.mainContainer}>
       <Head>
         <title>{header}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
+    <div className={categoryStyles.holder}>
         <div className={categoryStyles.indexContainer}>
           <h1 className={categoryStyles.title}> {header}</h1>
           <div className={categoryStyles.underline}/>
@@ -53,10 +53,11 @@ export default function Category({ topStory, header, category}) {
       {moreStories.map((x, ind)=> {
         return(<AddStory key={ind} newStories={x}/>)
       })}
-      <button onClick={handleClick}> MORE </button>
+      {/* <button onClick={handleClick}> MORE </button> */}
        </div> 
        
 
+   </div>
       </main>
    </div>)
 }

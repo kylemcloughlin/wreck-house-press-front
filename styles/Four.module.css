@@ -112,3 +112,31 @@
   left: 1em;
   color: #777676;
 }
+
+
+@media screen and (max-width: 1000px) {
+  .subItemA, .subItemB, .subItemC, .subItemD {
+    border-top: none;
+    height: 11em;
+    border-bottom: 1.5px solid gray;
+  }
+ .subItemA div, .subItemB div, .subItemC div,
+ .subItemD div,
+ .subItemE div {
+    visibility: hidden;
+
+  }
+   .subItemD {
+     border-bottom: none;
+   }
+  .threeImg {
+    width: 10%;
+  }
+  .subStoryCont {
+      grid-template-rows: auto;
+      grid-template-areas: "one one one one one"
+                           "two two two two two"
+                           "thr thr thr thr thr"
+                           "foh foh foh foh foh";
+  }
+}

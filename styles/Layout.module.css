@@ -8,14 +8,18 @@
 } */
 
 .main {
- margin: auto;
- width: 82%;
+ width: 100%%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
  /* border: 3px solid green; */
  /* padding: 10px; */
  /* margin-bottom: 150em; */
 }
 
-
+/* 
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -100,4 +104,9 @@
     width: 100%;
     flex-direction: column;
   }
-}
+.logo{
+  visibility: hidden;
+} */
+
+
+/* } */

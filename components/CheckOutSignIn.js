@@ -12,7 +12,7 @@ const CheckOutSignIn =() => {
   
   return (<div>
             {clicked ? (<SignIn/>) : (<SignUp/>)}
-            <button onClick={handleClick} className={loginStyles.switchBtn}> click</button>
+            <button onClick={handleClick} className={loginStyles.switchBtn}>Add Conditional Here</button>
         </div>)
 }
 

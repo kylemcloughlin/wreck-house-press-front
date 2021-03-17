@@ -7,7 +7,7 @@ const TopStories = ({ topStory, title}) => {
     let globalState = useAppContext().catagories;
   return (
             <div className={indexStyles.indexContainer}>
-        <h1 className={indexStyles.title}>  {title}</h1>
+        <h1 className={indexStyles.title}>Current Headlines</h1>
         <div className={indexStyles.underline}/> 
     <div className={indexStyles.storiesContainer}>
   

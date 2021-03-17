@@ -50,7 +50,9 @@ export default function Article({article}) {
   </div>
   
   <div  className={articleStyles.imgHolder}>
-  <img className={articleStyles.img} src={article.photos} alt="Picture of the author"/>
+  
+  <img className={articleStyles.img} src={article.photos} alt="Picture of the author"  crossOrigin="Anonymous"></img>
+  
    <p className={articleStyles.subtitle}>{article.subtitles}</p>
   </div>
   <div>

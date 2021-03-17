@@ -74,7 +74,7 @@ const router = useRouter()
    <div>
 
    <div className={navStyles.nav}>
-        <Link href="/"><img src='/images/Masthead-2021.png'/></Link>
+        <Link  href="/"><img  className={navStyles.img} src='/images/Masthead-2021.png'/></Link>
      {/* <Image
      src='/images/WH-Press-2021.png'
      alt="logo"

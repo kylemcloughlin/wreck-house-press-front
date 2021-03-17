@@ -1,12 +1,26 @@
+
+
+
+@media screen and (max-width: 700px) {
+
+
+}
+
+
+
+
+
+
+
 .mainContainer {
   position: relative;
-
-  width: 80%;
+  width: 100%;
   height: 100%;
-   /* margin-bottom: 150em; */
-/* margin-bottom: 1em; */
-font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
 .ad {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -18,9 +32,7 @@ font-family: Arial, Helvetica, sans-serif;
   display: block;
   width: 100%;
   padding: 1em;
-  max-width: 50em;
   background: #fffefe;
-  /* border: #B9B7B7 solid 2px; */
   border-radius: .2em;
   margin-top: 1em;
   box-shadow: #666 0px 3px 6px -1px;
@@ -194,7 +206,7 @@ top: .5em
 } */
 .storiesContainer {
   /* width: 100%; */
-  height: 80%;
+  height: 100%;
   position: relative;
   top: .5em;
   display: grid;
@@ -327,3 +339,88 @@ top: .5em
        display: flex;
 
  }
+
+
+ @media screen and (max-width: 1200px) {
+   .itemA {
+     border-right: none; 
+   }
+
+.itemA,.itemB,.itemC,.itemD, .itemE{
+    max-width: 100em;
+    
+    border-bottom: 1.5px solid gray;
+}
+.itemE {
+  border-bottom: none;
+}
+.itemB div,.itemC div,.itemD div,.itemE div{
+    visibility: hidden;  
+}
+
+.header {
+  left: -0.7em;
+  top: -0.2em;
+  background: none;
+}
+.itemA .header {
+  top: 12.4em;
+  left: -0.7em;
+
+  /* left: -33.7em !important; */
+
+}
+  .storiesContainer {
+
+grid-gap: 1em;
+height: 100%;
+  grid-template-rows: minmax(150px, auto);
+  grid-template-areas:    "main main main main"
+                          "header header header header"
+                          "sidebar sidebar sidebar sidebar"
+                          "piebar piebar piebar piebar"
+                          "footer footer footer footer";
+
+} 
+
+
+@media screen and (max-width: 1000px) {
+
+  .subItemA,
+  .subItemB,
+  .subItemC,
+  .subItemD {
+    border-top: none;
+    height: 11em;
+    border-bottom: 1.5px solid gray;
+  }
+
+  .subItemA div,
+  .subItemB div,
+  .subItemC div,
+  .subItemD div,
+  .subItemE div {
+    visibility: hidden;
+
+  }
+
+  .subItemC {
+    border-bottom: none;
+  }
+
+  .threeImg {
+    width: 10%;
+  }
+
+  .threeHeader {
+    top: 5.5em;
+  }
+  .subStoryCont {
+    grid-template-rows: auto;
+    grid-template-areas: "one one one one one"
+      "two two two two two"
+      "thr thr thr thr thr"
+      "foh foh foh foh foh";
+  }
+}
+}

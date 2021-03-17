@@ -9,7 +9,7 @@
                        "one one two two thr thr"
                        "foh foh fiv fiv six six"
                        "foh foh fiv fiv six six";
-  height: 44;
+  /* height: 4; */
   
 }
 
@@ -144,4 +144,29 @@ position: absolute;
 top: 0em;
 left: 1em;
 color: #777676;
+}
+
+@media screen and (max-width: 1000px) {
+  .subItemA, .subItemB, .subItemC, .subItemD, .subItemE, .subItemF {
+    border-top: none;
+    border-bottom: 1.5px solid gray!important;
+  }
+ .subItemA div, .subItemB div,
+ .subItemD div,
+ .subItemE div {
+    visibility: hidden;
+
+  }
+  .sixImg {
+    width: 25%;
+  }
+  .subStoryCont {
+      grid-template-rows: auto;
+      grid-template-areas: "one one one one one"
+                           "two two two two two"
+                           "thr thr thr thr thr"
+                           "foh foh foh foh foh"
+                           "fiv fiv fiv fiv fiv"
+                           "six six six six six";
+  }
 }

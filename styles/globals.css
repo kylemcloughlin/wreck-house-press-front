@@ -1,7 +1,9 @@
 html,
 body {
   background: #f9f9f9;
-  /* background: firebrick; */
+  width: 100%;
+  height: 100%;
+ 
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -17,12 +19,9 @@ a {
 * {
   box-sizing: border-box;
 }
-
-.footer {
-  width: 100%;
-  height: 100px;
-  background: #59BCC0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (max-width: 720px) {
+html,
+body {
+  overflow-x: hidden;
+}
 }
