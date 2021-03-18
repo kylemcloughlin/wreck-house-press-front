@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import articleStyles from '../../styles/Article.module.css';
 import {useState, useEffect } from 'react';
 import axios from 'axios'
@@ -67,8 +68,17 @@ export default function Article({article}) {
              <p>{article.body[0]} </p> 
                  <p className={articleStyles.para}>{article.body[2]}</p> 
              <div className={articleStyles.subscriptionWall}>  
-               
-             </div >
+               <Link  href="/">
+               <a className={articleStyles.home}>HOME</a>
+               </Link>
+               <p className={articleStyles.dis}>Register and subscribe to keep reading this article</p>
+              <Link  href="/login">
+              <button className={articleStyles.button}>REGISTER</button>
+               </Link>
+            
+               <p className={articleStyles.signIn}>Already Register? <Link  href="/login"><a>Sign In</a></Link></p>
+            
+             </div>
              </div>) }
     
     {/* <div className={articleStyles.articleBody}> 

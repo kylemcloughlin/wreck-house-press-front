@@ -8,10 +8,9 @@ import navStyles from '../styles/Nav.module.css';
 
 
 export default function Category({ topStory, header, category, subs}) {
-  console.log(subs)
   let [moreStories, setMoreStories] = useState([]);
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
-  
+  console.log(subs)
   
   const handleClick = (e) => {
     let holder =  category.splice(0, 3)
@@ -26,7 +25,7 @@ export default function Category({ topStory, header, category, subs}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {subs.length >=1 ? (
+        {subs ? (
 
           <ul className={navStyles.lowerNavBar}>
             { subs.map((x, ind)=> {
@@ -67,7 +66,7 @@ export default function Category({ topStory, header, category, subs}) {
       {moreStories.map((x, ind)=> {
         return(<AddStory key={ind} newStories={x}/>)
       })}
-      <button onClick={handleClick}> MORE </button>
+      <button onClick={handleClick} className={categoryStyles.moreBut}> MORE </button>
        </div> 
        
 
@@ -90,7 +89,8 @@ export async function getStaticProps({ params }) {
   const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.category}`)
   const output = await res.json()
   let header = await output.header
-  let subs = await output.subcategorizations
+  let subs = await output.subcategorizations || null
+  console.log(subs)
   let category = [];
   let topStory = []
   let holder = await output.articles.forEach((x, i) => {
@@ -101,5 +101,5 @@ export async function getStaticProps({ params }) {
       category.push(x)
     }
   })
-  return { props: { topStory, header, category, subs } }
+  return { props: { topStory, header, category, subs: subs } }
 }

@@ -124,6 +124,42 @@ margin: 5em;
   border-radius: 1.2em;
   height: 30em;
   box-shadow: 0px -3px 16px 0px #fefefe;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.home {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+}
+
+
+.button {
+   padding: .7em;
+   background: none;
+   color: #fffefe;
+   width: 50%;
+   margin: auto;
+   border-radius: 1em;
+   border: 2px solid #fffefe;
+   transition: .25s;
+}
+.button:hover {
+  color: #59BCC0;
+  background: #fffefe;
+}
+
+.dis {
+  position: relative;
+  top: 8em;
+}
+.signIn {
+  position: relative;
+  bottom: 8em;
 }
 .clock {
   width: 8%;

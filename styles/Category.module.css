@@ -226,6 +226,21 @@
 
 }
 
+.moreBut {
+  margin: auto;
+  width: 100%;
+  padding: 1em;
+  border-radius: .2em;
+  background: transparent;
+  border: 3px solid #59BCC0;
+  transition: .2s;  
+   color: #59BCC0;
+}
+.moreBut:hover {
+    transition: .2s;
+    color: #fffefe;
+    background: #59BCC0;
+}
 
  @media screen and (max-width: 1200px) {
   .itemA,
