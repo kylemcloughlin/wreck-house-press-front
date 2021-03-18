@@ -34,7 +34,7 @@ export default function Subcategory({ subcategory }) {
                 <div className={styleArray[ind]}>
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
               
-                    <img src={x.photos} style={visible}  className={categoryStyles.img}/> 
+                    <img src={x.photos} style={visible}  className={categoryStyles.fallback[0]}/> 
                   {/* <img src={x.photos} style={visible} className={categoryStyles.img}/>  */}
                 {/* </div> */}
               

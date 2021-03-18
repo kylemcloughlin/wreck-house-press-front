@@ -10,9 +10,9 @@ const Four = ({x}) => {
              <Link key={art.id} href="article/[article]" as={`/article/${art.id}`}> 
               <div className={lowerDiv[ind]}>
                 <h5 className={fourStyles.catTitle}>{x.name}</h5>
-                <img className={fourStyles.threeImg} src={art.photos[0]}/>
+                <img className={fourStyles.threeImg} src={art.fallback[0]}/>
                 <h3 className={fourStyles.threeHeader}>{art.title}</h3>
-                <h6 className={fourStyles.threeTimeFooter}>6 hour Ago</h6>    
+                <h6 className={fourStyles.threeTimeFooter}>{art.date}</h6>    
                 <div/>     
               </div>
              </Link>) })} 

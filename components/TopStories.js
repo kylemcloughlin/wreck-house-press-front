@@ -13,10 +13,11 @@ const TopStories = ({ topStory, title}) => {
   
           {topStory.map((x, ind)=> {
              let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
+             console.log(x.fallback)
             return(
               <Link key={x.id} href="article/[article]" as={`/article/${x.id}`}> 
             <div value="xxx" className={x.style}>
-               <img src={x.photos} style={visible} /> 
+               <img src={x.fallback[0]} style={visible}/> 
                <h5 className={indexStyles.catTitle}>{globalState[x.categorization_id - 1]}</h5>
                <h2 className={indexStyles.header}>{x.title}</h2>
                <h6 className={indexStyles.timeFooter}>{x.originalPost}</h6>

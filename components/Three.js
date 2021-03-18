@@ -13,9 +13,9 @@ const three =({x}) => {
              <Link key={art.id} href="article/[article]" as={`/article/${art.id}`}> 
               <div className={lowerDiv[ind]}>
                 <h5 className={indexStyles.catTitle}>{x.name}</h5>
-                <img className={indexStyles.threeImg} src={art.photos[0]}/>
+                <img className={indexStyles.threeImg} src={art.fallback[0]}/>
                 <h3 className={indexStyles.threeHeader}>{art.title}</h3>
-                <h6 className={indexStyles.threeTimeFooter}>6 hour Ago</h6>    
+                <h6 className={indexStyles.threeTimeFooter}>{x.date}</h6>    
                 <div/>     
               </div>
              </Link>) })}             

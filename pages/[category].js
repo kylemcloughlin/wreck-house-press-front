@@ -50,7 +50,7 @@ export default function Category({ topStory, header, category, subs}) {
                 <div className={styleArray[ind]}>
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
               
-                    <img src={x.photos} style={visible}  className={categoryStyles.img}/> 
+                    <img src={x.fallback[0]} style={visible}  className={categoryStyles.img}/> 
                   {/* <img src={x.photos} style={visible} className={categoryStyles.img}/>  */}
                 {/* </div> */}
               
