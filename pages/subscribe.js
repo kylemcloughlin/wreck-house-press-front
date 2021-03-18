@@ -9,7 +9,7 @@ export default function Subscribe({options}) {
     }
   return (    <div className={styles.mainContainer}>
             <h1>Subscribe</h1>
-  <div className={styles.holder}>
+            <div className={styles.holder}>
             {options.map((opt) =>{
               return (<div key={opt.name} key={opt.id} className={styles.option} > 
                 <h1>{opt.name}</h1>

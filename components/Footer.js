@@ -31,6 +31,8 @@ const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC]
    })}
    
   </div>
+
+  
   </div>
     </footer>
 

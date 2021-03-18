@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { useCookies } from "react-cookie";
 import {destroyCookie} from 'nookies';
 import axios from 'axios';
-
+import Hamburger from '../components/Hamburger';
 const Nav = ({category, loggedIn}) => {
 const router = useRouter()
   
@@ -19,7 +19,7 @@ const router = useRouter()
   let [subClicked, setSubClicked] = useState("")
   let [didScroll, setDidScroll] = useState(false);
   let scrollNavStyle = didScroll ? ({ top: '0px', transition: 'top 0.4s ease-in-out' }) : ({ top: '-60px', transition: 'top 0.2s ease-in-out' })
-  let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
+  // let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
      const handleLogOut = () => {
                 destroyCookie(null, "Bearer");
 
@@ -74,7 +74,9 @@ const router = useRouter()
    <div>
 
    <div className={navStyles.nav}>
+        <Hamburger pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
         <Link  href="/"><img  className={navStyles.img} src='/images/Masthead-2021.png'/></Link>
+                    {isLoggedIn ? (<button className={navStyles.mobileSignOut} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><img className={navStyles.mobileSignIn} src="/images/user.png"/></Link>)}
      {/* <Image
      src='/images/WH-Press-2021.png'
      alt="logo"
@@ -106,19 +108,6 @@ const router = useRouter()
         </li>)
       })}
         </ul>
-
-
-      <ul className={navStyles.lowerNavBar} style={lowerNavStyle}>
-
-            { subcategorization.map((x, ind)=> {
-                   let clickedLowerNavButtonStyle =  subClicked === x.name ? ({ color: 'black'}) : ({color: '#fffefe' })
-              return (<li key={x.id}>
-                <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.id}`}>
-                  <button onClick={handleSubClick} className={navStyles.navButton} value={x.name} style={clickedLowerNavButtonStyle}>{x.name}</button>
-                </Link>   
-        </li>)
-      })}
-      </ul>
       <div className={navStyles.scrollNav} style={scrollNavStyle}>
         <Link href="/"><img src='/images/scrollIcon.png' className={navStyles.scrollNavImg}/></Link>
         <ul className={navStyles.scrollNavBar}>
@@ -135,6 +124,7 @@ const router = useRouter()
                   </Link>   
                   </li>)
            })}
+            {isLoggedIn ? (<button className={navStyles.signIn} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><img className={navStyles.scrollNavSignIn} src="/images/user.png"/></Link>)}
         </ul>
       </div>
     </div>

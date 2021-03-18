@@ -1,38 +1,14 @@
-html,
-body {
-  background: #f9f9f9;
-  width: 100%;
-  height: 100%;
- 
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .bm-burger-button {
-  position: sticky;
+  position: fixed;
   width: 36px;
   height: 30px;
-  /* left: -1.5em; */
-  top: 1em;
-  visibility: hidden;
+  left: 36px;
+  top: 36px;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #373a47;
-  border-radius: 1em; 
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -44,17 +20,17 @@ a {
 .bm-cross-button {
   height: 24px;
   width: 24px;
-  /* background: cornflowerblue; */
-position: relative;
-left: 12em;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
   background: #bdc3c7;
-  /* margin-left: -5em; */
 }
 
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
 .bm-menu-wrap {
   position: fixed;
   height: 100%;
@@ -65,8 +41,6 @@ left: 12em;
   background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
-  border-radius: 1em;
-  margin-right: 4em;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -88,24 +62,4 @@ left: 12em;
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
-}
-button:focus {
-  outline: none;
-}
-
-@media screen and (max-width: 1200px) {
-  .bm-burger-button,
-  .bm-menu-wrap {
-    visibility: visible;
-  }
-}
-
-
-@media screen and (max-width: 720px) {
-html,
-body {
-  overflow-x: hidden;
-}
-
-
 }

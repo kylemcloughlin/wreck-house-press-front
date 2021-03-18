@@ -10,7 +10,9 @@ const Layout = ({children, category, loggedIn}) => {
     <Nav category={category} loggedIn={loggedIn}/>
     
       <main className={styles.main}>
+    
         {children}
+    
       </main>
     
       <Footer/>

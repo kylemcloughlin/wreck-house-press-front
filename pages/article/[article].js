@@ -31,7 +31,7 @@ export default function Article({article}) {
  let category = useAppContext().catagories;
 //  console.log(article)
   return (
-    <div>
+    <div className={articleStyles.holder}>
       <Head>
         <title>{article.title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -45,7 +45,8 @@ export default function Article({article}) {
   <div className={articleStyles.dateHolder}>
     <h5 className={articleStyles.date}>{article.originalPost}</h5>
     <div className={articleStyles.line}/>
-    <h5 className={articleStyles.readTime}>6 min. read</h5>
+     <img className={articleStyles.clock} src="/images/clock-circular-outline.png"/>
+     <h5 className={articleStyles.readTime}>6 min. read</h5>
   </div>
   </div>
   

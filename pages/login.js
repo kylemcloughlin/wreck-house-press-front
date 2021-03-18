@@ -103,6 +103,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
   
   return (
     <div className={loginStyles.mainContainer}>
+      <div className={loginStyles.holder}>
   <div className={loginStyles.loginDiv}>
   
     <img src='/images/Masthead-2021.png' className={loginStyles.loginImg}/>
@@ -149,6 +150,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
       </div>
     </form>
     </div>
+  </div>
   </div>
   )
 }

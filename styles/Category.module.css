@@ -57,7 +57,10 @@
   /* margin-top:*/
 
 }
+.imgBarrier {
+  visibility: hidden;
 
+}
 
 .title {
  position: relative;
@@ -109,6 +112,14 @@
   padding: .5em;
   border-radius: .5em;
   
+}
+.itemA .imgBarrier {
+ visibility: visible;
+  background: #fffefe;
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
 }
 .itemB {
   grid-area: one;

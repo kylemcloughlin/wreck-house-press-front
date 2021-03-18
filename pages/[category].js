@@ -4,27 +4,41 @@ import {useRouter } from 'next/router'
 import categoryStyles from '../styles/Category.module.css';
 import {useState } from 'react';
 import AddStory from '../components/AddStory.js';
+import navStyles from '../styles/Nav.module.css';
 
 
-
-export default function Category({ topStory, header, category}) {
-  console.log(category.length)
+export default function Category({ topStory, header, category, subs}) {
+  console.log(subs)
   let [moreStories, setMoreStories] = useState([]);
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
+  
+  
   const handleClick = (e) => {
-   let holder =  category.splice(0, 3)
-   console.log(holder)
-  let holderTwo = {
-    Stories: holder
+    let holder =  category.splice(0, 3)
+    setMoreStories([...moreStories, holder])
   }
-  setMoreStories([...moreStories, holder])
-  }
+
+
+
   return (<div className={categoryStyles.mainContainer}>
       <Head>
         <title>{header}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
+      <main>
+        {subs.length >=1 ? (
+
+          <ul className={navStyles.lowerNavBar}>
+            { subs.map((x, ind)=> {
+              //  let clickedLowerNavButtonStyle =  subClicked === x.name ? ({ color: 'black'}) : ({color: '#fffefe' })
+              return (<li key={x.id}>
+                <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.id}`}>
+                  <button className={navStyles.navButton} value={x.name}>{x.name}</button>
+                </Link>   
+        </li>)
+      })}
+      </ul>
+      ) : (<div/>)}  
     <div className={categoryStyles.holder}>
         <div className={categoryStyles.indexContainer}>
           <h1 className={categoryStyles.title}> {header}</h1>
@@ -38,12 +52,12 @@ export default function Category({ topStory, header, category}) {
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
               
                     <img src={x.photos} style={visible}  className={categoryStyles.img}/> 
-                {/* <div className={categoryStyles.imgHolder}> */}
                   {/* <img src={x.photos} style={visible} className={categoryStyles.img}/>  */}
                 {/* </div> */}
               
                 <h2 className={categoryStyles.artTitle}>{x.title}</h2>
                 <h6 className={categoryStyles.date}>{x.originalPost}</h6>
+                <div className={categoryStyles.imgBarrier}/>
                 <div/>
                 </div>
                 </Link>
@@ -53,7 +67,7 @@ export default function Category({ topStory, header, category}) {
       {moreStories.map((x, ind)=> {
         return(<AddStory key={ind} newStories={x}/>)
       })}
-      {/* <button onClick={handleClick}> MORE </button> */}
+      <button onClick={handleClick}> MORE </button>
        </div> 
        
 
@@ -76,6 +90,7 @@ export async function getStaticProps({ params }) {
   const res = await fetch(`${process.env.BACKEND_URL}/categorizations/${params.category}`)
   const output = await res.json()
   let header = await output.header
+  let subs = await output.subcategorizations
   let category = [];
   let topStory = []
   let holder = await output.articles.forEach((x, i) => {
@@ -86,5 +101,5 @@ export async function getStaticProps({ params }) {
       category.push(x)
     }
   })
-  return { props: { topStory, header, category } }
+  return { props: { topStory, header, category, subs } }
 }

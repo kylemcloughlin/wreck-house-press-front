@@ -1,7 +1,6 @@
 .mainContainer {
   width: 100%;
-
-  height: 30em;
+  height: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -9,10 +8,7 @@
   position: relative;
   display: flex;
   border-radius: .5em;
-  /* left: 22%; */
-  width: 90%;
-  /* max-width: 50em; */
-  min-width: 30em;
+  width: 100%;
   height: 25em;
   background-color: #fffefe;
   padding: 10px;
@@ -23,10 +19,85 @@
 .panel {
   border: 2px solid black;
   margin: auto;
-  height: 90%;
+  height: 23em;
   width: 30%;
   align-items: center;
   text-align: center;
   position: relative;
+
+}
+.btn {
+      position: absolute;
+      padding: .7em;
+      bottom: 2em;
+      width: 100%;
+      height: 3.5em;
+      left: 0em;
+      background: none;
+      color: #59BCC0;
+      border: 2px solid #59BCC0;
+      border-radius: 1em;
+      transition: .25s;
+}
+
+.btn:hover {
+  background: #59BCC0;
+  color: #fffefe;
+  transition: .25s;
+}
+.credit {
+  border: 2px solid black;
+  border-radius: .5em;
+  width: 90%;
+  padding: .5em;
+  left: 5%;
+  position: absolute;
+  bottom: 6em;
+}
+.first {
+  border: 2px solid black;
+  border-radius: .5em;
+  width: 50%;
+  padding: .5em;
+  left: 5%;
+  margin: 1em;
+}
+.last {
+  border: 2px solid black;
+  border-radius: .5em;
+  width: 50%;
+  padding: .5em;
+  left: 5%;
+  margin: 1em;
+}
+.name {
+ margin: .5em;
+ width: 100%;
+ height: 50%;
+}
+.address {
+  border: 2px solid black;
+  border-radius: .5em;
+  width: 90%;
+  padding: .5em;
+  left: 5%;
+}
+
+@media screen and (max-width: 700px) {
+  .holder {
+    display: block;
+    margin-bottom: 1em;
+    /* width: 50%; */
+    height: 74em;
+    /* height: 100em; */
+  }
+
+  .panel {
+    margin-bottom: 1.5em;
+    width: 30%;
+    min-width: 17em;
+  }
+
+
 
 }
