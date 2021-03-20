@@ -1,4 +1,5 @@
 import {React, useState } from 'react';
+import MobileFooter from './MobileFooter';
 import Link from 'next/link';
 import Image from 'next/image';
 import navStyles from '../styles/Nav.module.css';
@@ -32,6 +33,18 @@ const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC]
    
   </div>
 
+  <div className={navStyles.mobileFooter}>
+     {links.map((link, ind) =>{
+       return(<div> 
+        <div key={ind}>
+          <MobileFooter children={link}/>
+        </div>
+  
+         </div>)
+         })}
+  </div>
+    
+     
   
   </div>
     </footer>
@@ -49,3 +62,8 @@ export default Footer
     <a href="https://twitter.com/tygerlylly">Twitter</a>
     </li> */
   
+                    
+  //           {link.subLinks.map(subLink =>{
+  // return( <Link href={`/${link.name}/[${link.name}]`} key={subLink}  as={`/${link.name}/${subLink}`}>
+  //           <button>{subLink}</button>
+  //          </Link>  ) })}

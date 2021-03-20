@@ -1,40 +1,54 @@
 import Head from 'next/head';
 import Link from 'next/link';
 // import { useAppContext } from '../context/AppContext';
-// import {useEffect, useState } from 'react';
-// import {securedAxiosInstance, plainAxiosInstance } from '../assets/backend/axios.js'
+import {useEffect, useState } from 'react';
+import AddStory from '../../components/AddStory.js';
 import categoryStyles from '../../styles/Category.module.css';
 
 
  
-
-export default function Subcategory({ subcategory }) {
-    let header = subcategory.header
-    // console.log("SUBCATEGORY", subcategory);
-    let articles = subcategory.articles;
-    let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
+export default function Subcategory({ topStory, header, category}) {
+  let [moreStories, setMoreStories] = useState([]);
+  let [empty, setEmpty] = useState(true);
+  let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
+  useEffect(() => {
+      if (category.length === 0){
+        setEmpty(true)
+      } else {
+           setEmpty(false)
+      }
+  },[])
   
-  return (
-    <div>
+  const handleClick = (e) => {
+     if (category.length > 0) {
+       let holder = category.splice(0, 3)
+       setMoreStories([...moreStories, holder])
+     } else {
+          setEmpty(true)
+     }
+  }
+
+  let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
+
+  return (<div className={categoryStyles.mainContainer}>
       <Head>
         <title>{header}</title>
-
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
- <div className={categoryStyles.holder}>
+      <main>
+    <div className={categoryStyles.holder}>
         <div className={categoryStyles.indexContainer}>
           <h1 className={categoryStyles.title}> {header}</h1>
           <div className={categoryStyles.underline}/>
           <div className={categoryStyles.storiesContainer}>
-            {articles.map((x, ind)=> {
+            {topStory.map((x, ind)=> {
               let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
               return(
                  <Link key={x.id} href="article/[article]" as={`/article/${x.id}`}> 
                 <div className={styleArray[ind]}>
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
               
-                    <img src={x.photos} style={visible}  className={categoryStyles.fallback}/> 
+                    <img src={x.fallback[0]} style={visible}  className={categoryStyles.img}/> 
                   {/* <img src={x.photos} style={visible} className={categoryStyles.img}/>  */}
                 {/* </div> */}
               
@@ -47,54 +61,43 @@ export default function Subcategory({ subcategory }) {
       )
     })}
         </div>
-      {/* {moreStories.map((x, ind)=> {
+      {moreStories.map((x, ind)=> {
         return(<AddStory key={ind} newStories={x}/>)
       })}
-      <button onClick={handleClick}> MORE </button> */}
+      <button onClick={handleClick} className={categoryStyles.moreBut} style={style}> MORE </button>
        </div> 
        
 
    </div>
-
-
-    </div>)
-      
-      
-      /* 
-      
-      </div> */
-  
+      </main>
+   </div>)
 }
-
-
 export async function getStaticPaths() {
-  // const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations`)
   const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations`)
 
-  const cats = await res.json();
-  const paths = cats.map((x) => ({
-    params: {
-      subcategory: x.id.toString()
-    },
+  const subcats = await res.json();
+  const paths = subcats.map((x) => ({
+    params: {  subcategory: x.id.toString() },
   }))
 
-  return {
-    paths,
-    fallback: false
-  }
+  return { paths, fallback: false }
 }
 
-export async function getStaticProps({
-  params
-}) {
-  // const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations/${params.subcategory}`)
+export async function getStaticProps({ params }) {
   const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations/${params.subcategory}`)
+  const output = await res.json()
+  let header = await output.header
+  let subs = await output.subcategorizations || null
+  console.log(subs)
+  let category = [];
+  let topStory = []
+  let holder = await output.articles.forEach((x, i) => {
+    if (topStory.length < 5) {
+      topStory.push(x)
 
-  const subcategory = await res.json()
-
-  return {
-    props: {
-      subcategory
+    } else {
+      category.push(x)
     }
-  }
+  })
+  return { props: { topStory, header, category} }
 }

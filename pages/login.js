@@ -103,13 +103,13 @@ export default function Login({handleSignIn, setLoggedIn}) {
   
   return (
     <div className={loginStyles.mainContainer}>
-      <div className={loginStyles.holder}>
   <div className={loginStyles.loginDiv}>
   
     <img src='/images/Masthead-2021.png' className={loginStyles.loginImg}/>
   
     <div className={loginStyles.underline}/>
-    <form onSubmit={registerUser}>
+         <div className={loginStyles.holder}>
+    <form onSubmit={registerUser} className={loginStyles.signIn}>
       <ul className={loginStyles.formList}>
         <li>
           <label htmlFor="name">Name</label>
@@ -133,7 +133,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
     </form>
     <div className={loginStyles.verticalLine}/>
     <form onSubmit={signIn} className={loginStyles.signIn}>
-      <ul className={loginStyles.formList}>
+        <ul className={loginStyles.formList}>
         <li>
           <label htmlFor="name">Name</label>
           <br/>
@@ -150,7 +150,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
       </div>
     </form>
     </div>
-  </div>
+    </div>
   </div>
   )
 }

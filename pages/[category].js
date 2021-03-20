@@ -1,31 +1,45 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import {useRouter } from 'next/router'
+import {useRouter } from 'next/router';
 import categoryStyles from '../styles/Category.module.css';
-import {useState } from 'react';
+import {useState, useEffect } from 'react';
 import AddStory from '../components/AddStory.js';
 import navStyles from '../styles/Nav.module.css';
 
 
 export default function Category({ topStory, header, category, subs}) {
-  let [moreStories, setMoreStories] = useState([]);
-  let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
   console.log(subs)
+  let [moreStories, setMoreStories] = useState([]);
+  let [empty, setEmpty] = useState(true);
+  let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
+  // console.log(subs)
   
   const handleClick = (e) => {
-    let holder =  category.splice(0, 3)
-    setMoreStories([...moreStories, holder])
+    if (category.length >  0 ) {
+      let holder =  category.splice(0, 3)
+      setMoreStories([...moreStories, holder])
+    } 
+    if (category.length === 0) {
+        setEmpty(true)
+    }
   }
 
 
-
+  useEffect(() => {
+    if (category.length === 0) {
+      setEmpty(true)
+    } else {
+       setEmpty(false)
+    }
+  }, [category])
+   let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
   return (<div className={categoryStyles.mainContainer}>
       <Head>
         <title>{header}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {subs ? (
+        {subs.length > 0 ? (
 
           <ul className={navStyles.lowerNavBar}>
             { subs.map((x, ind)=> {
@@ -64,9 +78,9 @@ export default function Category({ topStory, header, category, subs}) {
     })}
         </div>
       {moreStories.map((x, ind)=> {
-        return(<AddStory key={ind} newStories={x}/>)
+        return(<AddStory key={ind} newStories={x} header={header}/>)
       })}
-      <button onClick={handleClick} className={categoryStyles.moreBut}> MORE </button>
+      <button onClick={handleClick} className={categoryStyles.moreBut} style={style}> MORE </button>
        </div> 
        
 
@@ -90,7 +104,7 @@ export async function getStaticProps({ params }) {
   const output = await res.json()
   let header = await output.header
   let subs = await output.subcategorizations || null
-  console.log(subs)
+ 
   let category = [];
   let topStory = []
   let holder = await output.articles.forEach((x, i) => {
@@ -101,5 +115,5 @@ export async function getStaticProps({ params }) {
       category.push(x)
     }
   })
-  return { props: { topStory, header, category, subs: subs } }
+  return { props: { topStory, header, category, subs } }
 }

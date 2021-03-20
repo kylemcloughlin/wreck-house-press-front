@@ -1,71 +1,76 @@
-.holder {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
-
-}
 
 .mainContainer {
-  /* width: 100%; */
+  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-content: center; */
+  align-items: center;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .loginDiv {
- position: relative;
- margin: auto;
-    /* border: 2px solid black; */
-    border-radius: .5em;
-    /* left: 22%; */
-   width: 100%;
-   /* max-width: 70em; */
-    /* min-width: 30em; */
-    height: 25em;
-    background-color: #fffefe;
-    padding: 10px;
-box-shadow: 0px 2px 12px -1px #dfdfdf;
-
+  position: relative;
+  /* margin: auto; */
+  margin-top: 1.5em; 
+  border-radius: .5em;
+  width: 50%;
+  height: 25em;
+  background-color: #fffefe;
+  padding: 10px;
+  box-shadow: 0px 2px 12px -1px #dfdfdf;
+  
 }
 .loginImg {
   display: block;
   margin: auto;
-
+  
 }
 .underline {
   width: 90%;
   height: 1px;
   background-color: #999;
- margin: auto;
+  margin: auto;
 }
+
+.holder {
+  width: 100%;
+    display: flex;
+    /* margin: 1em; */
+    padding: .5em;
+
+
+}
+
 
 .verticalLine {
  width: 1px;
  height: 62%;
- background-color: #999;
-position: relative;
+ background-color: black;
+position: absolute;
 left: 50%;
-bottom: 35%;
+/* bottom: 35%; */
+/* z-index: 1/; */
 }
-
 
 
 .signIn{
-      position: relative;
-      left: 50%;
-      bottom: 23.88em;
+  width: 100%;
+  height: 100%;
+  margin: 2px;
+  /* border: solid pink 2px; */
+  display: flex;
+  flex-direction: column;
 }
-.loginList {
-  list-style: none;
-  width: 50%;
-  margin-bottom: -2em;
+.logInList {
+   list-style: none;
+
 }
 
 .formList {
-  list-style: none;
-  width: 50%;
-  margin-bottom: -5.4em;
+  list-style: none;;
 }
 
 .formList li {
@@ -92,43 +97,22 @@ bottom: 35%;
   
 }
 
-.regButton {
-     height:20px;
-     width:100px;
-     margin: -20px -50px;
-     position:relative;
-     top:50%;
-     left: 25%;
-}
 
 .btn {
-   /* margin-top: 4em; */
-  width: 50%;
-   position:relative;
-   top: 7.5em;
-   left: 0%;
-     padding: .7em;
-     background: none;
-     color: #59BCC0;
-     border-radius: 1em;
-     border: 2px solid #59BCC0;
-     /* position: absolute; */
-     /* right: 10em; */
-     transition: .25s;
-}
-/* 
-.signIn {
-  padding: .7em;
-  background: none;
-  color: #59BCC0;
-  border-radius: 1em;
-  border: 2px solid #59BCC0;
-  position: absolute;
-  right: 10em;
+  
+ width: 10em;
+ position: relative;
+ bottom: 0.5em;
+ left: 29%;
+ padding: .7em;
+ background: none;
+ color: #59BCC0;
+ border-radius: 1em;
+ border: 2px solid #59BCC0;
+ transition: .25s;
+  
   transition: .25s;
-
-} */
-
+}
 .btn:hover {
   background: #59BCC0;
   color: #fffefe;
@@ -137,25 +121,45 @@ bottom: 35%;
 
 
 
+/*
 
 .signInDiv {
   border: 2px solid pink;
   float: left;
   width: 50%;
-
+  
 }
 
 .registerDiv {
   border: 2px solid pink;
   float: right;
   width: 50%;
+  
+} */
 
-}
 
-
-     @media screen and (max-width: 800px) {
-       
+@media screen and (max-width: 800px) {
+  
        .loginDiv {
          width: 100%;
+         height: 35em;
         }
+        .btn{
+          left: 37%;
+        }
+        .holder {
+          display: flex;
+          flex-direction: column;
+        }
+      .verticalLine{
+            width: 79%;
+            height: 1px;
+            background-color: black;
+            position: absolute;
+            left: 9%;
+            bottom: 39%;
+      }
+      .loginImg {
+        width: 90%;
+      }
       }

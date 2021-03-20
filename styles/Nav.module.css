@@ -304,8 +304,13 @@
         }
         
       } */
-      
-      
+      .mobileFooter {
+        visibility: hidden;
+      }
+      .mobileFooterList {
+                visibility: hidden;
+
+      }
       @media screen and (max-width: 1200px) {
         .nav{
           /* visibility: hidden; */
@@ -345,5 +350,27 @@
     }
     .footerListHolder ul {
       visibility: hidden;
+      }
+      .mobileFooter{
+        visibility: visible;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       } 
+      .mobileFooterList {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* visibility: hidden; */
+      /* height: 0; */
+
+
+       }
+
+       
+       .mobileFooterName {
+         width: 10em;
+         padding: 1em;
+       }
       }

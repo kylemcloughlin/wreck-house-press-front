@@ -331,7 +331,7 @@ top: .5em
  }
 
  .addStoryContainer {
-       border: black 1px solid;
+       /* border: black 1px solid; */
        height: 16em;
        width: 100%;
        margin-bottom: 5px; 
@@ -340,7 +340,37 @@ top: .5em
 
  }
 
+ .story {
+   border-right: 1px solid black;
+  position: relative;
+   margin: .5em;
+   width: 33%;
+ }
+ 
+ .storyLast {
+  position: relative;
+   margin: .5em;
+   width: 33%;
+ }
+ .line {
+   width: 98%;
+   height: 1px;
+  background: black;
+  position: absolute;
+ }
+ .addedHeader{
+  position: absolute;
+  top: 0em;
+ }
+ .addedTitle{
+     position: absolute;
+     bottom: 1.5em
+ }
 
+ .addedDate {
+    position: absolute;
+    bottom: 0em;
+ }
  @media screen and (max-width: 1200px) {
    .itemA {
      border-right: none; 
@@ -422,5 +452,26 @@ height: 100%;
       "thr thr thr thr thr"
       "foh foh foh foh foh";
   }
+}
+.addStoryContainer{
+  height: 25em;
+  flex-direction: column;
+}
+.story, .storyLast {
+  height: 33%;
+  width: 100%;
+}
+.story{
+  border-right: none;
+  border-bottom: 1px solid black;
+}
+.addedHeader {
+  top: -2em;
+}
+.addedDate{
+  bottom: -2em;
+}
+.addedTitle{
+  bottom: 0.5em;
 }
 }
