@@ -26,7 +26,7 @@ const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC]
         <h3>{link.name}</h3>
         {link.subLinks.map(subLink =>{
           return( <Link href={`/${link.name}/[${link.name}]`} key={subLink}  as={`/${link.name}/${subLink}`}>
-                    <li>{subLink}</li>
+                    <li key={ind + 300}>{subLink}</li>
                    </Link>  ) })}
         </ul>)
    })}
@@ -36,7 +36,7 @@ const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC]
   <div className={navStyles.mobileFooter}>
      {links.map((link, ind) =>{
        return(<div> 
-        <div key={ind}>
+        <div key={ind + 400}>
           <MobileFooter children={link}/>
         </div>
   

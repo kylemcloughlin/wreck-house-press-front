@@ -8,7 +8,7 @@ console.log("header", header)
           < div className={styles.line}/>
             {newStories.map((x, ind) =>{
               let tet = ind < 2 ? (styles.story) : (styles.storyLast)
-              console.log(tet);
+              // console.log(tet);
               return(<div key={ind} className={tet}>
               <h5 className={styles.addedHeader}>{header}</h5>
                  <h2 className={styles.addedTitle}>{x.title}</h2>

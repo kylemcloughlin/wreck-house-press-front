@@ -243,7 +243,7 @@
         position: relative;
         bottom: 0em;
         display: grid;
-        grid-template-columns: 200px 200px 200px;
+        grid-template-columns: 115px 150px 150px;
         grid-template-rows: 25px 25px;
         /* margin: auto; */
       }
@@ -259,10 +259,16 @@
         padding-right: 1em;
         
       }
+
+            .footerList ul h3 {
+              text-transform: capitalize;
+            }
+
       .footerList li {
         margin-bottom: 1em;
         opacity: .4;
         transition: 2ms smooth;
+        width: 10em;
       }
       
       .footerList li:hover {
@@ -370,7 +376,15 @@
 
        
        .mobileFooterName {
-         width: 10em;
-         padding: 1em;
+             width: 10em;
+             text-transform: uppercase;
+             padding: 1em;
+             padding-bottom: 0;
+             padding-left: 0;
+             border: none;
+             border-bottom: 2px solid pink;
+             background: none;
+             margin: 0.2em;
+             color: #fffefe;
        }
       }

@@ -1,7 +1,9 @@
 import navStyles from '../styles/Nav.module.css';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
+
+
 const MoblileFooter = ({children}) => {
   const [toggle, setToggle] = useState(false)
  const props = useSpring({
@@ -15,6 +17,20 @@ const MoblileFooter = ({children}) => {
     setToggle(!toggle)
     props.height.interpolate(x => Math.floor((x.toFixed(0) * 100) / height))
   }
+
+  const reportWindowSize = () => {
+          if (window.screen.width >= 701) {
+            setToggle(false)
+          } 
+
+  }
+  useEffect((ctx) => {
+    window.addEventListener('resize', reportWindowSize);
+    
+
+  }, []);
+
+
   return (
     <div>
         <button className={navStyles.mobileFooterName} onClick={handleToggle}>{children.name}</button>

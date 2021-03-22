@@ -11,8 +11,7 @@ import axios from 'axios';
 import Hamburger from '../components/Hamburger';
 const Nav = ({category, loggedIn}) => {
 const router = useRouter()
-  
-    let [isLoggedIn, setIsLoggedIn] = useState(loggedIn);
+    let [isLoggedIn, setIsLoggedIn] = useState(loggedIn);   
   let globalState = useAppContext().catagories;
   let [subcategorization, setSubcategorization] = useState([])
   let [clicked, setClicked] = useState("")
@@ -35,7 +34,8 @@ const router = useRouter()
         
         setDidScroll(true)
 
-      } else {
+      }
+       else {
 
       }
 
@@ -45,7 +45,7 @@ const router = useRouter()
       setClicked(output)
       category(globalState[output]);
       //  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
-      const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
+      const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations?categorization_id=${output}&&nav=${true}`)
       const data = await res.json();
       setSubcategorization(data);
       
@@ -83,7 +83,7 @@ const router = useRouter()
      width={500}
      height={250}/>   */}
         <Link href="/subscribe" as='subscribe'> 
-        <button className={navStyles.subscribe}>
+        <button className={navStyles.subscribe} disabled={true}>
           Subscribe
         </button>
         </Link>
@@ -97,7 +97,7 @@ const router = useRouter()
       { globalState.map((x, ind)=> {
         
          let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })
-       let url = ind + 1
+       let url = ind
        let link = ind === 0 ? ("/") : ("/[category]")
        return (<li key={x}>
         <Link href={link} as={`/${url.toString()}`}>
@@ -113,7 +113,7 @@ const router = useRouter()
         <ul className={navStyles.scrollNavBar}>
           { globalState.map((x, ind)=> { 
               let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })
-              let url = ind + 1
+              let url = ind
               let link = ind === 0 ? ("/") : ("/[category]")
                return (
                  <li key={x}>

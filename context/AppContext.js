@@ -5,7 +5,7 @@ const AppContext = createContext();
 export function AppWrapper({ children }) {
   let sharedState = {
     subCatagories: ['Letters', 'Columnists', 'Profile', "Music Row", "On The Bookshelf"],
-    catagories: ["Top Story", "Local News", "Sports", "Opinion", "Community", "The Arts"]  
+    catagories: ["home", "Top Story", "Local News", "Sports", "Opinion", "Community", "The Arts"]  
   }
 
   return (

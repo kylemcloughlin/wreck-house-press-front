@@ -8,30 +8,58 @@ import navStyles from '../styles/Nav.module.css';
 
 
 export default function Category({ topStory, header, category, subs}) {
-  console.log(subs)
+  let [check, setCheck] = useState();
+  let [allStories, setAllStories] = useState();
   let [moreStories, setMoreStories] = useState([]);
   let [empty, setEmpty] = useState(true);
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
-  // console.log(subs)
+  
   
   const handleClick = (e) => {
     if (category.length >  0 ) {
-      let holder =  category.splice(0, 3)
+      let holder = [];
+      for(let i = 0; i < 3; i++) {
+        holder.push(category[i]);
+        
+      }
       setMoreStories([...moreStories, holder])
     } 
     if (category.length === 0) {
-        setEmpty(true)
+      setEmpty(true)
     }
   }
-
-
+  const handleUnload = () => {
+    console.log('hit!!!!!!!!!!!!!!!!!!!!!!!!!!!SSSSSDFFF')
+  }
+  
   useEffect(() => {
+    console.log("herere", header)
+    if (check != header) {
+      setCheck(header)
+      setMoreStories([])
+      console.log("in if")
+      console.log(check, header)
+
+    } else {
+      console.log("in else")
+      console.log(check, header)
+    }
+    setAllStories(category)
+   
+   
     if (category.length === 0) {
       setEmpty(true)
     } else {
        setEmpty(false)
+    } 
+    return function cleanup() {
+
+      
     }
-  }, [category])
+
+  }, [Category])
+
+
    let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
   return (<div className={categoryStyles.mainContainer}>
       <Head>

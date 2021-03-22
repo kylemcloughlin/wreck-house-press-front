@@ -46,8 +46,10 @@ export default function Article({article}) {
   <div className={articleStyles.dateHolder}>
     <h5 className={articleStyles.date}>{article.originalPost}</h5>
     <div className={articleStyles.line}/>
+    <div  className={articleStyles.timeHolder}>
      <img className={articleStyles.clock} src="/images/clock-circular-outline.png"/>
      <h5 className={articleStyles.readTime}>6 min. read</h5>
+    </div>
   </div>
   </div>
   

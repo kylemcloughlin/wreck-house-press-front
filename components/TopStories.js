@@ -13,7 +13,7 @@ const TopStories = ({ topStory, title}) => {
   
           {topStory.map((x, ind)=> {
              let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
-             console.log(x.fallback)
+            //  console.log(x.fallback)
             return(
               <Link key={x.id} href="article/[article]" as={`/article/${x.id}`}> 
             <div value="xxx" className={x.style}>
