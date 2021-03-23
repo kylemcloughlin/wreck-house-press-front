@@ -83,7 +83,7 @@ const router = useRouter()
      width={500}
      height={250}/>   */}
         <Link href="/subscribe" as='subscribe'> 
-        <button className={navStyles.subscribe} disabled={true}>
+        <button className={navStyles.subscribe}>
           Subscribe
         </button>
         </Link>

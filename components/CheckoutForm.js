@@ -4,93 +4,86 @@ import styles from '../styles/Checkout.module.css';
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Input, Col, Row, Form, Button, Modal } from "antd";
 import Router from "next/router";
+import axios from 'axios';
 
 const CheckoutForm = props => {
   // const { getFieldDecorator } = props.form;
   const [isLoading, setLoading] = useState(false);
-
+  console.log(props)
   const stripe = useStripe();
   const elements = useElements();
+  let email = 'test@testy.com';
 
-  const handleSubmit = async event => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    console.log('hit')
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+    console.log('hit firtst if')
 
-    props.form.validateFields(async (err, values) => {
-      if (!err) {
-        setLoading(true);
-        const result = await stripe.createPaymentMethod({
-          type: "card",
-          card: elements.getElement(CardElement),
-          billing_details: {
-            address: {
-              city: values.city,
-              line1: values.address,
-              postal_code: values.zip,
-              state: values.state
-            },
-            email: "janedoe@example.com",
-            name: values.name,
-            phone: "555-555-5555"
-          }
-        });
-        await handleStripePaymentMethod(result);
-        setLoading(false);
-      }
+      return;
+    }
+    console.log('hit 3', stripe)
+    const result = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+      billing_details: {
+        email: email,
+      },
     });
-  };
-
-  const handleStripePaymentMethod = async result => {
+      console.log(result)
+      console.log('hit 4')
     if (result.error) {
-      Modal.error({
-        title: "Error",
-        content: result.error.message
-      });
+      console.log(result.error.message);
     } else {
-      const response = await fetch("api/create-customer", {
-        method: "POST",
-        mode: "same-origin",
-        body: JSON.stringify({
-          paymentMethodId: result.paymentMethod.id
-        })
-      });
+      console.log('hit 5')
 
-      const subscription = await response.json();
-      handleSubscription(subscription);
+ 
+      axios.post(`${process.env.BACKEND_URL}/customers`, {
+        email: email,
+        payment_method: result.paymentMethod.id,
+         
+         
+  }, {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json'
     }
-  };
+  })
+  .then((response) => {
+    console.log(response.data)
+        const status = response.data.subscription.latest_invoice.status
+      const client_secret = response.data.subscription.latest_invoice.client_secret
+      console.log(client_secret)
+      console.log(status)
 
-  const handleSubscription = subscription => {
-    const { latest_invoice } = subscription;
-    const { payment_intent } = latest_invoice;
-
-    if (payment_intent) {
-      const { client_secret, status } = payment_intent;
-
-      if (status === "requires_action") {
-        stripe.confirmCardPayment(client_secret).then(function(result) {
-          if (result.error) {
-            // The card was declined (i.e. insufficient funds, card has expired, etc)
-            Modal.error({
-              title: "Error",
-              content: result.error.message
-            });
-          } else {
-            // Success!
-            Modal.success({
-              title: "Success"
-            });
-          }
-        });
-      } else {
-        // No additional information was needed
-        Modal.success({
-          title: "Success"
-        });
+    // eslint-disable-next-line camelcase
+    
+      if (status === 'requires_action') {
+          stripe.confirmCardPayment(client_secret).then(function (result) {
+              if (result.error) {
+                  console.log('There was an issue!');
+                  console.log(result.error);
+                  // Display error message in your UI.
+                  // The card was declined (i.e. insufficient funds, card has expired, etc)
+                } else {
+                    console.log('You got the money!');
+                    // Show a success message to your customer
+                  }
+                });
+              } else {
+                  console.log('You got the money!');
+              //     // No additional information was needed
+             
+               } //     // Show a success message to your customer
+  }).catch((error) => {
+    console.log(error);
+  });
       }
-    } else {
-      console.log(`handleSubscription:: No payment information received!`);
-    }
+    
   };
+   
 
   const cardOptions = {
     iconStyle: "solid",
@@ -112,49 +105,17 @@ const CheckoutForm = props => {
     }
   };
   return (
-    <Form onSubmit={e => handleSubmit(e)}>
-      <Form.Item label="Name on card" colon={false}>
-        <Input placeholder="Jane Doe" />
-      </Form.Item>
-      <Form.Item label="Address" colon={false}>
-        
-        
-        <Input placeholder="1234 Almond Ave" />
-      </Form.Item>
-      <Input.Group>
-        <Row gutter={12}>
-          <Col span={12}>
-            <Form.Item label="City" colon={false}>
-              <Input placeholder="San Bernardino" />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item label="State" colon={false}>
-            <Input placeholder="CA" />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item label="ZIP" colon={false}>
-        
-         <Input placeholder="92401" />
-            </Form.Item>
-          </Col>
-        </Row>
-      </Input.Group>
-      <Form.Item label="Card" colon={false}>
-   
+    <form onSubmit={e => handleSubmit(e)}>
+     
      <CardElement options={cardOptions} />
-      </Form.Item>
-      <Button
-        loading={isLoading}
+
+      <button
+        // loading={isLoading}
         type="primary"
         htmlType="submit"
         className="checkout-button"
-        disabled={!stripe}
-      >
-        Submit
-      </Button>
-    </Form>
+        disabled={!stripe}>Submit</button>
+    </form>
   );
 };
 export default CheckoutForm

@@ -8,56 +8,49 @@ import navStyles from '../styles/Nav.module.css';
 
 
 export default function Category({ topStory, header, category, subs}) {
-  let [check, setCheck] = useState();
-  let [allStories, setAllStories] = useState();
+  // let [allStories, setAllStories] = useState();
   let [moreStories, setMoreStories] = useState([]);
   let [empty, setEmpty] = useState(true);
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
-  
+  let route = useRouter();
+  let test = route.asPath
+  let [check, setCheck] = useState(test);
   
   const handleClick = (e) => {
-    if (category.length >  0 ) {
+    if (category.length >  moreStories.length * 3) {
       let holder = [];
       for(let i = 0; i < 3; i++) {
-        holder.push(category[i]);
+        let helper = moreStories.length * 3 
+        holder.push(category[ helper + i]);
         
       }
+      console.log()
       setMoreStories([...moreStories, holder])
     } 
-    if (category.length === 0) {
+    if (category.length === moreStories.length * 3) {
       setEmpty(true)
     }
   }
-  const handleUnload = () => {
-    console.log('hit!!!!!!!!!!!!!!!!!!!!!!!!!!!SSSSSDFFF')
-  }
-  
   useEffect(() => {
-    console.log("herere", header)
-    if (check != header) {
-      setCheck(header)
-      setMoreStories([])
-      console.log("in if")
-      console.log(check, header)
-
-    } else {
-      console.log("in else")
-      console.log(check, header)
-    }
-    setAllStories(category)
    
-   
-    if (category.length === 0) {
+    // setAllStories(category);
+    if (category.length === moreStories.length * 3) {
       setEmpty(true)
     } else {
        setEmpty(false)
     } 
-    return function cleanup() {
+   
 
-      
+  }, [moreStories])
+
+    let path = route.asPath;
+    
+    if (path === check) {
+        
+    } else {
+        setCheck(path)
+        setMoreStories([]);
     }
-
-  }, [Category])
 
 
    let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
@@ -110,7 +103,6 @@ export default function Category({ topStory, header, category, subs}) {
       })}
       <button onClick={handleClick} className={categoryStyles.moreBut} style={style}> MORE </button>
        </div> 
-       
 
    </div>
       </main>
