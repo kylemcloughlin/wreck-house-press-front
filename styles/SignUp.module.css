@@ -9,8 +9,7 @@
   color: #59BCC0;
   border-radius: 1em;
   border: 2px solid #59BCC0;
-  /* position: absolute; */
-  /* right: 10em; */
+
   transition: .25s;
 }
 
@@ -18,4 +17,9 @@
   background: #59BCC0;
   color: #fffefe;
   transition: .25s;
+}
+
+.titleHolder {
+  width: 100%;
+  text-align: center;
 }

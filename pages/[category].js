@@ -16,6 +16,14 @@ export default function Category({ topStory, header, category, subs}) {
   let test = route.asPath
   let [check, setCheck] = useState(test);
   
+  const countDown = (x) => {
+     let today = new Date();
+   const oneDay = 24 * 60 * 60 * 1000;
+   let secondDate = new Date(x);
+   const diffDays = Math.round(Math.abs((today - secondDate) / oneDay));
+   return `posted ${diffDays} day's ago`;
+   }
+
   const handleClick = (e) => {
     if (category.length >  moreStories.length * 3) {
       let holder = [];
@@ -90,7 +98,7 @@ export default function Category({ topStory, header, category, subs}) {
                 {/* </div> */}
               
                 <h2 className={categoryStyles.artTitle}>{x.title}</h2>
-                <h6 className={categoryStyles.date}>{x.originalPost}</h6>
+                <h6 className={categoryStyles.date}>{countDown(x.originalPost)}</h6>
                 <div className={categoryStyles.imgBarrier}/>
                 <div/>
                 </div>

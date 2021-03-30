@@ -1,26 +1,331 @@
 .mainContainer {
-
   width: 100%;
   height: 100%;
-  /* margin: auto; */
+}
 
-  /* margin-bottom: 30em; */
-  /* margin-bottom: 1em; */
-  font-family: Arial, Helvetica, sans-serif;
+.title {
+    font-family: 'Montserrat',
+    sans-serif;
+    font-style: normal;
+    font-weight: 600;
+}
+.holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Montserrat',
+    sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.aboutContainer {
+  position: relative;
+  display: block;
+  width: 80%;
+  max-width: 60em;
+  height: 80em;
+  padding: .5em;
+  background: #fffefe;
+  border: #B9B7B7 solid 2px;
+  border-radius: .2em;
+  margin-top: 1em;
+  box-shadow: #666 0px 3px 6px -1px;
+
+}
+
+.contactContainer {
+  position: relative;
+  display: block;
+  width: 80%;
+  max-width: 50em;
+  height: 50em;
+  padding: .5em;
+  background: #fffefe;
+  border: #B9B7B7 solid 2px;
+  border-radius: .2em;
+  margin-top: 1em;
+  box-shadow: #666 0px 3px 6px -1px;
+
+}
+
+.topHolder {
+  width: 100%;
+  height: 73%;
+  display: flex;
+
+}
+.bottomHolder {
+    width: 100%;
+    height: 27%;
+
+}
+.itemA {
+  margin-top: 2em;
+
+}
+
+.itemB {
+  grid-area: lft;
+  height: 100%;
+  padding: 1em;
+  position: relative;
+  
+}
+    .itemB h1 {
+      color: #59BCC0;
+    }
+
+.itemC {
+
+width: 100%;
+display: flex;
+
 }
 
 
-.mainDiv {
+.staffTitle {
+    color: #59BCC0;
+    position: relative;
+    bottom: 2em;
+    left: 9em;
+}
+.staff {
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+  width: 15em;
   position: relative;
-  /* border: 2px solid black; */
-  border-radius: .5em;
-  /* left: 22%; */
-  width: 65%;
-  max-width: 50em;
-  min-width: 30em;
-  height: 25em;
-  background-color: #fffefe;
-  padding: 10px;
-  box-shadow: 0px 2px 12px -1px #dfdfdf;
+  left: 13em;
+   
+}
 
+.addressHolder {
+  margin: 1em;
+  margin-bottom: 3em;
+  width: 100%
+}
+.addressHolder h3 {
+  margin-top: .5em;
+  margin-bottom: 2em;
+  }
+.contact{
+
+  height: 80%;
+}
+.email {
+  width: 95%;
+  height: 2em;
+  margin: 1em;
+  padding-left: .5em;
+
+}
+.emailBody {
+  width: 95%;
+  margin: 1em;
+
+  height: 40em;
+  padding: 1em;
+}
+.emailButton {
+  width: 25%;
+  padding: .7em;
+  background: none;
+  color: #59BCC0;
+  border-radius: 1em;
+  border: 2px solid #59BCC0;
+  position: absolute;
+  right: 1em;
+  bottom: 8em;
+  transition: .25s ease;
+
+}
+
+.emailButton:hover {
+  background: #59BCC0;
+  color: #fffefe;
+  transition: .25s ease;
+}
+
+.label {
+  margin-left: 1em;
+}
+
+.itemD {
+width: 60%;
+
+}
+.para {
+  width: 95%;
+  line-height: 2;
+}
+.line {
+  margin-top: 3em;
+}
+.itemE {
+width: 40%;
+
+}
+.itemE h1, .itemE h2, .itemE h3 {
+  margin: 2em;
+
+
+}
+
+.color {
+  color: #59BCC0;
+}
+.itemF {
+  width: 100%;
+  display: flex;
+  padding: 1em;
+
+  min-width: 10em;
+}
+
+.advertContainer {
+  position: relative;
+  display: block;
+  width: 70%;
+  max-width: 50em;
+  height: 50em;
+  padding: .5em;  
+  background: #fffefe;
+  border: #B9B7B7 solid 2px;
+  border-radius: .2em;
+  margin-top: 1em;
+  box-shadow: #666 0px 3px 6px -1px;
+
+}
+.aboutTopHolder {
+   width: 100%;
+   height: 50%;
+   display: flex;
+}
+.aboutBottomHolder {
+     width: 100%;
+     height: 50%;
+     /* display: flex; */
+     /* background: yellow; */
+
+}
+.contactHolder {
+  border: 1px solid black;
+  border-radius: 1em;
+  width: 100%;
+  padding: 1em;
+
+}
+
+
+@media screen and (max-width: 1200px) {
+  .advertContainer{
+    height: 62em;
+  }
+  .itemE, .itemD {
+    width: 100%;
+  }
+    .aboutContainer {
+      width: 100%;
+    }
+  .grid {
+     grid-template-columns: 800px;
+     grid-template-rows: 250px 250px 250px;
+     grid-gap: 1em;
+     grid-template-areas: "rght rght"
+                          "lft lft"
+                         "foot foot";
+
+
+  }
+
+  .itemA{
+    width: 90%;
+  }
+ .itemB {
+   margin-top: 0em;
+ }
+  .itemB h1 {
+    width: 75%;
+  }
+  
+  .mailingAddress {
+    display: block;
+    width: 90%;
+  }
+
+  .para {
+    padding: .5em;
+    line-height: 2;
+  
+  }
+}
+@media screen and (max-width: 900px) {
+  .topHolder{
+  display: block;
+  height: 70%;
+  }
+  .aboutTopHolder{
+  display: block;
+}
+.advertContainer {
+  height: 84em;
+}
+.itemF {
+  display: block;
+}
+.aboutContainer {
+  height: 145em;
+}
+.itemA{
+  width: 100%;
+}
+.itemC{
+  display: block;
+}
+.staffTitle{
+  left: 10%
+}
+.staff {
+  left: 25%;
+}
+}
+
+@media screen and (max-width: 700px) {
+  .staff {
+    left: 10%;
+  }
+
+  .itemC {
+    position: relative;
+    top: 20em;
+  }
+  .aboutContainer {
+    height: 175em;
+    width: 100%;
+  }
+  .advertContainer {
+        width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .advertContainer {
+    height: 95em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .advertContainer {
+    height: 100em;
+  }
+}
+
+
+@media screen and (max-width: 455px) {
+  .advertContainer {
+    height: 110em;
+  }
 }

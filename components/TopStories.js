@@ -4,6 +4,13 @@ import indexStyles from '../styles/Index.module.css';
 
 
 const TopStories = ({ topStory, title}) => {
+   const countDown = (x) => {
+     let today = new Date();
+   const oneDay = 24 * 60 * 60 * 1000;
+   let secondDate = new Date(x);
+   const diffDays = Math.round(Math.abs((today - secondDate) / oneDay));
+   return `posted ${diffDays} day's ago`;
+   }
     let globalState = useAppContext().catagories;
   return (
             <div className={indexStyles.indexContainer}>
@@ -20,7 +27,7 @@ const TopStories = ({ topStory, title}) => {
                <img src={x.fallback[0]} style={visible}/> 
                <h5 className={indexStyles.catTitle}>{globalState[x.categorization_id - 1]}</h5>
                <h2 className={indexStyles.header}>{x.title}</h2>
-               <h6 className={indexStyles.timeFooter}>{x.originalPost}</h6>
+               <h6 className={indexStyles.timeFooter}>{countDown(x.originalPost)}</h6>
                <div/>
             </div>
             </Link>)

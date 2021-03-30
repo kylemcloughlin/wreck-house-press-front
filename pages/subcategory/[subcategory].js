@@ -27,7 +27,13 @@ export default function Subcategory({ topStory, header, category}) {
           setEmpty(true)
      }
   }
-
+   const countDown = (x) => {
+     let today = new Date();
+   const oneDay = 24 * 60 * 60 * 1000;
+   let secondDate = new Date(x);
+   const diffDays = Math.round(Math.abs((today - secondDate) / oneDay));
+   return `posted ${diffDays} day's ago`;
+   }
   let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
 
   return (<div className={categoryStyles.mainContainer}>
@@ -44,7 +50,7 @@ export default function Subcategory({ topStory, header, category}) {
             {topStory.map((x, ind)=> {
               let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
               return(
-                 <Link key={x.id} href="article/[article]" as={`/article/${x.id}`}> 
+                 <Link key={x.id} href="/article/[article]" as={`/article/${x.id}`}> 
                 <div className={styleArray[ind]}>
                   <h5 className={categoryStyles.catTitle}>{header}</h5>
               
@@ -53,7 +59,7 @@ export default function Subcategory({ topStory, header, category}) {
                 {/* </div> */}
               
                 <h2 className={categoryStyles.artTitle}>{x.title}</h2>
-                <h6 className={categoryStyles.date}>{x.originalPost}</h6>
+                <h6 className={categoryStyles.date}>{countDown(x.originalPost)}</h6>
                 <div className={categoryStyles.imgBarrier}/>
                 <div/>
                 </div>

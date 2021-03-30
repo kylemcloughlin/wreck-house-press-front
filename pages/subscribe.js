@@ -5,22 +5,25 @@ export default function Subscribe({options}) {
  
   const handleClick = (opt, e) => {
       // console.log(e)
-      console.log(opt.id)
+      console.log(opt)
     }
   return (    <div className={styles.mainContainer}>
-            <h1>Subscribe</h1>
+            <div className={styles.titleHolder}>
+              <h1>Subscribe</h1>
+              <h3>Choose your pricing plan</h3>
+            </div>
             <div className={styles.holder}>
             {options.map((opt) =>{
               return (<div key={opt.name} key={opt.id} className={styles.option} > 
                 <h1>{opt.name}</h1>
                 <p>{opt.dis}</p>
-                <h5>{opt.validUntil}</h5>
+                {/* <h5>{opt.validUntil}</h5> */}
                 <Link  href="/checkout/[checkout]" as={`/checkout/${opt.id}`}>
                   {/* <Link href="checkout/[checkout]" as={`/checkout/${opt.id}`}>  */}
-                <button onClick={handleClick.bind(this, opt)} value={opt.cost} className={styles.btn}> {opt.cost} </button>
+                <button onClick={handleClick.bind(this, opt)} value={opt.cost} className={styles.btn}> ${opt.cost}.00 </button>
                   </Link> 
-                  <h6>{opt.includes}</h6>
-                  <h6>{opt.foot}</h6>
+                  <p className={styles.includes}>{opt.includes}</p>
+                  <p className={styles.foot}>{opt.foot}</p>
 
               </div>)
             })}

@@ -28,9 +28,9 @@ const router = useRouter()
      }
   
   const handleScroll = (e) => {
-      if (window.scrollY < 83) {
+      if (window.scrollY < 110) {
         setDidScroll(false)
-      } else if (window.scrollY > 83) {
+      } else if (window.scrollY > 100) {
         
         setDidScroll(true)
 
@@ -97,10 +97,10 @@ const router = useRouter()
       { globalState.map((x, ind)=> {
         
          let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })
-       let url = ind
+       let url = ind === 0 ? ("") : (ind.toString())
        let link = ind === 0 ? ("/") : ("/[category]")
        return (<li key={x}>
-        <Link href={link} as={`/${url.toString()}`}>
+        <Link href={link} as={`/${url}`}>
        < div className={navStyles.buttonHolder}>
         <button className={navStyles.navButton} onClick={handleClick} style={clickedNavButtonStyle} value={ind}>{x}</button>
        </div>
@@ -113,18 +113,21 @@ const router = useRouter()
         <ul className={navStyles.scrollNavBar}>
           { globalState.map((x, ind)=> { 
               let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })
-              let url = ind
+              let url = ind === 0 ? ("") : (ind.toString())
               let link = ind === 0 ? ("/") : ("/[category]")
                return (
                  <li key={x}>
-                  <Link href={link} as={`/${url.toString()}`}>
+                  <Link href={link} as={`/${url}`}>
                    <div className={navStyles.buttonHolder}>
                     <button className={navStyles.navButton} onClick={handleClick} style={clickedNavButtonStyle} value={ind}>{x}</button>
                    </div> 
                   </Link>   
                   </li>)
            })}
-            {isLoggedIn ? (<button className={navStyles.signIn} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><img className={navStyles.scrollNavSignIn} src="/images/user.png"/></Link>)}
+            <Link href="/subscribe" as='subscribe'> 
+              <button className={navStyles.scrollSubscribe}> Subscribe </button>
+          </Link>
+            {isLoggedIn ? (<button className={navStyles.scrollSignOut} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><img className={navStyles.scrollNavSignIn} src="/images/user.png"/></Link>)}
         </ul>
       </div>
     </div>

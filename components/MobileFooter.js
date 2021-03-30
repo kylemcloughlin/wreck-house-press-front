@@ -5,9 +5,15 @@ import { useSpring, animated } from 'react-spring';
 
 
 const MoblileFooter = ({children}) => {
-  const [toggle, setToggle] = useState(false)
- const props = useSpring({
+  const [toggle, setToggle] = useState(false);
+ 
+ 
+  const props = useSpring({
    height: toggle ? 70 : 0,
+   transform: 'translate3d(0,0,0)',
+   display: 'flex',
+   flexDirection: 'column',
+   overflow: 'hidden',
    config: {   duration: 400 },
    visibility: toggle ? "visible" : 'hidden',
  })
@@ -40,7 +46,7 @@ const MoblileFooter = ({children}) => {
 
                      {children.subLinks.map(subLink =>{
            return( <Link href={`/${children.name}/[${children.name}]`} key={subLink}  as={`/${children.name}/${subLink}`}>
-                     <button>{subLink}</button>
+                     <button className={navStyles.moblieFooterButton}>{subLink}</button>
                </Link>  ) })}
        
         </animated.div>

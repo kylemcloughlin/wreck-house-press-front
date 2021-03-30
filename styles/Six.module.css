@@ -24,9 +24,9 @@
   /* border-right: #B9B7B7 solid 1px; */
 }
 .subItemA div {
-   width: 2px;
+   width: 1px;
    height: 100%;
-   background-color: black;
+   background-color: #B9B7B7;
    position: absolute;
    left: 100%;
    bottom: 1%;
@@ -39,9 +39,9 @@
 
 }
 .subItemB div {
-  width: 2px;
+  width: 1px;
   height: 100%;
-  background-color: black;
+  background-color: #B9B7B7;
   position: absolute;
   left: 100%;
   bottom: 1%;
@@ -57,16 +57,16 @@
 .subItemD {
   position: relative;
 
-  border-top: black solid 2px;
+  border-top: #B9B7B7 solid 1.5px;
   grid-area: foh;
   height: 15em;
     width: 100%;
 
   }
   .subItemD div {
-    width: 2px;
+    width: 1.5px;
     height: 100%;
-    background-color: black;
+    background-color: #B9B7B7;
     position: absolute;
     left: 100%;
     top: 1%;
@@ -74,7 +74,7 @@
 .subItemE {
   position: relative;
 
-  border-top: black solid 2px;
+  border-top: #B9B7B7 solid 1.5px;
   height: 15em;
     width: 100%;
 
@@ -82,9 +82,9 @@
 }
 
 .subItemE div {
-  width: 2px;
+  width: 1px;
   height: 100%;
-  background-color: black;
+  background-color: #B9B7B7;
   position: absolute;
   left: 100%;
   top: 1%;
@@ -93,7 +93,7 @@
   position: relative;
 
   grid-area: six;
-  border-top: black solid 2px;
+  border-top: #B9B7B7 solid 1.5px;
     height: 15em;
     width: 100%;
 
@@ -130,6 +130,9 @@ top: .5em;
   border-top-right-radius: 1em;
   padding: .5em;
   background-color: #fffefe;
+    font-family: 'Newsreader', Fallback, sans-serif;
+  font: normal;
+  font-weight: 500;
     }
 
 .threeTimeFooter {
@@ -137,6 +140,9 @@ top: .5em;
   bottom: -1.5em;
   left: 1em;
   color: #B9B7B7;
+    font-family: 'Montserrat',sans-serif;
+      font-style: normal ;
+      font-weight: 600;
 }
 
 .catTitle {
@@ -144,6 +150,11 @@ position: absolute;
 top: 0em;
 left: 1em;
 color: #777676;
+  font-family: 'Montserrat',sans-serif;
+      font-style: normal ;
+      font-weight: 600;
+
+
 }
 
 @media screen and (max-width: 1000px) {

@@ -63,3 +63,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+
+.btn,.btnWithSubs {
+  outline: none;
+  background: none;
+  color: #fffefe;
+  border: none;
+  text-transform: uppercase;
+}
+
+.btn:focus {
+  background: #59BCC0;
+
+}
+
+
+.btnWithSubs {
+  border-bottom: 2px solid #59BCC0;
+}

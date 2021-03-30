@@ -5,6 +5,7 @@ import FooterAbout from "../../components/FooterAbout.js";
 import FAQ from "../../components/FAQ.js";
 import ContactUs from "../../components/ContactUs.js";
 
+
 export default function About() {
    const router = useRouter();
   const [title, setTitle] =useState()
@@ -31,8 +32,10 @@ export default function About() {
   return (   
   
   <div className={styles.mainContainer}>
-  <div className={styles.mainDiv}>
-    <h1>{title}</h1>
+  <div className={styles.holder}>
+
+    <h1 className={styles.title}>{title}</h1>
+
       {elmnt}
   </div>
   </div>)

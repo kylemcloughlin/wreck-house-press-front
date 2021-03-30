@@ -5,24 +5,27 @@ import articleStyles from '../../styles/Article.module.css';
 import {useState, useEffect } from 'react';
 import axios from 'axios'
 import { useAppContext } from '../../context/AppContext';
+import { parseCookies} from 'nookies';
 export default function Article({article}) {
     let [loggedIn, setLoggedIn] = useState(true);
- const handleLogin = async () => {
+ const handleLogin = async (ctx) => {
+const {Bearer} = await parseCookies(ctx);
     axios.get(`${process.env.BACKEND_URL}/logged_in`, {
-  
-       withCredentials: true,
-       headers: {
-         'Content-Type': 'none'
-       }
-     })
-     .then(res => {
-       console.log("hitting", res.data.logged_in)
-       setLoggedIn(res.data.logged_in);
-     }).catch((error) => {
-       console.log(error);
-     });
+         withCredentials: true,
+         headers: {
+           'Content-Type': 'none',
+           "Authorization": Bearer
+         }
+       })
+       .then(res => {
+         setLoggedIn(res.data.logged_in);
+       }).catch((error) => {
+          setLoggedIn(false);
+       });
 
- }
+   }
+
+
  useEffect(() => {
 
 
@@ -30,7 +33,8 @@ export default function Article({article}) {
  }, []);
 
  let category = useAppContext().catagories;
-//  console.log(article)
+ let subcategory = useAppContext().subcatagories;
+ console.log(article)
   return (
     <div className={articleStyles.holder}>
       <Head>
@@ -39,6 +43,7 @@ export default function Article({article}) {
       </Head>
 <main className={articleStyles.container}>
   <h4 className={articleStyles.category}>{category[article.categorization_id - 1]}</h4> 
+  { article.subcategorization_id === null ? (<div/>) : (<h4 className={articleStyles.subcategory}>{subcategory[article.subcategorization_id]}</h4> )}
   <h1 className={articleStyles.title}>{article.title}</h1>
   <div className={articleStyles.headingHolder}>
     <h5 className={articleStyles.author}>by {article.author}</h5>

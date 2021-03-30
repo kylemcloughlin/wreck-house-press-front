@@ -4,7 +4,7 @@ margin: 5em;
 
 }
 
-.category {
+.category, .subcategory {
   background: #59BCC0;
   color: #F9F9F9;
   position: relative;
@@ -17,7 +17,9 @@ margin: 5em;
   top: -2em;
 
 }
-
+.subcategory{
+  margin-top: 0em;
+}
 .img {
   display: block;
   margin-left: auto;
@@ -88,7 +90,9 @@ margin: 5em;
 }
 
 .title {
-  /* padding-left: .7em; */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
 }
 
 
@@ -109,7 +113,10 @@ margin: 5em;
 .paragraph {
   margin: 1em;
   padding-left: .7em;
-
+  line-height: 1.8;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
 }
 
 .para {

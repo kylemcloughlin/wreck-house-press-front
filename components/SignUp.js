@@ -41,6 +41,9 @@ const [cookie, setCookie] = useCookies(["bearer"])
 
 
   return (<div>
+      <div className={loginStyles.titleHolder}>
+            <h1 className={loginStyles.title}>Register</h1>
+      </div>
           <form onSubmit={registerUser}>
       <ul className={loginStyles.formList}>
         <li>

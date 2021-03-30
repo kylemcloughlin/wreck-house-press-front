@@ -9,10 +9,10 @@ const links = [{
   subLinks: ["About", "FAQ", "Contact Us"]
 }, {
   name: "advertising",
-  subLinks: ["Advertising", "Services", "Place An Ad"]
+  subLinks: [ "Services", "Place An Ad"]
 }, {
   name: "publishing",
-  subLinks: ["Services", "Contact for Authors"]
+  subLinks: ["Contact for Authors"]
 }]
 const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC]
   return(

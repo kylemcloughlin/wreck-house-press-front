@@ -1,32 +1,23 @@
 
-// import "../styles/CheckoutForm.css";
-import { Col, Row } from "antd";
+import styles from "../styles/Checkout.module.css";
 
-const OrderSummary = () => {
+
+const OrderSummary = ({option}) => {
+  
   return (
-    <div className="order-summary">
-      <Row>
-        <Col span={1}>
-          <div className="divider"></div>
-        </Col>
-        <Col span={23}>
-          <h1>Order Summary</h1>
-          <Row>
-            <Col span={12}>
+    <div className={styles.order}>
+          <h2>Order Summary</h2>
+          <div className={styles.divider}></div>
               <div className="order-item">
                 <h3>Standard subscription</h3>
+                <h4>{option.name}</h4>
+                <h4>{option.dis}</h4>
               </div>
-            </Col>
-            <Col span={12}>
               <div className="order-item-price">
-                <p>$10.00 monthly</p>
+                <p>${option.cost}.00</p>
               </div>
-            </Col>
-          </Row>
           <hr></hr>
-          <h3>Today's charge: $10.00</h3>
-        </Col>
-      </Row>
+          <p> Today 's charge: ${option.cost}.00</p>
     </div>
   );
 };

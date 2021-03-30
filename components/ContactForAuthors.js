@@ -1,6 +1,6 @@
 
 import {React, useState, useEffect} from 'react';
-import styles from '../styles/FooterLinks.module.css';
+import styles from '../styles/About.module.css';
 const ContactForAuthors = () => {
   const sendMail = event => {
     event.preventDefault();
@@ -10,13 +10,17 @@ const ContactForAuthors = () => {
 
   }
 
-  return (
-    <form onSubmit={sendMail}>
-    <input id="email" type="email" autoComplete="email" placeholder="email" className={styles.email} required />
-      <input id="subject" type="text" placeholder="Subject" className={styles.subject} required />
-      <input id="name" type="text" required  className={styles.textArea}/>
-      <button type="submit" className={styles.contactBtn}>Register</button>
+   return (
+        <div className={styles.contactContainer}>
+    <form onSubmit={sendMail} className={styles.contact}>
+      <span className={styles.label}>EMAIL ADDRESS</span>
+      <input className={styles.email} id="email" type="email" autoComplete="email" placeholder="Your Email Address" className={styles.email} required />
+      {/* <input id="subject" type="text" placeholder="Subject" className={styles.subject} required /> */}
+      <span className={styles.label}>EMAIL BODY</span>      
+      <textarea className={styles.emailBody} id="email-body"  placeholder="Email Body " required />
+      <button className={styles.emailButton} type="submit" className={styles.emailButton}>SEND</button>
     </form>
+  </div>
   )
 }
 

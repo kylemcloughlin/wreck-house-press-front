@@ -1,30 +1,59 @@
 .mainContainer {
   width: 100%;
-  height: 100%;
+}
+.holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.holder {
+.indexContainer {
   position: relative;
   display: flex;
-  border-radius: .5em;
-  width: 100%;
-  height: 25em;
-  background-color: #fffefe;
-  padding: 10px;
-  box-shadow: 0px 2px 12px -1px #dfdfdf;
+  width: 80%;
+  padding: .5em;
+  background: #fffefe;
+  border: #B9B7B7 solid 2px;
+  border-radius: .2em;
+  margin-top: 1em;
+  box-shadow: #666 0px 3px 6px -1px;
 
 }
 
 .panel {
   border: 2px solid black;
   margin: auto;
-  height: 23em;
-  width: 30%;
-  align-items: center;
-  text-align: center;
+  height: 32em;
+  width: 100%;
+  margin: 1em;
+  padding: .5em;
   position: relative;
+}
+.creditCardLabel {
+  margin-top: .5em;
+}
+.inputHolder {
+  width: 100%;
+}
 
+.inputHolder input {
+ width: 48%;
+ border: 2px solid black;
+ margin-left: 5px;
+ margin-top: 25px;
+ margin-bottom: 5px;
+ height: 3em;
+ border-radius: .5em;
+ padding: .5em;
+
+}
+.inputHolder input:focus {
+  outline: none;
+}
+.inputHolder label {
+  position: absolute;
 }
 .btn {
       position: absolute;
@@ -55,46 +84,44 @@
   bottom: 6em;
 }
 .first {
-  border: 2px solid black;
-  border-radius: .5em;
-  width: 50%;
-  padding: .5em;
-  left: 5%;
-  margin: 1em;
+border: 2px solid black;
+border-radius: .5em;
+width: 100%;
+padding: .5em;
+margin-bottom: 5px;
+margin-top: 5px;
+height: 3em;
 }
-.last {
-  border: 2px solid black;
-  border-radius: .5em;
-  width: 50%;
-  padding: .5em;
-  left: 5%;
-  margin: 1em;
-}
-.name {
- margin: .5em;
- width: 100%;
- height: 50%;
-}
-.address {
-  border: 2px solid black;
-  border-radius: .5em;
-  width: 90%;
-  padding: .5em;
-  left: 5%;
+.addressDetails {
+  width: 100%;
 }
 
-@media screen and (max-width: 700px) {
-  .holder {
+
+.order {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+}
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #666;
+}
+
+@media screen and (max-width: 1000px) {
+  /* .holder {
     display: block;
     margin-bottom: 1em;
-    /* width: 50%; */
+   
     height: 74em;
-    /* height: 100em; */
+   
+  } */
+  .indexContainer {
+    display: block;
   }
-
   .panel {
     margin-bottom: 1.5em;
-    width: 30%;
+    width: 95%;
     min-width: 17em;
   }
 

@@ -43,6 +43,9 @@ const SignIn =() => {
   }
   
   return (<div>
+     <div className={loginStyles.titleHolder}>
+            <h1 className={loginStyles.title}>Sign In</h1>
+      </div>
            <form onSubmit={handleSignIn} className={loginStyles.signIn}>
       <ul className={loginStyles.formList}>
         <li>

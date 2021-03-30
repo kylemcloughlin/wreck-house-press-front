@@ -109,7 +109,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
   
     <div className={loginStyles.underline}/>
          <div className={loginStyles.holder}>
-    <form onSubmit={registerUser} className={loginStyles.signIn}>
+    <form onSubmit={registerUser} className={loginStyles.register}>
       <ul className={loginStyles.formList}>
         <li>
           <label htmlFor="name">Name</label>

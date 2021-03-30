@@ -15,6 +15,7 @@
 .btn {
      position: relative;
      top: 5em;
+     left: 25%;
      width: 50%;
      padding: .7em;
      background: none;
@@ -22,6 +23,7 @@
      border-radius: 1em;
      border: 2px solid #59BCC0;
      transition: .25s;
+     
 }
 
 .btn:hover {
@@ -34,11 +36,12 @@
 
 .switchBtn {
     position: absolute;
-    left: 2px;
-    bottom: 2px;
+    left: 25px;
+    bottom: 27px;
     border: none;
     background-color: transparent;
     transition: 2ms;
+    
 }
 
 .switchBtn:hover {
@@ -68,3 +71,14 @@
   position: absolute;
   left: 5px;
 }
+
+.titleHolder {
+  width: 100%;
+  text-align: center;
+  font-family: 'Montserrat',  sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
+    
+}
+

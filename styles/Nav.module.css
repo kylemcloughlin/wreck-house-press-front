@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  
 }
 .burger {
   visibility: hidden;
@@ -25,7 +26,7 @@
   border-radius: 1em;
   border: 2px solid #59BCC0;
   position: relative;
-  right: 1em;
+  right: 3em;
   transition: .25s;
   
 }
@@ -40,7 +41,7 @@
 .img{
   margin: auto;
 }
-.subscribe {
+.subscribe, .scrollSubscribe {
   padding: .7em;
   background: none;
   color: #59BCC0;
@@ -51,7 +52,11 @@
   transition: .25s;
   
 }
-.signIn {
+
+.scrollSubscribe {
+  right: 7em;
+}
+.signIn, .scrollSignOut{
   padding: .7em;
   background: none;
   color: #59BCC0;
@@ -62,12 +67,15 @@
   transition: .25s;
   
 }
+.scrollSignOut {
+  right: 0.5em;
+}
 .signIn:hover {
   background: #59BCC0;
   color: #fffefe;
   transition: .25s;
 }
-.subscribe:hover {
+.subscribe:hover, .scrollSubscribe:hover {
   background: #59BCC0;
   color: #fffefe;
   transition: .25s;
@@ -234,9 +242,10 @@
       }
       
       .footerList{
-        font-family: Arial, Helvetica, sans-serif;
-        /* font-size: 2em; */
+        font-family: 'Montserrat';
+        font-style: normal;
         font-weight: 400;
+        /* font-size: 2em; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -262,6 +271,9 @@
 
             .footerList ul h3 {
               text-transform: capitalize;
+                  font-family: 'Montserrat';
+                  font-style: normal;
+                  font-weight: 600;
             }
 
       .footerList li {
@@ -350,7 +362,7 @@
       
     }
     .footerListHolder {
-      
+      height: 26em;
       
       
     }
@@ -365,16 +377,22 @@
         align-items: center;
       } 
       .mobileFooterList {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* background: blue; */
       /* visibility: hidden; */
       /* height: 0; */
 
 
        }
 
-       
+       .moblieFooterButton{
+         background: none;
+         border: none;
+         color: #ffefee;
+         margin:.3em;
+       }
        .mobileFooterName {
              width: 10em;
              text-transform: uppercase;
@@ -382,7 +400,7 @@
              padding-bottom: 0;
              padding-left: 0;
              border: none;
-             border-bottom: 2px solid pink;
+             border-bottom: 2px solid#59BCC0;
              background: none;
              margin: 0.2em;
              color: #fffefe;

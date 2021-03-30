@@ -7,16 +7,23 @@ import Router from "next/router";
 import axios from 'axios';
 
 const CheckoutForm = props => {
-  // const { getFieldDecorator } = props.form;
   const [isLoading, setLoading] = useState(false);
-  console.log(props)
+  const [complete, setComplete] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   let email = 'test@testy.com';
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log('hit')
+    let name = event.target.name.value
+    let email = event.target.email.value
+    let add = event.target.address.value
+    let postal = event.target.postal.value
+    let city = event.target.city.value
+    let prov = event.target.province.value
+    let country = event.target.country.value
+    let address = `${add} ${postal} ${city}, ${prov} ${country}`;
+    console.log(address)
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
@@ -30,35 +37,34 @@ const CheckoutForm = props => {
       card: elements.getElement(CardElement),
       billing_details: {
         email: email,
+        
       },
     });
-      console.log(result)
-      console.log('hit 4')
+    console.log(result)
+    console.log('hit 4')
     if (result.error) {
       console.log(result.error.message);
     } else {
       console.log('hit 5')
-
- 
+      setComplete('pending')
+      
+      
       axios.post(`${process.env.BACKEND_URL}/customers`, {
         email: email,
         payment_method: result.paymentMethod.id,
-         
-         
-  }, {
+        code: props.code,
+        name: name,
+        address: address,
+        
+      }, {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json'
     }
   })
   .then((response) => {
-    console.log(response.data)
-        const status = response.data.subscription.latest_invoice.status
-      const client_secret = response.data.subscription.latest_invoice.client_secret
-      console.log(client_secret)
-      console.log(status)
-
-    // eslint-disable-next-line camelcase
+      const status = response.data.subscription.latest_invoice.status;
+      const client_secret = response.data.subscription.latest_invoice.client_secret;
     
       if (status === 'requires_action') {
           stripe.confirmCardPayment(client_secret).then(function (result) {
@@ -69,14 +75,15 @@ const CheckoutForm = props => {
                   // The card was declined (i.e. insufficient funds, card has expired, etc)
                 } else {
                     console.log('You got the money!');
-                    // Show a success message to your customer
+                  setComplete(true)
                   }
                 });
               } else {
                   console.log('You got the money!');
-              //     // No additional information was needed
+                  setComplete(true)
+                
              
-               } //     // Show a success message to your customer
+               } 
   }).catch((error) => {
     console.log(error);
   });
@@ -104,17 +111,44 @@ const CheckoutForm = props => {
       }
     }
   };
-  return (
-    <form onSubmit={e => handleSubmit(e)}>
-     
-     <CardElement options={cardOptions} />
 
-      <button
-        // loading={isLoading}
-        type="primary"
-        htmlType="submit"
-        className="checkout-button"
-        disabled={!stripe}>Submit</button>
+  if(complete) {
+    return( 
+      <div>
+       <h5>Checkouted</h5>
+      </div>
+    )
+  }
+
+  return (
+    <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+       <h5>Checkout Details</h5>
+       <div className={styles.inputHolder}>     
+      <label>Full Name</label>
+     <input label="Name" name="name" type="text" placeholder="Name" required />
+      <label>Email</label>     
+      <input label="Email" name="email" type="email"  placeholder="Email" required />
+      </div>
+      <div className={styles.addressDetails}>
+      <label>Address</label>     
+       <input className={styles.first} label="Address" name="address" type="text"  placeholder="Address" required />
+       <div className={styles.inputHolder}>
+      <label>Postal Code</label>          
+        <input label="Postal Code" name="postal" type="text" placeholder="Postal Code" required />
+      <label>City</label>           
+        <input label="City" name="city" type="text"  placeholder="City" required />
+      </div>
+       
+       <div className={styles.inputHolder}>
+        <label>Province</label>           
+        <input className={styles.province} label="Province" name="province" type="text"  placeholder="Province" required />
+        <label>Country</label>                 
+        <input className={styles.country} label="Country" name="country" type="text"  placeholder="Country" required />
+       </div>
+       <label className={styles.creditCardLabel}>Credit Card Details</label>
+        <CardElement options={cardOptions} className={styles.credit}/>
+        </div>
+{complete === 'pending' ? (<button className={styles.btn} disabled={true}>Sent</button>): ( <button type="primary" htmlType="submit" className={styles.btn} disabled={!stripe}>Submit</button>)}
     </form>
   );
 };

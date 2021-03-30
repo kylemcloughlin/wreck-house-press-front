@@ -28,10 +28,14 @@ export default function Publishing() {
   },[router]) 
   return (   
   
-  <div className={styles.mainContainer}>
-  <div className={styles.mainDiv}>
-    <h1>{title}</h1>
-    {elmnt}
+   <div className={styles.mainContainer}>
+  <div className={styles.holder}>
+
+    <h1 className={styles.title}>{title}</h1>
+
+
+      {elmnt}
+
   </div>
   </div>)
 }

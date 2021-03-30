@@ -1,52 +1,10 @@
-
 /* newsreader-regular - latin */
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./fonts/newsreader-v7-latin-regular.eot');
-  /* IE9 Compat Modes */
-  src: local(''),
-    url('./fonts/newsreader-v7-latin-regular.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('./fonts/newsreader-v7-latin-regular.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('./fonts/newsreader-v7-latin-regular.woff') format('woff'),
-    /* Modern Browsers */
-    url('./fonts/newsreader-v7-latin-regular.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-    url('./fonts/newsreader-v7-latin-regular.svg#Newsreader') format('svg');
-  /* Legacy iOS */
-}
-
-/* newsreader-800 - latin */
-/* newsreader-600 - latin */
-@font-face {
-  font-family: 'Newsreader';
-  font-style: normal;
-  font-weight: 600;
-  src: url('./fonts/newsreader-v7-latin-600.eot');
-  /* IE9 Compat Modes */
-  src: local(''),
-    url('./fonts/newsreader-v7-latin-600.eot?#iefix') format('embedded-opentype'),
-    /* IE6-IE8 */
-    url('./fonts/newsreader-v7-latin-600.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('./fonts/newsreader-v7-latin-600.woff') format('woff'),
-    /* Modern Browsers */
-    url('./fonts/newsreader-v7-latin-600.ttf') format('truetype'),
-    /* Safari, Android, iOS */
-    url('./fonts/newsreader-v7-latin-600.svg#Newsreader') format('svg');
-  /* Legacy iOS */
-}
-
-
 
 .mainContainer {
   position: relative;
   width: 100%;
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 
@@ -70,11 +28,14 @@
 
 .title {
   position: relative;
+    font-family: 'Montserrat',  sans-serif;
+    font-style: normal;
+    font-weight: 600;
   top: 0em;
 }
 
 .underline {
-   border: black solid 1px;
+   border: #B9B7B7 solid 1px;
    width: 95%;
 }
 .header {
@@ -86,23 +47,33 @@
   padding: .5em;
   background-color: #fffefe;
   font-family: 'Newsreader', Fallback, sans-serif;
+  font: normal;
+  font-weight: 500;
 }
 .catTitle {
     position: absolute;
     top: -1em;
     left: 1em;
     color: #777676;
+      font-family: 'Montserrat',
+      sans-serif;
+      font-style: normal ;
+      font-weight: 600;
 }
 .timeFooter{
    position: absolute;
    bottom: -1em;
    left: 1em;
    color: #B9B7B7;
+      font-family: 'Montserrat',
+      sans-serif;
+      font-style: normal;
+      font-weight: 600
 }
 .itemA {
   grid-area: main;
   /* background-color: blanchedalmond; */
-  border-right: black solid 2px;
+  border-right: #B9B7B7 solid 1px;
   /* height: 20%; */
   height: 26em;
   width: 100%;
@@ -150,9 +121,9 @@ top: .5em
   /* background-color: green; */
 }
 .itemC div {
- height: 2px;
+ height: 1px;
  width: 75%;
- background-color: black;
+ background-color: #B9B7B7;
  position: absolute;
  left: 10%;
  top: 0%;
@@ -178,9 +149,9 @@ top: .5em
   
   }
 .itemD div {
-  height: 2px;
+  height: 1px;
   width: 75%;
-  background-color: black;
+  background-color:#B9B7B7;
   position: absolute;
   left: 10%;
   top: 0%;
@@ -198,9 +169,9 @@ top: .5em
 
 }
 .itemE div {
-    height: 2px;
+    height: 1px;
     width: 92%;
-    background-color: black;
+    background-color:#B9B7B7;
     position: absolute;
     left: 0%;
     align-items: center;
@@ -302,9 +273,9 @@ top: .5em
    /* border-right: #B9B7B7 solid 1px; */
  }
  .subItemA div {
-   width: 2px;
+   width: 1px;
    height: 100%;
-   background-color: black;
+   background-color: #B9B7B7;
    position: absolute;
    left: 100%;
    bottom: 1%;
@@ -320,9 +291,10 @@ top: .5em
  }
 
  .subItemB div {
-   width: 2px;
+   width: 1px;
    height: 100%;
-   background-color: black;
+   background-color: #B9B7B7;
+   ;
    position: absolute;
    left: 100%;
    bottom: 1%;
@@ -352,6 +324,9 @@ top: .5em
    position: absolute;
    left: .5em;
    top: 11.5em;
+       font-family: 'Newsreader', Fallback, sans-serif;
+  font: normal;
+  font-weight: 500;
  }
 
  .threeTimeFooter {
@@ -359,6 +334,10 @@ top: .5em
    bottom: -1.5em;
    left: 1em;
    color: #B9B7B7;
+     font-family: 'Montserrat',
+     sans-serif;
+     font-style: normal;
+     font-weight: 600;
  }
 
  .addStoryContainer {
@@ -372,7 +351,7 @@ top: .5em
  }
 
  .story {
-   border-right: 1px solid black;
+   border-right: 1px solid #B9B7B7;
   position: relative;
    margin: .5em;
    width: 33%;
@@ -386,21 +365,34 @@ top: .5em
  .line {
    width: 98%;
    height: 1px;
-  background: black;
+  background:#B9B7B7;
   position: absolute;
  }
  .addedHeader{
   position: absolute;
   top: 0em;
+  color: #777676;
+font-family: 'Montserrat';
+ font-style: normal;
+ font-weight: 600;
  }
  .addedTitle{
      position: absolute;
-     bottom: 1.5em
- }
-
- .addedDate {
+     bottom: 1.5em;
+     font-family: 'Newsreader',
+     Fallback,
+     sans-serif;
+     font: normal;
+     font-weight: 500;
+    }
+    
+    .addedDate {
+      color: #777676;
     position: absolute;
-    bottom: 0em;
+    bottom: -1em;
+     font-family: 'Montserrat';
+     font-style: normal;
+     font-weight: 600;
  }
  @media screen and (max-width: 1200px) {
    .itemA {
@@ -494,7 +486,8 @@ height: 100%;
 }
 .story{
   border-right: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #B9B7B7;
+  ;
 }
 .addedHeader {
   top: -2em;
@@ -504,5 +497,6 @@ height: 100%;
 }
 .addedTitle{
   bottom: 0.5em;
+  
 }
 }

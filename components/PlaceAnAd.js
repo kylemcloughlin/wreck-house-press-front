@@ -1,13 +1,26 @@
 
 import {React, useState, useEffect} from 'react';
-import styles from '../styles/FooterLinks.module.css';
+import styles from '../styles/About.module.css';
 const  PlaceAnAd = () => {
-// console.log(category)
+  const sendMail = event => {
+    event.preventDefault();
+    console.log('hit')
+
+
+
+  }
 
   return (
-      <main className={styles.main}>
-      <h1>PLace And aD</h1>
-      </main>
+             <div className={styles.contactContainer}>
+    <form onSubmit={sendMail} className={styles.contact}>
+      <span className={styles.label}>EMAIL ADDRESS</span>
+      <input className={styles.email} id="email" type="email" autoComplete="email" placeholder="Your Email Address" className={styles.email} required />
+      {/* <input id="subject" type="text" placeholder="Subject" className={styles.subject} required /> */}
+      <span className={styles.label}>EMAIL BODY</span>      
+      <textarea className={styles.emailBody} id="email-body"  placeholder="Email Body " required />
+      <button className={styles.emailButton} type="submit" className={styles.emailButton}>SEND</button>
+    </form>
+  </div>
   )
 }
 
