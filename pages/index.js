@@ -59,7 +59,7 @@ export default function Home({articles, topStory, title}) {
         <main className={indexStyles.mainContainer}>  
         <TopStories title={title} topStory={topStory}/>
         {/* <a href="https://ibb.co/HzDCvBd"><img src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0"/></a> */}
-        <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0" /></a>
+        <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://bn02pap001files.storage.live.com/y4pZ4zB6xWQg8-0odepc4_IruG44WSxC_ADbEc1sjbaxbWQpvgcb84QVEjLA-tcIYXr54IeKRn8X0ocfqZWYoHQIJwiKJSm0uXQKOoiGrTBuTlDWAs_K6hv3XRw8asfFI-a7ohKClRUf8vsHWphjz73l4w3Kflw4qM11eH8hnviHy7XlgX7x8InErkmmkqJZAUkpfG3brcHguNdkMHacBBYCiVfq-6B94PYipCwoDFG5z8/000062340021.jpg?psid=1&width=1402&height=929" border="0" /></a>
         <SecondaryStories sortedArticles={sortedArticles}/>
       </main>
     </div>
