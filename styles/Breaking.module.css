@@ -1,0 +1,67 @@
+.container{
+  width: 80%;
+  max-width: 70em;
+  height: 55em;
+  background-color:#fffefe;
+  border-radius: 1em;
+  margin-top: 3em;
+  box-shadow: #666 0px 3px 6px -1px;
+
+}
+
+.container h3 {
+  padding-left: 3em;
+}
+.list{
+  width: 100%;
+  list-style: none;
+
+}
+
+.list li {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list li input {
+  margin-bottom: 1em;
+  padding: .5em;
+  height: 3em;
+  border-radius: .3em;
+  border: 1px solid black;  
+  
+}
+
+
+.textarea {
+  height: 20em;
+  padding-top: .7em;
+  padding-left: 1em;
+}
+.holder {
+  /* display: block !important; */
+  width: 100%;
+   /* justify-content: center; */
+}
+.split {
+  width: 40%;
+margin: .5em;
+
+}
+.holder label {
+  margin-right: 1em; 
+}
+
+.buttonHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.buttonHolder button {
+  width: 15em;
+  height: 4em;
+}
+
