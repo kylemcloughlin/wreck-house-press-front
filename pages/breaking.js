@@ -16,17 +16,19 @@ export default function Breaking() {
       const handleBreaking = (e) => {
         e.preventDefault()
         let {title, author, readTime, category, subcategory, photos, subtitles, body} = e.target;
+        let splitBody = body.value.split("\n")
+        console.log(splitBody)
         let output = {
           article: {
             title: title.value,
             author: author.value,
-            readTime: readTime.value,
+            rt: readTime.value,
             category: category.value,
             breaking: true,
             subcategory: subcategory.value,
-            photos: photos.value,
+            photos: [photos.value],
             subtitles: subtitles.value,
-            body: body.value 
+            body: splitBody 
 
           }
         }
@@ -39,7 +41,7 @@ export default function Breaking() {
           }
         })
         .then((response) => {
-          if (response.data.posted) {
+          if (response.data.status === 'created') {
                 console.log('posted', response.data)
           } else {
             console.log('somthing went wrong?', response.data)
@@ -69,24 +71,23 @@ export default function Breaking() {
         </li>
          <li className={styles.holder}>
   
-          <select name="category"  className={styles.split}>
+          <select name="category"  className={styles.split} required>
            <option value="" >--Category--</option>
-           <option value="dog">Dog</option>
-           <option value="cat">Cat</option>
-           <option value="hamster">Hamster</option>
-           <option value="parrot">Parrot</option>
-           <option value="spider">Spider</option>
-           <option value="goldfish">Goldfish</option>
+           <option value="1">Top Story</option>
+           <option value="2">Local News</option>
+           <option value="3">Sports</option>
+           <option value="4">Opinion</option>
+           <option value="5">Community</option>
+           <option value="6">The Arts</option>
           </select>      
          
-          <select name="subcategory"  className={styles.split}>
+          <select name="subcategory"  className={styles.split} required>
            <option value="" >--Subcategory--</option>
-           <option value="dog">Dog</option>
-           <option value="cat">Cat</option>
-           <option value="hamster">Hamster</option>
-           <option value="parrot">Parrot</option>
-           <option value="spider">Spider</option>
-           <option value="goldfish">Goldfish</option>
+           <option value="1">Columnists</option>
+           <option value="2">Letters</option>
+           <option value="3">Profile</option>
+           <option value="4">On The Bookshelf</option>
+           <option value="5">Music Row</option>
           </select>                   
         </li>
          <li>

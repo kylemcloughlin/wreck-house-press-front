@@ -13,6 +13,21 @@
   font-style: normal;
   font-weight: 400;
 }
+.error {
+  margin-top: 1em;
+  width: 45%;
+  height: 10em;
+  /* border: 2px solid black; */
+  background-color: #E57373;
+  border-radius: 1em;
+  color: #fffefe;
+  text-align: center;
+  
+  /* vertical-align: center; */
+}
+.message {
+  margin-top: 4em;
+}
 
 .loginDiv {
   position: relative;
@@ -140,6 +155,54 @@ left: 50%;
   
 } */
 
+.forgotButton {
+  border: none;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  background: none;
+
+}
+.forgotButton:hover {
+  color: #59BCC0;
+  border-bottom: 1px solid #59BCC0 !important;
+}
+
+.recoveryTitle {
+  font-family: 'Montserrat',
+  sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+.recoveryBtn {
+   width: 10em;
+   position: absolute;
+   bottom: 1em;
+   right: 1em;
+   
+   padding: .7em;
+   background: none;
+   color: #59BCC0;
+   border-radius: 1em;
+   border: 2px solid #59BCC0;
+   transition: .25s;
+}
+
+.recoveryBtn:hover, .recoveryBtn:focus {
+   background-color: #59BCC0;
+   color: #fffefe;
+   transition: .25s;
+}
+
+.recoveryInput {}
+
+
+@media screen and (max-width: 1200px) {
+ .loginDiv {
+   width: 100%;
+   transition: 2ms ease;
+ }
+}
 
 @media screen and (max-width: 800px) {
   

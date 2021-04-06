@@ -1,13 +1,15 @@
 import {React, useState, useEffect} from 'react';
-import styles from '../styles/FooterLinks.module.css';
+import styles from '../../styles/FooterLinks.module.css';
 import { useSpring, animated } from 'react-spring';
 
 const Quesion = ({data}) => {
  const [toggle, setToggle] = useState(false);
 
  const props = useSpring({
-   height: toggle ? 100 : 0,
+   height: toggle ? 150 : 0,
+   marginBottom: toggle ? 15 : 0,
    transform: 'translate3d(0,0,0)',
+   padding: '1em',
    display: 'flex',
    flexDirection: 'column',
    overflow: 'hidden',
@@ -21,13 +23,13 @@ const Quesion = ({data}) => {
     setToggle(!toggle)
   }
  return( <div>
-            <button onClick={handleToggle}>{data.question}</button>
+            <button onClick={handleToggle} className={styles.btn}>{data.question}</button>
             <div className={styles.underline}/>
                <animated.div style={props}>
 
             {data.answers.map(x => {
               return( 
-                <p>{x}</p>
+                <p className={styles.faqPara}>{x}</p>
                 )
               })}
 

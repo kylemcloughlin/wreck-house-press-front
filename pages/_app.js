@@ -6,11 +6,13 @@ import {useState, useEffect } from 'react';
 import '../styles/globals.css';
 import { CookiesProvider } from "react-cookie"
 import { parseCookies} from 'nookies';
+import Link from 'next/link';
 
 function MyApp({ Component, pageProps, categorizes, props }) {
   let [category, setCategory] = useState();
-  let [loggedIn, setLoggedIn] = useState();
-  let [token, setToken] = useState(false);
+  let [loggedIn, setLoggedIn] = useState()
+  let [admin, setAdmin] = useState(true);
+  
   const  handleSignIn = () => {
     setLoggedIn(false)
     
@@ -20,7 +22,7 @@ function MyApp({ Component, pageProps, categorizes, props }) {
       setCategory(x);
   }
    const handleLogin = async (ctx) => {
-const {Bearer} = await parseCookies(ctx);
+   const {Bearer} = await parseCookies(ctx);
     axios.get(`${process.env.BACKEND_URL}/logged_in`, {
          withCredentials: true,
          headers: {
@@ -29,7 +31,10 @@ const {Bearer} = await parseCookies(ctx);
          }
        })
        .then(res => {
+         console.log(res)
+         
          setLoggedIn(res.data.logged_in);
+
        }).catch((error) => {
          console.log(error);
        });
@@ -52,6 +57,7 @@ const {Bearer} = await parseCookies(ctx);
   return (
     <AppWrapper>
       <Layout category={handleCategorizes}  loggedIn={loggedIn} handleSignIn={handleSignIn}>
+      {/* {admin ? (<div className="adminBar"><Link  href="/breaking"><button className="breaking">BREAKING</button></Link></div>): (<div/>)} */}
         <Component {...pageProps} title={category} setLoggedIn={setLoggedIn} handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>
     </AppWrapper>

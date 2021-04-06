@@ -77,7 +77,8 @@
   /* height: 20%; */
   height: 26em;
   width: 100%;
-  min-width: 5em;
+  min-width: 24em;
+
   position: relative;
     overflow: hidden;
 
@@ -100,8 +101,10 @@ top: .5em
 
 .itemA h5 {
  
-  top: 19.5em;
+  top: 20.5em;
   left: 1em;
+  background: #fffefe;
+    border-radius: .3em;
  
 }
 .itemA div {
@@ -238,20 +241,39 @@ top: .5em
 
 
 }
-
+.arrowBox{
+  width: 3em;
+  height: 3em;
+  position: relative;
+  float: right;
+  top: -4em;
+  
+  border-radius: 2em;
+  transition: .15s;
+  
+}
 .arrow {
-      width: 2em;
-      position: relative;
-      float: right;
-      top: -4em;
-      opacity: .6;
-      transition: .15s;
+  position: absolute;
+    left: 23%;
+    top: 17%;
+    width: 2em;
+    opacity: .6;
+    transition: .15s;
 }
 .arrow:hover {
       opacity: 1;
       transition: .15s;
+      /* z-index: 1; */
 
 }
+
+.arrowBox:hover {
+  /* opacity: .5; */
+  transition: .15s;
+  background: #B9B7B7;
+
+}
+
 .subStoryCont {
  position: relative;
  top: .5em;
@@ -401,6 +423,7 @@ font-family: 'Montserrat';
 
 .itemA,.itemB,.itemC,.itemD, .itemE{
     max-width: 100em;
+    min-width:  0em;
     
     border-bottom: 1.5px solid gray;
 }

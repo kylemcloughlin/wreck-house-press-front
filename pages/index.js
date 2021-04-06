@@ -3,22 +3,38 @@ import {useEffect, useState } from 'react';
 import indexStyles from '../styles/Index.module.css';
 import TopStories from '../components/TopStories.js';
 import SecondaryStories from '../components/SecondaryStories.js';
-
+import Breaking from '../components/Breaking.js';
 export default function Home({articles, topStory, title}) {
    let [sortedArticles, setSortedArticles] = useState([]);
-  
+   let [breaking, setBreaking] = useState(false);
+   let [breakingStory, setBreakingStory] = useState([])
     useEffect(() => {
 
       let output = [];
       let helper = [];
-     
-      let two = { name: "Local News", articles: [] };
-      let three = { name: "Sports", articles: [] }; 
-      let four = { name: "Opinion", articles: [] };
-      let five = { name: "Community", articles: [] };
-      let six = { name: "The Arts", articles: [] };
+      let breaking = [];
+      let two = { name: "Local News", articles: [] , index: 1};
+      let three = { name: "Sports", articles: [] , index: 2}; 
+      let four = { name: "Opinion", articles: [], index: 3};
+      let five = { name: "Community", articles: [], index: 4};
+      let six = { name: "The Arts", articles: [], index: 5};
 
       articles.forEach(x =>{
+      if (x.breaking == true) {
+        let published = new Date(x.created_at)
+        published.setHours(published.getHours() + 24);
+        let now = new Date()
+        let test = Date.parse(published) > Date.parse(now)
+        console.log(published, now)
+        console.log(test)
+
+        if (test) {
+          setBreaking(true)
+          breaking.push(x)
+      } else {
+          console.log('hit in else')
+        }
+      }
         switch (x.categorization_id) {
           case 2:
           
@@ -45,10 +61,12 @@ export default function Home({articles, topStory, title}) {
         }
         
       })
+      console.log("BREAKIMG", breaking)
+      setBreakingStory(breaking)
         setSortedArticles([two, three, four, five, six]);
     }, []);
 
-    // console.log(sortedArticles);
+  
   return (
     
     <div>
@@ -57,9 +75,9 @@ export default function Home({articles, topStory, title}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main className={indexStyles.mainContainer}>  
+        {breaking ? (<Breaking breaking={breakingStory}/>) : (<div/>)}
         <TopStories title={title} topStory={topStory}/>
-        {/* <a href="https://ibb.co/HzDCvBd"><img src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0"/></a> */}
-        <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://bn02pap001files.storage.live.com/y4pZ4zB6xWQg8-0odepc4_IruG44WSxC_ADbEc1sjbaxbWQpvgcb84QVEjLA-tcIYXr54IeKRn8X0ocfqZWYoHQIJwiKJSm0uXQKOoiGrTBuTlDWAs_K6hv3XRw8asfFI-a7ohKClRUf8vsHWphjz73l4w3Kflw4qM11eH8hnviHy7XlgX7x8InErkmmkqJZAUkpfG3brcHguNdkMHacBBYCiVfq-6B94PYipCwoDFG5z8/000062340021.jpg?psid=1&width=1402&height=929" border="0" /></a>
+        <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0" /></a>
         <SecondaryStories sortedArticles={sortedArticles}/>
       </main>
     </div>
@@ -68,15 +86,23 @@ export default function Home({articles, topStory, title}) {
 
 
 
+
 export const getStaticProps = async () => {
   const res = await fetch(`${process.env.BACKEND_URL}/articles`)
   let topStoryStyleArray = [indexStyles.itemA, indexStyles.itemB, indexStyles.itemC, indexStyles.itemD, indexStyles.itemE];
   const articles =  await res.json()
   let topStory = []
+  let breaking = []
   let output = await articles.forEach((x, i) =>{
     if (topStory.length < 5) {
-      x.style = topStoryStyleArray[i];
-          topStory.push(x)
+      if (x.breaking === true) {
+        breaking.push(x)
+      } else {
+        x.style = topStoryStyleArray[0];
+        topStory.push(x)
+        topStoryStyleArray.shift()
+
+      }
          
         } 
       }) 

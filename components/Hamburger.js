@@ -14,9 +14,9 @@ const Hamburger = () => {
   return (
     <Menu isOpen={open}>
       <ul>
-     { globalState.map((x, ind)=> {
+     { globalState.map((x, ind)=> {  
       //  let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })
-       let url = ind === 0 ? ("") : (ind.toString())
+       let url = ind === 0 ? ("") : (x.cat)
        let link = ind === 0 ? ("/") : ("/[category]")
        let classCondit = x.subs === null ? (styles.btn) : (styles.btnWithSubs)
        return (<li key={100 + ind}>
@@ -26,7 +26,7 @@ const Hamburger = () => {
         </Link> 
           {x.subs === null? (<div/>) : (x.subs.map((sub, idx) => {
             return(
-              <Link key={2000 + sub.id} href="/subcategory/[subcategory]" as={`/subcategory/${sub.id}`}>
+              <Link key={2000 + sub.id} href="/subcategory/[subcategory]" as={`/subcategory/${sub.name}`}>
             <button className={styles.btn} onClick={handleClick}>{sub.name}</button>
              </Link> 
             ) 

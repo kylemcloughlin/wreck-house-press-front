@@ -1,8 +1,8 @@
 import styles from '../../styles/About.module.css';
 import {useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import PublishingServices from "../../components/PublishingServices.js";
-import ContactForAuthors from "../../components/ContactForAuthors.js";
+import PublishingServices from "../../components/footerLinks/PublishingServices.js";
+import ContactForAuthors from "../../components/footerLinks/ContactForAuthors.js";
 export default function Publishing() {
   const router = useRouter();
   const [elmnt, setElmnt] = useState();

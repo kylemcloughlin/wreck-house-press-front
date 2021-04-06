@@ -7,7 +7,41 @@ import axios from 'axios'
 import { useAppContext } from '../../context/AppContext';
 import { parseCookies} from 'nookies';
 export default function Article({article}) {
-    let [loggedIn, setLoggedIn] = useState(true);
+    let [loggedIn, setLoggedIn] = useState(false);
+    let [elmnt, setElmnt] = useState()
+
+
+const subscriptionWall = () => {
+  return (
+        <div className={articleStyles.subscriptionWall}>  
+               <Link  href="/">
+               <button className={articleStyles.home}>HOME</button>
+               </Link>
+               <img src='/images/lock.png'/>
+               <p className={articleStyles.dis}>Looks like you've registered but haven't subscribed yet</p>
+               <p className={articleStyles.dis}>Subscribe to keep reading this article</p>
+               <Link  href="/subscribe"><button className={articleStyles.button}>Subscribe</button></Link> 
+
+             </div>
+  )
+}
+
+
+const loggedInWall = () => {
+  return (
+        <div className={articleStyles.subscriptionWall}>  
+               <Link  href="/">
+               <button className={articleStyles.home}>HOME</button>
+               </Link>
+               <img src='/images/lock.png'/>
+               <p className={articleStyles.dis}>Register and subscribe to keep reading this article</p>
+                   <Link  href="/login"><button className={articleStyles.button}>REGISTER</button></Link>
+               <p className={articleStyles.signIn}>Already Registered? <Link  href="/login"><a>Sign In</a></Link></p>
+            
+             </div>
+  )
+}
+
  const handleLogin = async (ctx) => {
 const {Bearer} = await parseCookies(ctx);
     axios.get(`${process.env.BACKEND_URL}/logged_in`, {
@@ -18,23 +52,63 @@ const {Bearer} = await parseCookies(ctx);
          }
        })
        .then(res => {
-         setLoggedIn(res.data.logged_in);
+         if (res.data.logged_in) {
+         let {legacy, sId, expiry} = res.data;
+         if (legacy === true)  {
+           let today = new Date()            
+           let nd = new Date(expiry)
+           console.log(today > nd)
+           console.log(today, nd)
+
+           if (nd > today ) {
+              setLoggedIn(res.data.logged_in);
+            
+             
+            } else  {
+              setLoggedIn(false);
+              setElmnt(elementCondit(true))
+
+            }
+           } 
+           else if (sId.value) {
+            console.log('hit SID')
+              setLoggedIn(res.data.logged_in);
+           } else {
+            console.log('hit else')
+            
+            setElmnt(elementCondit(true))
+
+           }
+          
+          
+          } else {
+                  setElmnt(elementCondit(false))
+          }
+
        }).catch((error) => {
           setLoggedIn(false);
+          setElmnt(elementCondit(false))
+
        });
 
    }
 
-
+  const elementCondit = (elmnt) => {
+    if (elmnt) {
+      return(subscriptionWall())
+    } else {
+      return (loggedInWall())
+    }
+  }
  useEffect(() => {
-
+  console.log(elmnt)
 
    handleLogin()
  }, []);
 
  let category = useAppContext().catagories;
  let subcategory = useAppContext().subcatagories;
- console.log(article)
+//  console.log(article)
   return (
     <div className={articleStyles.holder}>
       <Head>
@@ -42,7 +116,7 @@ const {Bearer} = await parseCookies(ctx);
         <link rel="icon" href="/favicon.ico" />
       </Head>
 <main className={articleStyles.container}>
-  <h4 className={articleStyles.category}>{category[article.categorization_id - 1]}</h4> 
+  <h4 className={articleStyles.category}>{category[article.categorization_id]}</h4> 
   { article.subcategorization_id === null ? (<div/>) : (<h4 className={articleStyles.subcategory}>{subcategory[article.subcategorization_id]}</h4> )}
   <h1 className={articleStyles.title}>{article.title}</h1>
   <div className={articleStyles.headingHolder}>
@@ -60,7 +134,7 @@ const {Bearer} = await parseCookies(ctx);
   
   <div  className={articleStyles.imgHolder}>
   
-  <img className={articleStyles.img} src={article.fallback[0]} alt="Picture of the author"  crossOrigin="Anonymous"></img>
+  <img className={articleStyles.img} src={article.fallback} alt="Picture of the author"></img>
   
    <p className={articleStyles.subtitle}>{article.subtitles}</p>
   </div>
@@ -74,27 +148,10 @@ const {Bearer} = await parseCookies(ctx);
   </div>) : (<div className={articleStyles.articleBody}>
              <p>{article.body[0]} </p> 
                  <p className={articleStyles.para}>{article.body[2]}</p> 
-             <div className={articleStyles.subscriptionWall}>  
-               <Link  href="/">
-               <a className={articleStyles.home}>HOME</a>
-               </Link>
-               <p className={articleStyles.dis}>Register and subscribe to keep reading this article</p>
-              <Link  href="/login">
-              <button className={articleStyles.button}>REGISTER</button>
-               </Link>
-            
-               <p className={articleStyles.signIn}>Already Register? <Link  href="/login"><a>Sign In</a></Link></p>
-            
-             </div>
+                {elmnt}
+         
+         
              </div>) }
-    
-    {/* <div className={articleStyles.articleBody}> 
-    {article.body.map((par, id) =>{
-      return(
-        <p  key={id} className={articleStyles.paragraph}>{par}</p>
-      )
-    })}
-  </div> */}
 
   </div>
 </main>
@@ -113,10 +170,10 @@ export async function getStaticPaths() {
   const articles = await res.json();
   const paths = articles.map((x) => ({
     params: {
-      article: x.id.toString()
+      article: x.url.toString()
     },
   }))
-
+  console.log(paths)
   return {
     paths,
     fallback: false

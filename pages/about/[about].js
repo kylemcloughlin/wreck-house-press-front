@@ -1,9 +1,9 @@
 import styles from '../../styles/About.module.css';
 import {useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import FooterAbout from "../../components/FooterAbout.js";
-import FAQ from "../../components/FAQ.js";
-import ContactUs from "../../components/ContactUs.js";
+import FooterAbout from "../../components/footerLinks/FooterAbout.js";
+import FAQ from "../../components/footerLinks/FAQ.js";
+import ContactUs from "../../components/footerLinks/ContactUs.js";
 
 
 export default function About() {

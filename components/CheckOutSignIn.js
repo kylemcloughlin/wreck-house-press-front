@@ -11,8 +11,8 @@ const CheckOutSignIn =() => {
   }
   
   return (<div>
-            {clicked ? (<SignIn/>) : (<SignUp/>)}
-            <button onClick={handleClick} className={loginStyles.switchBtn}>{clicked ? ('Not registered? Sign up here.') : ('Sign in here.')}</button>
+            {!clicked ? (<SignIn/>) : (<SignUp/>)}
+            <button onClick={handleClick} className={loginStyles.switchBtn}>{clicked ?  ('Sign in here.') : ('Not registered? Sign up here.')}</button>
         </div>)
 }
 

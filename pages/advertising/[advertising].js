@@ -1,9 +1,9 @@
 import styles from '../../styles/About.module.css';
 import {useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import FooterAdvertising from "../../components/FooterAdvertising.js";
-import PlaceAnAd from "../../components/PlaceAnAd.js"
-import Services from "../../components/Services.js";
+import FooterAdvertising from "../../components/footerLinks/FooterAdvertising.js";
+import PlaceAnAd from "../../components/footerLinks/PlaceAnAd.js"
+import Services from "../../components/footerLinks/Services.js";
 
 export default function Advertising({params}) {
   const router = useRouter();

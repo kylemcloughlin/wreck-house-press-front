@@ -1,6 +1,6 @@
 
 import {React, useState, useEffect} from 'react';
-import styles from '../styles/FooterLinks.module.css';
+import styles from '../../styles/FooterLinks.module.css';
 const PublishingServices = () => {
 // console.log(category)
 

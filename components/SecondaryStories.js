@@ -11,7 +11,8 @@ const SecondaryStories = ({sortedArticles}) => {
   return(
        <div>
          {sortedArticles.map((x, ind) => { 
-            let url = ind + 1
+            // console.log(x, globalState)
+            let url = ind
             let el; 
             switch (x.name) {
                     case 'Local News':
@@ -31,8 +32,8 @@ const SecondaryStories = ({sortedArticles}) => {
             return(
               <div key={ind} className={indexStyles.subStoryDiv}>
                 <h1>{x.name}</h1>
-                <Link key={x.id} href="[category]" as={`/${url.toString()}`}>           
-                  <img src="/images/arrow.png" className={indexStyles.arrow}/>
+                <Link key={x.id} href="[category]" as={`/${x.name}`}>           
+                 <div className={indexStyles.arrowBox}><img src="/images/arrow.png" className={indexStyles.arrow}/></div>
                 </Link>
                 <div className={indexStyles.underline}/>       
                   {el}

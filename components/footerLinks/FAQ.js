@@ -1,7 +1,6 @@
 
 import {React, useState, useEffect} from 'react';
-import styles from '../styles/FooterLinks.module.css';
-import { useSpring, animated } from 'react-spring';
+import styles from '../../styles/FooterLinks.module.css';
 import Question from './Question.js';
 let dat = [{
   question: "What are your newspapeer print edition rates?",
@@ -25,23 +24,13 @@ let dat = [{
 const  FAQ= () => {
  const [toggle, setToggle] = useState(false);
 
-  const props = useSpring({
-   height: toggle ? 100 : 0,
-   transform: 'translate3d(0,0,0)',
-   display: 'flex',
-   flexDirection: 'column',
-   overflow: 'hidden',
-   config: {   duration: 400 },
-   visibility: toggle ? "visible" : 'hidden',
- })
-
  const handleToggle = (e) => {
 
    setToggle(!toggle)
  }
   return (
-      <main className={styles.main}>
-       <h1>Frequently asked questions</h1>
+      <main className={styles.FAQmain}>
+       <h1 className={styles.title}>Frequently asked questions</h1>
         <div>
         {dat.map(data => {
           return(

@@ -1,11 +1,20 @@
 import styles from '../styles/Subscribe.module.css';
 import Link from 'next/link';
-
+import {useState} from 'react';
+import loaderStyles from '../styles/Loader.module.css';
 export default function Subscribe({options}) {
- 
+  const [pending, setPending] =  useState(false)
+//  {pending ? (<div className={loaderStyles.ldsRing} style={{bottom: '0em', left: '45%'}}><div></div><div></div><div></div><div></div></div>): ( <button  type="submit" className={styles.emailButton}>SEND</button>)}
   const handleClick = (opt, e) => {
-      // console.log(e)
+    setPending(true)
       console.log(opt)
+    }
+
+
+    if(pending) {
+  return ( <div className={styles.mainContainer}>
+                <div className={loaderStyles.ldsRing} style={{bottom: '0em', left: '45%'}}><div></div><div></div><div></div><div></div></div>
+              </div>)
     }
   return (    <div className={styles.mainContainer}>
             <div className={styles.titleHolder}>
@@ -15,7 +24,7 @@ export default function Subscribe({options}) {
             <div className={styles.holder}>
             {options.map((opt) =>{
               return (<div key={opt.name} key={opt.id} className={styles.option} > 
-                <h1>{opt.name}</h1>
+                <h1 className={styles.subscriptionTitle}>{opt.name}</h1>
                 <p>{opt.dis}</p>
                 {/* <h5>{opt.validUntil}</h5> */}
                 <Link  href="/checkout/[checkout]" as={`/checkout/${opt.id}`}>

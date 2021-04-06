@@ -139,13 +139,34 @@ margin: 5em;
   text-align: center;
   position: relative;
 }
-
+.subscriptionWall img {
+  display: block;
+  width: 100px;
+  /* position: absolute; */
+  margin: auto;
+  opacity: .8;
+}
 .home {
-  position: absolute;
-  left: 1em;
-  top: 1em;
+position: absolute;
+left: 1em;
+top: 1em;
+border: 1px solid #fffefefe;
+background: none;
+color: #fffefe;
+height: 2em;
+padding-top: em;
+width: 5em;
+align-items: center;
+border-radius: 1em;
+transition: 20ms ease;
+
 }
 
+.home:hover {
+color: #59BCC0;
+background: #fffefe;
+transition: 20ms ease;
+}
 
 .button {
    padding: .7em;
@@ -153,7 +174,7 @@ margin: 5em;
    color: #fffefe;
    width: 50%;
    margin: auto;
-   border-radius: 1em;
+   border-radius: 2em;
    border: 2px solid #fffefe;
    transition: .25s;
 }
@@ -163,8 +184,8 @@ margin: 5em;
 }
 
 .dis {
-  position: relative;
-  top: 8em;
+  margin: auto;
+
 }
 .signIn {
   position: relative;

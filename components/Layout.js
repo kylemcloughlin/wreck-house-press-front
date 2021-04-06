@@ -15,7 +15,7 @@ const Layout = ({children, category, loggedIn}) => {
     
       </main>
     
-      <Footer/>
+    <Footer loggedIn={loggedIn}/>
     </>
   )
 }

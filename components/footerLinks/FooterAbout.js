@@ -1,6 +1,6 @@
 
 import {React, useState, useEffect} from 'react';
-import styles from '../styles/About.module.css';
+import styles from '../../styles/About.module.css';
 const FooterAbout= () => {
 // console.log(category)
 
@@ -34,28 +34,28 @@ const FooterAbout= () => {
         <div className={styles.itemC}>
         <h1 className={styles.staffTitle}>STAFF</h1>
         <div className={styles.staff}>
-          <img src='/images/Rene_J_Roy_JPG.jpg'/>
+          <img className={styles.staffImg} src='/images/Rene_J_Roy_JPG.jpg'/>
           <h3>EDITOR-IN-CHIEF</h3>
           <p>René J. Roy</p>
-          <p>rjroy@wreckhousepress.com</p>
+          <p className={styles.staffEmail}>rjroy@wreckhousepress.com</p>
           <p>709-694-3375</p>
-          <div>
-            <a href="https://www.facebook.com/rene.j.roy"><img  src='/images/fb.png'/></a>
-            <a href="https://twitter.com/hfxhabby"><img  src='/images/twitt.png'/></a>
-            <a href="https://www.instagram.com/roy7512/"><img  src='/images/insta.png'/></a>
-          </div>
+          <div className={styles.socialBar}>
+            <div><a href="https://www.facebook.com/rene.j.roy"><img  src='/images/greyFb.png'/></a></div>
+            <div><a href="https://twitter.com/hfxhabby"><img  src='/images/greyTwitt.png'/></a></div>
+            <div> <a href="https://www.instagram.com/roy7512/"><img  src='/images/greyInsta.png'/></a></div>
+         </div>
         </div>
         <div className={styles.staff}>
-          <img src="/images/Roz.jpg"/>
+          <img  className={styles.staffImg} src="/images/Roz.jpg"/>
           <h3>STAFF REPORTER</h3>
           <p>Rosalyn Roy</p>
-          <p>rroy@wreckhousepress.com</p>
+          <p  className={styles.staffEmail}>rroy@wreckhousepress.com</p>
           <p>709-695-0557</p>
-           <div>
-            <a href="https://www.facebook.com/rosalynlmroy"><img  src='/images/fb.png'/></a>
-            <a href="https://twitter.com/tygerlylly"><img  src='/images/twitt.png'/></a>
-            <a href="https://www.instagram.com/tygerlylly/"><img  src='/images/insta.png'/></a>
-          </div>
+            <div className={styles.socialBar}>
+            <div><a href="https://www.facebook.com/rene.j.roy"><img  src='/images/greyFb.png'/></a></div>
+            <div><a href="https://twitter.com/hfxhabby"><img  src='/images/greyTwitt.png'/></a></div>
+            <div> <a href="https://www.instagram.com/roy7512/"><img  src='/images/greyInsta.png'/></a></div>
+         </div>
         </div>
         </div>
       </div>

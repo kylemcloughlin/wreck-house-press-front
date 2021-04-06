@@ -1,34 +1,62 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {destroyCookie} from 'nookies';
 import styles from '../styles/Checkout.module.css';
+import loaderStyles from '../styles/Loader.module.css';
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { Input, Col, Row, Form, Button, Modal } from "antd";
-import Router from "next/router";
+import { useSpring, animated } from 'react-spring';
 import axios from 'axios';
+import { symbol } from 'prop-types';
 
 const CheckoutForm = props => {
+  const [customerId, setCustomerId] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [complete, setComplete] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [mes, setMessage] = useState('')
+ 
   const stripe = useStripe();
   const elements = useElements();
-  let email = 'test@testy.com';
+  const springProps = useSpring({
+  height: complete ? 250 : 0,
+  width:  '100%',
+  transform: 'translate3d(0,0,0)',
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'hidden',
+  opacity: '.6',
+  // transition: mes ? '' :'2ss ease',
 
+  config: {
+    duration: 400
+  },
+
+})
+const springPropsTwo = useSpring({
+  height:  mes ? 80 : 0,
+  transform: 'translate3d(0,0,0)',
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'hidden',
+  opacity: '.6',
+  marginTop: '5em',
+    
+   
+  // transition: mes ? '' :'2ss ease',
+
+  config: {
+    duration: 400
+  },
+
+})
   const handleSubmit = async (event) => {
+    setPending(true)
     event.preventDefault()
-    let name = event.target.name.value
-    let email = event.target.email.value
-    let add = event.target.address.value
-    let postal = event.target.postal.value
-    let city = event.target.city.value
-    let prov = event.target.province.value
-    let country = event.target.country.value
-    let address = `${add} ${postal} ${city}, ${prov} ${country}`;
-    console.log(address)
+   let {first,  last, email } = event.target
+   let name = [first.value, last.value]
+    name = name.join(" ")
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-    console.log('hit firtst if')
-
+      setPending(false)
+      console.log('ERROR')
       return;
     }
     console.log('hit 3', stripe)
@@ -36,41 +64,45 @@ const CheckoutForm = props => {
       type: 'card',
       card: elements.getElement(CardElement),
       billing_details: {
-        email: email,
+        email: email.value,
         
       },
     });
     console.log(result)
     console.log('hit 4')
     if (result.error) {
-      console.log(result.error.message);
+      setPending(false)      
+      console.log(result.error.message); ///ADDD ERRROR HANDLEING HERE???
     } else {
       console.log('hit 5')
-      setComplete('pending')
       
       
       axios.post(`${process.env.BACKEND_URL}/customers`, {
-        email: email,
-        payment_method: result.paymentMethod.id,
-        code: props.code,
         name: name,
-        address: address,
-        
+        email: email.value,
+        code: props.code,
+        payment_method: result.paymentMethod.id,
+        bearer: props.bearer
       }, {
-    withCredentials: true,
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then((response) => {
-      const status = response.data.subscription.latest_invoice.status;
-      const client_secret = response.data.subscription.latest_invoice.client_secret;
-    
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        const status = response.data.subscription.latest_invoice.status;
+        const client_secret = response.data.subscription.latest_invoice.client_secret;
+        console.log(response.data.subscription.latest_invoice)
+        setCustomerId(response.data.id)
+        
+
       if (status === 'requires_action') {
           stripe.confirmCardPayment(client_secret).then(function (result) {
               if (result.error) {
-                  console.log('There was an issue!');
-                  console.log(result.error);
+                  console.log('There was an issue!',result);
+
+                    console.log(result.error.message); ///ADDD 
+                setPending(false)
                   // Display error message in your UI.
                   // The card was declined (i.e. insufficient funds, card has expired, etc)
                 } else {
@@ -85,7 +117,15 @@ const CheckoutForm = props => {
              
                } 
   }).catch((error) => {
-    console.log(error);
+      if (error.response) {
+        // Request made and server responded
+        setMessage(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } 
+  
+                setPending(false)
+
   });
       }
     
@@ -112,43 +152,52 @@ const CheckoutForm = props => {
     }
   };
 
-  if(complete) {
-    return( 
-      <div>
-       <h5>Checkouted</h5>
-      </div>
-    )
+     function handleError() {
+    setTimeout(function () { setMessage(false)}, 2000);
+  }    
+  useEffect(() => {
+      
+  if (mes) {
+        handleError()
+
   }
+
+  }, [mes]);
+  if(complete) {
+
+        return (
+           <animated.div style={springProps} className={styles.sent}>
+              <h5 className={styles.message}>Payment confrirmed!</h5>
+              <span>your payment has been comfirmed, your customerId: {customerId}</span>
+             </animated.div> 
+        )
+      }
+  
 
   return (
     <form className={styles.form} onSubmit={e => handleSubmit(e)}>
        <h5>Checkout Details</h5>
+            
+
        <div className={styles.inputHolder}>     
-      <label>Full Name</label>
-     <input label="Name" name="name" type="text" placeholder="Name" required />
-      <label>Email</label>     
-      <input label="Email" name="email" type="email"  placeholder="Email" required />
+      <label>First Name</label>
+     <input label="first" name="first" type="text" placeholder="First" required />
+      <label>Last Name</label>     
+      <input label="last" name="last" type="textl"  placeholder="Last" required />
       </div>
       <div className={styles.addressDetails}>
-      <label>Address</label>     
-       <input className={styles.first} label="Address" name="address" type="text"  placeholder="Address" required />
-       <div className={styles.inputHolder}>
-      <label>Postal Code</label>          
-        <input label="Postal Code" name="postal" type="text" placeholder="Postal Code" required />
-      <label>City</label>           
-        <input label="City" name="city" type="text"  placeholder="City" required />
-      </div>
-       
-       <div className={styles.inputHolder}>
-        <label>Province</label>           
-        <input className={styles.province} label="Province" name="province" type="text"  placeholder="Province" required />
-        <label>Country</label>                 
-        <input className={styles.country} label="Country" name="country" type="text"  placeholder="Country" required />
-       </div>
-       <label className={styles.creditCardLabel}>Credit Card Details</label>
+      <label>Email</label>     
+       <input className={styles.first} label="email" name="email" type="Email"  placeholder="Address" required />
+ 
+      <label className={styles.creditCardLabel}>Credit Card Details
+      </label>
         <CardElement options={cardOptions} className={styles.credit}/>
+             <animated.div style={springPropsTwo} className={styles.error}>
+                <p>{mes}</p>
+             </animated.div>
+
         </div>
-{complete === 'pending' ? (<button className={styles.btn} disabled={true}>Sent</button>): ( <button type="primary" htmlType="submit" className={styles.btn} disabled={!stripe}>Submit</button>)}
+{pending ? (<div className={loaderStyles.ldsRing}><div></div><div></div><div></div><div></div></div>): ( <button type="primary" htmlType="submit" className={styles.btn} disabled={!stripe}>Submit</button>)}
     </form>
   );
 };
