@@ -1,7 +1,12 @@
 import {React, useState, useEffect} from 'react';
 import Link from 'next/link';
-import styles from '../styles/Index.module.css'
+import styles from '../styles/Index.module.css';
+import { useAppContext } from '../context/AppContext';
+
 const AddStory = ({newStories, header}) => {
+  let subCats = useAppContext().subcatagories;
+  let cats = useAppContext().catagories;
+
  const countDown = (x) => {
     let date2 = new Date(); // 9:00 AM
     let date1 = new Date(x);
@@ -37,9 +42,10 @@ const AddStory = ({newStories, header}) => {
               let tet = ind < 2 ? (styles.story) : (styles.storyLast)
               // console.log(tet);
               return(
-                <Link key={x.id} href="article/[article]" as={`/article/${x.url}`}> 
+                <Link key={x.id} href="/article/[article]" as={`/article/${x.url}`}> 
               <div key={ind} className={tet}>
-              <h5 className={styles.addedHeader}>{header}</h5>
+              <h5 className={styles.addedHeader}>{cats[x.categorization_id]}</h5>
+              <h5 className={styles.addedSubCatTitle}>{subCats[x.subcategorization_id]}</h5>
                  <h2 className={styles.addedTitle}>{x.title}</h2>
                 <h6 className={styles.addedDate}>{countDown(x.originalPost)}</h6>
               </div>

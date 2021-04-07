@@ -1,7 +1,10 @@
 
 import Link from 'next/link';
 import indexStyles from '../styles/Index.module.css';
+import { useAppContext  } from '../context/AppContext';
+
 const three =({x}) => {
+  let subs = useAppContext().subcatagories;
  const countDown = (x) => {
     let date2 = new Date(); // 9:00 AM
     let date1 = new Date(x);
@@ -41,7 +44,8 @@ const three =({x}) => {
            return(  
              <Link key={art.id} href="article/[article]" as={`/article/${art.url}`}> 
               <div className={lowerDiv[ind]}>
-                <h5 className={indexStyles.catTitle}>{x.name}</h5>
+                <h5 className={indexStyles.threeCatTitle}>{x.name}</h5>
+                <h5 className={indexStyles.threeSubCatTitle}>{subs[art.subcategorization_id]}</h5>                
                 <img className={indexStyles.threeImg} src={art.fallback[0]}/>
                 <h3 className={indexStyles.threeHeader}>{art.title}</h3>
                 <h6 className={indexStyles.threeTimeFooter}>{countDown(art.originalPost)}</h6>    

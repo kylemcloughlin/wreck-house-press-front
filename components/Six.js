@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import sixStyles from '../styles/Six.module.css';
+import { useAppContext  } from '../context/AppContext';
+
 const Six = ({x}) => {
+  const subs = useAppContext().subcatagories;
  const countDown = (x) => {
    let date2 = new Date(); // 9:00 AM
    let date1 = new Date(x);
@@ -39,6 +42,7 @@ const Six = ({x}) => {
              <Link key={art.id} href="article/[article]" as={`/article/${art.url}`}> 
               <div className={lowerDiv[ind]}>
                 <h5 className={sixStyles.catTitle}>{x.name}</h5>
+                 <h5 className={sixStyles.subCatTitle}>{subs[art.subcategorization_id]}</h5>
                 <img className={sixStyles.sixImg} src={art.fallback[0]}/>
                 <h3 className={sixStyles.threeHeader}>{art.title}</h3>
                 <h6 className={sixStyles.threeTimeFooter}>{countDown(art.originalPost)}</h6>

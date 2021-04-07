@@ -8,6 +8,7 @@ margin: 5em;
   background: #59BCC0;
   color: #F9F9F9;
   position: relative;
+  width: -webkit-fit-content;
   width: fit-content;
   padding-top: .2em;
   padding-left: 1px;

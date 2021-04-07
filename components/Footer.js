@@ -10,7 +10,7 @@ const Footer = ({loggedIn}) => {
   subLinks: ["About", "FAQ", "Contact Us"]
 }, {
   name: "advertising",
-  subLinks: [ "Services", "Place An Ad"]
+  subLinks: [ "Services", "Contact for Advertising"]
 }, {
   name: "publishing",
   subLinks: ["Contact for Authors"]
@@ -21,10 +21,10 @@ const Footer = ({loggedIn}) => {
     subLinks: ["About", "FAQ", "Contact Us"]
   }, {
     name: "advertising",
-    subLinks: ["Services", "Place An Ad"]
+    subLinks: ["Services", "Advertising Contact"]
   }, {
     name: "publishing",
-    subLinks: ["Contact for Authors"]
+    subLinks: ["Publishing Contact"]
   }]
 let conditional = loggedIn ? (linksWithUser) : (links)
 
@@ -54,9 +54,9 @@ useEffect((ctx) => {
         </ul>)
    })}
       <div className={navStyles.socialBar}>
-              <div><a href="https://www.facebook.com/rene.j.roy"><img  src='/images/greyFb.png'/></a></div>
-            <div><a href="https://twitter.com/hfxhabby"><img  src='/images/greyTwitt.png'/></a></div>
-          <div> <a href="https://www.instagram.com/roy7512/"><img  src='/images/greyInsta.png'/></a></div>
+              <div><a href="https://www.facebook.com/WreckhousePress"><img  src='/images/darkGreyFacebook.png'/></a></div>
+            <div><a href="https://twitter.com/tygerlylly"><img  src='/images/darkGreyTwitter.png'/></a></div>
+          <div> <a href="https://www.amazon.com/Rosalyn-Roy/e/B016V5TB34"><img  src='/images/greyAmazon.png'/></a></div>
     </div>
 <span className={navStyles.copyright}>Wreckhouse Press © 2021 </span>
   </div>

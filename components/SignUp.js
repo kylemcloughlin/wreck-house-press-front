@@ -23,10 +23,13 @@ const SignUp =() => {
            
           })
   const registerUser = async event => {
+    let test = event.target.password.value.split("")
     event.preventDefault()
      if (md5(event.target.password.value) != md5(event.target.password_confirmation.value)) {
        setMessage("Passwords do not match!")
 
+     } else if (test.length < 7) {
+       setMessage("Password must be 8 characters long!")
      } else {
     const res = await fetch(`${process.env.BACKEND_URL}/users`, {
       body: JSON.stringify({

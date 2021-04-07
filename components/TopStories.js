@@ -5,6 +5,8 @@ import indexStyles from '../styles/Index.module.css';
 
 const TopStories = ({ topStory, title}) => {
   let globalState = useAppContext().catagories;
+  let subs = useAppContext().subcatagories;
+
   const countDown = (x) => {
     let date2 = new Date(); // 9:00 AM
     let date1 = new Date(x);
@@ -48,6 +50,7 @@ const TopStories = ({ topStory, title}) => {
             <div value="xxx" className={x.style}>
                <img src={x.fallback[0]} style={visible}/> 
                <h5 className={indexStyles.catTitle}>{globalState[x.categorization_id]}</h5>
+               <h5 className={indexStyles.subCatTitle}>{subs[x.subcategorization_id]}</h5>
                <h2 className={indexStyles.header}>{x.title}</h2>
                <h6 className={indexStyles.timeFooter}>{countDown(x.originalPost)} </h6>
                <div/>

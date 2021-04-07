@@ -1,3 +1,4 @@
+
 .subStoryCont {
   position: relative;
   top: .5em;
@@ -14,6 +15,10 @@
 }
 
 .subItemA {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   position: relative;
   height: 22em;
   grid-area: one;
@@ -29,6 +34,10 @@
   bottom: 1%;
 }
 .subItemB {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
   position: relative;
 
   /* border: #B9B7B7 solid 1px; */
@@ -39,6 +48,10 @@
 }
 
 .subItemC {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   position: relative;
 
   border-top: #B9B7B7 solid 1px;
@@ -48,6 +61,10 @@
 
 }
 .subItemD {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 2;
   position: relative;
 
   border-top: #B9B7B7 solid 1px;
@@ -94,22 +111,22 @@
  left: .5em;
  bottom: 1.5em;
  margin: .5em;
-   border-top-right-radius: 1em;
-   padding: .5em;
-   background-color: #fffefe;
-     font-family: 'Newsreader', Fallback, sans-serif;
+border-top-right-radius: 1em;
+padding: .5em;
+  background-color: #fffefe;
+  font-family: 'Newsreader', Fallback, sans-serif;
   font: normal;
   font-weight: 500;
 }
 
 .threeTimeFooter {
   position: absolute;
-  bottom: -1.5em;
+  bottom: -2em;
   left: 1em;
   color: #B9B7B7;
   font-family: 'Montserrat',  sans-serif;
   font-style: normal;
-  font-weight: 600
+  font-weight: 400
 }
 
 .catTitle {
@@ -122,6 +139,15 @@
   font-weight: 600
 }
 
+.subCatTitle {
+    position: absolute;
+    top: 2em;
+    left: 1em;
+      color: #777676;
+  font-family: 'Montserrat',sans-serif;
+  font-style: normal;
+  font-weight: 400
+}
 
 @media screen and (max-width: 1000px) {
   .subItemA, .subItemB, .subItemC, .subItemD {
@@ -147,5 +173,35 @@
                            "two two two two two"
                            "thr thr thr thr thr"
                            "foh foh foh foh foh";
+  }
+  .catTitle {
+   top:  -1em;
+  }
+  .subCatTitle {
+    top: 0.5em;
+  }
+  .subItemA {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+  }
+  .subItemB {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+  }
+  .subItemC {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+  }
+  .subItemD {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
   }
 }

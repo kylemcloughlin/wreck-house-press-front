@@ -93,26 +93,28 @@ const springPropsTwo = useSpring({
         const status = response.data.subscription.latest_invoice.status;
         const client_secret = response.data.subscription.latest_invoice.client_secret;
         console.log(response.data.subscription.latest_invoice)
-        setCustomerId(response.data.id)
+        setCustomerId(response.data.invoice_id)
         
-
-      if (status === 'requires_action') {
+        
+        if (status === 'requires_action') {
           stripe.confirmCardPayment(client_secret).then(function (result) {
               if (result.error) {
                   console.log('There was an issue!',result);
-
-                    console.log(result.error.message); ///ADDD 
-                setPending(false)
+                  
+                  console.log(result.error.message); ///ADDD 
+                  setPending(false)
                   // Display error message in your UI.
                   // The card was declined (i.e. insufficient funds, card has expired, etc)
                 } else {
-                    console.log('You got the money!');
+                  console.log('You got the money!');
                   setComplete(true)
-                  }
+                  //  setTimeout(function () { }, 2000);
+                }
                 });
               } else {
                   console.log('You got the money!');
                   setComplete(true)
+                
                 
              
                } 
@@ -162,13 +164,16 @@ const springPropsTwo = useSpring({
 
   }
 
+  
   }, [mes]);
   if(complete) {
 
         return (
            <animated.div style={springProps} className={styles.sent}>
               <h5 className={styles.message}>Payment confrirmed!</h5>
-              <span>your payment has been comfirmed, your customerId: {customerId}</span>
+              <span>your payment has been comfirmed, your invoice id is {customerId}</span>
+              <span>your invoice will be sent to the email provided shortly </span>
+             
              </animated.div> 
         )
       }

@@ -1,5 +1,5 @@
 .nav {
-  height:  125px;
+  height: 125px;
   padding: 10px;
   width: 100%;
   position: relative;
@@ -8,17 +8,20 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  
+
 }
+
 .burger {
   visibility: hidden;
 }
+
 .mobileSignIn {
   visibility: hidden;
   width: 5%;
   position: relative;
   right: 2em;
 }
+
 .mobileSignOut {
   visibility: hidden;
   padding: .7em;
@@ -29,8 +32,9 @@
   position: relative;
   right: 3em;
   transition: .25s;
-  
+
 }
+
 .mobileSignOut:hover {
   background: #59BCC0;
   color: #fffefe;
@@ -41,6 +45,7 @@
   position: absolute;
   left: 1.5em;
 }
+
 /* drop down button */
 
 .dropbtn {
@@ -61,7 +66,7 @@
 /* Dropdown button on hover & focus */
 .dropbtn:hover,
 .dropbtn:focus {
-  background-color:#59BCC0;
+  background-color: #59BCC0;
   transition: .25s ease;
   opacity: 1;
 
@@ -105,10 +110,10 @@
 }
 
 
-.dropImg{
-    width: 2em;
-    position: relative;
-    /* right: 2em; */
+.dropImg {
+  width: 2em;
+  position: relative;
+  /* right: 2em; */
 }
 
 /* drop down button */
@@ -117,12 +122,14 @@
 
 
 
-.img{
+.img {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.subscribe, .scrollSubscribe {
+
+.subscribe,
+.scrollSubscribe {
   padding: .7em;
   background: none;
   color: #59BCC0;
@@ -131,13 +138,15 @@
   position: absolute;
   right: 7.5em;
   transition: .25s;
-  
+
 }
 
 .scrollSubscribe {
   right: 7em;
 }
-.signIn, .scrollSignOut{
+
+.signIn,
+.scrollSignOut {
   padding: .7em;
   background: none;
   color: #59BCC0;
@@ -146,21 +155,26 @@
   position: absolute;
   right: 2em;
   transition: .25s;
-  
+
 }
+
 .scrollSignOut {
   right: 0.5em;
 }
+
 .signIn:hover {
   background: #59BCC0;
   color: #fffefe;
   transition: .25s;
 }
-.subscribe:hover, .scrollSubscribe:hover {
+
+.subscribe:hover,
+.scrollSubscribe:hover {
   background: #59BCC0;
   color: #fffefe;
   transition: .25s;
 }
+
 .navbar {
   height: 47px;
   padding: 10px;
@@ -173,6 +187,7 @@
   list-style: none;
   margin: 0;
 }
+
 .underline {
   border: #B9B7B7 solid 1px;
   width: 95%;
@@ -207,40 +222,44 @@
 
 .navButton::before {
   content: "";
-       position: absolute;
-       bottom: -17px;
-       width: 0px;
-       height: 3px;
-       margin: 5px 0 0;
-       transition: all 0.2s ease-in-out;
-       transition-duration: 0.25s;
-       opacity: 1;
-       background-color: #59BCC0;
-       left: 50%;
-      }
-      .navButton::after {
-        content: "";
-        position: absolute;
-        bottom: -17px;
-        width: 0px;
-        height: 3px;
-        transition: all 0.2s ease-in-out;
-        transition-duration: 0.25s;
-        opacity: 1;
-        background-color: #59BCC0;
-        right: 50%;
-      }
-      
-      .navButton:hover {
-        /* color: #59BCC0; */
-        transition: 20ms;
-        
-      }
-      .navButton:hover:before,  .navButton:hover:after {
-        width: 50%;
-        
-      }
-      /* .navButton {
+  position: absolute;
+  bottom: -17px;
+  width: 0px;
+  height: 3px;
+  margin: 5px 0 0;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.25s;
+  opacity: 1;
+  background-color: #59BCC0;
+  left: 50%;
+}
+
+.navButton::after {
+  content: "";
+  position: absolute;
+  bottom: -17px;
+  width: 0px;
+  height: 3px;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.25s;
+  opacity: 1;
+  background-color: #59BCC0;
+  right: 50%;
+}
+
+.navButton:hover {
+  /* color: #59BCC0; */
+  transition: 20ms;
+
+}
+
+.navButton:hover:before,
+.navButton:hover:after {
+  width: 50%;
+
+}
+
+/* .navButton {
         background: none;
         border: none;
         color: #b9b7b7;
@@ -249,169 +268,173 @@
         transition: 20ms;
         
       } */
-      
-      
-      
-      .navButton:focus {
-        border: none;
-        outline:none;
-        
-      }
-      
-      .lowerNavBar {
-        height: 47px;
-        padding: 10px;
-        background: #A9A9A9;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        margin: 0;
-        
-      }
-      
-      .lowerNavBar button {
-        color: #fffefe;
-      }
-      .nav ul li a {
-        margin: 5px 15px;
-      }
-      
-      
-      .scrollNav {
-        background:#fffefe;
-        height: 50px;
-        position: fixed;
-        transition: top 0.2s ease-in-out;
-        width: 100%;
-        z-index: 1;
-        box-shadow: #666 0px 1px 5px;
-        
-      }
 
-      .scrollNavImg {
-        position: relative;
-        left: 20px;
-        z-index: 1;
-      }
-      .scrollNavSignIn {
-        width: 2%;
-        position: absolute;
-        right: 2em;
-      }
-      .scrollNavBar {
-        padding-left: 4em;
-        background: #fffefe;
-        display: flex;
-        position: relative;
-        bottom: 3em;
-        align-items: center;
-        list-style: none;
-      }
-      
-      .footerListHolder {
-        width: 100%;
-        height: 125px;
-        border-top: 3px solid#59BCC0;
-        border-bottom: 4em solid #333333;
-        background-color: #212121;
-        height: 22em;
-        margin-top: 6em;
-        display: flex;
-        flex-direction: column;
-        
-      }
-      
-      .footerList{
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        /* font-size: 2em; */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        bottom: 0em;
-        display: grid;
-        grid-template-columns: 115px 150px 155px;
-        grid-template-rows: 25px 25px;
-        /* margin: auto; */
-      }
 
-      .footerList ul {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        top: 5em;
-        color: white;
-        list-style: none;
-        padding-left: 1em;
-        padding-right: 1em;
-        
-      }
 
-            .footerList ul h3 {
-              text-transform: capitalize;
-                  font-family: 'Montserrat';
-                  font-style: normal;
-                  font-weight: 600;
-            }
+.navButton:focus {
+  border: none;
+  outline: none;
 
-      .footerList li {
-        margin-bottom: 1em;
-        opacity: .4;
-        transition: 2ms smooth;
-        width: 10em;
-      }
-      
-      .footerList li:hover {
-        opacity: 1;
-      }
+}
+
+.lowerNavBar {
+  height: 47px;
+  padding: 10px;
+  background: #A9A9A9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+
+}
+
+.lowerNavBar button {
+  color: #fffefe;
+}
+
+.nav ul li a {
+  margin: 5px 15px;
+}
+
+
+.scrollNav {
+  background: #fffefe;
+  height: 50px;
+  position: fixed;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+  z-index: 1;
+  box-shadow: #666 0px 1px 5px;
+
+}
+
+.scrollNavImg {
+  position: relative;
+  left: 20px;
+  z-index: 1;
+}
+
+.scrollNavSignIn {
+  width: 2%;
+  position: absolute;
+  right: 2em;
+}
+
+.scrollNavBar {
+  padding-left: 4em;
+  background: #fffefe;
+  display: flex;
+  position: relative;
+  bottom: 3em;
+  align-items: center;
+  list-style: none;
+}
+
+.footerListHolder {
+  width: 100%;
+  height: 125px;
+  border-top: 3px solid#59BCC0;
+  border-bottom: 4em solid #333333;
+  background-color: #212121;
+  height: 22em;
+  margin-top: 6em;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.footerList {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  /* font-size: 2em; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0em;
+  display: grid;
+  grid-template-columns: 115px 165px 160px;
+  grid-template-rows: 25px 25px;
+  /* margin: auto; */
+}
+
+.footerList ul {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 5em;
+  color: white;
+  list-style: none;
+  padding-left: 1em;
+  padding-right: 1em;
+
+}
+
+.footerList ul h3 {
+  text-transform: capitalize;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+}
+
+.footerList li {
+  margin-bottom: 1em;
+  opacity: .4;
+  transition: 2ms smooth;
+  width: 10em;
+}
+
+.footerList li:hover {
+  opacity: 1;
+}
 
 
 .copyright {
-      width: 100%;
-      position: absolute;
-      text-align: center;
-      top: 28.5em;
-      color: #f6f6f6;
-      font-size: 11px;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 28.5em;
+  color: #f6f6f6;
+  font-size: 11px;
 }
 
-.socialBar{
-     width: 3em;
-    height: 9em;
-    margin: 0em;
-    position: absolute;
-    top: 6em;
-    right: 3em;
-    display: block;
-  
+.socialBar {
+  width: 3em;
+  height: 9em;
+  margin: 0em;
+  position: absolute;
+  top: 6em;
+  right: 3em;
+  display: block;
+
 }
+
 .socialBar div {
-     width: 2em;
-     height: 2em;
-     margin-bottom: 1em;
-     /* background: white; */
-     border-radius: 2em;
-     align-items: center;
-     justify-content: center;
-     padding-top: 1.25em;
-     display: flex;
+  width: 2em;
+  height: 2em;
+  margin-bottom: 1em;
+  /* background: white; */
+  border-radius: 2em;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.25em;
+  display: flex;
 }
 
-.socialBar img {
+.socialBar img {}
 
-}
-.socialBar div:hover{
+.socialBar div:hover {
   background: #59BCC0;
 }
-      
+
 .socialBar a img {
   margin-bottom: 1em;
 }
+
 /* /* grid-template-rows: auto; */
-      /* grid-template-areas: "one two thr";
+/* grid-template-areas: "one two thr";
         
       
       .footerList ul {
@@ -445,99 +468,118 @@
         }
         
       } */
-      .mobileFooter {
-        visibility: hidden;
-      }
-      .mobileFooterList {
-                visibility: hidden;
+.mobileFooter {
+  visibility: hidden;
+}
 
-      }
-      @media screen and (max-width: 1200px) {
-        .nav{
-          /* visibility: hidden; */
-        }
-        .navbar,.lowerNavBar, .underline, .scrollNav {
-          visibility: hidden;
-        }
-        
-        .img {
-          width: 40%;
-        
+.mobileFooterList {
+  visibility: hidden;
 
-        }
-        .mobileSignIn {
-          visibility: visible;
-        }
-          .mobileSignOut{
-            visibility: visible;
-          }
-      
-          .footerListHolder {
-             grid-template-columns: 100px 100px 100px;
-          }
-        }
-      
-      @media screen and (max-width: 700px) {
-      .subscribe{
-        visibility: hidden;
-      }
-      .dropbtn {
-        right: .2em;
-         
-      }
-      .HamburgerHolder {
-        left: .5em;
-      }
-      .signIn{
-        right: .5em;
-      }
-      .img {
-      
-      width: 60%;
-      
-    }
-    .footerListHolder {
-      height: 26em;
-      
-      
-    }
-    .footerListHolder ul {
-      visibility: hidden;
-      }
-      .mobileFooter{
-        visibility: visible;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      } 
-      .mobileFooterList {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-       
+}
 
-       }
-       .copyright{
-       top: 34.3em;
-     
-       }
-       .moblieFooterButton{
-         background: none;
-         border: none;
-         color: #ffefee;
-         margin:.3em;
-       }
-       .mobileFooterName {
-             width: 10em;
-             text-transform: uppercase;
-             padding: 1em;
-             padding-bottom: 0;
-             padding-left: 0;
-             border: none;
-             border-bottom: 2px solid#59BCC0;
-             background: none;
-             margin: 0.2em;
-             color: #fffefe;
-       }
-      }
+@media screen and (max-width: 1200px) {
+  .nav {
+    /* visibility: hidden; */
+  }
+
+  .navbar,
+  .lowerNavBar,
+  .underline,
+  .scrollNav {
+    visibility: hidden;
+  }
+
+  .img {
+    width: 40%;
+
+
+  }
+
+  .mobileSignIn {
+    visibility: visible;
+  }
+
+  .mobileSignOut {
+    visibility: visible;
+  }
+
+  .footerListHolder {
+    grid-template-columns: 100px 100px 100px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .subscribe {
+    visibility: hidden;
+  }
+
+  .dropbtn {
+    right: .2em;
+
+  }
+
+  .HamburgerHolder {
+    left: .5em;
+  }
+
+  .signIn {
+    right: .5em;
+  }
+
+  .img {
+
+    width: 60%;
+
+  }
+
+  .footerListHolder {
+    height: 26em;
+
+
+  }
+
+  .footerListHolder ul {
+    visibility: hidden;
+  }
+
+  .mobileFooter {
+    visibility: visible;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mobileFooterList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+  }
+
+  .copyright {
+    top: 34.3em;
+
+  }
+
+  .moblieFooterButton {
+    background: none;
+    border: none;
+    color: #ffefee;
+    margin: .3em;
+  }
+
+  .mobileFooterName {
+    width: 11.5em;
+    text-transform: uppercase;
+    padding: 1em;
+    padding-bottom: 0;
+    padding-left: 0;
+    border: none;
+    border-bottom: 2px solid#59BCC0;
+    background: none;
+    margin: 0.2em;
+    color: #fffefe;
+  }
+}

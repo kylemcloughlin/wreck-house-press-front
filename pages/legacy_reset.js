@@ -8,7 +8,7 @@ import { useSpring, animated } from 'react-spring';
 
 
 export default function LegacyReset() {
-  let [complete, setComplete] = useState(false);
+  let [complete, setComplete] = useState(true);
   let router = useRouter();
   
  const [mes, setMessage] = useState('')
