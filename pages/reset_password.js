@@ -38,7 +38,7 @@ export default function ResetPassword() {
             })
             .then((response) => {
                 if (response.data.status === 200) {
-                        // console.log('posted', response.data)
+                     
                         setComplete(true)
                 }
                   }).catch((error) => {

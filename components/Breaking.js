@@ -5,7 +5,6 @@ import { useAppContext } from '../context/AppContext';
 
 const Breaking = ({breaking}) => {
 let x = breaking[0]
-console.log(x);
 let globalState = useAppContext().catagories;
 let subs = useAppContext().subcatagories;
   

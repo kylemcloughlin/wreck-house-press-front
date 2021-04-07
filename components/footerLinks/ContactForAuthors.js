@@ -29,7 +29,7 @@ const ContactForAuthors = () => {
     setPending(true)
     event.preventDefault() // don't redirect the page
     // where we'll add our form logic
-    // console.log('hit')
+    
     let {email, emailBody} = event.target;
     console.table(email.value, emailBody.value)
     axios.post(`${process.env.BACKEND_URL}/about`, {
@@ -44,8 +44,8 @@ const ContactForAuthors = () => {
   })
     .then((response) => {
     setSent(true)
-    console.log(response)
-    console.log(response.data);
+    
+    
         if(response.data.status === 200) {
         }
   }).catch((error) => {

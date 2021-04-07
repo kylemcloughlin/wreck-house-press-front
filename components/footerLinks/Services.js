@@ -2,7 +2,7 @@
 import {React, useState, useEffect} from 'react';
 import styles from '../../styles/About.module.css';
 const  Services= () => {
-// console.log(category)
+
 
 
   return (

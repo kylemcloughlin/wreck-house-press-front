@@ -92,7 +92,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
       }
 
     }
-    // console.log(document.cookie)
+    
   }
     
   const signIn = async (event) => {
@@ -120,7 +120,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
 
     
           } else {
-            console.log('somthing went wrong?', response.data)
+            
             setMessage(`${response.data}`);
           }
   }).catch((error) => {
@@ -140,7 +140,7 @@ export default function Login({handleSignIn, setLoggedIn}) {
 
     setRecovery(true)
   
-    console.log('hit')
+    
   }
 
     const resque= (e) => {
@@ -279,13 +279,13 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
     
     // const result = await res.json()
     
-    // console.log(result.logged_in)
+    
 
 
 
 
   // const handleSignUp = (e) => {
-  //     console.log('hit')
+  
   // }
 
   

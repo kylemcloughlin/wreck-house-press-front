@@ -9,7 +9,7 @@ export default function fire() {
 const [deployed, setDeployed]  = useState(false)
 
   const handleUser = () => {
-    setDeployed(true)
+    // setDeployed(true)
       axios.get(`${process.env.BACKEND_URL}/fire`, {
           withCredentials: true,
           headers: {
@@ -17,10 +17,10 @@ const [deployed, setDeployed]  = useState(false)
           }
         })
         .then((response) => {
-          console.log('res', res)
-            if (res.data.status === 200) {
-              // console.log('posted', response.data)
-              // setDeployed(true)
+
+            if (response.status === 200) {
+
+              setDeployed(true)
             }
         }).catch((error) => {
           console.log(error);

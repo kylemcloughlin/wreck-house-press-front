@@ -10,14 +10,14 @@ export default function Post() {
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
       // router.replace("/");
-      console.log('hit')
+      
     } 
       },[]);
   
       const handlePost = (e) => {
         e.preventDefault()
         let {title, author, readTime, category, subcategory, photos, subtitles, body} = e.target;
-        console.log(`${title.value} ${author.value} ${readTime.value} ${category.title} ${subcategory.value} ${photos.value} ${subtitles.value} ${body.value}`)
+       
     
       }
 

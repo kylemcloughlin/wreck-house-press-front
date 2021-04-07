@@ -50,8 +50,7 @@ export default function LegacyReset() {
               }
             })
             .then((response) => {
-                console.log('response', response)
-                console.log(response.status)
+         
                 if (response.status === 200) {
                         setComplete(true)
                 }

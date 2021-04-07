@@ -17,9 +17,9 @@ const [complete, setComplete] = useState(false)
 const [message, setMessage] = useState("")
 const handleEmail = (e) => {
   e.preventDefault();
-console.log(e)
+
 let {email, emailConfirm} = e.target;
-console.log(email.value)
+
     if(email.value != emailConfirm.value) {
           alert('Emails do not match, Try again!');
       
@@ -82,14 +82,14 @@ const handleCancel = (e) => {
         'Content-Type': 'application/json'
       }
     }).then(res => {
-      console.log("hittittiti", res)
+      
          if (res.status === 200) {
            setComplete(true)
 
            setMessage('subscription has been canceled')
          }
      
-      console.log(res.data)
+      
     }).catch((err) => {
       console.log(err);
       if (err.response.status === 401) {
@@ -141,8 +141,8 @@ const sendPut = (x) => {
           alert('This email is unavailable, please try another!');
 
         } 
-        //  console.log(error.response.status);
-        //  console.log(error.response.headers);
+        
+        
       })
         })
 
@@ -165,7 +165,7 @@ const sendDelete = (x) => {
       'Content-Type': 'application/json'
        }
       }).then(res => {
-        console.log("SEND DELETE", res)
+
            if (res.status === 200) {
              setComplete(true)
           setMessage('account hase been deleted');
@@ -191,9 +191,9 @@ useEffect((ctx) => {
   
   if (!Bearer) {
   
-    return (<div className={styles.container}>
-            <h1>User Settings</h1>
-            <SignIn/>
+    return (<div>
+            {/* <h1>User Settings</h1> */}
+           <div className={styles.panel}><SignIn/></div>
           </div> )
 }
  

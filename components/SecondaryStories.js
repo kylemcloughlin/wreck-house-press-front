@@ -11,7 +11,7 @@ const SecondaryStories = ({sortedArticles}) => {
   return(
        <div>
          {sortedArticles.map((x, ind) => { 
-            // console.log(x, globalState)
+
             let url = ind
             let el; 
             switch (x.name) {

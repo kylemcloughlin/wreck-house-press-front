@@ -18,7 +18,7 @@ const AddStory = ({newStories, header}) => {
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
     // let year  = 
-    // console.log(`years: ${years} days: ${days} hh: ${hh / 24} mm: ${mm} `)
+   
       if (years > 0) {
         return `posted ${years} years ago`;
       } else if (days > 0) {
@@ -40,7 +40,7 @@ const AddStory = ({newStories, header}) => {
           < div className={styles.line}/>
             {newStories.map((x, ind) =>{
               let tet = ind < 2 ? (styles.story) : (styles.storyLast)
-              // console.log(tet);
+         
               return(
                 <Link key={x.id} href="/article/[article]" as={`/article/${x.url}`}> 
               <div key={ind} className={tet}>

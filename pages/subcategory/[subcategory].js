@@ -32,7 +32,7 @@ export default function Subcategory({ topStory, header, category, subs}) {
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
     // let year  = 
-    // console.log(`years: ${years} days: ${days} hh: ${hh / 24} mm: ${mm} `)
+   
     if (years > 0) {
       return `posted ${years} years ago`;
     } else if (days > 0) {
@@ -100,9 +100,7 @@ export default function Subcategory({ topStory, header, category, subs}) {
     setCount(0)
   }
   
-  console.log(category.length)
-  console.log()
-  console.log(count)
+ 
   
   
     let conditButton = empty ? (<div/>) : (<button onClick={handleClick} className={categoryStyles.moreBut}> MORE </button>)
@@ -115,7 +113,7 @@ export default function Subcategory({ topStory, header, category, subs}) {
 
              <ul className={navStyles.lowerNavBar}>
             { subs.map((x, ind)=> {
-              console.log(x)
+              
               //  let clickedLowerNavButtonStyle =  subClicked === x.name ? ({ color: 'black'}) : ({color: '#fffefe' })
               return (<li key={x.id}>
                 <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.name}`}>
@@ -173,7 +171,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params)
+
   const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations/${params.subcategory}`)
   const output = await res.json()
   let header = await output.header

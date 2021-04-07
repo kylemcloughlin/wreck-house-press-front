@@ -56,10 +56,10 @@ const springPropsTwo = useSpring({
     name = name.join(" ")
     if (!stripe || !elements) {
       setPending(false)
-      console.log('ERROR')
+      
       return;
     }
-    console.log('hit 3', stripe)
+    
     const result = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -68,13 +68,13 @@ const springPropsTwo = useSpring({
         
       },
     });
-    console.log(result)
-    console.log('hit 4')
+   
+   
     if (result.error) {
       setPending(false)      
       console.log(result.error.message); ///ADDD ERRROR HANDLEING HERE???
     } else {
-      console.log('hit 5')
+      
       
       
       axios.post(`${process.env.BACKEND_URL}/customers`, {
@@ -92,27 +92,27 @@ const springPropsTwo = useSpring({
       .then((response) => {
         const status = response.data.subscription.latest_invoice.status;
         const client_secret = response.data.subscription.latest_invoice.client_secret;
-        console.log(response.data.subscription.latest_invoice)
+
         setCustomerId(response.data.invoice_id)
         
         
         if (status === 'requires_action') {
           stripe.confirmCardPayment(client_secret).then(function (result) {
               if (result.error) {
-                  console.log('There was an issue!',result);
                   
-                  console.log(result.error.message); ///ADDD 
+                  
+                  
                   setPending(false)
                   // Display error message in your UI.
                   // The card was declined (i.e. insufficient funds, card has expired, etc)
                 } else {
-                  console.log('You got the money!');
+                  
                   setComplete(true)
                   //  setTimeout(function () { }, 2000);
                 }
                 });
               } else {
-                  console.log('You got the money!');
+                  
                   setComplete(true)
                 
                 
@@ -122,8 +122,7 @@ const springPropsTwo = useSpring({
       if (error.response) {
         // Request made and server responded
         setMessage(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
+    
       } 
   
                 setPending(false)

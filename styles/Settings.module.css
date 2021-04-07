@@ -99,7 +99,17 @@
 
 }  
 
-
+.panel {
+    width: 29em;
+    background: #fffefe;
+    position: relative;
+    /* top: 1em; */
+    height: 26em;
+  border: #B9B7B7 solid 2px;
+  border-radius: .2em;
+  margin-top: 1em;
+  box-shadow: #666 0px 3px 6px -1px;
+}
 
 @media screen and (max-width: 700px) {
   .container {

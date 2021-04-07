@@ -16,7 +16,7 @@ const three =({x}) => {
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
     // let year  = 
-    // console.log(`years: ${years} days: ${days} hh: ${hh / 24} mm: ${mm} `)
+   
       if (years > 0) {
         return `posted ${years} years ago`;
       } else if (days > 0) {

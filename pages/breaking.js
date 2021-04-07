@@ -8,7 +8,7 @@ export default function Breaking() {
   useEffect((ctx) => {
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
-      console.log('hit')
+      
       router.replace("/");
     } 
   },[]);
@@ -17,7 +17,7 @@ export default function Breaking() {
         e.preventDefault()
         let {title, author, readTime, category, subcategory, photos, subtitles, body} = e.target;
         let splitBody = body.value.split("\n")
-        console.log(splitBody)
+        
         let output = {
           article: {
             title: title.value,
@@ -42,9 +42,9 @@ export default function Breaking() {
         })
         .then((response) => {
           if (response.data.status === 'created') {
-                console.log('posted', response.data)
+                
           } else {
-            console.log('somthing went wrong?', response.data)
+    
           }
         }).catch((error) => {
           console.log(error);

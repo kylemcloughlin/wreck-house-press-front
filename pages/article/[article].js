@@ -56,8 +56,8 @@ const {Bearer} = await parseCookies(ctx);
          let {legacy, sId, expiry} = res.data;
            let today = new Date()            
            let nd = new Date(expiry)
-           console.log(today > nd)
-           console.log(today, nd)
+          
+          
 
            if( expiry === 'annual') {
               setLoggedIn(res.data.logged_in);
@@ -101,7 +101,7 @@ const {Bearer} = await parseCookies(ctx);
 
  let category = useAppContext().catagories;
  let subcategory = useAppContext().subcatagories;
-//  console.log(article)
+
   return (
     <div className={articleStyles.holder}>
       <Head>

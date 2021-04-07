@@ -18,7 +18,7 @@ const TopStories = ({ topStory, title}) => {
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
     // let year  = 
-    // console.log(`years: ${years} days: ${days} hh: ${hh / 24} mm: ${mm} `)
+   
       if (years > 0) {
         return `posted ${years} years ago`;
       } else if (days > 0) {
@@ -44,7 +44,7 @@ const TopStories = ({ topStory, title}) => {
   
           {topStory.map((x, ind)=> {
              let visible = ind === 0 ? ({ visibility: 'visible'}) : ({ visibility: 'hidden', width: '0em', height: '0em'})
-            //  console.log(x.fallback)
+           
             return(
               <Link key={x.id} href="article/[article]" as={`/article/${x.url}`}> 
             <div value="xxx" className={x.style}>

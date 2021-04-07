@@ -7,7 +7,7 @@ export default function Subscribe({options}) {
 //  {pending ? (<div className={loaderStyles.ldsRing} style={{bottom: '0em', left: '45%'}}><div></div><div></div><div></div><div></div></div>): ( <button  type="submit" className={styles.emailButton}>SEND</button>)}
   const handleClick = (opt, e) => {
     setPending(true)
-      console.log(opt)
+ 
     }
 
 

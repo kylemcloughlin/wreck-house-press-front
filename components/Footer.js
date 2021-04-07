@@ -29,7 +29,6 @@ const Footer = ({loggedIn}) => {
 let conditional = loggedIn ? (linksWithUser) : (links)
 
 const styles = [navStyles.itemA, navStyles.itemB, navStyles.itemC, navStyles.itemD]
-  // console.log('footski',loggedIn)
  
 useEffect((ctx) => {
 

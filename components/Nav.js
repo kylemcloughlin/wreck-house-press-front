@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import {destroyCookie} from 'nookies';
 import Hamburger from '../components/Hamburger';
 const Nav = ({category, loggedIn}) => {
-  // console.log('navski',loggedIn)
+
 const router = useRouter()
   let [isLoggedIn, setIsLoggedIn] = useState(loggedIn);   
   let globalState = useAppContext().catagories;
@@ -29,7 +29,7 @@ const router = useRouter()
      }
   
 const handleToggle = (event) => {
-  console.log(event);
+  
   setToggle(!toggle)
     // document.getElementById("myDropdown").classList.toggle(navStyles.show);
   }
@@ -71,7 +71,7 @@ const handleToggle = (event) => {
       
       
       setIsLoggedIn(loggedIn)
-       console.log(loggedIn)
+       
       },[loggedIn]);
   return (
    <div>

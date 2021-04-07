@@ -17,6 +17,6 @@ export function AppWrapper({ children }) {
 }
 
 export function useAppContext() {
-  // console.log(AppContext.)
+  
   return useContext(AppContext);
 }

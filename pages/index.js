@@ -25,14 +25,13 @@ export default function Home({articles, topStory, title}) {
         published.setHours(published.getHours() + 24);
         let now = new Date()
         let test = Date.parse(published) > Date.parse(now)
-        console.log(published, now)
-        console.log(test)
+      
 
         if (test) {
           setBreaking(true)
           breaking.push(x)
       } else {
-          console.log('hit in else')
+         
         }
       }
         switch (x.categorization_id) {
@@ -61,7 +60,6 @@ export default function Home({articles, topStory, title}) {
         }
         
       })
-      console.log("BREAKIMG", breaking)
       setBreakingStory(breaking)
         setSortedArticles([two, three, four, five, six]);
     }, []);

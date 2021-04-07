@@ -27,8 +27,8 @@ export default function Category({ topStory, header, category, subs}) {
     let hh = Math.floor(msec / 1000 / 60 / 60);
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
-    // let year  = 
-    // console.log(`years: ${years} days: ${days} hh: ${hh / 24} mm: ${mm} `)
+   
+    
       if (years > 0) {
         return `posted ${years} years ago`;
       } else if (days > 0) {
@@ -96,9 +96,7 @@ export default function Category({ topStory, header, category, subs}) {
         setCount(0)
     }
 
-    console.log(category.length)
-    console.log()
-    console.log(count)
+  
 
 
 
@@ -114,7 +112,7 @@ export default function Category({ topStory, header, category, subs}) {
 
           <ul className={navStyles.lowerNavBar}>
             { subs.map((x, ind)=> {
-                console.log(x)
+                
               //  let clickedLowerNavButtonStyle =  subClicked === x.name ? ({ color: 'black'}) : ({color: '#fffefe' })
               return (<li key={x.id}>
                 <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.name}`}>

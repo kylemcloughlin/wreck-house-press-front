@@ -31,8 +31,6 @@ function MyApp({ Component, pageProps, categorizes, props }) {
          }
        })
        .then(res => {
-         console.log(res)
-         
          setLoggedIn(res.data.logged_in);
 
        }).catch((error) => {
