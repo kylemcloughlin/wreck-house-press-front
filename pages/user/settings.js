@@ -36,9 +36,12 @@ console.log(email.value)
 const handlePassword = (e) => {
   e.preventDefault();
   let {password, newPassword, newPasswordConfirm} = e.target;
-  if (newPassword != newPasswordConfirm) {
+  let test = newPassword.value.split("");
+  if (newPassword.value != newPasswordConfirm.value) {
           alert('Passwords do not match, Try again!');
 
+  } else if (test.length < 7) {
+    alert("Password must be 8 characters long!")
   } else {
 
     let data = { update: 'password',
@@ -137,9 +140,7 @@ const sendPut = (x) => {
         if (x.update === 'email') {
           alert('This email is unavailable, please try another!');
 
-        } else {
-          alert('Password must be at least 8 characters Long!');
-        }
+        } 
         //  console.log(error.response.status);
         //  console.log(error.response.headers);
       })
@@ -198,7 +199,7 @@ useEffect((ctx) => {
  
 if (complete) {
   setTimeout(function () { router.replace("/")}, 3000);
-  return( <div>
+  return( <div className={styles.container}>
           <span>Confirmed! your {message}, if you will be redirected shortly...</span>
          </div>)
 }

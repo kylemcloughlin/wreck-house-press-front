@@ -54,13 +54,15 @@ const {Bearer} = await parseCookies(ctx);
        .then(res => {
          if (res.data.logged_in) {
          let {legacy, sId, expiry} = res.data;
-         if (legacy === true)  {
            let today = new Date()            
            let nd = new Date(expiry)
            console.log(today > nd)
            console.log(today, nd)
 
-           if (nd > today ) {
+           if( expiry === 'annual') {
+              setLoggedIn(res.data.logged_in);
+           }
+           else if (nd > today ) {
               setLoggedIn(res.data.logged_in);
             
              
@@ -69,16 +71,7 @@ const {Bearer} = await parseCookies(ctx);
               setElmnt(elementCondit(true))
 
             }
-           } 
-           else if (sId.value) {
-            console.log('hit SID')
-              setLoggedIn(res.data.logged_in);
-           } else {
-            console.log('hit else')
-            
-            setElmnt(elementCondit(true))
-
-           }
+  
           
           
           } else {
@@ -101,7 +94,7 @@ const {Bearer} = await parseCookies(ctx);
     }
   }
  useEffect(() => {
-  console.log(elmnt)
+
 
    handleLogin()
  }, []);
@@ -173,7 +166,6 @@ export async function getStaticPaths() {
       article: x.url.toString()
     },
   }))
-  console.log(paths)
   return {
     paths,
     fallback: false

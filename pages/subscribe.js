@@ -25,7 +25,8 @@ export default function Subscribe({options}) {
             {options.map((opt) =>{
               return (<div key={opt.name} key={opt.id} className={styles.option} > 
                 <h1 className={styles.subscriptionTitle}>{opt.name}</h1>
-                <p>{opt.dis}</p>
+                <p className={styles.dis}>{opt.dis}</p>
+                 <p className={styles.valid}>{opt.validUntil}</p>
                 {/* <h5>{opt.validUntil}</h5> */}
                 <Link  href="/checkout/[checkout]" as={`/checkout/${opt.id}`}>
                   {/* <Link href="checkout/[checkout]" as={`/checkout/${opt.id}`}>  */}

@@ -8,10 +8,10 @@ export default function Breaking() {
   useEffect((ctx) => {
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
-      // router.replace("/");
       console.log('hit')
+      router.replace("/");
     } 
-      },[]);
+  },[]);
   
       const handleBreaking = (e) => {
         e.preventDefault()

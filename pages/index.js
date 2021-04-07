@@ -77,7 +77,7 @@ export default function Home({articles, topStory, title}) {
         <main className={indexStyles.mainContainer}>  
         {breaking ? (<Breaking breaking={breakingStory}/>) : (<div/>)}
         <TopStories title={title} topStory={topStory}/>
-        <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0" /></a>
+        {/* <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0" /></a> */}
         <SecondaryStories sortedArticles={sortedArticles}/>
       </main>
     </div>

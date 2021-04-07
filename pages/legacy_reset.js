@@ -6,11 +6,27 @@ import md5 from 'md5';
 import { useSpring, animated } from 'react-spring';
 
 
-export default function ResetPassword() {
-  let [complete, setComplete] = useState(false);
-  let [mes, setMessage] = useState(false);
 
+export default function LegacyReset() {
+  let [complete, setComplete] = useState(false);
   let router = useRouter();
+  
+ const [mes, setMessage] = useState('')
+ const props = useSpring({
+            height: mes ? 80 : 0,
+            transform: 'translate3d(0,0,0)',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            opacity: '.6',
+            // transition: mes ? '' :'2ss ease',
+  
+            config: {
+              duration: 400
+            },
+           
+          })
+
   let handleReset = (e) => {
     e.preventDefault();
     let {token, password, passwordConfirmation} = e.target;
@@ -18,15 +34,12 @@ export default function ResetPassword() {
     if ( password.value.length < 8) {
       setMessage('password Must be at least 8 characters long')
 
-
-      
     }
     if (password.value !== passwordConfirmation.value ) {
       setMessage('Passwords dont Match!')
 
     }
-
-    axios.post(`${process.env.BACKEND_URL}/reset`, {
+    axios.post(`${process.env.BACKEND_URL}/legacy`, {
                     token: token.value,
                     password: md5(password.value),
                     password_confirmation: md5(passwordConfirmation.value)
@@ -37,22 +50,31 @@ export default function ResetPassword() {
               }
             })
             .then((response) => {
-                if (response.data.status === 200) {
-                        // console.log('posted', response.data)
+                console.log('response', response)
+                console.log(response.status)
+                if (response.status === 200) {
                         setComplete(true)
                 }
                   }).catch((error) => {
-                      console.log(error);
+                       if (error.response.status === 404) {
+                          setMessage("something went wrong, please make sure you've copied the complete token")
+                        
+                        }
                     })
                   
                   }
                   
+
+
+
      const handleClick = (e) => {
         e.preventDefault();
         router.replace('/login')
      }
 
-             function handleError() {
+
+  
+        function handleError() {
     setTimeout(function () { setMessage(false)}, 2000);
   }    
   useEffect(() => {
@@ -64,7 +86,7 @@ export default function ResetPassword() {
 
 
       
-  },[mes]);
+  },[mes, complete]);
 
 
 
@@ -79,11 +101,11 @@ export default function ResetPassword() {
       
  return (<div  className={styles.container}>
       <div className={styles.titleHolder}>
-            <h1 className={styles.title}>Reset Password</h1>
+            <h1 className={styles.title}>Legacy User Transfer</h1>
       </div>
-       {/* <animated.div style={props} className={loginStyles.error}>
-        <p className={loginStyles.message}>{mes}</p>
-      </animated.div>  */}
+       <animated.div style={props} className={styles.error}>
+        <p className={styles.message}>{mes}</p>
+      </animated.div> 
      <form onSubmit={handleReset}>
       <ul>
         <li>
@@ -108,4 +130,5 @@ export default function ResetPassword() {
     </form>
             
         </div>)
+
 }

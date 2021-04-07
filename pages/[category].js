@@ -5,19 +5,18 @@ import categoryStyles from '../styles/Category.module.css';
 import {useState, useEffect } from 'react';
 import AddStory from '../components/AddStory.js';
 import navStyles from '../styles/Nav.module.css';
-
+import { useAppContext } from '../context/AppContext';
 
 export default function Category({ topStory, header, category, subs}) {
-  console.log(category)
-  // let [allStories, setAllStories] = useState();
+  let subCats = useAppContext().subcatagories
   let [moreStories, setMoreStories] = useState([]);
   let [count, setCount] = useState(0)
-  let [empty, setEmpty] = useState(false);
+  let [empty, setEmpty] = useState(true);
   let styleArray = [categoryStyles.itemA, categoryStyles.itemB, categoryStyles.itemC, categoryStyles.itemD, categoryStyles.itemE]
   let route = useRouter();
   let test = route.asPath
   let [check, setCheck] = useState(test);
-  
+  // let trying = 0
   const countDown = (x) => {
     let date2 = new Date(); // 9:00 AM
     let date1 = new Date(x);
@@ -50,35 +49,34 @@ export default function Category({ topStory, header, category, subs}) {
 
   const handleClick = (e) => {
     if (category.length >  moreStories.length * 3) {
-   
+
       let holder = [];
-      for(let i = 0; i < 3; i++) {
-        let helper = moreStories.length * 3 
+      let i;
+      for( i = 0; i < 3; i++) {
+        let helper = moreStories.length * 3;
         if(helper + i >= category.length) {
-          console.log(helper + i, category.length)
-          console.log("hithithiti")
           setEmpty(true)
         } else {
           holder.push(category[ helper + i]);
 
         }
-        setCount(count++)
       }
+      
     
 
       setMoreStories([...moreStories, holder])
+        setCount(count + holder.length)
 
     } 
     if (category.length === count) {
       setEmpty(true)
     }
+  
   }
 
   useEffect((ctx) => {
-
-
-    // setAllStories(category);
-    if (category.length === count) {
+    
+    if (category.length <= count) {
       setEmpty(true)
     } else {
       setEmpty(false)
@@ -86,7 +84,7 @@ export default function Category({ topStory, header, category, subs}) {
     }
    
 
-  }, [moreStories])
+  }, [moreStories, count])
 
     let path = route.asPath;
     
@@ -95,9 +93,16 @@ export default function Category({ topStory, header, category, subs}) {
     } else {
         setCheck(path)
         setMoreStories([]);
+        setCount(0)
     }
 
+    console.log(category.length)
+    console.log()
+    console.log(count)
 
+
+
+    let conditButton = empty ? (<div/>) : (<button onClick={handleClick} className={categoryStyles.moreBut}> MORE </button>)
    let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
   return (<div className={categoryStyles.mainContainer}>
       <Head>
@@ -130,6 +135,7 @@ export default function Category({ topStory, header, category, subs}) {
                  <Link key={x.id} href="article/[article]" as={`/article/${x.url}`}> 
                     <div className={styleArray[ind]}>
                     <h5 className={categoryStyles.catTitle}>{header}</h5>
+                    <h5 className={categoryStyles.subCatTitle}>{subCats[x.subcategorization_id]}</h5>
                       <img src={x.fallback[0]} style={visible}  className={categoryStyles.img}/> 
                     <h2 className={categoryStyles.artTitle}>{x.title}</h2>
                     <h6 className={categoryStyles.date}>{countDown(x.originalPost)}</h6>
@@ -143,7 +149,7 @@ export default function Category({ topStory, header, category, subs}) {
       {moreStories.map((x, ind)=> {
           return(<AddStory key={ind} newStories={x} header={header}/>)
       })}
-     {empty ? (<div/>) : (<button onClick={handleClick} className={categoryStyles.moreBut}> MORE </button>)}
+     {conditButton}
        </div> 
 
    </div>

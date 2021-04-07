@@ -9,12 +9,15 @@ import {React, useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 
 
+
 export default function Login({handleSignIn, setLoggedIn}) {
+
   const router = useRouter();
   const [cookie, setCookie] = useCookies(["bearer"]);
-  const [error, setError] = useState(false)
+  const [sent, setSent] = useState(false)
   const [recovery, setRecovery] = useState(false)
-
+  const  [complete, setComplete] = useState(false)
+  let classCondit= complete ? (loginStyles.complete): (loginStyles.error)
   const [mes, setMessage] = useState('')
           const props = useSpring({
             height: mes ? 150 : 0,
@@ -23,20 +26,36 @@ export default function Login({handleSignIn, setLoggedIn}) {
             flexDirection: 'column',
             overflow: 'hidden',
             opacity: '.6',
-            // transition: mes ? '' :'2ss ease',
+    
   
             config: {
               duration: 400
             },
            
           })
-
+           const completeProps = useSpring({
+            height: '150',
+            transform: 'translate3d(0,0,0)',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            opacity: '.6',
+            color: 'black',
+  
+            config: {
+              duration: 400
+            },
+           
+          })
+  const  propsCondit = complete ? (completeProps):(props)
   const registerUser = async event => {
-
+    let test = event.target.password.value.split("")
     event.preventDefault()
     if (md5(event.target.password.value) != md5(event.target.password_confirmation.value) ) {
       setMessage("Passwords do not match!")
     
+    } else if (test.length < 7) {
+        setMessage("Password must be 8 characters long!")
     } else {
 
     const res = await fetch(`${process.env.BACKEND_URL}/users`, {
@@ -65,10 +84,8 @@ export default function Login({handleSignIn, setLoggedIn}) {
             sameSite: true,
           })
 
-            console.log(cookie)
-             router.reload();
-
-
+            router.replace('/subscribe')
+               setTimeout(function () { router.reload(); }, 2000);
       }
       if (result.status === 422) {
         setMessage("Email already taken, pleae try another!");
@@ -141,14 +158,11 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
     }
   })
   .then((response) => {
-   
+      setSent('true')
   }).catch((error) => {
   
   });
 
-
-
-      console.log(email.value)
 
     }
 
@@ -158,7 +172,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
 
         if (Bearer) {
          router.replace("/");
-        console.log('hit')
+        
 
         }
       if (mes) {
@@ -167,26 +181,27 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
       }
 
 
-        // console.log(Bearer, split)
-
       
-      },[mes]);
-  
+      },[mes, sent]);
+    
+      let element = sent ? (<div><i>an email has been sent to the email associated with the account.</i></div>) : (
+         <form onSubmit={resque} className={loginStyles.register}>
+              <ul className={loginStyles.formList}>
+                <li>
+                  <label htmlFor="name">Last Email Associated With Account</label>
+                  <br/>
+                  <input name="email" type="email"   placeholder="Email" required />
+                </li>
+                </ul>
+                    <button type="submit" className={loginStyles.recoveryBtn}>Recover</button>
+                </form>
+      )
 
   if (recovery) {
     return ( <div className={loginStyles.mainContainer}>
 <div className={loginStyles.loginDiv}>
  <h3 className={loginStyles.recoveryTitle}>Password Recovery</h3>
-  <form onSubmit={resque} className={loginStyles.register}>
-      <ul className={loginStyles.formList}>
-        <li>
-          <label htmlFor="name">Last Email Associated With Account</label>
-          <br/>
-          <input name="email" type="email"   placeholder="Email" required />
-        </li>
-        </ul>
-            <button type="submit" className={loginStyles.recoveryBtn}>Recover</button>
-        </form>
+      {element}
   </div>
     </div>)
   }
@@ -194,7 +209,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
 
   return (
     <div className={loginStyles.mainContainer}>
-      <animated.div style={props} className={loginStyles.error}>
+      <animated.div style={props} className={classCondit}>
         <p className={loginStyles.message}>{mes}</p>
       </animated.div> 
     
