@@ -283,7 +283,7 @@
   .itemE {
     border: none;
     border-bottom: 1.5px solid#B9B7B7;
-    /* width: 75%; */
+    /* width: 84%; */
   }
  .itemA .artTitle {
    top: 11em;
@@ -376,3 +376,16 @@
          margin: 0
        }
   }
+
+   @media screen and (max-width: 400px) {
+
+     .itemA,
+     .itemB,
+     .itemC,
+     .itemD,
+     .itemE {
+    
+       width: 75%;
+     }
+
+    }

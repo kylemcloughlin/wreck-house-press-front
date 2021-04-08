@@ -9,10 +9,12 @@ const Hamburger = () => {
     let globalState = useAppContext().hamburger;
     let [open,setOpen] = useState(false);
   let handleClick = () => {
-    setOpen(!open);
+    console.log('hitititi')
+    
   } 
   return (
-    <Menu isOpen={open}>
+    <Menu 
+      isOpen={open}>
       <ul>
      { globalState.map((x, ind)=> {  
       //  let clickedNavButtonStyle =  clicked === ind ? ({ color: '#59BCC0'}) : ({color: '#B9B7B7' })

@@ -13,13 +13,24 @@
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   /* border: 3px solid green; */
   /* padding: 10px; */
   /* margin-bottom: 150em; */
+  transition: 2s ease-in-out;
 }
 
 
+@media screen and (max-width: 1300px) {
+  .main {
+  display: block;
+  }
+}
 
 
+@media screen and (max-width: 700) {
+    .main {
+      display: content;
+    }
+}

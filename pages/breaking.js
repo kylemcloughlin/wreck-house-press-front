@@ -9,7 +9,7 @@ export default function Breaking() {
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
       
-      router.replace("/");
+      // router.replace("/");
     } 
   },[]);
   

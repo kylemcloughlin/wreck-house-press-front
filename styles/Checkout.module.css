@@ -166,6 +166,7 @@ height: 3em;
   } */
   .indexContainer {
     display: block;
+    width: 100%;
   }
   .panel {
     margin-bottom: 1.5em;
