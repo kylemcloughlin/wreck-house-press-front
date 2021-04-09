@@ -40,7 +40,7 @@ const [mes, setMes] = useState("")
   } 
   return( <div>
           
-            <button onClick={handleUser}>FIRE</button>
+            {/* <button onClick={handleUser}>FIRE</button> */}
 
          
           </div>)
