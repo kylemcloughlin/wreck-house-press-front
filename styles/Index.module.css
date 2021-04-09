@@ -217,7 +217,7 @@
 
 .itemE h2 {
 
-  top: 5.5em;
+  top: 3.5em;
 
 
 }
@@ -534,7 +534,7 @@
 
   .header {
     left: -0.7em;
-    top: -0.2em;
+    top: 2.5em;
     background: none;
   }
 
@@ -551,7 +551,7 @@
   }
 
   .subCatTitle {
-    top: -1.5em;
+    top: -1em;
   }
 
   .storiesContainer {
@@ -569,7 +569,9 @@
 
 
   @media screen and (max-width: 1000px) {
-
+      .itemB, .itemC, .itemD { 
+        height: 12em;
+      }
     .subItemA,
     .subItemB,
     .subItemC,
@@ -610,7 +612,7 @@
   }
 
   .addStoryContainer {
-    height: 25em;
+    height: 35em;
     flex-direction: column;
   }
 

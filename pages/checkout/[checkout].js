@@ -14,7 +14,7 @@ const { serverRuntimeConfig} = getConfig()
 
 
 const CheckoutPage = ({option}) => {
-  const stripePromise = loadStripe("pk_test_51IdJQPEi5f8mP2W38WDZRcK3QIn3aVLfpaoXrXJiFETf4NQAzUcUQNkRdTcCBk3WuO4SFdiX6ooUGeXpLqangb0T00RFbDwrIY");
+  const stripePromise = loadStripe("pk_live_ew7nsvMgeJBvCTbBJOvMJmfs00Aoi9zz8H");
   let [signedIn, setSignedIn] = useState();   
   let [bearer, setBearer ] = useState('')
   useEffect((ctx) => {

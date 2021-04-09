@@ -8,7 +8,7 @@ import { useSpring, animated } from 'react-spring';
 
 
 export default function LegacyReset() {
-  let [complete, setComplete] = useState(true);
+  let [complete, setComplete] = useState(false);
   let router = useRouter();
   
  const [mes, setMessage] = useState('')
@@ -35,36 +35,42 @@ export default function LegacyReset() {
       setMessage('password Must be at least 8 characters long')
 
     }
-    if (password.value !== passwordConfirmation.value ) {
+    else if (password.value !== passwordConfirmation.value ) {
       setMessage('Passwords dont Match!')
 
+    } else {
+
+      axios.post(`${process.env.BACKEND_URL}/legacy`, {
+        token: token.value,
+        password: md5(password.value),
+        password_confirmation: md5(passwordConfirmation.value)
+      }, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        
+        if (response.status === 200) {
+          setComplete(true)
+        }
+      }).catch((error) => {
+        if (error.response.status === 404) {
+          setMessage("something went wrong, please make sure you've copied the complete token")
+          
+        }
+        if (error.response.status === 500) {
+          setMessage("incorret token")
+          
+        }
+      })
+      
     }
-    axios.post(`${process.env.BACKEND_URL}/legacy`, {
-                    token: token.value,
-                    password: md5(password.value),
-                    password_confirmation: md5(passwordConfirmation.value)
-        }, {
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json'
-              }
-            })
-            .then((response) => {
-         
-                if (response.status === 200) {
-                        setComplete(true)
-                }
-                  }).catch((error) => {
-                       if (error.response.status === 404) {
-                          setMessage("something went wrong, please make sure you've copied the complete token")
-                        
-                        }
-                    })
-                  
-                  }
-                  
-
-
+  }
+    
+    
+    
 
      const handleClick = (e) => {
         e.preventDefault();
@@ -92,7 +98,7 @@ export default function LegacyReset() {
   if(complete) {
           return (<div  className={styles.container}>
                       <div className={styles.titleHolder}>
-                          <h1 className={styles.title}>Reset Password: Complete</h1>
+                          <h1 className={styles.title}>Account Transfer: Complete</h1>
                       </div>
                       <div className={styles.resetMess}><i>Your password has been reset, click</i> <button onClick={handleClick}className={styles.here}>here</button> <i>to login</i></div>
                   </div>)
@@ -100,7 +106,7 @@ export default function LegacyReset() {
       
  return (<div  className={styles.container}>
       <div className={styles.titleHolder}>
-            <h1 className={styles.title}>Legacy User Transfer</h1>
+            <h1 className={styles.title}>Account Transfer</h1>
       </div>
        <animated.div style={props} className={styles.error}>
         <p className={styles.message}>{mes}</p>

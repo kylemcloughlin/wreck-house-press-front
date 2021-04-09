@@ -7,9 +7,10 @@ import styles from '../styles/Reset.module.css';
 
 export default function fire() {
 const [deployed, setDeployed]  = useState(false)
-
+const [mes, setMes] = useState("") 
   const handleUser = () => {
-    // setDeployed(true)
+    setMes('deploying......')
+    setDeployed(true)
       axios.get(`${process.env.BACKEND_URL}/fire`, {
           withCredentials: true,
           headers: {
@@ -20,7 +21,7 @@ const [deployed, setDeployed]  = useState(false)
 
             if (response.status === 200) {
 
-              setDeployed(true)
+             setMes('deployed!!!!')
             }
         }).catch((error) => {
           console.log(error);
@@ -32,7 +33,7 @@ const [deployed, setDeployed]  = useState(false)
   }
   if (deployed) {
     return( <div>
-              <h3>deployed</h3>
+              <h3>{mes}</h3>
             </div>)
     
 

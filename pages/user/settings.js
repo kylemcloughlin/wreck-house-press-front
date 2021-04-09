@@ -187,15 +187,12 @@ const sendDelete = (x) => {
 
 useEffect((ctx) => {
   
-},[]);
   
   if (!Bearer) {
-  
-    return (<div>
-            {/* <h1>User Settings</h1> */}
-           <div className={styles.panel}><SignIn/></div>
-          </div> )
-}
+    
+    router.push('/login')
+  }
+},[]);
  
 if (complete) {
   setTimeout(function () { router.replace("/")}, 3000);

@@ -39,7 +39,7 @@ const SignIn =() => {
     if (response.data.logged_in) {
             setCookie("Bearer", response.data.token, {
               path: "/",
-              maxAge: 3600, // Expires after 1hr
+              maxAge: 36000, // Expires after 1hr
               sameSite: true,
             })
  

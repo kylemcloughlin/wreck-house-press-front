@@ -80,7 +80,8 @@ const springPropsTwo = useSpring({
       axios.post(`${process.env.BACKEND_URL}/customers`, {
         name: name,
         email: email.value,
-        code: props.code,
+        // code: props.code,
+        code: 'price_1IYJ0wHPabCG8MNS8Uj8BvGy',
         payment_method: result.paymentMethod.id,
         bearer: props.bearer
       }, {
@@ -148,7 +149,7 @@ const springPropsTwo = useSpring({
       },
       invalid: {
         iconColor: "#ffc7ee",
-        color: "#ffc7ee"
+        color: "red"
       }
     }
   };
@@ -195,7 +196,7 @@ const springPropsTwo = useSpring({
  
       <label className={styles.creditCardLabel}>Credit Card Details
       </label>
-        <CardElement options={cardOptions} className={styles.credit}/>
+        <CardElement options={cardOptions} className={styles.credit} />
              <animated.div style={springPropsTwo} className={styles.error}>
                 <p>{mes}</p>
              </animated.div>

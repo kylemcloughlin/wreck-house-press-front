@@ -45,10 +45,10 @@ useEffect((ctx) => {
         <ul className={styles[ind]} key={ind}>
         
         <h3>{link.name}</h3>
-        {link.subLinks.map(subLink =>{
+        {link.subLinks.map((subLink, id) =>{
 
-          return( <Link href={`/${link.name}/[${link.name}]`}   key={ind + 300} as={`/${link.name}/${subLink}`}>
-                    <li key={ind + 300}>{subLink}</li>
+          return( <Link href={`/${link.name}/[${link.name}]`}   key={id} as={`/${link.name}/${subLink}`}>
+                    <li key={ind + 330}>{subLink}</li>
                   </Link>  ) })}
         </ul>)
    })}
@@ -62,11 +62,10 @@ useEffect((ctx) => {
 
   <div className={navStyles.mobileFooter}>
      {linksWithUser.map((link, ind) =>{
-       return(<div> 
-        <div key={ind + 400}>
+       return(
+        <div key={ind + 4560}>
           <MobileFooter children={link}/>
-        </div>
-             </div>)
+        </div>)
          })}
   </div>
     

@@ -1,16 +1,23 @@
 import { parseCookies } from 'nookies';
-import {React, useEffect } from 'react';
+import {React, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import styles from '../styles/Breaking.module.css';
+import { useAppContext } from '../context/AppContext'; 
+
 export default function Breaking() {
+  let cats = useAppContext().hamburger
+  let [subs, setSubs] = useState(null)
+  let [range, setRange] = useState(6)
   const router = useRouter();
+  console.log(cats)
+
   useEffect((ctx) => {
-    const {Bearer} = parseCookies(ctx);
-    if (!Bearer) {
+    router.replace("/");
+    // const {Bearer} = parseCookies(ctx);
+    // if (!Bearer) {
       
-      // router.replace("/");
-    } 
+    // } 
   },[]);
   
       const handleBreaking = (e) => {
@@ -51,8 +58,24 @@ export default function Breaking() {
         })
       
       }
+    const handleSelect = (e) => {
+      e.preventDefault();
+      let x =  e.target.value
+      let category = cats[Number(x)]
+      // console.log(category)
+      // console.log(cat[category])
+      setSubs(category.subs)
+    }
 
+     const handleRange = (e) => {
+      e.preventDefault();
+      let x =  e.target.value
+        // console.log(x)
+        setRange(x)
+    }
+    useEffect(() => {
 
+    },[subs])
       
   return (
       <div className={styles.container}>
@@ -66,28 +89,24 @@ export default function Breaking() {
          <li className={styles.holder}>
           <label>Author</label>
           <input name="author" type="select"   placeholder="Authors"  className={styles.split} required />
-          <label>Read Time</label>         
-          <input name="readTime" type="select"   placeholder="Read Time" className={styles.split} required />
+          <label>Read Time: {range}</label>         
+          <input name="readTime" type="range"   placeholder="Read Time"  max='60' onChange={handleRange} className={styles.split} required />
         </li>
          <li className={styles.holder}>
-  
-          <select name="category"  className={styles.split} required>
-           <option value="" >--Category--</option>
-           <option value="1">Top Story</option>
-           <option value="2">Local News</option>
-           <option value="3">Sports</option>
-           <option value="4">Opinion</option>
-           <option value="5">Community</option>
-           <option value="6">The Arts</option>
-          </select>      
-         
-          <select name="subcategory"  className={styles.split} required>
-           <option value="" >--Subcategory--</option>
-           <option value="1">Columnists</option>
-           <option value="2">Letters</option>
-           <option value="3">Profile</option>
-           <option value="4">On The Bookshelf</option>
-           <option value="5">Music Row</option>
+          <select name="category"  className={styles.split} onChange={handleSelect} required>
+         {cats.map((cat, id) =>{
+           let x = cat.cat === 'Home'? ('Select One'): (cat.cat)
+           let y = id === 0 ? ('') : (id)
+
+           return(<option value={y} >{x}</option>)
+         })}
+         </select>      
+          <select name="subcategory"  className={styles.split}>
+          <option value="">Select One</option>
+          { subs != null ? (subs.map((sub) =>{
+                     return(<option value={sub.id}>{sub.name}</option>)
+        
+          })) :(<option value="">No Subcategories</option>)}
           </select>                   
         </li>
          <li>
@@ -104,7 +123,7 @@ export default function Breaking() {
         </li>
       </ul>
       <div className={styles.buttonHolder}>
-        <button type="submit">Create</button>
+        {/* <button type="submit">Create</button> */}
       </div>
     </form>
       </div>

@@ -21,6 +21,7 @@ const router = useRouter()
  
   // let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
      const handleLogOut = () => {
+         setToggle(!toggle)
        destroyCookie(null, "Bearer",{ path: '/'});
        router.replace("/")
        setIsLoggedIn(false)
