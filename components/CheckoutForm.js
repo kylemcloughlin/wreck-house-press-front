@@ -80,8 +80,7 @@ const springPropsTwo = useSpring({
       axios.post(`${process.env.BACKEND_URL}/customers`, {
         name: name,
         email: email.value,
-        // code: props.code,
-        code: 'price_1IYJ0wHPabCG8MNS8Uj8BvGy',
+        code: props.code,
         payment_method: result.paymentMethod.id,
         bearer: props.bearer
       }, {
