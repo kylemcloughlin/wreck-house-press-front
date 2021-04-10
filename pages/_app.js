@@ -11,7 +11,7 @@ import Link from 'next/link';
 function MyApp({ Component, pageProps, categorizes, props }) {
   let [category, setCategory] = useState();
   let [loggedIn, setLoggedIn] = useState()
-  let [admin, setAdmin] = useState(true);
+  let [admin, setAdmin] = useState();
   
   const  handleSignIn = () => {
     setLoggedIn(false)
@@ -31,6 +31,8 @@ function MyApp({ Component, pageProps, categorizes, props }) {
          }
        })
        .then(res => {
+         setAdmin(res.data.is)
+         console.log(res.data)
          setLoggedIn(res.data.logged_in);
 
        }).catch((error) => {
@@ -55,8 +57,14 @@ function MyApp({ Component, pageProps, categorizes, props }) {
   return (
     <AppWrapper>
       <Layout category={handleCategorizes}  loggedIn={loggedIn} handleSignIn={handleSignIn}>
-      {/* {admin ? (<div className="adminBar"><Link  href="/breaking"><button className="breaking">BREAKING</button></Link></div>): (<div/>)} */}
-        <Component {...pageProps} title={category} setLoggedIn={setLoggedIn} handleSignIn={handleSignIn} loggedIn={loggedIn}/>
+      {/* {admin ? (<div className="adminBar">
+      <Link  href="/breaking">
+          <button className="breaking">BREAKING</button>
+      </Link>
+          <button className="create">CREATE</button>
+          <button className="update">UPDATE</button>
+      </div>): (<div/>)} */}
+        <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>
     </AppWrapper>
 

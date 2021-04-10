@@ -52,13 +52,18 @@ const {Bearer} = await parseCookies(ctx);
          }
        })
        .then(res => {
-         if (res.data.logged_in) {
-         let {legacy, sId, expiry} = res.data;
-           let today = new Date()            
-           let nd = new Date(expiry)
-          
-          
+         if (category[article.categorization_id] === 'Sports') {
+           setLoggedIn(true);
 
+         }
+         else if (res.data.logged_in) {
+         let {legacy, sId, expiry} = res.data;
+         let today = new Date()
+         let x  = expiry; 
+         x = x.split('/')
+         let y = [x[2], x[1], x[0]]
+         y = y.join('/')
+         let nd = new Date(y)
            if( expiry === 'annual') {
               setLoggedIn(res.data.logged_in);
            }
@@ -79,8 +84,14 @@ const {Bearer} = await parseCookies(ctx);
           }
 
        }).catch((error) => {
-          setLoggedIn(false);
+         if (category[article.categorization_id] === 'Sports') {
+          setLoggedIn(true);
+
+        } else {
+          setLoggedIn(false); 
           setElmnt(elementCondit(false))
+
+        } 
 
        });
 
@@ -120,7 +131,7 @@ const {Bearer} = await parseCookies(ctx);
     <div className={articleStyles.line}/>
     <div  className={articleStyles.timeHolder}>
      <img className={articleStyles.clock} src="/images/clock-circular-outline.png"/>
-     <h5 className={articleStyles.readTime}>6 min. read</h5>
+     <h5 className={articleStyles.readTime}>{article.rt} min. read</h5>
     </div>
   </div>
   </div>
@@ -138,14 +149,12 @@ const {Bearer} = await parseCookies(ctx);
         <p  key={id} className={articleStyles.paragraph}>{par}</p>
       )
     })}
+            {/* {category[article.categorization_id] ? (<div className={articleStyles.sportsfoot}><i>Lori Bennett is a social worker, policy professional, recreation softball player and coach, and new ukulele-ist. A Newfoundlander living in Toronto, Lori loves a good hockey chat or even a debate, just as long as it remains respectful. She posts her gametime thoughts on twitter, particularly about hockey and the Montreal Canadiens, as <a className={articleStyles.loriTwitter} href='https://twitter.com/lori10habs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'>@lori10habs</a> </i></div>) : (<div/>)} */}
   </div>) : (<div className={articleStyles.articleBody}>
              <p>{article.body[0]} </p> 
                  <p className={articleStyles.para}>{article.body[2]}</p> 
                 {elmnt}
-         
-         
              </div>) }
-
   </div>
 </main>
     </div>

@@ -144,11 +144,11 @@ textarea {
 .adminBar{
     background: #59BCC0;
     width: 100%;
-    height: 4em;
+    height: 2em;
     position: relative;
     /* top: -3em; */
 }
-.breaking{
+.breaking, .update, .create{
 color: #373a47;
 background: lavender;;
 border: none;
@@ -162,6 +162,22 @@ opacity: .4;
   background: rgb(242, 125, 125);
   opacity: 1;
 }
+
+
+.create:hover, .create:focus {
+  transition: 200ms ease;
+  /* background: rgb(242, 125, 125); */
+  opacity: 1;
+}
+
+.update:hover, .update:focus {
+  transition: 200ms ease;
+  /* background: rgb(242, 125, 125); */
+  opacity: 1;
+}
+
+
+
 
 .bm-burger-button {
   position: sticky;
