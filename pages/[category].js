@@ -18,8 +18,14 @@ export default function Category({ topStory, header, category, subs}) {
   let [check, setCheck] = useState(test);
   // let trying = 0
   const countDown = (x) => {
+    let input = null
+    if (x.legacy === true) {
+      x.originalPost
+    } else {
+      input = x.created_at
+    }
+    let date1 = new Date(input);
     let date2 = new Date(); // 9:00 AM
-    let date1 = new Date(x);
     let diff = date2 - date1;
     let msec = diff;
     let ss = Math.floor(msec / 1000);
@@ -113,6 +119,7 @@ export default function Category({ topStory, header, category, subs}) {
           <ul className={navStyles.lowerNavBar}>
             { subs.map((x, ind)=> {
                 
+
               //  let clickedLowerNavButtonStyle =  subClicked === x.name ? ({ color: 'black'}) : ({color: '#fffefe' })
               return (<li key={x.id}>
                 <Link href="/subcategory/[subcategory]" as={`/subcategory/${x.name}`}>
@@ -136,7 +143,7 @@ export default function Category({ topStory, header, category, subs}) {
                     <h5 className={categoryStyles.subCatTitle}>{subCats[x.subcategorization_id]}</h5>
                       <img src={x.fallback[0]} style={visible}  className={categoryStyles.img}/> 
                     <h2 className={categoryStyles.artTitle}>{x.title}</h2>
-                    <h6 className={categoryStyles.date}>{countDown(x.originalPost)}</h6>
+                    <h6 className={categoryStyles.date}>{countDown(x)}</h6>
                     <div className={categoryStyles.imgBarrier}/>
                     <div/>
                     </div>

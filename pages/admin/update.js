@@ -9,7 +9,7 @@ export default function Update() {
   useEffect((ctx) => {
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
-      // router.replace("/");
+      router.replace("/");
       
     } 
       },[]);

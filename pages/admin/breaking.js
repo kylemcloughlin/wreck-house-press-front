@@ -13,7 +13,7 @@ export default function Breaking() {
   console.log(cats)
 
   useEffect((ctx) => {
-    // router.replace("/");
+    router.replace("/");
     // const {Bearer} = parseCookies(ctx);
     // if (!Bearer) {
       

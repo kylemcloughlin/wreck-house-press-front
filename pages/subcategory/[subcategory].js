@@ -22,8 +22,14 @@ export default function Subcategory({ topStory, header, category, subs}) {
   let style = empty ? ({ visibility: 'hidden', height: "0em"}) : ({ visibility: 'visible'})
   
   const countDown = (x) => {
+    let input = null
+    if (x.legacy === true) {
+      x.originalPost
+    } else {
+      input = x.created_at
+    }
+    let date1 = new Date(input);
     let date2 = new Date(); // 9:00 AM
-    let date1 = new Date(x);
     let diff = date2 - date1;
     let msec = diff;
     let ss = Math.floor(msec / 1000);
@@ -140,7 +146,7 @@ export default function Subcategory({ topStory, header, category, subs}) {
                 {/* </div> */}
               
                 <h2 className={categoryStyles.artTitle}>{x.title}</h2>
-                <h6 className={categoryStyles.date}>{countDown(x.originalPost)}</h6>
+                <h6 className={categoryStyles.date}>{countDown(x)}</h6>
                 <div className={categoryStyles.imgBarrier}/>
                 <div/>
                 </div>

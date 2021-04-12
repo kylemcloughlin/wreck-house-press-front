@@ -19,10 +19,10 @@ export default function Post() {
   let [range, setRange] = useState(6)
    const router = useRouter();
   useEffect((ctx) => {
+    router.replace("/");
+    
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
-      // router.replace("/");
-      
     } 
       },[]);
   

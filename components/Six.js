@@ -5,8 +5,16 @@ import { useAppContext  } from '../context/AppContext';
 const Six = ({x}) => {
   const subs = useAppContext().subcatagories;
  const countDown = (x) => {
+  let input = null
+  if (x.legacy === true) {
+    x.originalPost
+  } else {
+    input = x.created_at
+  }
+  let date1 = new Date(input);
+
+
    let date2 = new Date(); // 9:00 AM
-   let date1 = new Date(x);
    let diff = date2 - date1;
    let msec = diff;
    let ss = Math.floor(msec / 1000);
@@ -44,7 +52,7 @@ const Six = ({x}) => {
                  <h5 className={sixStyles.subCatTitle}>{subs[art.subcategorization_id]}</h5>
                 <img className={sixStyles.sixImg} src={art.fallback[0]}/>
                 <h3 className={sixStyles.threeHeader}>{art.title}</h3>
-                <h6 className={sixStyles.threeTimeFooter}>{countDown(art.originalPost)}</h6>
+                <h6 className={sixStyles.threeTimeFooter}>{countDown(art)}</h6>
                  
                 <div/>        
               </div>

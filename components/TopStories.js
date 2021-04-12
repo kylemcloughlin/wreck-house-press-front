@@ -8,8 +8,16 @@ const TopStories = ({ topStory, title}) => {
   let subs = useAppContext().subcatagories;
 
   const countDown = (x) => {
+
+    // console.log(x)
+let input = null
+    if (x.legacy === true) {
+      x.originalPost
+    } else {
+      input =  x.created_at 
+    }
+    let date1 = new Date(input);
     let date2 = new Date(); // 9:00 AM
-    let date1 = new Date(x);
     let diff = date2 - date1;
     let msec = diff;
     let ss = Math.floor(msec / 1000);
@@ -17,8 +25,7 @@ const TopStories = ({ topStory, title}) => {
     let hh = Math.floor(msec / 1000 / 60 / 60);
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
-    // let year  = 
-  //  console.log(x)
+   
       if (years > 0) {
         return `posted ${years} years ago`;
       } else if (days > 0) {
@@ -52,7 +59,7 @@ const TopStories = ({ topStory, title}) => {
                <h5 className={indexStyles.catTitle}>{globalState[x.categorization_id]}</h5>
                <h5 className={indexStyles.subCatTitle}>{subs[x.subcategorization_id]}</h5>
                <h2 className={indexStyles.header}>{x.title}</h2>
-               <h6 className={indexStyles.timeFooter}>{countDown(x.originalPost)} </h6>
+               <h6 className={indexStyles.timeFooter}>{countDown(x)} </h6>
                <div/>
             </div>
             </Link>)
