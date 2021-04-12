@@ -7,11 +7,11 @@ import '../styles/globals.css';
 import { CookiesProvider } from "react-cookie"
 import { parseCookies} from 'nookies';
 import Link from 'next/link';
-
+// import 'react-datepicker/dist/react-datepicker.css';
 function MyApp({ Component, pageProps, categorizes, props }) {
   let [category, setCategory] = useState();
   let [loggedIn, setLoggedIn] = useState()
-  let [admin, setAdmin] = useState();
+  let [admin, setAdmin] = useState(true);
   
   const  handleSignIn = () => {
     setLoggedIn(false)
@@ -31,6 +31,7 @@ function MyApp({ Component, pageProps, categorizes, props }) {
          }
        })
        .then(res => {
+         
          setAdmin(res.data.is)
          console.log(res.data)
          setLoggedIn(res.data.logged_in);
@@ -58,11 +59,15 @@ function MyApp({ Component, pageProps, categorizes, props }) {
     <AppWrapper>
       <Layout category={handleCategorizes}  loggedIn={loggedIn} handleSignIn={handleSignIn}>
       {/* {admin ? (<div className="adminBar">
-      <Link  href="/breaking">
+      <Link  href="/admin/breaking">
           <button className="breaking">BREAKING</button>
       </Link>
+      <Link  href="/admin/post">
           <button className="create">CREATE</button>
+      </Link>
+      < Link href="/admin/update">
           <button className="update">UPDATE</button>
+      </Link>
       </div>): (<div/>)} */}
         <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>

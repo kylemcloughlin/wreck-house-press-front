@@ -2,8 +2,8 @@ import { parseCookies } from 'nookies';
 import {React, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import styles from '../styles/Breaking.module.css';
-import { useAppContext } from '../context/AppContext'; 
+import styles from '../../styles/Breaking.module.css';
+import { useAppContext } from '../../context/AppContext'; 
 
 export default function Breaking() {
   let cats = useAppContext().hamburger
@@ -13,7 +13,7 @@ export default function Breaking() {
   console.log(cats)
 
   useEffect((ctx) => {
-    router.replace("/");
+    // router.replace("/");
     // const {Bearer} = parseCookies(ctx);
     // if (!Bearer) {
       
@@ -48,6 +48,7 @@ export default function Breaking() {
           }
         })
         .then((response) => {
+          console.log(response.data)
           if (response.data.status === 'created') {
                 
           } else {
@@ -90,7 +91,7 @@ export default function Breaking() {
           <label>Author</label>
           <input name="author" type="select"   placeholder="Authors"  className={styles.split} required />
           <label>Read Time: {range}</label>         
-          <input name="readTime" type="range"   placeholder="Read Time"  max='60' onChange={handleRange} className={styles.split} required />
+          <input name="readTime" type="range"   placeholder="Read Time"  value={range} max='60' onChange={handleRange} className={styles.split} required />
         </li>
          <li className={styles.holder}>
           <select name="category"  className={styles.split} onChange={handleSelect} required>
@@ -123,7 +124,7 @@ export default function Breaking() {
         </li>
       </ul>
       <div className={styles.buttonHolder}>
-        {/* <button type="submit">Create</button> */}
+        <button type="submit">Create</button>
       </div>
     </form>
       </div>

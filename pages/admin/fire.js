@@ -1,7 +1,7 @@
 import {React, useState } from 'react';
 // import { useRouter, Router } from 'next/router';
 import axios from 'axios';
-import styles from '../styles/Reset.module.css';
+import styles from '../../styles/Reset.module.css';
 
 
 
@@ -40,7 +40,7 @@ const [mes, setMes] = useState("")
   } 
   return( <div>
           
-            {/* <button onClick={handleUser}>FIRE</button> */}
+            <button onClick={handleUser}>FIRE</button>
       <h1>deployed</h1>
         
 

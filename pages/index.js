@@ -18,8 +18,9 @@ export default function Home({articles, topStory, title}) {
       let four = { name: "Opinion", articles: [], index: 3};
       let five = { name: "Community", articles: [], index: 4};
       let six = { name: "The Arts", articles: [], index: 5};
-
+        // console.log(articles)
       articles.forEach(x =>{
+
       if (x.breaking == true) {
         let published = new Date(x.created_at)
         published.setHours(published.getHours() + 24);
@@ -34,9 +35,10 @@ export default function Home({articles, topStory, title}) {
          
         }
       }
+      console.log(x)
         switch (x.categorization_id) {
           case 2:
-          
+            console.log(x)
             two.articles.push(x)
           break;
           case 3:
@@ -61,6 +63,7 @@ export default function Home({articles, topStory, title}) {
         
       })
       setBreakingStory(breaking)
+      console.log(two)
         setSortedArticles([two, three, four, five, six]);
     }, []);
 

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 
 
-export default function Post() {
+export default function Update() {
    const router = useRouter();
   useEffect((ctx) => {
     const {Bearer} = parseCookies(ctx);

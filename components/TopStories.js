@@ -18,7 +18,7 @@ const TopStories = ({ topStory, title}) => {
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
     // let year  = 
-   
+  //  console.log(x)
       if (years > 0) {
         return `posted ${years} years ago`;
       } else if (days > 0) {

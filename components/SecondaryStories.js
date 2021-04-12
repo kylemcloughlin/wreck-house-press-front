@@ -11,18 +11,18 @@ const SecondaryStories = ({sortedArticles}) => {
   return(
        <div>
          {sortedArticles.map((x, ind) => { 
-
+            console.log(sortedArticles)
             let url = ind
             let el; 
             switch (x.name) {
                     case 'Local News':
-                      el = <Six x= {x}/>
+                      el = <Six x={x}/>
                       break;
                         case 'Community':
-                      el = <Four x= {x}/>
+                      el = <Four x={x}/>
                       break;
                         case 'The Arts':
-                      el = <Four x= {x}/>
+                      el = <Four x={x}/>
                       break;
                     default:
                     el = <Three x={x}/>

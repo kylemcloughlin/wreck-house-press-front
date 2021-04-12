@@ -9,7 +9,7 @@ import { parseCookies} from 'nookies';
 export default function Article({article}) {
     let [loggedIn, setLoggedIn] = useState(false);
     let [elmnt, setElmnt] = useState()
-
+// console.log(article)
 
 const subscriptionWall = () => {
   return (
@@ -60,6 +60,7 @@ const {Bearer} = await parseCookies(ctx);
          let {legacy, sId, expiry} = res.data;
          let today = new Date()
          let x  = expiry; 
+         console.log('X', x)
          x = x.split('/')
          let y = [x[2], x[1], x[0]]
          y = y.join('/')
@@ -149,7 +150,7 @@ const {Bearer} = await parseCookies(ctx);
         <p  key={id} className={articleStyles.paragraph}>{par}</p>
       )
     })}
-            {/* {category[article.categorization_id] ? (<div className={articleStyles.sportsfoot}><i>Lori Bennett is a social worker, policy professional, recreation softball player and coach, and new ukulele-ist. A Newfoundlander living in Toronto, Lori loves a good hockey chat or even a debate, just as long as it remains respectful. She posts her gametime thoughts on twitter, particularly about hockey and the Montreal Canadiens, as <a className={articleStyles.loriTwitter} href='https://twitter.com/lori10habs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'>@lori10habs</a> </i></div>) : (<div/>)} */}
+            {category[article.categorization_id] === 'Sports' ? (<div className={articleStyles.sportsfoot}><i>Lori Bennett is a social worker, policy professional, recreation softball player and coach, and new ukulele-ist. A Newfoundlander living in Toronto, Lori loves a good hockey chat or even a debate, just as long as it remains respectful. She posts her gametime thoughts on twitter, particularly about hockey and the Montreal Canadiens, as <a className={articleStyles.loriTwitter} href='https://twitter.com/lori10habs?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'>@lori10habs</a> </i></div>) : (<div/>)}
   </div>) : (<div className={articleStyles.articleBody}>
              <p>{article.body[0]} </p> 
                  <p className={articleStyles.para}>{article.body[2]}</p> 

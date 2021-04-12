@@ -140,6 +140,83 @@ textarea {
 }
 
 
+/* table thead {
+  background: #b8b7ad;
+  margin: 0em;
+} */
+/* react date picker styles  */
+
+.rdtPicker {
+  position: relative;
+  left: 13em;
+  top: -4em;
+
+
+  /* padding: 0e */
+}
+.rdtDays table {
+  border: 1px solid black;
+  background: #59BCC0;
+  border-radius: .2em;
+
+}
+
+.rdtPrev {
+     /* margin: auto; */
+  /* background: #f9f9f9; */
+}
+.rdtSwitch {
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: .2em;
+
+
+}
+
+.rdtTimeToggle {
+background: #f9f9f9;
+height: 3em;
+border-radius: .2em;
+}
+.rdtTime {
+  display: inline;
+}
+.rdtTime table {
+  border: 1px solid black;
+
+}
+.rdtCounterSeparator{
+  margin: 1em;
+   color: #f9f9f9;
+}
+.rdtCounter{
+  margin: 1em;
+  border: 1px solid black;
+  border-radius: .2em;
+  justify-content: center;
+  /* vertical-align: center; */
+  /* height: 3em; */
+  display: flex;
+  background: #f9f9f9;
+
+}
+
+.rdtBtn {
+  margin-left: .5em;
+  margin-right: .5em;
+
+}
+.rdtCounters {
+  display: flex;
+  background: #59BCC0;
+}
+tbody {
+  border: 1px solid black;
+  margin: 1em
+}
+
+/* react date picker styles  */
+
 
 .adminBar{
     background: #59BCC0;

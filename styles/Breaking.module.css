@@ -73,7 +73,6 @@
 
 
 /* panel */
-
 .container {
   position: relative;
   /* height: 10em; */
@@ -86,8 +85,8 @@
   border-radius: .2em;
   margin-top: 1em;
   /* box-shadow: #666 0px 3px 6px -1px; */
-
-
+  
+  
 }
 
 .addStory {
@@ -103,9 +102,9 @@
   border-radius: .2em;
   /* margin-top: 1em; */
   /* box-shadow: #666 0px 3px 6px -1px; */
-
-
-
+  
+  
+  
 }
 
 .breaking {
@@ -114,7 +113,7 @@
   left: 1em;
   color: red;
   font-family: 'Montserrat',
-    sans-serif;
+  sans-serif;
   font-style: normal;
   font-weight: 600;
 }
@@ -126,8 +125,8 @@
   position: absolute;
   top: 3em;
   left: .5em;
-
-
+  
+  
 }
 
 .breakingCatTitle {
@@ -135,7 +134,7 @@
   top: 0em;
   left: 1em;
   font-family: 'Montserrat',
-    sans-serif;
+  sans-serif;
   font-style: normal;
   font-weight: 600;
 }
@@ -146,7 +145,7 @@
   left: 1em;
   opacity: .6;
   font-family: 'Montserrat',
-    sans-serif;
+  sans-serif;
   font-style: normal;
   font-weight: 400;
   ;
@@ -156,8 +155,8 @@
   position: absolute;
   bottom: 3em;
   left: 1em;
-
-
+  
+  
 }
 
 .breakingFooter {
@@ -165,8 +164,8 @@
   bottom: 1.5em;
   left: 1em;
   color: #B9B7B7;
-
-
+  
+  
 }
 
 .breakingImg {
@@ -175,5 +174,20 @@
   right: 1em;
   top: 2em;
   border-radius: .2em;
-
+  
 }
+    .breakingContainer {
+      position: relative;
+      background-color: #fffefe;
+      width: 100%;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      display: flex;
+      height: 20em;
+      flex-direction: column;
+      border-radius: .2em;
+      margin-top: 1em;
+      box-shadow: #666 0px 3px 6px -1px;
+    
+    
+    }

@@ -51,7 +51,8 @@ const three =({x}) => {
                 <h6 className={indexStyles.threeTimeFooter}>{countDown(art.originalPost)}</h6>    
                 <div/>     
               </div>
-             </Link>) })}             
+             </Link>
+             ) })}             
          </div>
           )
 }
