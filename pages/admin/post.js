@@ -26,6 +26,7 @@ export default function Post() {
     } 
       },[]);
   
+      
     const handleSelect = (e) => {
       e.preventDefault();
       let x = e.target.value
