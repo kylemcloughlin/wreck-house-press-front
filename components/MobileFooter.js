@@ -7,6 +7,8 @@ import { useSpring, animated } from 'react-spring';
 const MoblileFooter = ({children}) => {
   const [toggle, setToggle] = useState(false);
  
+
+  
  
   const props = useSpring({
    height: toggle ? 70 : 0,
