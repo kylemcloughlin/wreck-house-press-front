@@ -221,6 +221,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
     <div className={loginStyles.underline}/>
          <div className={loginStyles.holder}>
     <form onSubmit={registerUser} className={loginStyles.register}>
+         <h3 className={loginStyles.registerHead}>Register Here</h3>
       <ul className={loginStyles.formList}>
         <li>
           <label htmlFor="name">Email</label>
@@ -244,6 +245,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
     </form>
     <div className={loginStyles.verticalLine}/>
     <form onSubmit={signIn} className={loginStyles.signIn}>
+    <h3 className={loginStyles.registerHead}>Login Here</h3>
         <ul className={loginStyles.formList}>
         <li>
           <label htmlFor="name">Email</label>
