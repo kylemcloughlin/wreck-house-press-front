@@ -15,6 +15,26 @@
   visibility: hidden;
 }
 
+
+.pdfButton {
+  background: none;
+  /* border: none; */
+  position: absolute;
+  color: #59BCC0;
+  top: 4em;
+  left: 1em;
+  border: solid 2px #59BCC0; 
+  border-radius: .4em;
+  padding: 1em;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+}
+.pdfButton:hover, .pdfButton:focus {
+  color: #f1f1f1;
+  background: #59BCC0;
+}
+
 .mobileSignIn {
   visibility: hidden;
   width: 5%;
@@ -583,3 +603,4 @@
     color: #fffefe;
   }
 }
+
