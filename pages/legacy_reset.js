@@ -1,6 +1,6 @@
 import {React, useState, useEffect } from 'react';
 import { useRouter, Router } from 'next/router';
-import { securedAxiosInstance } from '../assets/backend/axios.js';
+import axios from 'axios';
 import styles from '../styles/Reset.module.css';
 import md5 from 'md5';
 import { useSpring, animated } from 'react-spring';
@@ -40,7 +40,7 @@ export default function LegacyReset() {
 
     } else {
 
-      securedAxiosInstance.post(`/legacy`, {
+      axios.post(`${process.env.BACKEND_URL}/legacy`, {
         token: token.value,
         password: md5(password.value),
         password_confirmation: md5(passwordConfirmation.value)
