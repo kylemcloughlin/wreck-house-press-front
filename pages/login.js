@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 import { parseCookies } from 'nookies';
 import {React, useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-
+import { securedAxiosInstance } from '../assets/backend/axios.js';
 
 
 export default function Login({handleSignIn, setLoggedIn}) {
@@ -47,57 +47,60 @@ export default function Login({handleSignIn, setLoggedIn}) {
             },
            
           })
-  const  propsCondit = complete ? (completeProps):(props)
+  const  propsCondit = complete ? (completeProps):(props);
+  
+  
   const registerUser = async event => {
     let test = event.target.password.value.split("")
     event.preventDefault()
     if (md5(event.target.password.value) != md5(event.target.password_confirmation.value) ) {
       setMessage("Passwords do not match!")
-    
     } else if (test.length < 7) {
-        setMessage("Password must be 8 characters long!")
+      setMessage("Password must be 8 characters long!")
     } else {
-
-    const res = await fetch(`${process.env.BACKEND_URL}/users`, {
-      body: JSON.stringify({
-      user:  {
-          
-          email: event.target.email.value,
-          password: md5(event.target.password.value),
-          password_confirmation:  md5(event.target.password_confirmation.value),
-        }
-
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        
-      },
-      method: 'POST',
-      withCredentials: true
-    })
-
-    const result = await res.json()
-      if (result.logged_in) {
-          setCookie("Bearer", result.token, {
-            path: "/",
-            maxAge: 36000, // Expires after 1hr
-            sameSite: true,
-          })
-
-            router.replace('/subscribe')
-               setTimeout(function () { router.reload(); }, 2000);
-      }
-      if (result.status === 422) {
-        setMessage("Email already taken, pleae try another!");
-      }
-
+  securedAxiosInstance.post(`/users`, {
+    email: event.target.email.value,
+    password: md5(event.target.password.value),
+    password_confirmation:  md5(event.target.password_confirmation.value),
+  }, {
+    withCredentials: true,
+    headers: {
+      'Content-Type': 'application/json'
     }
-    
-  }
-    
-  const signIn = async (event) => {
-    event.preventDefault();
-    axios.post(`${process.env.BACKEND_URL}/sessions`, {
+  }).then((response) => {
+    console.log(response)
+  
+    if (response.data.logged_in) {
+      setCookie("Bearer", result.token, {
+        path: "/",
+        maxAge: 36000, // Expires after 1hr
+        sameSite: true,
+      })
+      
+      router.replace('/subscribe')
+      setTimeout(function () { router.reload(); }, 2000);
+      
+      
+    } else {
+      setMessage(`${response.data}`);
+    }
+  }).catch((error) => {
+      if (error.response.status === 422) {
+        setMessage("Email already taken, pleae try another!");
+      } else {
+        setMessage("Incorrect email or Password, Please try again!");
+
+      }
+
+  });
+  
+}
+}
+const signIn = async (event) => {
+event.preventDefault();
+  
+  
+    securedAxiosInstance.post(`/sessions`, {
           email: event.target.email.value,
           password: md5(event.target.password.value)
   }, {
@@ -143,12 +146,12 @@ export default function Login({handleSignIn, setLoggedIn}) {
     
   }
 
-    const resque= (e) => {
+    const resque = (e) => {
       e.preventDefault()
       let {email } = e.target;
 
 
-axios.post(`${process.env.BACKEND_URL}/rescue`, {
+  securedAxiosInstance.post(`/rescue`, {
           email: email.value,
           
   }, {

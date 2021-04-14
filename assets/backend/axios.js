@@ -7,7 +7,7 @@ import axios from 'axios'
 const API_URL = process.env.BACKEND_URL
 const securedAxiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -16,7 +16,7 @@ const securedAxiosInstance = axios.create({
 
 const plainAxiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
   }
