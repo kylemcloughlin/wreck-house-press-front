@@ -111,11 +111,15 @@
 
 .itemA h5 {
 
-  top: 20.5em;
+  top: 18.5em;
   left: 1em;
   background: #fffefe;
   border-radius: .3em;
 
+}
+
+.itemA .catTitle {
+  top: 20em;
 }
 
 .itemA div {
@@ -214,10 +218,12 @@
 .itemE h5 {
   top: 0em;
 }
-
+.itemE .subCatTitle {
+  top: 2em;
+}
 .itemE h2 {
 
-  top: 3.5em;
+  top: 4.5em;
 
 
 }
@@ -413,6 +419,7 @@
   font-family: 'Newsreader', Fallback, sans-serif;
   font: normal;
   font-weight: 500;
+  background-color: #fffefe;
 }
 
 .threeTimeFooter {
@@ -595,7 +602,7 @@
     }
 
     .threeImg {
-      width: 10%;
+      width: 16%;
     }
 
     .threeHeader {

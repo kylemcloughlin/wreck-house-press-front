@@ -11,7 +11,7 @@ import Link from 'next/link';
 function MyApp({ Component, pageProps, categorizes, props }) {
   let [category, setCategory] = useState();
   let [loggedIn, setLoggedIn] = useState()
-  let [admin, setAdmin] = useState(true);
+  let [admin, setAdmin] = useState(false);
   
   const  handleSignIn = () => {
     setLoggedIn(false)
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps, categorizes, props }) {
        .then(res => {
          
          setAdmin(res.data.is)
-         console.log(res.data)
+        //  console.log(res.data)
          setLoggedIn(res.data.logged_in);
 
        }).catch((error) => {
@@ -58,17 +58,24 @@ function MyApp({ Component, pageProps, categorizes, props }) {
   return (
     <AppWrapper>
       <Layout category={handleCategorizes}  loggedIn={loggedIn} handleSignIn={handleSignIn}>
-      {/* {admin ? (<div className="adminBar">
+      {admin ? (<div className="adminBar">
       <Link  href="/admin/breaking">
-          <button className="breaking">BREAKING</button>
+          <button className="breaking">BREAKING STORY</button>
       </Link>
       <Link  href="/admin/post">
-          <button className="create">CREATE</button>
+          <button className="create">CREATE A STORY</button>
       </Link>
       < Link href="/admin/update">
-          <button className="update">UPDATE</button>
+          <button className="update">UPDATE A STORY</button>
       </Link>
-      </div>): (<div/>)} */}
+      {/* <Link  href="/">
+          <button className="create">ADD USER</button>
+      </Link>
+      < Link href="/">
+          <button className="update">ADD PDF</button>
+      </Link> */}
+      
+      </div>): (<div/>)}
         <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>
     </AppWrapper>

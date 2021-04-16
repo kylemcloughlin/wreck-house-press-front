@@ -4,16 +4,22 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import styles from '../../styles/Breaking.module.css';
 import { useAppContext } from '../../context/AppContext'; 
+import Link from 'next/link';
+import { route } from 'next/dist/next-server/server/router';
 
 export default function Breaking() {
   let cats = useAppContext().hamburger
   let [subs, setSubs] = useState(null)
   let [range, setRange] = useState(6)
+  let [complete, setComplete] = useState(false)
+  let [admin, setAdmin] = useState(false)
   const router = useRouter();
   console.log(cats)
-
+ const refresh = () => {
+   router.reload()
+ }
   useEffect((ctx) => {
-    router.replace("/");
+    // router.replace("/");
     // const {Bearer} = parseCookies(ctx);
     // if (!Bearer) {
       
@@ -50,7 +56,7 @@ export default function Breaking() {
         .then((response) => {
           console.log(response.data)
           if (response.data.status === 'created') {
-                
+                setComplete(true)
           } else {
     
           }
@@ -74,10 +80,49 @@ export default function Breaking() {
         // console.log(x)
         setRange(x)
     }
+    const handleLogin = async (ctx) => {
+   const {Bearer} = await parseCookies(ctx);
+    axios.get(`${process.env.BACKEND_URL}/logged_in`, {
+         withCredentials: true,
+         headers: {
+           'Content-Type': 'none',
+           "Authorization": Bearer
+         }
+       })
+       .then(res => {
+         if (res.data.is) {
+           console.log('hithithti', res.data.is)
+           setAdmin(res.data.is)
+         } else {
+           console.log('elselseelse')
+           router.replace('/')
+         }
+       }).catch((error) => {
+         console.log(error);
+         router.replace('/')
+
+
+       });
+
+   }
+
     useEffect(() => {
+      handleLogin();
 
     },[subs])
       
+
+       if(complete) {
+        return(
+          <div className={styles.container}>
+          <h2  className={styles.completeTitle}>complete</h2>
+          <Link  href="/">
+              <button className={styles.homeBtn} >Home</button>
+          </Link>
+          </div>
+        )
+      }
+
   return (
       <div className={styles.container}>
       <h3>Breaking Story</h3>

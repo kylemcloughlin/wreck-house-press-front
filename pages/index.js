@@ -35,10 +35,10 @@ export default function Home({articles, topStory, title}) {
          
         }
       }
-      console.log(x)
+   
         switch (x.categorization_id) {
           case 2:
-            console.log(x)
+   
             two.articles.push(x)
           break;
           case 3:
@@ -63,7 +63,7 @@ export default function Home({articles, topStory, title}) {
         
       })
       setBreakingStory(breaking)
-      console.log(two)
+
         setSortedArticles([two, three, four, five, six]);
     }, []);
 
@@ -97,6 +97,7 @@ export const getStaticProps = async () => {
   let output = await articles.forEach((x, i) =>{
     if (topStory.length < 5) {
       if (x.breaking === true) {
+        console.log("olololol", x)
         breaking.push(x)
       } else {
         x.style = topStoryStyleArray[0];

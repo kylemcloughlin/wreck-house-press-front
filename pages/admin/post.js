@@ -6,6 +6,7 @@ import { useAppContext } from '../../context/AppContext';
 import Datetime from 'react-datetime';
 import moment from 'moment-timezone';
 import axios from 'axios';
+import Link from 'next/link';
 // import moment from 'moment';
 // moment().format();
 
@@ -15,11 +16,11 @@ export default function Post() {
   let [subs, setSubs] = useState(null)
   let [publishTime, setPublishTime] = useState()
   let [posted, setPosted] = useState(false)
-
+  let [admin, setAdmin] = useState(false)
   let [range, setRange] = useState(6)
    const router = useRouter();
   useEffect((ctx) => {
-    router.replace("/");
+    // router.replace("/");
     
     const {Bearer} = parseCookies(ctx);
     if (!Bearer) {
@@ -55,7 +56,36 @@ export default function Post() {
       // console.log(mo2)
       // console.table(date)
     }
-    
+      const refresh = () => {
+      router.reload()
+    }
+
+  const handleLogin = async (ctx) => {
+   const {Bearer} = await parseCookies(ctx);
+    axios.get(`${process.env.BACKEND_URL}/logged_in`, {
+         withCredentials: true,
+         headers: {
+           'Content-Type': 'none',
+           "Authorization": Bearer
+         }
+       })
+       .then(res => {
+         if (res.data.is) {
+           console.log('hithithti', res.data.is)
+           setAdmin(res.data.is)
+         } else {
+           console.log('elselseelse')
+           router.replace('/')
+         }
+       }).catch((error) => {
+         console.log(error);
+         router.replace('/')
+
+
+       });
+
+   }
+
     const handlePost = (e) => {
       e.preventDefault()
       let {title, author, readTime, category, subcategory, photos, subtitles, body} = e.target;
@@ -95,7 +125,7 @@ export default function Post() {
       })
     }
       useEffect(() => {
-  
+          handleLogin()
       }, [subs, posted])
       
       
@@ -106,15 +136,19 @@ export default function Post() {
       if (posted) {
         return(
             <div className={styles.container}>
-            <h1>posted</h1>
+            <h1 className={styles.completeTitle}>posted</h1>
+            <Link  href="/">
+              <button className={styles.homeBtn} >Home</button>
+            </Link>
+          <button className={styles.anotherBtn} onClick={refresh}>Update Another</button>
             </div>
         )
       }
 
 
   return (
-     <div className={styles.container}>
-      <h3>Create Article</h3>
+     <div className={styles.postContainer}>
+      <h2  className={styles.completeTitle}>Create Article</h2> 
           <form onSubmit={handlePost}>
           <ul className={styles.list}>
         <li>

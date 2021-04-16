@@ -1,7 +1,7 @@
 .container {
   width: 80%;
   max-width: 70em;
-  height: 68em;
+  height: 60em;
   background-color: #fffefe;
   border-radius: 1em;
   margin-top: 3em;
@@ -10,6 +10,23 @@
 
 }
 
+.title {
+   font-family: 'Montserrat',
+   sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   text-align: center;
+}
+.postContainer {
+    width: 80%;
+    max-width: 70em;
+    height: 76em;
+    background-color: #fffefe;
+    border-radius: 1em;
+    margin-top: 3em;
+    box-shadow: #666 0px 3px 6px -1px;
+    position: relative;
+}
 .container h3 {
   padding-left: 3em;
 }
@@ -137,6 +154,7 @@
   sans-serif;
   font-style: normal;
   font-weight: 600;
+  color: #777676;
 }
 
 .breakingSubCatTitle {
@@ -155,7 +173,9 @@
   position: absolute;
   bottom: 3em;
   left: 1em;
-  
+  font-family: 'Newsreader', Fallback, sans-serif;
+  font: normal;
+  font-weight: 500;
   
 }
 
@@ -164,7 +184,10 @@
   bottom: 1.5em;
   left: 1em;
   color: #B9B7B7;
-  
+  font-family: 'Montserrat',
+  sans-serif;
+  font-style: normal;
+  font-weight: 400;
   
 }
 
@@ -190,4 +213,67 @@
       box-shadow: #666 0px 3px 6px -1px;
     
     
+    }
+
+    .suggestionsCont {
+      position: absolute;
+      width: 95%;
+      top: 9em;
+      border: #666 1px solid;
+      height: 20em;
+      overflow: scroll;
+      background: #fffefe;
+    }
+    .suggestionTitle {
+        font-family: 'Montserrat',
+        sans-serif;
+        font-style: normal;
+        font-weight: 400;
+    }
+    .suggestion {
+      border: #666 1px solid;
+      opacity: .5;
+
+    }
+     .suggestion:hover {
+        opacity: 1;
+        /* background: #B9B7B7; */
+
+     }
+.completeTitle {
+  text-align: center;
+  font-family: 'Montserrat',
+  sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+ .homeBtn, .anotherBtn {
+font-family: 'Montserrat',
+sans-serif;
+font-style: normal;
+font-weight: 400;
+width: 34%;
+margin: auto;
+margin-top: 3em;
+height: 3em;
+border-radius: 0.1em;
+border: none;
+border: 2px solid #59BCC0;
+color: #59BCC0;
+background: none;
+ }  
+ .anotherBtn {
+position: absolute;
+top: 9em;
+left: 33%;
+ }
+ .homeBtn:hover , .anotherBtn:hover{
+   border: none;
+   background: #59BCC0;
+   color: #fffefe;
+ }
+    @media screen and (max-width: 1400px) {
+        .container, .postContainer {
+          width: 100%;
+        }
     }
