@@ -19,13 +19,7 @@ export default function Post() {
   let [admin, setAdmin] = useState(false)
   let [range, setRange] = useState(6)
    const router = useRouter();
-  useEffect((ctx) => {
-    // router.replace("/");
-    
-    const {Bearer} = parseCookies(ctx);
-    if (!Bearer) {
-    } 
-      },[]);
+
   
       
     const handleSelect = (e) => {

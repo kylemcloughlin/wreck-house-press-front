@@ -68,13 +68,15 @@ function MyApp({ Component, pageProps, categorizes, props }) {
       < Link href="/admin/update">
           <button className="update">UPDATE A STORY</button>
       </Link>
-      {/* <Link  href="/">
+      < Link href="/admin/add_pdf">
+          <button className="update">ADD PDF</button>
+      </Link>
+      <Link  href="/admin/add_user">
           <button className="create">ADD USER</button>
       </Link>
-      < Link href="/">
-          <button className="update">ADD PDF</button>
-      </Link> */}
-      
+       <Link  href="/admin/weekly_email">
+          <button className="create">WEEKLY EMAIL</button>
+      </Link>
       </div>): (<div/>)}
         <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>

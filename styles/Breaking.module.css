@@ -247,7 +247,23 @@
   font-style: normal;
   font-weight: 400;
 }
- .homeBtn, .anotherBtn {
+
+
+.completeEmailList {
+    text-align: center;
+    font-family: 'Montserrat',
+    sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    border: 1px solid #666;
+    width: 50%;
+    border-radius: .3em;
+    position: relative;
+    left: 25%;
+
+}
+
+ .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn {
 font-family: 'Montserrat',
 sans-serif;
 font-style: normal;
@@ -264,13 +280,56 @@ background: none;
  }  
  .anotherBtn {
 position: absolute;
-top: 9em;
+top: 14em;
 left: 33%;
  }
- .homeBtn:hover , .anotherBtn:hover{
+
+  .createBtn {
+    position: absolute;
+    width: 10em;
+    top: 14em;
+    left: 64%;
+  }
+
+  .addBtn {
+       position: absolute;
+       width: 10em;
+       top: 30em;
+       left: 64%;
+     
+  }
+  .confirmBtn {
+       position: absolute;
+       width: 10em;
+       top: 34em;
+       left: 64%;
+     
+  }
+ .input {
+font-family: 'Montserrat',
+sans-serif;
+font-style: normal;
+height: 2.5em;
+font-weight: 400;
+/* margin: auto; */
+position: relative;
+left: 25%;
+width: 50%;
+top: 1em;
+ }
+ .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover {
    border: none;
    background: #59BCC0;
    color: #fffefe;
+ }
+
+ .confirmBtn:hover {
+      border: none;
+   background: green;
+   color: #fffefe;
+ }
+ .emailListItem {
+   margin-bottom:  .5em;
  }
     @media screen and (max-width: 1400px) {
         .container, .postContainer {
