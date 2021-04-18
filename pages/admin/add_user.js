@@ -83,7 +83,7 @@ export default function addUser(ctx) {
   return(<div className={styles.postContainer}>
       <h2  className={styles.completeTitle}>Add New User</h2> 
           <form onSubmit={handlePost}>
-          <h2 className={styles.completeTitle}>Add Email of New User</h2>
+          <h2 className={styles.completeTitle}>invite new user to join website by email.</h2>
           <input name="newEmail" type="email" className={styles.input} placeholder="New User's Email" required/>
         <button type="submit" className={styles.createBtn}>Create</button>
 

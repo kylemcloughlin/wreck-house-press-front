@@ -8,12 +8,32 @@ import { parseCookies } from 'nookies';
 export default function addUser(ctx) {
   let [complete, setComplete] = useState(false)  
   let [admin, setAdmin] = useState(false)
-
+  let [PDF, setPDF] = useState()
   const router = useRouter();
   const handlePost = (e) => {
     e.preventDefault();
-    console.log(e);
-    setComplete(true)
+    let { paper } = e.target;
+    console.log(paper.value)
+    axios.post(`${process.env.BACKEND_URL}/editions`, {
+      pdf: paper.value
+    }, {
+         withCredentials: true,
+          headers: {
+           'Content-Type': 'application/json'
+         }
+       })
+       .then(res => {
+        console.log(res)
+            setComplete(true)
+            setPDF(res.data.edition.pdf)
+        console.log(res);
+       }).catch((error) => {
+         console.log(error);
+        //  router.replace('/')
+
+
+       });
+
   }
   const handleLogin = async (ctx) => {
    const {Bearer} = await parseCookies(ctx);
