@@ -17,6 +17,8 @@ export default function Login({handleSignIn, setLoggedIn}) {
   const [sent, setSent] = useState(false)
   const [recovery, setRecovery] = useState(false)
   const  [complete, setComplete] = useState(false)
+  const [registered, setRegistered] = useState(false)
+
   let classCondit= complete ? (loginStyles.complete): (loginStyles.error)
   const [mes, setMessage] = useState('')
           const props = useSpring({
@@ -78,14 +80,14 @@ export default function Login({handleSignIn, setLoggedIn}) {
 
     const result = await res.json()
       if (result.logged_in) {
+        setRegistered(true)
           setCookie("Bearer", result.token, {
             path: "/",
             maxAge: 36000, // Expires after 1hr
             sameSite: true,
           })
-
-            router.replace('/subscribe')
-               setTimeout(function () { router.reload(); }, 2000);
+               setTimeout(function () {  router.replace('/subscribe') }, 3000);
+               setTimeout(function () { router.reload(); }, 4000);
       }
       if (result.status === 422) {
         setMessage("Email already taken, pleae try another!");
@@ -183,7 +185,13 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
 
       
       },[mes, sent]);
-    
+    let Register = () => {
+      return(
+        <div className={loginStyles.holder}>
+        <h4 className={loginStyles.recoveryTitle}><i>Your Account a has actived, a confirmation was sent to the email provided and you will be redirected to the subscription page shortly</i></h4>
+        </div>
+      )
+    }
       let element = sent ? (<div><i>an email has been sent to the email associated with the account.</i></div>) : (
          <form onSubmit={resque} className={loginStyles.register}>
               <ul className={loginStyles.formList}>
@@ -219,51 +227,54 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
     <img src='/images/Masthead-2021.png' className={loginStyles.loginImg}/>
   
     <div className={loginStyles.underline}/>
+         {registered ? (<Register/>) : (      
          <div className={loginStyles.holder}>
-    <form onSubmit={registerUser} className={loginStyles.register}>
-         <h3 className={loginStyles.registerHead}>Register Here</h3>
-      <ul className={loginStyles.formList}>
-        <li>
-          <label htmlFor="name">Email</label>
-          <br/>
-          <input name="email" type="email"   placeholder="Email" required />
-        </li>
-        <li>
-          <label htmlFor="password">Password</label>     
-          <br/>
-          <input  name="password" type="password" placeholder="Password" required />
-        </li>
-        <li>
-          <label htmlFor="password_confirmation">Password Confirmation</label>        
-          <br/>
-          <input  name="password_confirmation" type="password" placeholder="Confirm Password" required />
-        </li>        
-      </ul>
-      <div className={loginStyles.wrapper}>
-        <button type="submit" className={loginStyles.btn}>Register</button>
-      </div>
-    </form>
-    <div className={loginStyles.verticalLine}/>
-    <form onSubmit={signIn} className={loginStyles.signIn}>
-    <h3 className={loginStyles.registerHead}>Login Here</h3>
-        <ul className={loginStyles.formList}>
-        <li>
-          <label htmlFor="name">Email</label>
-          <br/>
-          <input name="email" type="email" placeholder="Email" required />
-        </li>
-        <li>
-          <label htmlFor="password">Password</label>     
-          <br/>
-          <input  name="password" type="password"  placeholder="Password" required />
-        </li>      
-      </ul>
+            <form onSubmit={registerUser} className={loginStyles.register}>
+            <h3 className={loginStyles.registerHead}>Register Here</h3>
+            <ul className={loginStyles.formList}>
+            <li>
+            <label htmlFor="name">Email</label>
+            <br/>
+            <input name="email" type="email"   placeholder="Email" required />
+            </li>
+            <li>
+            <label htmlFor="password">Password</label>     
+            <br/>
+            <input  name="password" type="password" placeholder="Password" required />
+            </li>
+            <li>
+            <label htmlFor="password_confirmation">Password Confirmation</label>        
+            <br/>
+            <input  name="password_confirmation" type="password" placeholder="Confirm Password" required />
+            </li>        
+            </ul>
+            <div className={loginStyles.wrapper}>
+            <button type="submit" className={loginStyles.btn}>Register</button>
+            </div>
+            </form>
+            <div className={loginStyles.verticalLine}/>
+            <form onSubmit={signIn} className={loginStyles.signIn}>
+            <h3 className={loginStyles.registerHead}>Login Here</h3>
+            <ul className={loginStyles.formList}>
+            <li>
+            <label htmlFor="name">Email</label>
+            <br/>
+            <input name="email" type="email" placeholder="Email" required />
+            </li>
+            <li>
+            <label htmlFor="password">Password</label>     
+            <br/>
+            <input  name="password" type="password"  placeholder="Password" required />
+            </li>      
+            </ul>
+            
       <div className={loginStyles.wrapper}>
         <button type="submit" className={loginStyles.btn}>Sign In</button>
       </div>
     </form>
     <button className={loginStyles.forgotButton } onClick={handlePasswordRecovery}>forgot your password?</button>
     </div>
+    )}
     </div>
   </div>
   )

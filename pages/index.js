@@ -97,8 +97,17 @@ export const getStaticProps = async () => {
   let output = await articles.forEach((x, i) =>{
     if (topStory.length < 5) {
       if (x.breaking === true) {
-        console.log("olololol", x)
-        breaking.push(x)
+          let today = new Date()
+          let nd = new Date(x.originalPost)
+          if (today > nd ) {
+                x.style = topStoryStyleArray[0];
+                topStory.push(x)
+                topStoryStyleArray.shift()
+          } else {
+            breaking.push(x)
+
+          }
+      
       } else {
         x.style = topStoryStyleArray[0];
         topStory.push(x)
