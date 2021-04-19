@@ -5,6 +5,7 @@ import { useAppContext } from '../context/AppContext';
 import { useRouter } from 'next/router';
 import {destroyCookie} from 'nookies';
 import Hamburger from '../components/Hamburger';
+import axios from 'axios';
 const Nav = ({category, loggedIn}) => {
 
 const router = useRouter()
@@ -57,12 +58,32 @@ const handleToggle = (event) => {
     const data = await res.json();
     setSubcategorization(data);
     
+
+
+
+
   }
    const handlePDFClick = async (e) => {
-     const res = await fetch(`${process.env.BACKEND_URL}/editions`)
-     const data = await res.json();
-    console.log(data.pdf)
-      router.replace(data.pdf)
+    axios.get(`${process.env.BACKEND_URL}/editions`, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'none'
+        }
+      })
+      .then(res => {
+        console.log(res.data)
+        router.replace(res.data.pdf)
+ 
+      }).catch((error) => {
+        console.log(error);
+        //  router.replace('/')
+
+
+      });
+   
+   
+
+    
    }
 
   useEffect((ctx) => {

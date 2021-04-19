@@ -38,7 +38,7 @@ export default function addUser(ctx) {
        })
        .then(res => {
             setComplete(true)
-            setPDF(res.data.edition.pdf);
+            setPDF(res.data.pdf);
        }).catch((error) => {
          console.log(error);
         //  router.replace('/')
