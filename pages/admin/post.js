@@ -82,12 +82,13 @@ export default function Post() {
 
     const handlePost = (e) => {
       e.preventDefault()
-      let {title, author, readTime, category, subcategory, photos, subtitles, body} = e.target;
+      let {title, author, readTime, category, subcategory, photos, subtitles, body, url} = e.target;
       let splitBody = body.value.split("\n")
       let output = {
         article: {
           title: title.value,
           author: author.value,
+          url: url.value,
           rt: readTime.value,
           category: category.value,
           breaking: false,
@@ -148,7 +149,11 @@ export default function Post() {
         <li>
           <label>Title</label>
           <input name="title" type="text"   placeholder="Title" required />
-        </li>     
+        </li>   
+        <li>
+          <label>Url</label>
+          <input name="url" type="text"  placeholder="Title minus special characters(;,!?)" required />
+        </li>    
          <li className={styles.holder}>
           <label>Author</label>
           <input name="author" type="select"   placeholder="Authors"  className={styles.split} required />

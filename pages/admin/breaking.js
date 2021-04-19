@@ -28,12 +28,13 @@ export default function Breaking() {
   
       const handleBreaking = (e) => {
         e.preventDefault()
-        let {title, author, readTime, category, subcategory, photos, subtitles, body} = e.target;
+        let {title, author, readTime, category, subcategory, photos, subtitles, body, url} = e.target;
         let splitBody = body.value.split("\n")
         
         let output = {
           article: {
             title: title.value,
+            url: url.value,
             author: author.value,
             rt: readTime.value,
             category: category.value,
@@ -55,8 +56,8 @@ export default function Breaking() {
         })
         .then((response) => {
           console.log(response.data)
-          if (response.data.status === 'created') {
-                setComplete(true)
+          if (response.status === 'created') {
+            setComplete(true);
           } else {
     
           }
@@ -115,7 +116,7 @@ export default function Breaking() {
        if(complete) {
         return(
           <div className={styles.container}>
-          <h2  className={styles.completeTitle}>complete</h2>
+          <h2  className={styles.completeTitle}>Complete</h2>
           <Link  href="/">
               <button className={styles.homeBtn} >Home</button>
           </Link>
@@ -131,6 +132,10 @@ export default function Breaking() {
         <li>
           <label>Title</label>
           <input name="title" type="text"   placeholder="Title" required />
+        </li>     
+        <li>
+          <label>Url</label>
+          <input name="url" type="text"   placeholder="Title minus special characters(;,!?)" required />
         </li>     
          <li className={styles.holder}>
           <label>Author</label>

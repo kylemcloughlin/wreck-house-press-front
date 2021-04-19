@@ -53,13 +53,17 @@ const handleToggle = (event) => {
     let output = Number(e.target.value);
     setClicked(output)
     category(globalState[output]);
-    //  const res = await fetch(`https://wreck-house-press-back.herokuapp.com/subcategorizations?categorization_id=${output + 1}&&nav=${true}`)
     const res = await fetch(`${process.env.BACKEND_URL}/subcategorizations?categorization_id=${output}&&nav=${true}`)
     const data = await res.json();
     setSubcategorization(data);
     
   }
- 
+   const handlePDFClick = async (e) => {
+     const res = await fetch(`${process.env.BACKEND_URL}/editions`)
+     const data = await res.json();
+    console.log(data.pdf)
+      router.replace(data.pdf)
+   }
 
   useEffect((ctx) => {
     window.addEventListener('scroll', handleScroll);
@@ -82,7 +86,6 @@ const handleToggle = (event) => {
         <Hamburger pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
     </div>
         <Link  href="/"><img  className={navStyles.img} src='/images/Masthead-2021.png'/></Link>
-                    {/* {isLoggedIn ? (<button className={navStyles.mobileSignOut} onClick={handleLogOut}>Sign Out</button>) : (< Link href="/login"><img className={navStyles.mobileSignIn} src="/images/user.png"/></Link>)} */}
         <Link href="/subscribe" as='subscribe'> 
         <button className={navStyles.subscribe}>
           Subscribe
@@ -98,7 +101,7 @@ const handleToggle = (event) => {
 </div>) : (< Link href="/login"><button className={navStyles.signIn}>Sign In</button></Link>)}
           
         </div>
-              {isLoggedIn ? (<a href="https://drive.google.com/file/d/1fCjIHLG1ZaG4m66MiHPKz_3wuWpN-_fP/view"><button className={navStyles.pdfButton}>Current Issue</button></a>) : (<div/>)}
+              {isLoggedIn ? (<button className={navStyles.pdfButton} onClick={handlePDFClick}>Current Issue</button>) : (<div/>)}
       <div className={navStyles.underline}/>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {

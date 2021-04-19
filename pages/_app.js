@@ -77,6 +77,9 @@ function MyApp({ Component, pageProps, categorizes, props }) {
        <Link  href="/admin/weekly_email">
           <button className="create">WEEKLY EMAIL</button>
       </Link>
+       <Link  href="/admin/weekly_email">
+          <button className="create">ADVERTISEMENT</button>
+      </Link>
       </div>): (<div/>)}
         <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn}/>
       </Layout>

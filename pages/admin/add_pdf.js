@@ -1,21 +1,35 @@
 import {React, useEffect, useState} from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Datetime from 'react-datetime';
+import moment from 'moment-timezone';
 import styles from '../../styles/Breaking.module.css';
 import Link from 'next/link';
 import { parseCookies } from 'nookies';
 
+
 export default function addUser(ctx) {
-  let [complete, setComplete] = useState(false)  
-  let [admin, setAdmin] = useState(false)
-  let [PDF, setPDF] = useState()
+  let [complete, setComplete] = useState(false);
+  let [admin, setAdmin] = useState(false);
+  let [PDF, setPDF] = useState();
+  let [publishTime, setPublishTime] = useState();
+
   const router = useRouter();
+
+ const handleTime = (e) => {
+   let dateTime = e._d;
+   const mo1 = moment(dateTime).format()
+   let vx = moment(mo1).tz('America/Toronto').format()
+   setPublishTime(vx)
+ }
+
   const handlePost = (e) => {
     e.preventDefault();
     let { paper } = e.target;
     console.log(paper.value)
     axios.post(`${process.env.BACKEND_URL}/editions`, {
-      pdf: paper.value
+      pdf: paper.value,
+      publish: publishTime
     }, {
          withCredentials: true,
           headers: {
@@ -23,10 +37,8 @@ export default function addUser(ctx) {
          }
        })
        .then(res => {
-        console.log(res)
             setComplete(true)
-            setPDF(res.data.edition.pdf)
-        console.log(res);
+            setPDF(res.data.edition.pdf);
        }).catch((error) => {
          console.log(error);
         //  router.replace('/')
@@ -82,6 +94,11 @@ export default function addUser(ctx) {
           <form onSubmit={handlePost}>
           <h3 className={styles.completeTitle}>Add This Weeks Paper</h3>
           <input name="paper" type="text"   placeholder="This Weeks News Paper" className={styles.input}  required/>
+          <div className={styles.dateTimeHolder}>
+            <label>Publish Time</label>
+            <Datetime onChange={handleTime}/>
+          </div>
+     
         <button type="submit" className={styles.createBtn}>Submit</button>
 
           </form>

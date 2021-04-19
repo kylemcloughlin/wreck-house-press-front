@@ -331,6 +331,12 @@ top: 1em;
  .emailListItem {
    margin-bottom:  .5em;
  }
+
+ .dateTimeHolder {
+   position: relative;
+   top: 4em;
+   left: 25%;
+ }
     @media screen and (max-width: 1400px) {
         .container, .postContainer {
           width: 100%;
