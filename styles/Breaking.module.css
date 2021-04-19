@@ -106,6 +106,7 @@
   
 }
 
+
 .addStory {
   position: relative;
   bottom: -2em;
@@ -263,7 +264,38 @@
 
 }
 
- .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn {
+.inputHolder {
+  margin-bottom: 2em;
+  position: relative;
+  left: 5%;
+
+}
+
+.adLabel {
+  /* color: #59BCC0; */
+ /* position: relative;
+ left: 5%; */
+  /* margin-left: 2em; */
+  margin-right: 1.3em; 
+
+}
+
+.adLabelTwo {
+}
+.adInput {
+font-family: 'Montserrat',
+sans-serif;
+font-style: normal;
+height: 2.5em;
+font-weight: 400;
+/* position: relative;
+left: 5%; */
+width: 80%;
+top: 1em;
+margin-left: 1em;
+}
+
+ .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn, .removeBtn {
 font-family: 'Montserrat',
 sans-serif;
 font-style: normal;
@@ -287,10 +319,15 @@ left: 33%;
   .createBtn {
     position: absolute;
     width: 10em;
-    top: 14em;
+    top: 15em;
     left: 64%;
   }
-
+ .removeBtn {
+     position: absolute;
+     width: 10em;
+     top: 19em;
+     left: 64%;
+ }
   .addBtn {
        position: absolute;
        width: 10em;
@@ -317,12 +354,16 @@ left: 25%;
 width: 50%;
 top: 1em;
  }
- .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover {
+ .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover, .removeBtn:hover {
    border: none;
    background: #59BCC0;
    color: #fffefe;
  }
-
+.removeBtn:hover {
+     border: none;
+     background:red;
+     color: #fffefe;
+}
  .confirmBtn:hover {
       border: none;
    background: green;
@@ -336,6 +377,11 @@ top: 1em;
    position: relative;
    top: 4em;
    left: 25%;
+ }
+ .dateTimeHolderTwo {
+   position: relative;
+   top: 2em;
+   left: 15%;
  }
     @media screen and (max-width: 1400px) {
         .container, .postContainer {

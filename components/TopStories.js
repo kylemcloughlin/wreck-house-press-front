@@ -8,15 +8,13 @@ const TopStories = ({ topStory, title}) => {
   let subs = useAppContext().subcatagories;
 
   const countDown = (x) => {
-
-    // console.log(x)
-let input = null
-    if (x.legacy === true) {
-      x.originalPost
-    } else {
-      input =  x.created_at 
-    }
-    let date1 = new Date(input);
+  let input = null
+  if (x.legacy === true) {
+    input = x.originalPost
+  } else {
+    input = x.publish_time
+  }
+  let date1 = new Date(input);
     let date2 = new Date(); // 9:00 AM
     let diff = date2 - date1;
     let msec = diff;

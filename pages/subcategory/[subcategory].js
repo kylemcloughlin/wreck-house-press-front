@@ -24,7 +24,7 @@ export default function Subcategory({ topStory, header, category, subs}) {
   const countDown = (x) => {
     let input = null
     if (x.legacy === true) {
-      x.originalPost
+      input = x.originalPost
     } else {
       input = x.created_at
     }

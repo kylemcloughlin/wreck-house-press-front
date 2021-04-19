@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps, categorizes, props }) {
        <Link  href="/admin/weekly_email">
           <button className="create">WEEKLY EMAIL</button>
       </Link>
-       <Link  href="/admin/weekly_email">
+       <Link  href="/admin/advert">
           <button className="create">ADVERTISEMENT</button>
       </Link>
       </div>): (<div/>)}

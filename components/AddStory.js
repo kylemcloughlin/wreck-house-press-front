@@ -8,8 +8,14 @@ const AddStory = ({newStories, header}) => {
   let cats = useAppContext().catagories;
 
  const countDown = (x) => {
+    let input = null
+    if (x.legacy === true) {
+      input = x.originalPost
+    } else {
+      input = x.publish_time
+    }
+    let date1 = new Date(input);
     let date2 = new Date(); // 9:00 AM
-    let date1 = new Date(x);
     let diff = date2 - date1;
     let msec = diff;
     let ss = Math.floor(msec / 1000);
@@ -47,7 +53,7 @@ const AddStory = ({newStories, header}) => {
               <h5 className={styles.addedHeader}>{cats[x.categorization_id]}</h5>
               <h5 className={styles.addedSubCatTitle}>{subCats[x.subcategorization_id]}</h5>
                  <h2 className={styles.addedTitle}>{x.title}</h2>
-                <h6 className={styles.addedDate}>{countDown(x.originalPost)}</h6>
+                <h6 className={styles.addedDate}>{countDown(x)}</h6>
               </div>
               </Link>
               )
