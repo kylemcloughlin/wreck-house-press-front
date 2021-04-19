@@ -98,7 +98,7 @@ const handleToggle = (event) => {
 </div>) : (< Link href="/login"><button className={navStyles.signIn}>Sign In</button></Link>)}
           
         </div>
-              {isLoggedIn ? (<a href="https://drive.google.com/file/d/1hEY8iIgbPH0eBSBP7qKJWKcE-fDzboWq/view"><button className={navStyles.pdfButton}>Current Issue</button></a>) : (<div/>)}
+              {isLoggedIn ? (<a href="https://drive.google.com/file/d/1fCjIHLG1ZaG4m66MiHPKz_3wuWpN-_fP/view"><button className={navStyles.pdfButton}>Current Issue</button></a>) : (<div/>)}
       <div className={navStyles.underline}/>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {
