@@ -13,7 +13,25 @@ export default function WeeklyEmail({emailList}) {
   console.log("email List", emailList)
   const handlePost = (e) => {
     e.preventDefault();
-    console.log(e);
+     axios.get(`${process.env.BACKEND_URL}/set`, {
+         withCredentials: true,
+         headers: {
+           'Content-Type': 'application/json'
+         }
+       })
+       .then(res => {
+
+         console.log(res.data);
+       }).catch((error) => {
+         console.log(error);
+
+
+
+       });
+
+
+
+    
     setComplete(true)
   }
   const handleAddEmail = (e) => {
