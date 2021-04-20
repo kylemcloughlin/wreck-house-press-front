@@ -4,26 +4,40 @@ import axios from 'axios';
 import styles from '../../styles/Breaking.module.css';
 import Link from 'next/link';
 import { parseCookies } from 'nookies';
-
+import Datetime from 'react-datetime';
+import moment from 'moment-timezone';
 export default function WeeklyEmail({emailList}) {
   let [complete, setComplete] = useState(false);
   let [eList, setEList] = useState(emailList)
   let [admin, setAdmin] = useState(false);
+  let [publishTime, setPublishTime] = useState(null)
+
   const router = useRouter();
-  console.log("email List", emailList)
+  const handleTime = (e) => {
+      let dateTime = e._d;
+      setPublishTime(dateTime)
+      const mo1 = moment(dateTime).format()
+      let vx = moment(mo1).tz('America/Toronto').format()
+      setPublishTime(vx)
+    }
+    
   const handlePost = (e) => {
     e.preventDefault();
-     axios.get(`${process.env.BACKEND_URL}/set`, {
+     axios.post(`${process.env.BACKEND_URL}/set`,{
+          email: publishTime
+     }, {
          withCredentials: true,
          headers: {
            'Content-Type': 'application/json'
          }
        })
        .then(res => {
-
-         console.log(res.data);
+          if(res.status === 200 ) {
+            setComplete(true)
+          }
+         
        }).catch((error) => {
-         console.log(error);
+        alert(error);
 
 
 
@@ -32,7 +46,6 @@ export default function WeeklyEmail({emailList}) {
 
 
     
-    setComplete(true)
   }
   const handleAddEmail = (e) => {
        e.preventDefault();
@@ -47,7 +60,7 @@ export default function WeeklyEmail({emailList}) {
          })
          .then(res => {
       
-           console.log(res.data);
+      
           setEList(res.data)
          }).catch((error) => {
            console.log(error);
@@ -69,9 +82,9 @@ export default function WeeklyEmail({emailList}) {
          }
        })
        .then(res => {
-        console.log(res.data.is)
+        
         if (res.data.is) {
-           console.log('hithithti', res.data.is)
+           
            setAdmin(res.data.is)
          } else {
            
@@ -107,14 +120,18 @@ export default function WeeklyEmail({emailList}) {
         return(<div className={styles.emailListItem}>{email.email}</div>)
       })}</div> 
 
-          <form onSubmit={handlePost}>
-         <button type="submit" className={styles.confirmBtn}>Confirm EmaiList</button>
-          </form>
-
           <form  onSubmit={handleAddEmail}>
             <h4  className={styles.completeTitle}>Add User to List</h4> 
             <input name="newEmail" type="email"  className={styles.input} placeholder="Add To Email List" />
             <button type="submit" className={styles.addBtn}>Add To List</button>
+          </form>
+
+          <form onSubmit={handlePost}>
+         <div className={styles.dateTimeHolderTwo}>
+              <label>Publish Time</label>
+              <Datetime onChange={handleTime}/>
+            </div>
+         <button type="submit" className={styles.confirmBtn}>Confirm EmaiList</button>
           </form>
         </div>)
 

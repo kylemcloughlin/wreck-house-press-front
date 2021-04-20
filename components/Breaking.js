@@ -20,7 +20,7 @@ let subs = useAppContext().subcatagories;
     let hh = Math.floor(msec / 1000 / 60 / 60);
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
-      console.log(x, test)
+      
     
       if (years > 0) {
         return `posted ${years} years ago`;

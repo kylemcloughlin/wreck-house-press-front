@@ -14,7 +14,7 @@ export default function Breaking() {
   let [complete, setComplete] = useState(false)
   let [admin, setAdmin] = useState(false)
   const router = useRouter();
-  console.log(cats)
+  
  const refresh = () => {
    router.reload()
  }
@@ -55,7 +55,7 @@ export default function Breaking() {
           }
         })
         .then((response) => {
-          console.log(response.data)
+          
           if (response.status === 'created') {
             setComplete(true);
           } else {
@@ -70,15 +70,14 @@ export default function Breaking() {
       e.preventDefault();
       let x =  e.target.value
       let category = cats[Number(x)]
-      // console.log(category)
-      // console.log(cat[category])
+      
       setSubs(category.subs)
     }
 
      const handleRange = (e) => {
       e.preventDefault();
       let x =  e.target.value
-        // console.log(x)
+        
         setRange(x)
     }
     const handleLogin = async (ctx) => {
@@ -92,10 +91,10 @@ export default function Breaking() {
        })
        .then(res => {
          if (res.data.is) {
-           console.log('hithithti', res.data.is)
+         
            setAdmin(res.data.is)
          } else {
-           console.log('elselseelse')
+           
            router.replace('/')
          }
        }).catch((error) => {

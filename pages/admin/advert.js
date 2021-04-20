@@ -12,13 +12,13 @@ export default function Advert(ctx) {
   let [complete, setComplete] = useState(false)  
   let [admin, setAdmin] = useState(false)
   let [email, setEmail] = useState("")
+  let [advertId, setAdvertId] = useState()
   let [publishTime, setPublishTime] = useState(null)  
   const router = useRouter();
 
 
   const handleTime = (e) => {
       let dateTime = e._d;
-      setPublishTime(dateTime)
       const mo1 = moment(dateTime).format() 
       let vx = moment(mo1).tz('America/Toronto').format()
         setPublishTime(vx)
@@ -44,8 +44,8 @@ export default function Advert(ctx) {
         }
       })
       .then(res => {
-        console.log(res);
-        if(res.status === 201) {
+        
+        if(res.status === 200) {
             setComplete(true)
         }
       }).catch((error) => {
@@ -66,10 +66,24 @@ export default function Advert(ctx) {
        })
        .then(res => {
          if (res.data.is) {
-           console.log('hithithti', res.data.is)
            setAdmin(res.data.is)
+            axios.get(`${process.env.BACKEND_URL}/advertisements`, {
+                withCredentials: true,
+                headers: {
+                  'Content-Type': 'none',
+                  "Authorization": Bearer
+                }
+              })
+              .then(res => {
+                setAdvertId(res.data.id)
+                
+              })
+              .catch(err => {
+                console.log(err)
+              })
+
+
          } else {
-           console.log('elselseelse')
            router.replace('/')
          }
        }).catch((error) => {
@@ -83,6 +97,28 @@ export default function Advert(ctx) {
   const refresh = () => {
     router.reload()
   }
+   const handleAdToggle = () => {
+      axios.put(`${process.env.BACKEND_URL}/advertisements/${advertId}`, {
+        visable: false
+      }, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => {
+        
+        if(res.status === 200) {
+            alert("Advertisemnt has been removed")            
+        }
+      }).catch((error) => {
+        console.log(error);
+        
+      });
+
+
+   }
+
   useEffect(() => {
      handleLogin()
    }, [])
@@ -117,7 +153,7 @@ export default function Advert(ctx) {
             </div>
             <button type="submit" className={styles.createBtn}>Create</button>
           </form>
-            <button type="submit" className={styles.removeBtn}>Remove Current Ad</button>
+            <button type="submit" className={styles.removeBtn} onClick={handleAdToggle}>Remove Current Ad</button>
 
           </div>)
 

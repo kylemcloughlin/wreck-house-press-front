@@ -9,7 +9,7 @@ const Hamburger = () => {
     let globalState = useAppContext().hamburger;
     let [open,setOpen] = useState(false);
   let handleClick = () => {
-    console.log('hitititi')
+    // console.log('hitititi')
     
   } 
   return (

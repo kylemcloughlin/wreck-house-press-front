@@ -50,7 +50,7 @@ const UpdateForm = ({suggestion}) => {
            }
          }).then(response => {
            if (response.status === 200) {
-            console.log('hit')
+            
             setComplete(true)
            }
          })
@@ -65,7 +65,7 @@ const UpdateForm = ({suggestion}) => {
 
       array.forEach((item, id) => {
         if (id == array.length -1) {
-          console.log('hit')
+          
           x.push(item)
 
         } else {

@@ -207,7 +207,7 @@
       margin-bottom: 5px;
       margin-top: 5px;
       display: flex;
-      height: 20em;
+      height: 23em;
       flex-direction: column;
       border-radius: .2em;
       margin-top: 1em;
@@ -319,19 +319,19 @@ left: 33%;
   .createBtn {
     position: absolute;
     width: 10em;
-    top: 15em;
-    left: 64%;
+     top: 19em;
+    left: 70%;
   }
  .removeBtn {
      position: absolute;
      width: 10em;
-     top: 19em;
-     left: 64%;
+    top: 15em;
+     left: 70%;
  }
   .addBtn {
        position: absolute;
        width: 10em;
-       top: 30em;
+       top: 15.4em;
        left: 64%;
      
   }
@@ -383,6 +383,11 @@ top: 1em;
    top: 2em;
    left: 15%;
  }
+  .dateTimeHolderTwo {
+    position: relative;
+    top: 6em;
+    left: 25%;
+  }
     @media screen and (max-width: 1400px) {
         .container, .postContainer {
           width: 100%;

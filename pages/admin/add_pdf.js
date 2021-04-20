@@ -26,7 +26,7 @@ export default function addUser(ctx) {
   const handlePost = (e) => {
     e.preventDefault();
     let { paper } = e.target;
-    console.log(paper.value)
+    
     axios.post(`${process.env.BACKEND_URL}/editions`, {
       pdf: paper.value,
       publish: publishTime
@@ -57,9 +57,9 @@ export default function addUser(ctx) {
          }
        })
        .then(res => {
-        console.log(res.data.is)
+        
         if (res.data.is) {
-           console.log('hithithti', res.data.is)
+           
            setAdmin(res.data.is)
          } else {
            

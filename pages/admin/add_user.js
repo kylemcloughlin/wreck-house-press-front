@@ -25,7 +25,7 @@ export default function addUser(ctx) {
        .then(res => {
             setEmail(newEmail.value);
             setComplete(true)
-        console.log(res);
+        
        }).catch((error) => {
          console.log(error);
         //  router.replace('/')
@@ -47,10 +47,10 @@ export default function addUser(ctx) {
        })
        .then(res => {
          if (res.data.is) {
-           console.log('hithithti', res.data.is)
+           
            setAdmin(res.data.is)
          } else {
-           console.log('elselseelse')
+           
            router.replace('/')
          }
        }).catch((error) => {

@@ -26,15 +26,14 @@ export default function Post() {
       e.preventDefault();
       let x = e.target.value
       let category = cats[Number(x)]
-      // console.log(category)
-      // console.log(cat[category])
+      
       setSubs(category.subs)
     }
 
     const handleRange = (e) => {
       e.preventDefault();
       let x = e.target.value
-      // console.log(x)
+      
       setRange(x)
     }
     const handleTime = (e) => {
@@ -47,8 +46,7 @@ export default function Post() {
       let vx = moment(mo1).tz('America/Toronto').format()
         setPublishTime(vx)
       // const mo2 = moment(dateTime).tz("America/st_johns");
-      // console.log(mo2)
-      // console.table(date)
+      
     }
       const refresh = () => {
       router.reload()
@@ -65,10 +63,10 @@ export default function Post() {
        })
        .then(res => {
          if (res.data.is) {
-           console.log('hithithti', res.data.is)
+           
            setAdmin(res.data.is)
          } else {
-           console.log('elselseelse')
+           
            router.replace('/')
          }
        }).catch((error) => {
@@ -109,7 +107,6 @@ export default function Post() {
         }
       })
       .then((response) => {
-        console.log(response)
         if (response.status === 201) {
           setPosted(true)
         } else {

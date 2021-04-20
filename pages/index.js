@@ -2,6 +2,7 @@ import Head from 'next/head';
 import {useEffect, useState } from 'react';
 import indexStyles from '../styles/Index.module.css';
 import TopStories from '../components/TopStories.js';
+import Advert from '../components/Advert.js';
 import SecondaryStories from '../components/SecondaryStories.js';
 import Breaking from '../components/Breaking.js';
 export default function Home({articles, topStory, title}) {
@@ -78,7 +79,7 @@ export default function Home({articles, topStory, title}) {
         <main className={indexStyles.mainContainer}>  
         {breaking ? (<Breaking breaking={breakingStory}/>) : (<div/>)}
         <TopStories title={title} topStory={topStory}/>
-        {/* <a href="https://www.mcdonalds.com/ca/en-ca.html">< img className={indexStyles.ad} src="https://i.ibb.co/fpY9Rqv/mcd-Banner-Ad.jpg" alt="mcd-Banner-Ad" border="0" /></a> */}
+        <Advert/>
         <SecondaryStories sortedArticles={sortedArticles}/>
       </main>
     </div>

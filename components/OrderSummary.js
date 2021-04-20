@@ -10,7 +10,6 @@ const OrderSummary = ({option}) => {
     cost = cost + tax
     cost = cost + '.00'
     tax = tax + '.00'
-    console.log(cost)
   }else {
     tax = .75
     cost = cost + tax

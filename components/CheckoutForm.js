@@ -72,7 +72,7 @@ const springPropsTwo = useSpring({
    
     if (result.error) {
       setPending(false)      
-      console.log(result.error.message); ///ADDD ERRROR HANDLEING HERE???
+      // console.log(result.error.message); ///ADDD ERRROR HANDLEING HERE???
     } else {
       
       

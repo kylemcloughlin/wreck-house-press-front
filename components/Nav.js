@@ -71,7 +71,6 @@ const handleToggle = (event) => {
         }
       })
       .then(res => {
-        console.log(res.data)
         router.replace(res.data.pdf)
  
       }).catch((error) => {

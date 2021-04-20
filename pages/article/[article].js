@@ -60,7 +60,6 @@ const {Bearer} = await parseCookies(ctx);
          let {legacy, sId, expiry} = res.data;
          let today = new Date()
          let x  = expiry; 
-         console.log('X', x)
          x = x.split('/')
          let y = [x[2], x[1], x[0]]
          y = y.join('/')
