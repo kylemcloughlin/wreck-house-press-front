@@ -13,7 +13,7 @@ export default function Advert(ctx) {
   let [admin, setAdmin] = useState(false)
   let [email, setEmail] = useState("")
   let [advertId, setAdvertId] = useState()
-  let [publishTime, setPublishTime] = useState(null)  
+  let [publishTime, setPublishTime] = useState()  
   const router = useRouter();
 
 
