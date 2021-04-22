@@ -44,8 +44,9 @@ export default function Advert(ctx) {
         }
       })
       .then(res => {
-        
-        if(res.status === 200) {
+        console.log("!!!")
+        console.log(res.status)
+        if(res.status === 201) {
             setComplete(true)
         }
       }).catch((error) => {
@@ -65,27 +66,13 @@ export default function Advert(ctx) {
          }
        })
        .then(res => {
-         if (res.data.is) {
-           setAdmin(res.data.is)
-            axios.get(`${process.env.BACKEND_URL}/advertisements`, {
-                withCredentials: true,
-                headers: {
-                  'Content-Type': 'none',
-                  "Authorization": Bearer
-                }
-              })
-              .then(res => {
-                setAdvertId(res.data.id)
-                
-              })
-              .catch(err => {
-                console.log(err)
-              })
+        //  console.log(res)
+           if (res.data.is) {
+             setAdmin(res.data.is)
+           } else {
+         router.replace('/')
 
-
-         } else {
-           router.replace('/')
-         }
+           }
        }).catch((error) => {
          console.log(error);
          router.replace('/')
@@ -94,6 +81,27 @@ export default function Advert(ctx) {
        });
 
    }
+
+
+       const getAdId = () => {
+       axios.get(`${process.env.BACKEND_URL}/advertisements`, {
+           withCredentials: true,
+           headers: {
+             'Content-Type': 'none',
+           }
+         })
+         .then(res => {
+           setAdvertId(res.data.id)
+           console.log(res)
+
+         })
+         .catch(err => {
+           console.log(err)
+         })
+
+
+     } 
+
   const refresh = () => {
     router.reload()
   }
@@ -121,6 +129,7 @@ export default function Advert(ctx) {
 
   useEffect(() => {
      handleLogin()
+     getAdId()
    }, [])
  if(complete) {
         return(

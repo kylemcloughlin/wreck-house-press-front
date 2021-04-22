@@ -17,7 +17,6 @@ const Advert = () => {
         }
       })
       .then((response) => {
-          
           setAd(response.data)
           setVisable(response.data.visable)
       }).catch((err) => {
@@ -28,7 +27,7 @@ const Advert = () => {
 handleClick()
 
   },[])
-       
+       console.log(ad)
   
   return ( <div>
             {visable ? (<a href={ad.link}>< img className={indexStyles.ad} src={ad.img} border="0" /></a>) : (<div/>)} 
