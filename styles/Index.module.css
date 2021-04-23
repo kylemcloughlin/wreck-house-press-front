@@ -14,7 +14,7 @@
     /*set display to table-cell*/
     width: 17em;
   position: absolute;
-  right: -3em;
+  right: -18em;
   top: 1em;
   box-shadow: #666 0px 3px 6px -1px;
 
@@ -30,7 +30,7 @@
   margin-top: 1em;
   box-shadow: #666 0px 3px 6px -1px;
    /* display: table-cell; */
-   width: 80%;
+   width: 100%;
    top: 1em;
 }
 
@@ -561,7 +561,8 @@
 }
 @media screen and (max-width: 1350px) {
   .ad {
-    right: -2em;
+    right: 0em;
+    width: 15em;
   }
 } 
 @media screen and (max-width: 1200px) {
@@ -573,7 +574,7 @@
         background: none;
       }
   .topStory{
-    width: 60%;
+    width: 100%;
     margin-bottom: 1em;
   }
   .adHolder{
