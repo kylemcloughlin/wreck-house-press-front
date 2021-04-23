@@ -561,8 +561,10 @@
 }
 @media screen and (max-width: 1350px) {
   .ad {
+    position: relative;
+    width: 100%;
     right: 0em;
-    width: 15em;
+    top: 1.5em;
   }
 } 
 @media screen and (max-width: 1200px) {
