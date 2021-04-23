@@ -97,11 +97,11 @@
 
 .threeImg {
   position: absolute;
-  right: .5em;
+  right: 1em;
   top: .5em;
   border-radius: .5em;
   /* padding: 0px; */
-  width: 46%;
+  width: 42%;
   /* margin-top: 1em; */
 
 }

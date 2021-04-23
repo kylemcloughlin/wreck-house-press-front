@@ -78,10 +78,14 @@ export default function Home({articles, topStory, title}) {
       </Head>
         <main className={indexStyles.mainContainer}>  
         {breaking ? (<Breaking breaking={breakingStory}/>) : (<div/>)}
-        <TopStories title={title} topStory={topStory}/>
-        <Advert/>
-        <SecondaryStories sortedArticles={sortedArticles}/>
+        <div className={indexStyles.adHolder}>
+          <TopStories title={title} topStory={topStory}/>
+          <Advert/>
+        </div>
       </main>
+        <div className={indexStyles.center}> 
+          <SecondaryStories sortedArticles={sortedArticles}/>
+        </div>
     </div>
   )
 }

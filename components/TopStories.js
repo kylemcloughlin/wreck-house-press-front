@@ -1,6 +1,7 @@
 import { useAppContext } from '../context/AppContext';
 import Link from 'next/link';
 import indexStyles from '../styles/Index.module.css';
+import Advert from './Advert.js';
 
 
 const TopStories = ({ topStory, title}) => {
@@ -42,7 +43,7 @@ const TopStories = ({ topStory, title}) => {
       
      }
   return (
-            <div className={indexStyles.indexContainer}>
+            <div className={indexStyles.topStory}>
         <h1 className={indexStyles.title}>Current Headlines</h1>
         <div className={indexStyles.underline}/> 
     <div className={indexStyles.storiesContainer}>
@@ -64,6 +65,7 @@ const TopStories = ({ topStory, title}) => {
           })}
      
         </div>
+  
     </div>
     )
 }
