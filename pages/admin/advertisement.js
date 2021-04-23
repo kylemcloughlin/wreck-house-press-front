@@ -34,7 +34,7 @@ export default function Advert(ctx) {
 
       axios.post(`${process.env.BACKEND_URL}/advertisements`, {
         link: link.value,
-        image: image.value,
+        img: image.value,
         publish:  publishTime,
         visable: true
       }, {
