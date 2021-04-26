@@ -32,6 +32,7 @@
    /* display: table-cell; */
    width: 100%;
    top: 1em;
+   max-width: 52em;
 }
 
 .indexContainer {
