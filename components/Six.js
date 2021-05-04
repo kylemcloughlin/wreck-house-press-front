@@ -6,8 +6,8 @@ const Six = ({x}) => {
   const subs = useAppContext().subcatagories;
  const countDown = (x) => {
   let input = null
-  if (x.legacy === true) {
-    x.originalPost
+  if (x.legacy === 't') {
+    input = x.originalPost
   } else {
     input = x.created_at
   }

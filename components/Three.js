@@ -7,7 +7,7 @@ const three =({x}) => {
   let subs = useAppContext().subcatagories;
  const countDown = (x) => {
   let input = null
-  if (x.legacy === true) {
+  if (x.legacy === 't') {
     input = x.originalPost
   } else {
     input = x.publish_time

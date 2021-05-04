@@ -6,12 +6,16 @@ const Four = ({x}) => {
   const subs = useAppContext().subcatagories;
    const countDown = (x) => {
     let input = null
-    if (x.legacy === true) {
+    if (x.legacy === 't') {
+      let split = x.originalPost
       input = x.originalPost
+     
     } else {
+  
       input = x.publish_time
     }
      let date1 = new Date(input);
+    //  console.log(date1)
      let date2 = new Date(); // 9:00 AM
      let diff = date2 - date1;
      let msec = diff;

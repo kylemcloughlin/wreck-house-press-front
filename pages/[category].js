@@ -19,7 +19,7 @@ export default function Category({ topStory, header, category, subs}) {
   // let trying = 0
   const countDown = (x) => {
    let input = null
-   if (x.legacy === true) {
+   if (x.legacy === 't') {
      input = x.originalPost
    } else {
      input = x.publish_time

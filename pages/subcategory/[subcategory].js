@@ -23,10 +23,10 @@ export default function Subcategory({ topStory, header, category, subs}) {
   
   const countDown = (x) => {
     let input = null
-    if (x.legacy === true) {
+    if (x.legacy === 't') {
       input = x.originalPost
     } else {
-      input = x.created_at
+      input = x.publish_time
     }
     let date1 = new Date(input);
     let date2 = new Date(); // 9:00 AM
