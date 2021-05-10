@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import {destroyCookie} from 'nookies';
 import Hamburger from '../components/Hamburger';
 import axios from 'axios';
-const Nav = ({category, loggedIn}) => {
+const Nav = ({category, loggedIn, expiry}) => {
 
 const router = useRouter()
   let [isLoggedIn, setIsLoggedIn] = useState(loggedIn);   
@@ -19,7 +19,7 @@ const router = useRouter()
   let scrollNavStyle = didScroll ? ({ top: '0px', transition: 'top 0.4s ease-in-out' }) : ({ top: '-60px', transition: 'top 0.2s ease-in-out' })
  
   let style = toggle ? ({ display: 'block' }) : ({ display: 'none' })
- 
+  let today = new Date;
   // let lowerNavStyle = subcategorization.length >= 1 ? ({ visibility: 'visible', transition: '6ms' }) : ({ visibility: 'hidden', transition: '6ms' })
      const handleLogOut = () => {
          setToggle(!toggle)
@@ -88,7 +88,9 @@ const handleToggle = (event) => {
   useEffect((ctx) => {
     window.addEventListener('scroll', handleScroll);
    
-    
+    console.log(expiry > today)
+    console.log(expiry, today)
+
       if (loggedIn === true ) {
         setIsLoggedIn(loggedIn)
           // handleTrue();
@@ -97,7 +99,7 @@ const handleToggle = (event) => {
       
       setIsLoggedIn(loggedIn)
        
-      },[loggedIn]);
+      },[loggedIn, expiry]);
   return (
    <div>
 
@@ -121,7 +123,9 @@ const handleToggle = (event) => {
 </div>) : (< Link href="/login"><button className={navStyles.signIn}>Sign In</button></Link>)}
           
         </div>
-              {isLoggedIn ? (<button className={navStyles.pdfButton} onClick={handlePDFClick}>Current Issue</button>) : (<div/>)}
+  
+              { loggedIn? (<button className={navStyles.pdfButton} onClick={handlePDFClick}>Current Issue</button>) : (<div/>)}
+      
       <div className={navStyles.underline}/>
       <ul className={navStyles.navbar}>
       { globalState.map((x, ind)=> {

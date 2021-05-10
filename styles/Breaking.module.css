@@ -354,6 +354,18 @@ left: 25%;
 width: 50%;
 top: 1em;
  }
+
+ .subscriptionSelect{
+   position: relative;
+   left: -21em;
+   top: 6em;
+   width: 20em;
+ font-family: 'Montserrat',
+ sans-serif;
+ font-style: normal;
+ height: 2.5em;
+ font-weight: 400;
+ }
  .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover, .removeBtn:hover {
    border: none;
    background: #59BCC0;

@@ -10,28 +10,33 @@ export default function addUser(ctx) {
   let [complete, setComplete] = useState(false)  
   let [admin, setAdmin] = useState(false)
   let [email, setEmail] = useState("")
+  let [subscription, setSubscription] = useState(false)
+
   const router = useRouter();
   const handlePost = (e) => {
     e.preventDefault();
-    let {newEmail} = e.target;
-    axios.post(`${process.env.BACKEND_URL}/new_email`, {
-      email: newEmail.value
-    }, {
-         withCredentials: true,
-          headers: {
-           'Content-Type': 'application/json'
-         }
-       })
-       .then(res => {
-            setEmail(newEmail.value);
-            setComplete(true)
+    if (subscription === false) {
+      alert('missing subscription length')
+    } else  {
+      let {newEmail} = e.target;
+      axios.post(`${process.env.BACKEND_URL}/new_email`, {
+        email: newEmail.value,
+        subscription_length: subscription
+      }, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => {
+        setEmail(newEmail.value);
+        setComplete(true)
         
-       }).catch((error) => {
-         console.log(error);
+      }).catch((error) => {
+        console.log(error);
         //  router.replace('/')
-
-
-       });
+      });
+    }
 
 
 
@@ -61,6 +66,15 @@ export default function addUser(ctx) {
        });
 
    }
+    const handleSelect = (e) => {
+      console.log(e.target.value)
+      if (e.target.value === 'false') {
+        setSubscription(false)
+      } else {
+        setSubscription(e.target.value)
+        
+      }
+    }
   const refresh = () => {
     router.reload()
   }
@@ -83,11 +97,17 @@ export default function addUser(ctx) {
   return(<div className={styles.postContainer}>
       <h2  className={styles.completeTitle}>Add New User</h2> 
           <form onSubmit={handlePost}>
-          <h2 className={styles.completeTitle}>invite new user to join website by email.</h2>
-          <input name="newEmail" type="email" className={styles.input} placeholder="New User's Email" required/>
-        <button type="submit" className={styles.createBtn}>Create</button>
-
+            <h2 className={styles.completeTitle}>invite new user to join website by email.</h2>
+            <input name="newEmail" type="email" className={styles.input} placeholder="New User's Email" required/>
+             <select onChange={handleSelect} className={styles.subscriptionSelect} required>
+              <option value={false}>Select One</option>
+              <option value='3'>3 months</option>
+              <option value='6'>6 months</option>
+              <option value='annual'>annual</option>
+             </select> 
+            <button type="submit" className={styles.createBtn}>Create</button>
           </form>
           </div>)
+
 
 }

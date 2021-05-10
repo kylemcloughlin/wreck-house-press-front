@@ -71,7 +71,7 @@ const {Bearer} = await parseCookies(ctx);
               setLoggedIn(res.data.logged_in);
             
              
-            } else  {
+           }  else  {
               setLoggedIn(false);
               setElmnt(elementCondit(true))
 
@@ -87,7 +87,11 @@ const {Bearer} = await parseCookies(ctx);
          if (category[article.categorization_id] === 'Sports') {
           setLoggedIn(true);
 
-        } else {
+         } else if (article.breaking === true) {
+           setLoggedIn(true);
+
+         }
+        else {
           setLoggedIn(false); 
           setElmnt(elementCondit(false))
 

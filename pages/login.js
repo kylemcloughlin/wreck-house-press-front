@@ -148,8 +148,6 @@ export default function Login({handleSignIn, setLoggedIn}) {
     const resque= (e) => {
       e.preventDefault()
       let {email } = e.target;
-
-
 axios.post(`${process.env.BACKEND_URL}/rescue`, {
           email: email.value,
           

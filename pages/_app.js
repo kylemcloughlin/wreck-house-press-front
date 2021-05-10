@@ -10,7 +10,9 @@ import Link from 'next/link';
 // import 'react-datepicker/dist/react-datepicker.css';
 function MyApp({ Component, pageProps, categorizes, props }) {
   let [category, setCategory] = useState();
-  let [loggedIn, setLoggedIn] = useState()
+  let [loggedIn, setLoggedIn] = useState();
+  let [expiry, setExpiry] = useState()
+
   let [admin, setAdmin] = useState(false);
   
   const  handleSignIn = () => {
@@ -31,10 +33,24 @@ function MyApp({ Component, pageProps, categorizes, props }) {
          }
        })
        .then(res => {
-         
-         setAdmin(res.data.is)
-        //  console.log(res.data)
          setLoggedIn(res.data.logged_in);
+         setAdmin(res.data.is);
+       
+         let x = res.data.expiry;
+         if (x === 'annual') {
+           setExpiry(x);
+           console.log(x)
+       } else {
+           x = x.split('/')
+           let y = [x[2], x[1], x[0]]
+           y = y.join('/')
+           let nd = new Date(y)
+           setExpiry(nd);
+           console.log('hit')
+
+       }
+         
+        //  console.log(res.data)
 
        }).catch((error) => {
          console.log(error);
@@ -53,7 +69,7 @@ function MyApp({ Component, pageProps, categorizes, props }) {
     }
 
      handleLogin()
-   }, [loggedIn]);
+   }, [loggedIn, expiry]);
   
   return (
     <AppWrapper>
@@ -81,9 +97,10 @@ function MyApp({ Component, pageProps, categorizes, props }) {
           <button className="create">ADVERTISEMENT</button>
       </Link>
       </div>): (<div/>)}
-        <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn}/>
+        <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn} expiry={expiry}/>
       </Layout>
     </AppWrapper>
+
 
 )
 }
