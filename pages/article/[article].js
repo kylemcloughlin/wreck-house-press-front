@@ -89,7 +89,6 @@ const {Bearer} = await parseCookies(ctx);
 
          } else if (article.breaking === true) {
            setLoggedIn(true);
-
          }
         else {
           setLoggedIn(false); 
