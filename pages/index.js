@@ -106,7 +106,7 @@ export const getStaticProps = async () => {
           let nd = new Date(x.originalPost)
           console.log('hit XXX', x)
           console.log(today > nd)
-          if (today > nd ) {
+          if (today < nd ) {
                 x.style = topStoryStyleArray[0];
                 topStory.push(x)
                 topStoryStyleArray.shift()
