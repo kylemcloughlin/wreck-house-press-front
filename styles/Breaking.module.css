@@ -9,6 +9,18 @@
   position: relative;
 
 }
+.breakingPostContainer {
+  width: 80%;
+  max-width: 70em;
+  height: 63em;
+  background-color: #fffefe;
+  border-radius: 1em;
+  margin-top: 3em;
+  box-shadow: #666 0px 3px 6px -1px;
+  position: relative;
+
+}
+
 
 .title {
    font-family: 'Montserrat',
@@ -400,8 +412,39 @@ top: 1em;
     top: 6em;
     left: 25%;
   }
+
+  .img {
+    width: 5em;
+    position: absolute;
+    right: 1em;
+    border-radius: .3em;
+  }
+  .subCatTitle, .catTitle, .date {
+    margin-left: 1em;
+  }
+  .cancelBtn, .deleteBtn {
+    width: 6em;
+    margin: .5em;
+    height: 3em;
+    background: transparent;
+    border: 2px solid #59BCC0;
+    color: #59BCC0;
+    /* transition: s; */
+
+  }
+
+  .cancelBtn:hover {
+    color: #fffefe;
+    background: #59BCC0;
+    transition: .25s;
+  }
+   .deleteBtn:hover {
+     color: red;
+     background: #59BCC0;
+     transition: .25s;
+   }
     @media screen and (max-width: 1400px) {
-        .container, .postContainer {
+        .container, .postContainer, .breakingPostContainer {
           width: 100%;
         }
     }

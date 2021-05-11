@@ -6,13 +6,13 @@ import styles from '../../styles/Breaking.module.css';
 import { useAppContext } from '../../context/AppContext'; 
 import Link from 'next/link';
 import { route } from 'next/dist/next-server/server/router';
-
+import moment from 'moment-timezone';
 export default function Breaking() {
   let cats = useAppContext().hamburger
   let [subs, setSubs] = useState(null)
   let [range, setRange] = useState(6)
-  let [complete, setComplete] = useState(false)
-  let [admin, setAdmin] = useState(false)
+  let [complete, setComplete] = useState(false);
+  let [admin, setAdmin] = useState(false);
   const router = useRouter();
   
  const refresh = () => {
@@ -28,6 +28,9 @@ export default function Breaking() {
   
       const handleBreaking = (e) => {
         e.preventDefault()
+        let d = new Date();
+        const mo1 = moment(d).format();
+        let pt = moment(mo1).tz('America/Toronto').format()
         let {title, author, readTime, category, subcategory, photos, subtitles, body, url} = e.target;
         let splitBody = body.value.split("\n")
         
@@ -39,6 +42,7 @@ export default function Breaking() {
             rt: readTime.value,
             category: category.value,
             breaking: true,
+            publishTime: pt,
             subcategory: subcategory.value,
             photos: [photos.value],
             subtitles: subtitles.value,
@@ -55,8 +59,8 @@ export default function Breaking() {
           }
         })
         .then((response) => {
-          
-          if (response.status === 'created') {
+            console.log(response)
+          if (response.status === 201) {
             setComplete(true);
           } else {
     
@@ -116,6 +120,8 @@ export default function Breaking() {
         return(
           <div className={styles.container}>
           <h2  className={styles.completeTitle}>Complete</h2>
+          <p  className={styles.completeTitle}><i> your story is posted please wait for the website to rebuild, you can view it's progress at www.vercel.com</i></p>
+
           <Link  href="/">
               <button className={styles.homeBtn} >Home</button>
           </Link>
@@ -124,7 +130,7 @@ export default function Breaking() {
       }
 
   return (
-      <div className={styles.container}>
+      <div className={styles.breakingPostContainer}>
       <h3>Breaking Story</h3>
           <form onSubmit={handleBreaking}>
           <ul className={styles.list}>

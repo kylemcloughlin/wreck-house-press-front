@@ -87,14 +87,17 @@ function MyApp({ Component, pageProps, categorizes, props }) {
       < Link href="/admin/add_pdf">
           <button className="update">ADD PDF</button>
       </Link>
-      <Link  href="/admin/add_user">
-          <button className="create">ADD USER</button>
+      <Link  href="/admin/user">
+          <button className="create">USER</button>
       </Link>
        <Link  href="/admin/weekly_email">
           <button className="create">WEEKLY EMAIL</button>
       </Link>
        <Link  href="/admin/advertisement">
           <button className="create">ADVERTISEMENT</button>
+      </Link>
+      <Link  href="/admin/delete_story">
+          <button className="create">DELETE STORY</button>
       </Link>
       </div>): (<div/>)}
         <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn} expiry={expiry}/>

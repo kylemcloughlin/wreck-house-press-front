@@ -16,7 +16,7 @@ export default function Category({ topStory, header, category, subs}) {
   let route = useRouter();
   let test = route.asPath
   let [check, setCheck] = useState(test);
-  // let trying = 0
+  
   const countDown = (x) => {
    let input = null
    if (x.legacy === 't') {

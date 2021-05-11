@@ -1,12 +1,11 @@
 import {React, useEffect, useState} from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import styles from '../../styles/Breaking.module.css';
+import styles from '../styles/Breaking.module.css';
 import Link from 'next/link';
 import { parseCookies } from 'nookies';
 
-
-export default function addUser(ctx) {
+const AddUser = (ctx) => {
   let [complete, setComplete] = useState(false)  
   let [admin, setAdmin] = useState(false)
   let [email, setEmail] = useState("")
@@ -41,31 +40,7 @@ export default function addUser(ctx) {
 
 
   }
-  const handleLogin = async (ctx) => {
-   const {Bearer} = await parseCookies(ctx);
-    axios.get(`${process.env.BACKEND_URL}/logged_in`, {
-         withCredentials: true,
-         headers: {
-           'Content-Type': 'none',
-           "Authorization": Bearer
-         }
-       })
-       .then(res => {
-         if (res.data.is) {
-           
-           setAdmin(res.data.is)
-         } else {
-           
-           router.replace('/')
-         }
-       }).catch((error) => {
-         console.log(error);
-         router.replace('/')
-
-
-       });
-
-   }
+  
     const handleSelect = (e) => {
       console.log(e.target.value)
       if (e.target.value === 'false') {
@@ -78,9 +53,7 @@ export default function addUser(ctx) {
   const refresh = () => {
     router.reload()
   }
-  useEffect(() => {
-     handleLogin()
-   }, [])
+  
  if(complete) {
         return(
           <div className={styles.container}>
@@ -108,6 +81,5 @@ export default function addUser(ctx) {
             <button type="submit" className={styles.createBtn}>Create</button>
           </form>
           </div>)
-
-
 }
+export default AddUser

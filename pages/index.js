@@ -19,20 +19,24 @@ export default function Home({articles, topStory, title}) {
       let four = { name: "Opinion", articles: [], index: 3};
       let five = { name: "Community", articles: [], index: 4};
       let six = { name: "The Arts", articles: [], index: 5};
-        // console.log(articles)
+      
       articles.forEach(x =>{
 
       if (x.breaking == true) {
-        let published = new Date(x.created_at)
-        published.setHours(published.getHours() + 24);
-        let now = new Date()
-        let test = Date.parse(published) > Date.parse(now)
-      
+          let today = new Date()
+         
+         let published = new Date(x.created_at)         
+         published.setHours(published.getHours() + 24);
 
+        
+         let now = new Date()
+        let test = Date.parse(published) > Date.parse(now)
+        // console.log(published, yesterday)
         if (test) {
           setBreaking(true)
           breaking.push(x)
       } else {
+     
          
         }
       }
@@ -66,7 +70,7 @@ export default function Home({articles, topStory, title}) {
       setBreakingStory(breaking)
 
         setSortedArticles([two, three, four, five, six]);
-    }, []);
+    }, [articles]);
 
   
   return (
@@ -102,11 +106,18 @@ export const getStaticProps = async () => {
   let output = await articles.forEach((x, i) =>{
     if (topStory.length < 5) {
       if (x.breaking === true) {
-          let today = new Date()
           let nd = new Date(x.originalPost)
-          console.log('hit XXX', x)
-          console.log(today > nd)
-          if (today < nd ) {
+          let published = new Date(x.created_at)         
+          published.setHours(published.getHours() - 5);
+          let today = new Date()
+          let yesterday = today.setHours(today.getHours() - 24);
+        
+        console.log(published, today)
+    let test = Date.parse(today) > Date.parse(published)
+        console.log(today > published)
+        console.log(test)
+        console.log(x.url)
+          if (today > published) {
                 x.style = topStoryStyleArray[0];
                 topStory.push(x)
                 topStoryStyleArray.shift()

@@ -7,10 +7,7 @@ import Datetime from 'react-datetime';
 import moment from 'moment-timezone';
 import axios from 'axios';
 import Link from 'next/link';
-// import moment from 'moment';
-// moment().format();
 
-// import 'react-datepicker/dist/react-datepicker.css';
 export default function Post() {
   let cats = useAppContext().hamburger
   let [subs, setSubs] = useState(null)
@@ -39,10 +36,12 @@ export default function Post() {
     const handleTime = (e) => {
   
       let dateTime = e._d;
-      setPublishTime(dateTime)
+      
+      // setPublishTime(dateTime)
 
       // add this to check if it is time to post this.
       const mo1 = moment(dateTime).format() 
+
       let vx = moment(mo1).tz('America/Toronto').format()
         setPublishTime(vx)
       // const mo2 = moment(dateTime).tz("America/st_johns");
