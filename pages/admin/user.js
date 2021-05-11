@@ -9,10 +9,9 @@ import UpdateUser from '../../components/UpdateUser.js';
 
 
 export default function User(ctx) {
-  let [complete, setComplete] = useState(false)  
+  let [selected, setSelected] = useState(false)  
   let [admin, setAdmin] = useState(false)
-  let [email, setEmail] = useState("")
-  let [subscription, setSubscription] = useState(false)
+  let [elemnt, setElemnt] = useState()
 
   const router = useRouter();
   
@@ -41,17 +40,37 @@ export default function User(ctx) {
        });
 
    }
-   
-  useEffect(() => {
-     handleLogin()
-   }, [])
+   const handleClick = (e) => {
+     if (e.target.value === 'add') {
+       setSelected(e.target.value)
+        console.log(e.target.value)
 
+     } else {
+      //  elemnt = UpdateUser
+       setSelected(e.target.value)
+       console.log(e.target.value)
+
+     }
+   }
+   useEffect(() => {
+     handleLogin()
+    }, [])
+
+if (selected) {
+
+  return(
+    <div>
+      {selected === 'add' ? (<AddUser/>) : (<UpdateUser/>)}
+    </div>
+  )
+  
+}
   return(
     <div className={styles.postContainer}>
       <h2  className={styles.completeTitle}>User Options</h2>
       <div  className={styles.title}>
-        <button>Add User</button>
-        <button>Update User</button>
+        <button className={styles.button} onClick={handleClick} value='add'>Add User</button>
+        <button className={styles.button} onClick={handleClick} value='update'>Update User</button>
       </div>
     
     </div>

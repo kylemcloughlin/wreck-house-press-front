@@ -307,7 +307,7 @@ top: 1em;
 margin-left: 1em;
 }
 
- .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn, .removeBtn {
+ .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn, .removeBtn, .button{
 font-family: 'Montserrat',
 sans-serif;
 font-style: normal;
@@ -354,6 +354,11 @@ left: 33%;
        left: 64%;
      
   }
+
+  .button{
+    width: 9em;
+    margin: 1em;
+  }
  .input {
 font-family: 'Montserrat',
 sans-serif;
@@ -378,7 +383,7 @@ top: 1em;
  height: 2.5em;
  font-weight: 400;
  }
- .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover, .removeBtn:hover {
+ .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover, .removeBtn:hover , .button:hover{
    border: none;
    background: #59BCC0;
    color: #fffefe;

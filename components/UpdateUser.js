@@ -70,9 +70,9 @@ const UpdateUser = (ctx) => {
 //       }
 
   return(<div className={styles.postContainer}>
-      <h2  className={styles.completeTitle}>Add New User</h2> 
+      <h2  className={styles.completeTitle}>Update User's information</h2> 
           <form onSubmit={handlePost}>
-            <button type="submit" className={styles.createBtn}>Create</button>
+            <button type="submit" className={styles.createBtn}>Update</button>
           </form>
           </div>)
 }
