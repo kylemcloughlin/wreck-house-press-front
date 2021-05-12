@@ -39,6 +39,17 @@
     box-shadow: #666 0px 3px 6px -1px;
     position: relative;
 }
+.userContainer {
+  width: 70em;
+  max-width: 70em;
+  height: 76em;
+  background-color: #fffefe;
+  border-radius: 1em;
+  margin-top: 3em;
+  box-shadow: #666 0px 3px 6px -1px;
+  position: relative;
+}
+
 .container h3 {
   padding-left: 3em;
 }
@@ -342,8 +353,9 @@ left: 33%;
  }
   .addBtn {
        position: absolute;
+       z-index: 1;
        width: 10em;
-       top: 15.4em;
+       top: 25em;
        left: 64%;
      
   }
@@ -399,9 +411,27 @@ top: 1em;
    color: #fffefe;
  }
  .emailListItem {
+      font-family: 'Montserrat',
+      sans-serif;
+      font-style: normal;
+      font-weight: 400;
    margin-bottom:  .5em;
  }
+.deleteEmail {
+  background: none;
+  color: #59BCC0;
+  border: none;
+  position: relative;
+  border: 1px solid #fffefe;
 
+  right: -11em;
+  top: -1.8em;
+}
+.deleteEmail:hover {
+  color: red;
+  border: 1px solid red;
+  border-radius: .2em; 
+}
  .dateTimeHolder {
    position: relative;
    top: 4em;
@@ -448,6 +478,12 @@ top: 1em;
      background: #59BCC0;
      transition: .25s;
    }
+    @media screen and (max-width: 1400px) {
+
+      .userContainer {
+        width: 100%;
+      }
+    }
     @media screen and (max-width: 1400px) {
         .container, .postContainer, .breakingPostContainer {
           width: 100%;

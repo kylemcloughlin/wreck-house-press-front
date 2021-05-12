@@ -56,7 +56,7 @@ const AddUser = (ctx) => {
   
  if(complete) {
         return(
-          <div className={styles.container}>
+          <div className={styles.userContainer}>
           <h2  className={styles.completeTitle}>Complete</h2>
           <h4 className={styles.completeTitle}>email sent, {email} was added to.</h4>
           <Link  href="/">
@@ -67,7 +67,7 @@ const AddUser = (ctx) => {
         )
       }
 
-  return(<div className={styles.postContainer}>
+  return(<div className={styles.userContainer}>
       <h2  className={styles.completeTitle}>Add New User</h2> 
           <form onSubmit={handlePost}>
             <h2 className={styles.completeTitle}>invite new user to join website by email.</h2>

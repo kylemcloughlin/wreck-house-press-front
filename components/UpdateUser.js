@@ -10,6 +10,31 @@ const UpdateUser = (ctx) => {
   let [admin, setAdmin] = useState(false)
   let [email, setEmail] = useState("")
   let [subscription, setSubscription] = useState(false)
+  let [search, setSearch] = useState(false);
+  let [suggestions, setSuggestions] = useState([]);
+
+  
+  const getSuggestions = (e) => {
+    let input = e.target.value
+    setSearch(input)
+    // console.log(e.target.value)
+    if (input.length < 1) {
+      console.log('hithtihtih', input.length)
+    } else {
+      console.log(input.length)
+
+      axios.get(`${process.env.BACKEND_URL}/over_ride?output=${input}`)
+        .then(response => {
+          console.log(response)
+          // if (response.status === 200) {
+          //   setSuggestions(response.data.articles)
+          // }
+        })
+        .catch(err => {
+          console.log(":(", err)
+        });
+    }
+  }
 
   const router = useRouter();
   const handlePost = (e) => {
@@ -69,11 +94,26 @@ const UpdateUser = (ctx) => {
 //         )
 //       }
 
-  return(<div className={styles.postContainer}>
+  return(<div className={styles.userContainer}>
       <h2  className={styles.completeTitle}>Update User's information</h2> 
-          <form onSubmit={handlePost}>
+<ul className={styles.list}>
+                          <li>
+                            <label>Search User By Email</label>
+                            <input name="title" type="text"   placeholder="search by email" onChange={getSuggestions} required />
+                            { search.length > 1 ? (<div className={styles.suggestionsCont}>
+                            {suggestions.map(suggestion => {
+                                return(<div  className={styles.suggestion} onClick={handleClick.bind(this, suggestion)}>
+                                          
+                                      </div>
+
+                                )
+                            })}</div>) : (<div/>)}
+                            {/* <button type="submit">Update Article</button> */}
+                          </li>     
+                        </ul> 
+          {/* <form onSubmit={handlePost}>
             <button type="submit" className={styles.createBtn}>Update</button>
-          </form>
+          </form> */}
           </div>)
 }
 export default UpdateUser

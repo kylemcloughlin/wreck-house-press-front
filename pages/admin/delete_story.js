@@ -18,6 +18,7 @@ export default function DeleteStory() {
   let [selected, setSelected] = useState(false)
   let [range, setRange] = useState(6) 
   let [admin, setAdmin] = useState(false)
+  let [complete, setComplete] = useState(false)  
   const router = useRouter();
 
     const handleSelect = (e) => {
@@ -126,6 +127,26 @@ export default function DeleteStory() {
 
    }
 
+   const handleDelete= (e) =>{
+     console.log(selected.url)
+     axios.delete(`${process.env.BACKEND_URL}/articles/${selected.url}`, {
+           withCredentials: true,
+           headers: {
+             'Content-Type': 'none'
+           }
+          }).then(res => {
+             console.log(res)
+            if(res.status === 204) {
+              setComplete(true)
+            }
+
+           }).catch(err => {
+            alert(`Status Code: ${err.response.status} article not found`)
+
+           })
+
+   }
+
     useEffect((ctx) => {
       const {Bearer} = parseCookies(ctx);
       if (!Bearer) {
@@ -164,16 +185,25 @@ export default function DeleteStory() {
 
    return (
           <div>
-            <div className={styles.container}>
-                        <h1 className={styles.title}>{selected.title}</h1>
-                          <p className={styles.title}>are you sure you want to delete this article?</p>
-                        <div className={styles.title}>
-                          <button className={styles.deleteBtn}>Delete</button>
-                          <Link href="/">
-                            <button className={styles.cancelBtn}>Home</button>
-                          </Link>
-                        </div>
-            </div>
-          </div>
-          )
+           {complete ? (    <div className={styles.container}>
+          <h2  className={styles.completeTitle}>Complete</h2>
+          <h4 className={styles.completeTitle}>Article has been deleted, return home or refresh the page to delete another.</h4>
+          <Link  href="/">
+              <button className={styles.homeBtn}>Home</button>
+          </Link>
+          </div>): (
+             
+             <div className={styles.container}>
+             <h1 className={styles.title}>{selected.title}</h1>
+             <p className={styles.title}>are you sure you want to delete this article?</p>
+             <div className={styles.title}>
+             <button className={styles.deleteBtn} onClick={handleDelete}>Delete</button>
+             <Link href="/">
+             <button className={styles.cancelBtn}>Home</button>
+             </Link>
+             </div>
+             </div>
+             )}
+             </div>
+             )
 }

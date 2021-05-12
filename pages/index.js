@@ -14,6 +14,7 @@ export default function Home({articles, topStory, title}) {
       let output = [];
       let helper = [];
       let breaking = [];
+      let one= { name: "Top Story", articles: [] , index: 0};
       let two = { name: "Local News", articles: [] , index: 1};
       let three = { name: "Sports", articles: [] , index: 2}; 
       let four = { name: "Opinion", articles: [], index: 3};
@@ -42,6 +43,10 @@ export default function Home({articles, topStory, title}) {
       }
    
         switch (x.categorization_id) {
+          case 1:
+
+            one.articles.push(x)
+          break;
           case 2:
    
             two.articles.push(x)
@@ -69,7 +74,7 @@ export default function Home({articles, topStory, title}) {
       })
       setBreakingStory(breaking)
 
-        setSortedArticles([two, three, four, five, six]);
+        setSortedArticles([one, two, three, four, five, six]);
     }, [articles]);
 
   

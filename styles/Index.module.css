@@ -567,6 +567,11 @@
     right: 0em;
     top: 1.5em;
   }
+  .topStory{
+    width: 100%;
+    max-width: 83.2em;
+    margin-bottom: 1em;
+  }
 } 
 @media screen and (max-width: 1200px) {
      .itemB .header,
@@ -576,10 +581,6 @@
         top: 0em !important;
         background: none;
       }
-  .topStory{
-    width: 100%;
-    margin-bottom: 1em;
-  }
   .adHolder{
     display: block;
   }

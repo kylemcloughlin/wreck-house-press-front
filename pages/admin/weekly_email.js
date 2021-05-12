@@ -50,6 +50,7 @@ export default function WeeklyEmail({emailList}) {
   const handleAddEmail = (e) => {
        e.preventDefault();
       let {newEmail } = e.target
+     
     axios.post(`${process.env.BACKEND_URL}/email_lists`, {       
          email: newEmail.value
          }, {
@@ -70,7 +71,25 @@ export default function WeeklyEmail({emailList}) {
          });
 
   }
+  const handleDelete = (e) => {
+    let emailId = e.target.value
+   axios.delete(`${process.env.BACKEND_URL}/email_lists/${emailId}`, {
+     withCredentials: true,
+     headers: {
+       'Content-Type': 'none'
+     }
+   }).then(res => {
+     console.log(res)
+     if (res.status === 204) {
+     router.reload()
+     }
 
+   }).catch(err => {
+     alert(err)
+
+   })
+
+  }
 
   const handleLogin = async (ctx) => {
    const {Bearer} = await parseCookies(ctx);
@@ -117,7 +136,7 @@ export default function WeeklyEmail({emailList}) {
       <h2  className={styles.completeTitle}>Confirm EmaiList</h2> 
      
       <div  className={styles.completeEmailList}>{eList.map(email => {
-        return(<div className={styles.emailListItem}>{email.email}</div>)
+        return(<div><h5  className={styles.emailListItem}>{email.email}</h5> <button className={styles.deleteEmail} value={email.id} onClick={handleDelete}>x</button></div>)
       })}</div> 
 
           <form  onSubmit={handleAddEmail}>

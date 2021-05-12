@@ -15,6 +15,9 @@ const SecondaryStories = ({sortedArticles}) => {
             let url = ind
             let el; 
             switch (x.name) {
+                    case 'Top Story':
+                      el = <Six x={x}/>
+                      break;
                     case 'Local News':
                       el = <Six x={x}/>
                       break;
