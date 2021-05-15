@@ -102,6 +102,10 @@ function MyApp({ Component, pageProps, categorizes, props }) {
       </div>): (<div/>)}
         <Component {...pageProps} title={category}  handleSignIn={handleSignIn} loggedIn={loggedIn} expiry={expiry}/>
       </Layout>
+      {/* <div className='cookieWall'>
+        <p></p>
+        <buttton>Accept</buttton>
+      </div> */}
     </AppWrapper>
 
 

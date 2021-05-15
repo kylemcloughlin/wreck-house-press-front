@@ -2,6 +2,7 @@ import { parseCookies } from 'nookies';
 import {React, useEffect, useState} from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/Breaking.module.css';
+import SwitchStyles from '../../styles/Switch.module.css';
 import { useAppContext } from '../../context/AppContext'; 
 import Datetime from 'react-datetime';
 import moment from 'moment-timezone';
@@ -15,6 +16,7 @@ export default function Post() {
   let [posted, setPosted] = useState(false)
   let [admin, setAdmin] = useState(false)
   let [range, setRange] = useState(6)
+  let [postType, setPostType] = useState(true)
    const router = useRouter();
 
   
@@ -93,7 +95,8 @@ export default function Post() {
           photos: [photos.value],
           subtitles: subtitles.value,
           body: splitBody,
-          publishTime: publishTime
+          publishTime: publishTime,
+          postType:  postType
           
         }
       }
@@ -115,13 +118,19 @@ export default function Post() {
         console.log(error);
       })
     }
-      useEffect(() => {
-          handleLogin()
-      }, [subs, posted])
-      
-      
-      
+
+    const handlePostType = (e) => {
+     let helper =  !postType
+      setPostType(helper)
+    } 
+    useEffect(() => {
+      handleLogin()
+    }, [subs, posted])
     
+    
+    
+    
+    console.log('post type:', postType)
   
 
       if (posted) {
@@ -141,6 +150,12 @@ export default function Post() {
      <div className={styles.postContainer}>
       <h2  className={styles.completeTitle}>Create Article</h2> 
           <form onSubmit={handlePost}>
+          <label className={SwitchStyles.switch}>
+            <p className={SwitchStyles.weekly}>Weekly Posting</p>
+            <input type="checkbox" onChange={handlePostType}/>
+            <span className={SwitchStyles.slider}></span>
+            <p className={SwitchStyles.individual}>Individual Post</p>
+          </label>
           <ul className={styles.list}>
         <li>
           <label>Title</label>

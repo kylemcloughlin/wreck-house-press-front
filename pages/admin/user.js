@@ -70,7 +70,7 @@ if (selected) {
       <h2  className={styles.completeTitle}>User Options</h2>
       <div  className={styles.title}>
         <button className={styles.button} onClick={handleClick} value='add'>Add User</button>
-        {/* <button className={styles.button} onClick={handleClick} value='update'>Update User</button> */}
+        <button className={styles.button} onClick={handleClick} value='update'>Update User</button>
       </div>
     
     </div>

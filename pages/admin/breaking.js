@@ -120,7 +120,7 @@ export default function Breaking() {
         return(
           <div className={styles.container}>
           <h2  className={styles.completeTitle}>Complete</h2>
-          <p  className={styles.completeTitle}><i> your story is posted please wait for the website to rebuild, you can view it's progress at www.vercel.com</i></p>
+          <p  className={styles.completeTitle}><i> your story is posted please wait for the website to rebuild, it may take several minutes</i></p>
 
           <Link  href="/">
               <button className={styles.homeBtn} >Home</button>

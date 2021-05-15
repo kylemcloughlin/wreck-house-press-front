@@ -318,7 +318,7 @@ top: 1em;
 margin-left: 1em;
 }
 
- .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn, .removeBtn, .button{
+ .homeBtn, .anotherBtn, .createBtn, .addBtn, .confirmBtn, .removeBtn, .button, .userHomeBtn {
 font-family: 'Montserrat',
 sans-serif;
 font-style: normal;
@@ -338,7 +338,11 @@ position: absolute;
 top: 14em;
 left: 33%;
  }
+ .userHomeBtn {
+  position: absolute; 
+  left: 33%;
 
+ }
   .createBtn {
     position: absolute;
     width: 10em;
@@ -365,6 +369,27 @@ left: 33%;
        top: 34em;
        left: 64%;
      
+  }
+
+  .updateUserBtn {
+    font-family: 'Montserrat',
+sans-serif;
+font-style: normal;
+font-weight: 400;
+width: 34%;
+margin: auto;
+margin-top: 3em;
+height: 3em;
+border-radius: 0.1em;
+border: none;
+border: 2px solid #59BCC0;
+color: #59BCC0;
+;
+background: none;
+       position: absolute;
+       width: 10em;
+       bottom: 2em;
+       right: 1em;
   }
 
   .button{
@@ -395,7 +420,7 @@ top: 1em;
  height: 2.5em;
  font-weight: 400;
  }
- .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover, .removeBtn:hover , .button:hover{
+ .homeBtn:hover , .anotherBtn:hover, .createBtn:hover, .addBtn:hover, .removeBtn:hover , .button:hover, .updateUserBtn:hover, .userHomeBtn:hover{
    border: none;
    background: #59BCC0;
    color: #fffefe;
@@ -478,6 +503,19 @@ top: 1em;
      background: #59BCC0;
      transition: .25s;
    }
+
+   .userInfoDiv {
+     position: relative;
+     width: 50%;
+     height: 30%;
+     margin: auto;
+     border-radius: .4em; 
+     box-shadow: #666 0px 3px 6px -1px;
+     background: #F9F9F9;
+     text-align: center;
+   }
+  
+   
     @media screen and (max-width: 1400px) {
 
       .userContainer {

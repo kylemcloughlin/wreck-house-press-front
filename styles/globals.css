@@ -331,7 +331,17 @@ left: 12em;
 button:focus {
   outline: none;
 }
+.cookieWall {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  height: 150px;
+  text-align: center;
 
+}
 @media screen and (max-width: 1200px) {
   .bm-burger-button,
   .bm-menu-wrap {
