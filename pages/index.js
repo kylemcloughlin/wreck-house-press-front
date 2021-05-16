@@ -117,11 +117,9 @@ export const getStaticProps = async () => {
           let today = new Date()
           let yesterday = today.setHours(today.getHours() - 24);
         
-        console.log(published, today)
+      
     let test = Date.parse(today) > Date.parse(published)
-        console.log(today > published)
-        console.log(test)
-        console.log(x.url)
+      
           if (today > published) {
                 x.style = topStoryStyleArray[0];
                 topStory.push(x)

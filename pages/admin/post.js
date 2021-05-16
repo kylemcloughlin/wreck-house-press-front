@@ -81,7 +81,6 @@ export default function Post() {
 
     const handlePost = (e) => {
       e.preventDefault()
-      // postType:  postType
       let {title, author, readTime, category, subcategory, photos, subtitles, body, url} = e.target;
       let splitBody = body.value.split("\n")
       let output = {
@@ -97,6 +96,7 @@ export default function Post() {
           subtitles: subtitles.value,
           body: splitBody,
           publishTime: publishTime,
+          postType:  postType
           
         }
       }
@@ -150,12 +150,12 @@ export default function Post() {
      <div className={styles.postContainer}>
       <h2  className={styles.completeTitle}>Create Article</h2> 
           <form onSubmit={handlePost}>
-          {/* <label className={SwitchStyles.switch}>
+          <label className={SwitchStyles.switch}>
             <p className={SwitchStyles.weekly}>Weekly Posting</p>
             <input type="checkbox" onChange={handlePostType}/>
             <span className={SwitchStyles.slider}></span>
             <p className={SwitchStyles.individual}>Individual Post</p>
-          </label> */}
+          </label>
           <ul className={styles.list}>
         <li>
           <label>Title</label>

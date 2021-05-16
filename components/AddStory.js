@@ -24,22 +24,32 @@ const AddStory = ({newStories, header}) => {
     let days = Math.floor(hh / 24)
     let years = Math.floor(days / 365)
     // let year  = 
-   
-      if (years > 0) {
-        return `posted ${years} years ago`;
-      } else if (days > 0) {
-        return `posted ${days} days ago`;
+  if (years > 1) {
+    return `posted ${years} years ago`;
+  } else if (years === 1) {
+    return `posted ${years} year ago`;
+  } else if (days > 1) {
+    return `posted ${days} days ago`;
 
-      } else if ( hh > 0) {
-        return `posted ${hh} hours ago`;
+  } else if (days === 1) {
+    return `posted ${days} day ago`;
 
-      } else if (mm > 0) {
-        return `posted ${mm} minutes ago`;
+  } else if (hh > 1) {
+    return `posted ${hh} hours ago`;
 
-      } else  {
-        return `posted ${ss} seconds ago`;
+  } else if (hh === 1) {
+    return `posted ${hh} hour ago`;
 
-      }
+  } else if (mm > 1) {
+    return `posted ${mm} minutes ago`;
+
+  } else if (mm === 1) {
+    return `posted ${mm} minute ago`;
+
+  } else {
+    return `posted ${ss} seconds ago`;
+
+  }
       
      }
   return (<div className={styles.addStoryContainer}>

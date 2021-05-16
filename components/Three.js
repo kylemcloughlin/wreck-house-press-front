@@ -23,22 +23,32 @@ const three =({x}) => {
     let years = Math.floor(days / 365)
     // let year  = 
    
-      if (years > 0) {
+      if (years > 1) {
         return `posted ${years} years ago`;
-      } else if (days > 0) {
+      } else if (years === 1) {
+        return `posted ${years} year ago`;
+      } else if (days > 1) {
         return `posted ${days} days ago`;
 
-      } else if ( hh > 0) {
+      } else if (days === 1) {
+        return `posted ${days} day ago`;
+
+      } else if (hh > 1) {
         return `posted ${hh} hours ago`;
 
-      } else if (mm > 0) {
+      } else if (hh === 1) {
+        return `posted ${hh} hour ago`;
+
+      } else if (mm > 1) {
         return `posted ${mm} minutes ago`;
 
-      } else  {
+      } else if (mm === 1) {
+        return `posted ${mm} minute ago`;
+
+      } else {
         return `posted ${ss} seconds ago`;
 
       }
-      
      }
   let lowerDiv = [indexStyles.subItemA, indexStyles.subItemB, indexStyles.subItemC]
   let three = [x.articles[0], x.articles[1], x.articles[2]];

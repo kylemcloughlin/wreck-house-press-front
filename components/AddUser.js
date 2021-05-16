@@ -42,7 +42,7 @@ const AddUser = (ctx) => {
   }
   
     const handleSelect = (e) => {
-      console.log(e.target.value)
+      // console.log(e.target.value)
       if (e.target.value === 'false') {
         setSubscription(false)
       } else {

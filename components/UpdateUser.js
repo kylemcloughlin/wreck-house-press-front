@@ -93,7 +93,7 @@ const UpdateUser = (ctx) => {
   
   
     const handleAdminSelect = (e) => {
-      console.log(e.target.value)
+      // console.log(e.target.value)
       if (e.target.value === 'original') {
         setAdmin('original')
       } else {
@@ -102,7 +102,7 @@ const UpdateUser = (ctx) => {
       }
     }
      const handleSubscriptionSelect = (e) => {
-      console.log(e.target.value)
+      // console.log(e.target.value)
       if (e.target.value === 'original') {
         setSubscription('original')
       } else {

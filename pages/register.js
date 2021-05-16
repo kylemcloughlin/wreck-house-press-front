@@ -254,7 +254,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
             <Link  href="/login">
               <button className={loginStyles.registerButton } onClick={handlePasswordRecovery}>Alreadt Registered? Login Here</button>
             </Link>
-    <button className={loginStyles.forgotButton } onClick={handlePasswordRecovery}>Forgot Your Password?</button>
+    {/* <button className={loginStyles.forgotButton } onClick={handlePasswordRecovery}>Forgot Your Password?</button> */}
     </div>
     )}
     </div>

@@ -85,7 +85,7 @@
 .header {
   position: relative;
   left: .5em;
-  top: 1.5em;
+  top: 1.3em;
   margin: 10px;
   border-top-right-radius: 1em;
   padding: .5em;
@@ -268,12 +268,12 @@
 }
 .itemE h2 {
 
-  top: 4.5em;
+  top: 7.5em;
 
 
 }
 .itemE .timeFooter {
-  bottom: 4em;
+  bottom: -2em;
 }
 /* .itemE h2 {
   position: relative;
