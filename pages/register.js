@@ -228,7 +228,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
     <div className={loginStyles.underline}/>
          {registered ? (<Register/>) : (      
          <div className={loginStyles.holder}>
-            {/* <form onSubmit={registerUser} className={loginStyles.register}>
+            <form onSubmit={registerUser} className={loginStyles.register}>
             <h3 className={loginStyles.registerHead}>Register Here</h3>
             <ul className={loginStyles.formList}>
             <li>
@@ -251,29 +251,9 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
             <button type="submit" className={loginStyles.btn}>Register</button>
             </div>
             </form>
-            <div className={loginStyles.verticalLine}/> */}
-            <form onSubmit={signIn} className={loginStyles.signIn}>
-            <h3 className={loginStyles.registerHead}>Login Here</h3>
-            <ul className={loginStyles.formList}>
-            <li>
-            <label htmlFor="name">Email</label>
-            <br/>
-            <input name="email" type="email" placeholder="Email" required />
-            </li>
-            <li>
-            <label htmlFor="password">Password</label>     
-            <br/>
-            <input  name="password" type="password"  placeholder="Password" required />
-            </li>      
-            </ul>
-            
-      <div className={loginStyles.wrapper}>
-        <button type="submit" className={loginStyles.btn}>Sign In</button>
-      </div>
-    </form>
-    < Link href ="/register">
-      <button className={loginStyles.registerButton } onClick={handlePasswordRecovery}>Not Registered? Sign Up Here</button>
-    </Link>
+            <Link  href="/login">
+              <button className={loginStyles.registerButton } onClick={handlePasswordRecovery}>Alreadt Registered? Login Here</button>
+            </Link>
     <button className={loginStyles.forgotButton } onClick={handlePasswordRecovery}>Forgot Your Password?</button>
     </div>
     )}
@@ -281,26 +261,4 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
   </div>
   )
 }
-  
-  
-  
-  
-  
-  
-  
-  // const res = await fetch('http://localhost:3001/sessions',{  body: JSON.stringify({ user: { email: event.target.email.value,  password: event.target.password.value, } }),  
-  // headers: {  'Content-Type': 'application/json' }, method: 'POST',
-  // withCredentials: true})
-    
-    // const result = await res.json()
-    
-    
-
-
-
-
-  // const handleSignUp = (e) => {
-  
-  // }
-
   
