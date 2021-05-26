@@ -9,7 +9,7 @@ const Six = ({x}) => {
   if (x.legacy === 't') {
     input = x.originalPost
   } else {
-    input = x.created_at
+    input = x.publish_time
   }
   let date1 = new Date(input);
 
