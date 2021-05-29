@@ -52,7 +52,7 @@ const {Bearer} = await parseCookies(ctx);
          }
        })
        .then(res => {
-         if (category[article.categorization_id] === 'Sports') {
+         if (article.author === 'Lori Bennett') {
            setLoggedIn(true);
 
          }
@@ -84,7 +84,11 @@ const {Bearer} = await parseCookies(ctx);
           }
 
        }).catch((error) => {
-         if (category[article.categorization_id] === 'Sports') {
+          if (article.author === 'Lori Bennett') {
+            setLoggedIn(true);
+
+          }
+        else if (category[article.categorization_id] === 'Opinion') {
           setLoggedIn(true);
 
          } else if (article.breaking === true) {

@@ -82,7 +82,7 @@ export default function Home({articles, topStory, title}) {
     
     <div>
       <Head>
-        <title>Wreck House Weekly</title>
+        <title>Wreckhouse Weekly</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main className={indexStyles.mainContainer}>  
