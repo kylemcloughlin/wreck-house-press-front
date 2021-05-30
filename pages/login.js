@@ -160,6 +160,7 @@ axios.post(`${process.env.BACKEND_URL}/rescue`, {
   })
   .then((response) => {
       setSent('true')
+      setTimeout(function () { setRecovery(false)}, 3000);
   }).catch((error) => {
   
   });
