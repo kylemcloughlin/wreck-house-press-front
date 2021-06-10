@@ -111,25 +111,24 @@ export const getStaticProps = async () => {
   let output = await articles.forEach((x, i) =>{
     if (topStory.length < 5) {
       if (x.breaking === true) {
-          let nd = new Date(x.originalPost)
           let published = new Date(x.created_at)         
-          published.setHours(published.getHours() - 5);
+          published.setDate(published.getDate() + 1);
           let today = new Date()
-          let yesterday = today.setHours(today.getHours() - 24);
-        
-      
-    let test = Date.parse(today) > Date.parse(published)
-      
-          if (today > published) {
-                x.style = topStoryStyleArray[0];
-                topStory.push(x)
-                topStoryStyleArray.shift()
+          let test = Date.parse(today) > Date.parse(published)
+          
+          
+          if (test) {
+            x.style = topStoryStyleArray[0];
+            topStory.push(x)
+            topStoryStyleArray.shift()
           } else {
             breaking.push(x)
-
+            console.log('today', today)
+            console.log('published', published)
+            
           }
-      
-      } else {
+          
+        } else {
         x.style = topStoryStyleArray[0];
         topStory.push(x)
         topStoryStyleArray.shift()
