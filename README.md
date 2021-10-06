@@ -4,7 +4,7 @@
   [Check it out live here.](https://wreck-house-press-front-alpha.vercel.app/)
 ## Screenshots
 #### Screenshot of Homepage
-!["Screenshot of Homepage"](docs/homepage.png)
+!["Screenshot of Homepage"](docs/home.png)
 #### Screenshot of Sign In Page
 !["Screenshot of Sign In Page"](docs/signIn.png)
 #### Screenshot of Article
