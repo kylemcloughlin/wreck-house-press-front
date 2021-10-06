@@ -153,6 +153,7 @@ const {Bearer} = await parseCookies(ctx);
      {loggedIn ? ( <div className={articleStyles.articleBody}> 
     {article.body.map((par, id) =>{
       return(
+        
         <p  key={id} className={articleStyles.paragraph}>{par}</p>
       )
     })}
